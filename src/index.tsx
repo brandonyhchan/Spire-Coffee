@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import ReactDOM, { createRoot } from "react-dom/client";
+import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App";
 import { HelmetProvider } from "react-helmet-async";
@@ -9,7 +9,7 @@ import reportWebVitals from "./reportWebVitals";
 const container = document.getElementById("root");
 
 if (container === null) throw new Error("Root container missing in index.html");
-const root = createRoot(container!);
+const root = createRoot(container);
 
 const render = (Component: FunctionComponent) => {
   root.render(
