@@ -1,18 +1,17 @@
 import React from "react";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { Helmet } from "react-helmet";
-import Login from "./component/login/login";
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
+import Body from "./component/Body";
+import Login from "./component/login/login";
 
 function App() {
   return (
     <div className="App">
-      <Helmet title="React Starter" />
-      <BrowserRouter>
+      <Body>
         <Routes>
           <Route path="/" element={<Login />} />
         </Routes>
-      </BrowserRouter>
+      </Body>
     </div>
   );
 }
