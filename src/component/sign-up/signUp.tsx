@@ -1,10 +1,14 @@
 import React from "react";
 import Button from "../common/Button";
 import strings from "../../config/strings";
+import { Helmet } from "react-helmet-async";
+import classNames from "classnames";
+import styles from "./signUp.module.scss";
 
 const SignUp = () => {
   return (
     <React.Fragment>
+      <Helmet title={strings.signUp.helmet} />
       <div>
         <h1>{strings.signUp.title}</h1>
         <form>
