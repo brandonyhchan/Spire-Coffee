@@ -1,5 +1,5 @@
-import React, { MouseEventHandler } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import React /* MouseEventHandler */ from "react";
+import { Link /* useNavigate */ } from "react-router-dom";
 import Button from "../common/Button";
 import strings from "../../config/strings";
 import { Helmet } from "react-helmet-async";
