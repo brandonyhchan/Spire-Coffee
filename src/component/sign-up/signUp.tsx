@@ -3,9 +3,10 @@ import Button from "../common/Button";
 import strings from "../../config/strings";
 
 const SignUp = () => {
-  function renderSignUpForm() {
-    return (
-      <React.Fragment>
+  return (
+    <React.Fragment>
+      <div>
+        <h1>{strings.signUp.title}</h1>
         <form>
           <div>
             <input type="text" name="firstName" placeholder="First Name" />
@@ -24,15 +25,6 @@ const SignUp = () => {
           </div>
           <Button buttonType="submit" text="Sign Up" />
         </form>
-      </React.Fragment>
-    );
-  }
-
-  return (
-    <React.Fragment>
-      <div>
-        <h1>{strings.signUp.title}</h1>
-        {renderSignUpForm()}
       </div>
     </React.Fragment>
   );
