@@ -9,34 +9,26 @@ const SignUp = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
-      <div
-        className={classNames(
-          styles.signUp,
-          "py-3",
-          "d-flex",
-          "flex-column",
-          "align-items-center"
-        )}
-      >
-        <h1>{strings.signUp.title}</h1>
+      <h1>{strings.signUp.title}</h1>
+      <div className={classNames(styles.signUpForm)}>
         <form>
-          <div>
+          <div className={classNames(styles.firstname)}>
             <input type="text" name="firstName" placeholder="First Name" />
           </div>
-          <div>
+          <div className={classNames(styles.lastname)}>
             <input type="text" name="lastName" placeholder="Last Name" />
           </div>
-          <div>
+          <div className={classNames(styles.email)}>
             <input
               type="text"
               name="emailAddress"
               placeholder="Email Address"
             />
           </div>
-          <div>
+          <div className={classNames(styles.password)}>
             <input type="text" name="password" placeholder="Password" />
           </div>
-          <div>
+          <div className={classNames(styles.verifyPassword)}>
             <input
               type="text"
               name="verifyPassword"
