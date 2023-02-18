@@ -1,0 +1,19 @@
+.loginForm {
+  padding-bottom: 1em;
+  padding: 2em;
+}
+
+.username {
+  padding: 1rem;
+}
+
+.password {
+  padding-bottom: 1rem;
+}
+
+.username > input,
+.password > input {
+  height: 45px;
+  width: 300px;
+  padding-left: 10px;
+}
