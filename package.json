@@ -30,7 +30,9 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "installspirecoffee": "concurrently \"npm install\" \"cd backend && npm install\"",
+    "startspirecoffee": "concurrently \"npm run start\" \"cd backend && node src/index.js\""
   },
   "eslintConfig": {
     "extends": [
@@ -56,6 +58,7 @@
     "@types/react-helmet": "^6.1.6",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
     "@typescript-eslint/parser": "^5.51.0",
+    "concurrently": "^7.6.0",
     "eslint": "^8.34.0",
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
