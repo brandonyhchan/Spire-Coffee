@@ -13,7 +13,7 @@ const Login = () => {
         <Button text="click me" />
         <p>
           {strings.login.text}
-          <Link to={strings.login.path}>{strings.login.link}</Link>
+          <Link to="/signUp">{strings.login.link}</Link>
         </p>
       </div>
     </React.Fragment>

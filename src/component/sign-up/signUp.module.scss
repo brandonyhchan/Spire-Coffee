@@ -1,27 +1,13 @@
-.signUpForm {
-  padding: 1em 0em 2em 0em;
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  padding: 50px;
+  align-items: center;
 }
 
-.firstname,
-.lastname,
-.email,
-.password,
-.verifyPassword {
-  padding: 1rem;
-}
-
-.verifyPassword {
-  padding-bottom: 2rem;
-}
-
-.firstname > input,
-.lastname > input,
-.email > input,
-.password > input,
-.verifyPassword > input {
-  height: 45px;
-  width: 70%;
+form > input {
+  padding: 15px;
+  width: 100%;
   max-width: 500px;
-  min-width: 300px;
-  padding-left: 10px;
 }
