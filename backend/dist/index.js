@@ -1,10 +1,6 @@
 import { PrismaClient } from "@prisma/client";
 import { ApolloServer } from "apollo-server";
-// import { startStandaloneServer } from "@apollo/server/standalone";
-import { readFileSync } from 'fs';
-
 const prisma = new PrismaClient();
-
 const typeDefs = `
 type User {
   id: ID!
@@ -16,18 +12,16 @@ type User {
 
 type Query {
   allUsers: [User!]!
-}`
-
+}`;
 const resolvers = {
-  Query: {
-    allUsers: () => {
-      return prisma.user.findMany();
+    Query: {
+        allUsers: () => {
+            return prisma.user.findMany();
+        },
     },
-  },
 };
-
-  const server = new ApolloServer({
+const server = new ApolloServer({
     typeDefs: typeDefs,
     resolvers,
-  });
-  server.listen({port: 4000 });
+});
+server.listen({ port: 4000 });
