@@ -10,6 +10,7 @@ const strings = new LocalizedStrings({
     },
     signUp: {
       title: "Sign Up",
+      helmet: "Sign Up Page",
     },
   },
 });

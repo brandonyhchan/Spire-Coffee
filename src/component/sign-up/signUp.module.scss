@@ -1,3 +1,27 @@
-.signUp {
-  height: 100%;
+.signUpForm {
+  padding: 1em 0em 2em 0em;
+}
+
+.firstname,
+.lastname,
+.email,
+.password,
+.verifyPassword {
+  padding: 1rem;
+}
+
+.verifyPassword {
+  padding-bottom: 2rem;
+}
+
+.firstname > input,
+.lastname > input,
+.email > input,
+.password > input,
+.verifyPassword > input {
+  height: 45px;
+  width: 70%;
+  max-width: 500px;
+  min-width: 300px;
+  padding-left: 10px;
 }
