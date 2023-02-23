@@ -5,3 +5,7 @@ type User {
   userName: String!
   password: String!
 }
+
+type Query {
+  allUsers: [User!]!
+}
