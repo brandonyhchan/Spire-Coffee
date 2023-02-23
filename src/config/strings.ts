@@ -6,11 +6,12 @@ const strings = new LocalizedStrings({
       title: "Login",
       text: `Don't have an account? `,
       link: "Sign Up.",
-      path: "/signUp",
+      helmet: "Login Page",
     },
     signUp: {
       title: "Sign Up",
       helmet: "Sign Up Page",
+      buttonText: "Sign Up",
     },
   },
 });
