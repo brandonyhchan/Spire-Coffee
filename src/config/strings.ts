@@ -6,6 +6,7 @@ const strings = new LocalizedStrings({
       title: "Login",
       text: `Don't have an account? `,
       link: "Sign Up.",
+      helmet: "Login Page",
     },
     signUp: {
       title: "Sign Up",
