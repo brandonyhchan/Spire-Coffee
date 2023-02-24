@@ -5,13 +5,18 @@ const strings = new LocalizedStrings({
     login: {
       title: "Login",
       text: `Don't have an account? `,
-      link: "Sign Up.",
+      link: "Sign up.",
       helmet: "Login Page",
     },
     signUp: {
-      title: "Sign Up",
+      title: "Create an account",
       helmet: "Sign Up Page",
-      buttonText: "Sign Up",
+      buttonText: "Create account",
+      // firstNameLabel: "First Name",
+      // lastNameLabel: "Last Name",
+      // emailLabel: "Email Address",
+      // passwordLabel: "Password",
+      // verifyPasswordLabel: "Confirm Password",
     },
   },
 });

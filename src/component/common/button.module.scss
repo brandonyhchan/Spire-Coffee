@@ -1,0 +1,13 @@
+.primaryButton {
+  padding: 15px;
+  width: 150px;
+  border-radius: 10px;
+  border: none;
+  background-color: var(--primary) !important;
+  color: white;
+}
+
+.primaryButton:focus,
+.primaryButton:hover {
+  background-color: var(--primary-dark);
+}

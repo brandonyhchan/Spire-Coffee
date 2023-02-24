@@ -1,4 +1,44 @@
-form {
+// form {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   gap: 15px;
+//   padding: 50px;
+//   padding-bottom: 25px;
+// }
+
+// label {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: flex-start;
+//   width: 100%;
+//   max-width: 350px;
+// }
+
+// label > input {
+//   padding: 15px;
+//   width: 100%;
+//   max-width: 500px;
+// }
+
+.signUpContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.signUp {
+  border-color: grey;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
+  padding: 10px;
+  padding-bottom: 50px;
+  width: 650px;
+  min-width: 300px;
+}
+
+.signUpForm {
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -6,8 +46,24 @@ form {
   align-items: center;
 }
 
-form > input {
-  padding: 15px;
+.signUpForm > input {
+  padding: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 450px;
+  border-radius: 10px;
+  border-style: solid;
+}
+
+p {
+  font-size: 16px;
+}
+
+p > a {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+a:focus,
+a:hover {
+  color: var(--primary);
 }

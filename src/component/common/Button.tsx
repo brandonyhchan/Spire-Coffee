@@ -1,5 +1,6 @@
 import React, { MouseEventHandler } from "react";
 import classNames from "classnames";
+import styles from "./button.module.scss";
 
 type ButtonPropsType = {
   onClick?: MouseEventHandler;
@@ -20,7 +21,13 @@ const Button = ({
   disabled = false,
   ...rest
 }: ButtonPropsType) => (
-  <button type={buttonType} onClick={onClick} disabled={disabled} {...rest}>
+  <button
+    type={buttonType}
+    onClick={onClick}
+    disabled={disabled}
+    className={styles.type}
+    {...rest}
+  >
     {text}
   </button>
 );
