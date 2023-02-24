@@ -1,11 +1,10 @@
-import { PrismaClient } from "@prisma/client";
 import { ApolloServer } from "apollo-server";
 // import { startStandaloneServer } from "@apollo/server/standalone";
 import { readFileSync } from 'fs';
 
-const prisma = new PrismaClient();
+import { context } from './context';
 
-const typeDefs = `
+const typeDefs: string = `
 type User {
   id: ID!
   firstName: String!
@@ -29,5 +28,6 @@ const resolvers = {
   const server = new ApolloServer({
     typeDefs: typeDefs,
     resolvers,
+    context,
   });
   server.listen({port: 4000 });
