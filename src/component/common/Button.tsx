@@ -22,10 +22,10 @@ const Button = ({
   ...rest
 }: ButtonPropsType) => (
   <button
+    className={classNames(styles.button, styles[type])}
     type={buttonType}
     onClick={onClick}
     disabled={disabled}
-    className={styles.type}
     {...rest}
   >
     {text}
