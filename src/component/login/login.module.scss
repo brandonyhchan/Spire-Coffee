@@ -1,13 +1,32 @@
-form {
+.loginContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 5rem;
+}
+
+.login {
+  border-color: grey;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
+  padding-bottom: 20px;
+  width: 450px;
+  min-width: 300px;
+}
+
+.loginForm {
   display: flex;
   flex-direction: column;
   gap: 15px;
   padding: 50px;
   align-items: center;
+  padding-bottom: 25px;
 }
 
-form > input {
-  padding: 15px;
+.loginForm > input {
+  padding: 20px;
   width: 100%;
-  max-width: 500px;
+  max-width: 300px;
+  border-radius: 10px;
+  border-style: solid;
 }
