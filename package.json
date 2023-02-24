@@ -32,7 +32,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "installspirecoffee": "concurrently \"npm install\" \"cd backend && npm install\"",
-    "startspirecoffee": "concurrently \"npm run start\" \"cd backend && node src/index.js\""
+    "startspirecoffee": "concurrently \"npm run start\" \"cd backend && npm run compile && node ./dist/index.js\""
+
   },
   "eslintConfig": {
     "extends": [
