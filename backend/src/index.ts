@@ -1,7 +1,5 @@
 import { ApolloServer } from "apollo-server";
-// import { startStandaloneServer } from "@apollo/server/standalone";
-import { readFileSync } from 'fs';
-
+import {signup, login} from "./resolvers/Query"
 import { context } from './context';
 
 const typeDefs: string = `
@@ -19,10 +17,9 @@ type Query {
 
 const resolvers = {
   Query: {
-    allUsers: () => {
-      return prisma.user.findMany();
-    },
-  },
+    signup,
+    login,
+  }
 };
 
   const server = new ApolloServer({

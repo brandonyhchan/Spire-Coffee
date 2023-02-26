@@ -1,6 +1,6 @@
-import { PrismaClient } from "@prisma/client";
 import { ApolloServer } from "apollo-server";
-const prisma = new PrismaClient();
+import { signup, login } from "./resolvers/Query";
+import { context } from './context';
 const typeDefs = `
 type User {
   id: ID!
@@ -15,13 +15,13 @@ type Query {
 }`;
 const resolvers = {
     Query: {
-        allUsers: () => {
-            return prisma.user.findMany();
-        },
-    },
+        signup,
+        login,
+    }
 };
 const server = new ApolloServer({
     typeDefs: typeDefs,
     resolvers,
+    context,
 });
 server.listen({ port: 4000 });

@@ -1,17 +1,7 @@
 import { PrismaClient } from "@prisma/client";
 import { getUserId } from "./utils";
-import { Request } from "express";
-import { JwtPayload } from "jsonwebtoken";
-
-
 export const prisma = new PrismaClient();
-
-export interface Context {
-    prisma: PrismaClient;
-    userId?: string | JwtPayload | null;
-}
-
-export const context = ({ req }: { req: Request }): Context => {
+export const context = ({ req }) => {
     return {
         ...req,
         prisma,
