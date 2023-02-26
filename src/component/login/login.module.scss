@@ -29,6 +29,7 @@
   border-radius: 10px;
   border-style: solid;
   font-family: 'Figtree-Regular';
+  font-size: 16px;
 }
 
 /* Mobile view */
@@ -39,18 +40,32 @@
 }
 
 /*Destop view */
-@media only screen and (min-width: 1024px) {
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
   .login {
-    width: 600px;
-    height: 400px;
+    width: 650px;
+    height: 350px;
+    padding: 30px 20px 45px 20px;
   }
 
-  .loginForm {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-    padding: 70px;
-    align-items: center;
-    padding-bottom: 45px;
+  .loginForm > input {
+    padding: 25px;
+    width: 100%;
+    max-width: 450px;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .login {
+    width: 650px;
+    height: 350px;
+    padding: 30px 20px 65px 20px;
+  }
+
+  .loginForm > input {
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    font-size: 20px;
   }
 }

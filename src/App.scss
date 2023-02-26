@@ -3,10 +3,10 @@
     src: url('assets/fonts/Figtree-Regular.ttf');
   }
   
-  @font-face { 
-    font-family: 'Figtree-Bold';
-    src: url('assets/fonts/Figtree-Bold.ttf');
-  }
+@font-face { 
+  font-family: 'Figtree-Bold';
+  src: url('assets/fonts/Figtree-Bold.ttf');
+}
 
 .App {
     text-align: center;
@@ -14,5 +14,4 @@
     color: var(--secondary);
     font-size: 18px;
     max-height: 100vh;
-    font-family: ubuntu;
 }

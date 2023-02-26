@@ -3,7 +3,8 @@
   width: 150px;
   border-radius: 10px;
   border: none;
-  font-family:'Figtree-Regular'
+  font-family:'Figtree-Regular';
+  font-size: 16px;
 }
 
 .primary {
@@ -25,5 +26,24 @@
   &:focus { 
     background-color: var(--secondary-dark);
     cursor: pointer;
+  }
+}
+
+/*Destop view */
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  .primary,
+  .secondary {
+    padding: 20px;
+    width: 175px;
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .primary,
+  .secondary {
+    padding: 20px;
+    width: 190px;
+    font-size: 20px;
   }
 }
