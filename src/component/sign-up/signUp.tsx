@@ -33,23 +33,35 @@ const SignUp = () => {
               {strings.signUp.verifyPasswordLabel}
               <input type="text" name="verifyPassword" />
             </label> */}
-            <input type="text" name="firstName" placeholder="First Name" />
-            <input type="text" name="lastName" placeholder="Last Name" />
+            <input
+              type="text"
+              name="firstName"
+              placeholder={strings.signUp.firstNameLabel}
+            />
+            <input
+              type="text"
+              name="lastName"
+              placeholder={strings.signUp.lastNameLabel}
+            />
             <input
               type="text"
               name="emailAddress"
-              placeholder="Email Address"
+              placeholder={strings.signUp.emailLabel}
             />
-            <input type="text" name="password" placeholder="Password" />
+            <input
+              type="text"
+              name="password"
+              placeholder={strings.signUp.passwordLabel}
+            />
             <input
               type="text"
               name="verifyPassword"
-              placeholder="Confirm Password"
+              placeholder={strings.signUp.verifyPasswordLabel}
             />
           </form>
           <Button
-            className="signUpButton"
             buttonType="submit"
+            className="signUpButton"
             text={strings.signUp.buttonText}
           />
         </div>

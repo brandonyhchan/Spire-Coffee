@@ -10,8 +10,7 @@
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   padding-bottom: 20px;
-  width: 450px;
-  min-width: 300px;
+  width: 500px;
 }
 
 .loginForm {
@@ -29,4 +28,28 @@
   max-width: 300px;
   border-radius: 10px;
   border-style: solid;
+}
+
+/* Mobile view */
+@media only screen and (min-width: 320px) and (max-width: 425px) {
+  .login {
+    box-shadow: none;
+  }
+}
+
+/*Destop view */
+@media only screen and (min-width: 1024px) {
+  .login {
+    width: 600px;
+    height: 400px;
+  }
+
+  .loginForm {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 70px;
+    align-items: center;
+    padding-bottom: 45px;
+  }
 }

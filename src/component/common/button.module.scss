@@ -12,10 +12,17 @@
   &:hover,
   &:focus { 
     background-color: var(--primary-dark);
+    cursor: pointer;
   }
 }
 
 .secondary {
   background-color: var(--secondary);
   color: white;
+
+  &:hover,
+  &:focus { 
+    background-color: var(--secondary-dark);
+    cursor: pointer;
+  }
 }
