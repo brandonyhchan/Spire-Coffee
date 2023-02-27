@@ -1,6 +1,6 @@
 import { ApolloServer } from "apollo-server";
-import {signup, login} from "./resolvers/Query"
-import { context } from './context';
+import { context } from './context.js';
+import {signup, login } from "./resolvers/Query.js";
 
 const typeDefs: string = `
 type User {
@@ -13,6 +13,19 @@ type User {
 
 type Query {
   allUsers: [User!]!
+  signup(
+    email: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+    userName: String!
+  ): AuthPayload
+  login(userName: String!, password: String!): AuthPayload
+}
+
+type AuthPayload {
+  token: String
+  user: User
 }`
 
 const resolvers = {
@@ -22,9 +35,9 @@ const resolvers = {
   }
 };
 
-  const server = new ApolloServer({
-    typeDefs: typeDefs,
-    resolvers,
-    context,
-  });
-  server.listen({port: 4000 });
+const server = new ApolloServer({
+  typeDefs: typeDefs,
+  resolvers,
+  context,
+});
+server.listen({port: 4000 });

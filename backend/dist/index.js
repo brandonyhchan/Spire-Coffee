@@ -1,6 +1,6 @@
 import { ApolloServer } from "apollo-server";
-import { signup, login } from "./resolvers/Query";
-import { context } from './context';
+import { context } from './context.js';
+import { signup, login } from "./resolvers/Query.js";
 const typeDefs = `
 type User {
   id: ID!
@@ -12,6 +12,19 @@ type User {
 
 type Query {
   allUsers: [User!]!
+  signup(
+    email: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+    userName: String!
+  ): AuthPayload
+  login(userName: String!, password: String!): AuthPayload
+}
+
+type AuthPayload {
+  token: String
+  user: User
 }`;
 const resolvers = {
     Query: {

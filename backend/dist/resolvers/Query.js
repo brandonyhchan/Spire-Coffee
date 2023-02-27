@@ -1,11 +1,14 @@
 import * as bcrypt from 'bcryptjs';
 import * as jwt from 'jsonwebtoken';
-import { APP_SECRET } from '../utils';
+const APP_SECRET = "SpireCawfee";
 export async function signup(parent, args, context, info) {
     try {
         const password = await bcrypt.hash(args.password, 10);
+        console.log(password);
         const user = await context.prisma.user.create({ data: { ...args, password } });
+        console.log(user);
         const token = jwt.sign({ userId: user.id }, APP_SECRET);
+        console.log(token);
         return {
             token,
             user,
@@ -31,3 +34,4 @@ export async function login(parent, args, context, info) {
         user,
     };
 }
+;

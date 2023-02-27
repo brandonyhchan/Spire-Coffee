@@ -8,4 +8,17 @@ type User {
 
 type Query {
   allUsers: [User!]!
+  signup(
+    email: String!
+    password: String!
+    firstName: String!
+    lastName: String!
+    userName: String!
+  ): AuthPayload
+  login(userName: String!, password: String!): AuthPayload
+}
+
+type AuthPayload {
+  token: String
+  user: User
 }
