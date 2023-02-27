@@ -1,3 +1,6 @@
+*,
+*:focus{outline: none}
+
 .loginContainer {
   display: flex;
   justify-content: center;
@@ -22,14 +25,46 @@
   padding-bottom: 25px;
 }
 
-.loginForm > input {
+.formItem {
+  position: relative;
+}
+
+.formItem input {
+  width: 400px;
+  background: transparent;
+  border: solid 2px #ccc;
+  transition: all .3s ease;
   padding: 20px;
-  width: 100%;
-  max-width: 300px;
   border-radius: 10px;
-  border-style: solid;
   font-family: 'Figtree-Regular';
-  font-size: 16px;
+}
+
+.formItem input:focus {
+  border-color: var(--secondary);
+}
+
+.formItem label {
+  display: none;
+}
+
+// https://codepen.io/kod101/pen/gdjPaW
+.formItem input:focus + label,
+.formItem input:valid + label {
+  display: block;
+  position: absolute;
+  font-size: 14px;
+  top: -8px;
+  left: 10px;
+  font-family: 'Figtree-Regular';
+  background: #fff;
+}
+
+.formItem input:focus::placeholder {
+  color: transparent;
+}
+
+.formItem input:focus + label {
+  color: var(--secondary);
 }
 
 p {

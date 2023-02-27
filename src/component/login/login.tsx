@@ -16,26 +16,32 @@ const Login = () => {
       <div className={classNames(styles.loginContainer)}>
         <div className={classNames(styles.login)}>
           <form className={classNames(styles.loginForm)}>
-            <input
-              type="text"
-              name="username"
-              placeholder={strings.login.usernameLabel}
+            <div className={classNames(styles.formItem)}>
+              <input
+                type="text"
+                placeholder={strings.login.usernameLabel}
+                required
+              />
+              <label>{strings.login.usernameLabel}</label>
+            </div>
+            <div className={classNames(styles.formItem)}>
+              <input
+                type="text"
+                placeholder={strings.login.passwordLabel}
+                required
+              />
+              <label>{strings.login.passwordLabel}</label>
+            </div>
+            <Button
+              type="secondary"
+              className={styles.secondary}
+              text={strings.login.title}
             />
-            <input
-              type="text"
-              name="password"
-              placeholder={strings.login.passwordLabel}
-            />
+            <p>
+              {strings.login.text}
+              <Link to="/signUp">{strings.login.link}</Link>
+            </p>
           </form>
-          <Button
-            type="secondary"
-            className={styles.secondary}
-            text={strings.login.title}
-          />
-          <p>
-            {strings.login.text}
-            <Link to="/signUp">{strings.login.link}</Link>
-          </p>
         </div>
       </div>
     </React.Fragment>
