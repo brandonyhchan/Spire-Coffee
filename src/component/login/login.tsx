@@ -12,6 +12,7 @@ const Login = () => {
     <React.Fragment>
       <Helmet title={strings.login.helmet} />
       <h1>{strings.login.title}</h1>
+      <p>{strings.login.description}</p>
       <div className={classNames(styles.loginContainer)}>
         <div className={classNames(styles.login)}>
           <form className={classNames(styles.loginForm)}>

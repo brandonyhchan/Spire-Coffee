@@ -13,26 +13,11 @@ const SignUp = () => {
       <div className={classNames(styles.signUpContainer)}>
         <div className={classNames(styles.signUp)}>
           <form className={classNames(styles.signUpForm)}>
-            {/* <label>
-              {strings.signUp.firstNameLabel}
-              <input type="text" name="firstName" />
-            </label>
-            <label>
-              {strings.signUp.lastNameLabel}
-              <input type="text" name="lastName" />
-            </label>
-            <label>
-              {strings.signUp.emailLabel}
-              <input type="text" name="emailAddress" />
-            </label>
-            <label>
-              {strings.signUp.passwordLabel}
-              <input type="text" name="password" />
-            </label>
-            <label>
-              {strings.signUp.verifyPasswordLabel}
-              <input type="text" name="verifyPassword" />
-            </label> */}
+            <input
+              type="text"
+              name="username"
+              placeholder={strings.signUp.usernameLabel}
+            />
             <input
               type="text"
               name="firstName"

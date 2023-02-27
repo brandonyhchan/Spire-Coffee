@@ -32,6 +32,20 @@
   font-size: 16px;
 }
 
+p {
+  font-size: 16px;
+}
+
+p > a {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+a:focus,
+a:hover {
+  color: var(--primary);
+}
+
 /* Mobile view */
 @media only screen and (min-width: 320px) and (max-width: 425px) {
   .login {
@@ -53,6 +67,10 @@
     max-width: 450px;
     font-size: 18px;
   }
+
+  p {
+    font-size: 18px;
+  }
 }
 
 @media only screen and (min-width: 1440px) {
@@ -66,6 +84,10 @@
     padding: 30px;
     width: 100%;
     max-width: 450px;
+    font-size: 20px;
+  }
+
+  p {
     font-size: 20px;
   }
 }
