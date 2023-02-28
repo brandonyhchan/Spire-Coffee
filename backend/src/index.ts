@@ -1,36 +1,7 @@
 import { ApolloServer } from "apollo-server";
 import { context } from './context.js';
-import {signup, login } from "./resolvers/Query.js";
-import fs from "fs";
-
-
-// Brandon loves git and typescript
-const typeDefs = fs.readFileSync("./schema.graphql", "utf8");
-// const typeDefs: string = `
-// type User {
-//   id: ID!
-//   firstName: String!
-//   lastName: String!
-//   userName: String!
-//   password: String!
-// }
-
-// type Query {
-//   allUsers: [User!]!
-//   signup(
-//     email: String!
-//     password: String!
-//     firstName: String!
-//     lastName: String!
-//     userName: String!
-//   ): AuthPayload
-//   login(userName: String!, password: String!): AuthPayload
-// }
-
-// type AuthPayload {
-//   token: String
-//   user: User
-// }`
+import { signup, login } from "./resolvers/Query.js";
+import { loadFile } from 'graphql-import-files';
 
 const resolvers = {
   Query: {
@@ -40,7 +11,7 @@ const resolvers = {
 };
 
 const server = new ApolloServer({
-  typeDefs: typeDefs,
+  typeDefs: loadFile('./src/schemas/schema.graphql'),
   resolvers,
   context,
 });

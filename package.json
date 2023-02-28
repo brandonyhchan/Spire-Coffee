@@ -14,6 +14,7 @@
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "graphql": "^16.6.0",
+    "graphql-import-files": "^1.2.19",
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -33,7 +34,6 @@
     "eject": "react-scripts eject",
     "installspirecoffee": "concurrently \"npm install\" \"cd backend && npm install\"",
     "startspirecoffee": "concurrently \"npm run start\" \"cd backend && npm run compile && node ./dist/index.js\""
-
   },
   "eslintConfig": {
     "extends": [

@@ -1,10 +1,5 @@
-type User {
-  id: ID!
-  firstName: String!
-  lastName: String!
-  userName: String!
-  password: String!
-}
+#import './AuthPayload/authpayload.graphql'
+#import './User/user.graphql'
 
 type Query {
   allUsers: [User!]!
@@ -16,9 +11,4 @@ type Query {
     userName: String!
   ): AuthPayload
   login(userName: String!, password: String!): AuthPayload
-}
-
-type AuthPayload {
-  token: String
-  user: User
 }

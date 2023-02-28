@@ -1,8 +1,7 @@
 import { ApolloServer } from "apollo-server";
 import { context } from './context.js';
 import { signup, login } from "./resolvers/Query.js";
-import fs from "fs";
-const typeDefs = fs.readFileSync("./schema.graphql", "utf8");
+import { loadFile } from 'graphql-import-files';
 // const typeDefs: string = `
 // type User {
 //   id: ID!
@@ -33,7 +32,7 @@ const resolvers = {
     }
 };
 const server = new ApolloServer({
-    typeDefs: typeDefs,
+    typeDefs: loadFile('./src/schemas/schema.graphql'),
     resolvers,
     context,
 });
