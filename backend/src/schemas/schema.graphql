@@ -4,11 +4,11 @@
 type Query {
   allUsers: [User!]!
   signup(
+    userName: String!
     email: String!
-    password: String!
     firstName: String!
     lastName: String!
-    userName: String!
+    password: String!
   ): AuthPayload
   login(userName: String!, password: String!): AuthPayload
 }
