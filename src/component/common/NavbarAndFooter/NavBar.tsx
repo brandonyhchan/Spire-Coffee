@@ -1,13 +1,13 @@
-import React, { MouseEventHandler } from "react";
 import classNames from "classnames";
-import "./NavBar.scss";
+import "../../../global.scss";
+import styles from "./NavBar.module.scss";
 
 type NavBarPropsType = {
   className?: string;
 };
 
 const navbar = ({ className }: NavBarPropsType) => (
-  <div className="navbar">NavBar</div>
+  <div className={classNames(styles.navbar)}>NavBar</div>
 );
 
 export default navbar;
