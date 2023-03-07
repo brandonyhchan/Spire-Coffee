@@ -27,6 +27,14 @@
 
 .formItem {
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.formItem span {
+  margin-left: 5px;
+  padding-top: 5px;
 }
 
 .formItem input {
