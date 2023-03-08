@@ -1,3 +1,6 @@
+*,
+*:focus{outline: none}
+
 .signUpContainer {
   display: flex;
   justify-content: center;
@@ -21,6 +24,7 @@
   gap: 15px;
   padding: 50px;
   align-items: center;
+  padding-bottom: 25px;
 }
 
 .signUpForm > input {
@@ -30,4 +34,114 @@
   border-radius: 10px;
   border-style: solid;
   font-family: 'Figtree-Regular';
+}
+
+.formItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.formItem span {
+  margin-left: 5px;
+  padding-top: 5px;
+}
+
+.formItem input {
+  width: 400px;
+  background: transparent;
+  border: solid 2px #ccc;
+  transition: all .3s ease;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: 'Figtree-Regular';
+}
+
+.formItem input:focus {
+  border-color: var(--secondary);
+}
+
+.formItem label {
+  display: none;
+}
+
+// https://codepen.io/kod101/pen/gdjPaW
+.formItem input:focus + label,
+.formItem input:valid + label {
+  display: block;
+  position: absolute;
+  font-size: 14px;
+  top: -8px;
+  left: 10px;
+  font-family: 'Figtree-Regular';
+  background: #fff;
+}
+
+.formItem input:focus::placeholder {
+  color: transparent;
+}
+
+.formItem input:focus + label {
+  color: var(--secondary);
+}
+
+p {
+  font-size: 16px;
+}
+
+p > a {
+  text-decoration: none;
+  color: var(--secondary);
+}
+
+a:focus,
+a:hover {
+  color: var(--primary);
+}
+
+/* Mobile view */
+@media only screen and (min-width: 320px) and (max-width: 770px) {
+  .signUp {
+    box-shadow: none;
+  }
+}
+
+/*Destop view */
+@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+  .signUp {
+    width: 650px;
+    height: 600px;
+    padding: 30px 20px 45px 20px;
+  }
+
+  .signUpForm > input {
+    padding: 25px;
+    width: 100%;
+    max-width: 450px;
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 1440px) {
+  .signUp {
+    width: 650px;
+    height: 585px;
+    padding: 30px 20px 65px 20px;
+  }
+
+  .signUpForm > input {
+    padding: 30px;
+    width: 100%;
+    max-width: 450px;
+    font-size: 20px;
+  }
+
+  p {
+    font-size: 20px;
+  }
 }
