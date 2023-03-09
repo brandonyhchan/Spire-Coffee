@@ -1,11 +1,15 @@
 *,
 *:focus{outline: none}
 
+.heading {
+  color: var(--primary);
+}
+
 .signUpContainer {
+  padding-top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: 5rem;
 }
 
 .signUp {
@@ -21,9 +25,9 @@
 .signUpForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 15px;
   padding: 50px;
-  align-items: center;
   padding-bottom: 25px;
 }
 
@@ -49,7 +53,6 @@
 }
 
 .formItem input {
-  width: 400px;
   background: transparent;
   border: solid 2px #ccc;
   transition: all .3s ease;
@@ -59,11 +62,17 @@
 }
 
 .formItem input:focus {
-  border-color: var(--secondary);
+  border-color: var(--primary);
 }
 
 .formItem label {
   display: none;
+}
+
+.formItem span {
+  color: var(--primary);
+  font-family: 'Figtree-Regular';
+  font-size: 16px;
 }
 
 // https://codepen.io/kod101/pen/gdjPaW
@@ -83,65 +92,51 @@
 }
 
 .formItem input:focus + label {
-  color: var(--secondary);
-}
-
-p {
-  font-size: 16px;
-}
-
-p > a {
-  text-decoration: none;
-  color: var(--secondary);
-}
-
-a:focus,
-a:hover {
   color: var(--primary);
 }
 
 /* Mobile view */
-@media only screen and (min-width: 320px) and (max-width: 770px) {
+@media only screen and (min-width: 320px) and (max-width: 425px) {
   .signUp {
     box-shadow: none;
   }
+
+  .formItem input {
+    width: 245px;
+  }
 }
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+  .signUp {
+    box-shadow: none;
+  }
+
+  .formItem input {
+    width: 400px;
+  }
+}
+
+
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .signUp {
+    padding: 20px;
+  }
+
+  .formItem input {
+    width: 400px;
+  }
+}
+
 
 /*Destop view */
-@media only screen and (min-width: 1024px) and (max-width: 1439px) {
+@media only screen and (min-width: 1024px) {
   .signUp {
-    width: 650px;
-    height: 600px;
-    padding: 30px 20px 45px 20px;
+    padding: 20px;
+    width: 750px;
+    padding-bottom: 45px;
   }
 
-  .signUpForm > input {
-    padding: 25px;
-    width: 100%;
-    max-width: 450px;
-    font-size: 18px;
-  }
-
-  p {
-    font-size: 18px;
-  }
-}
-
-@media only screen and (min-width: 1440px) {
-  .signUp {
-    width: 650px;
-    height: 585px;
-    padding: 30px 20px 65px 20px;
-  }
-
-  .signUpForm > input {
-    padding: 30px;
-    width: 100%;
-    max-width: 450px;
-    font-size: 20px;
-  }
-
-  p {
-    font-size: 20px;
+  .formItem input {
+    width: 500px;
   }
 }

@@ -29,7 +29,7 @@ const SignUp = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
-      <h1>{strings.signUp.title}</h1>
+      <h1 className={classNames(styles.heading)}>{strings.signUp.title}</h1>
       <div className={classNames(styles.signUpContainer)}>
         <div className={classNames(styles.signUp)}>
           <form 
@@ -45,7 +45,7 @@ const SignUp = () => {
                 {...register("username", { required: true })}
               />
               <label>{strings.signUp.usernameLabel}</label>
-              {errors.username && <span>Username is required.</span>}
+              {errors.username && <span className={classNames(styles.expanded)}>Username is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -65,7 +65,7 @@ const SignUp = () => {
                 {...register("lastName", { required: true })}
               />
               <label>{strings.signUp.lastNameLabel}</label>
-              {errors.lastName && <span>Last name is required.</span>}
+              {errors.lastName && <span >Last name is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
