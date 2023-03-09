@@ -43,7 +43,7 @@ const SignUp = () => {
   const [signUp] = useLazyQuery(signUpMutation, {
     onError: (error) => {
       setSignUpError(true);
-      console.log("Error in signup"); //change this to require config/strings.ts later
+      console.log("Error in signup"); // change this to require config/strings.ts later
     },
     onCompleted: (data) => {
       localStorage.setItem("authToken", data.signup.token);
@@ -72,7 +72,7 @@ const SignUp = () => {
         <div className={classNames(styles.signUp)}>
           <form
             className={classNames(styles.signUpForm)}
-            onSubmit={handleSubmit(onSubmit)}
+            onFocus={handleSubmit(onSubmit)}
             noValidate
           >
             <div className={classNames(styles.formItem)}>
@@ -86,7 +86,11 @@ const SignUp = () => {
                 }}
               />
               <label>{strings.signUp.usernameLabel}</label>
-              {errors.username && <span className={classNames(styles.expanded)}>Username is required.</span>}
+              {errors.username && (
+                <span className={classNames(styles.expanded)}>
+                  Username is required.
+                </span>
+              )}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -112,7 +116,7 @@ const SignUp = () => {
                 }}
               />
               <label>{strings.signUp.lastNameLabel}</label>
-              {errors.lastName && <span >Last name is required.</span>}
+              {errors.lastName && <span>Last name is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
