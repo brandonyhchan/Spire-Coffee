@@ -23,6 +23,6 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "linebreak-style": "unix"
+        "linebreak-style": 1
     }
 }

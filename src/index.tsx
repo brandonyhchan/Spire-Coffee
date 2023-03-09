@@ -12,16 +12,16 @@ import {
   ApolloProvider,
   createHttpLink,
 } from "@apollo/client";
-import { setContext } from '@apollo/client/link/context';
+import { setContext } from "@apollo/client/link/context";
 
-const authLink = setContext((_,{ headers }) => {
+const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem("authToken");
   return {
     headers: {
       ...headers,
       authorization: token ? `Bearer ${token}` : "",
-    }
-  }
+    },
+  };
 });
 
 const client = new ApolloClient({
@@ -41,13 +41,15 @@ const root = createRoot(container);
 
 const render = (Component: FunctionComponent) => {
   root.render(
-    <React.StrictMode>
-      <HelmetProvider>
-        <Router>
-          <Component />
-        </Router>
-      </HelmetProvider>
-    </React.StrictMode>
+    <ApolloProvider client={client}>
+      <React.StrictMode>
+        <HelmetProvider>
+          <Router>
+            <Component />
+          </Router>
+        </HelmetProvider>
+      </React.StrictMode>
+    </ApolloProvider>
   );
 };
 
