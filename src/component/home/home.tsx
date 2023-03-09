@@ -1,7 +1,7 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
 import NavBar from "../common/NavbarAndFooter/NavBar";
-import Footer from "../common/NavbarAndFooter/Footer";
+import WebFooter from "../common/NavbarAndFooter/WebFooter";
+import MobileFooter from "../common/NavbarAndFooter/MobileFooter";
 import { Helmet } from "react-helmet";
 
 const Home = () => {
@@ -12,7 +12,8 @@ const Home = () => {
       <div style={{ height: "1000px" }}>
         <p>Welcome User</p>
       </div>
-      <Footer></Footer>
+      <WebFooter></WebFooter>
+      <MobileFooter></MobileFooter>
     </div>
   );
 };
