@@ -14,14 +14,15 @@
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   padding-bottom: 20px;
   width: 500px;
+  min-width: 300px;
 }
 
 .loginForm {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 15px;
   padding: 50px;
-  align-items: center;
   padding-bottom: 25px;
 }
 
@@ -54,6 +55,13 @@
 .formItem label {
   display: none;
 }
+
+.formItem span {
+  color: var(--primary);
+  font-family: 'Figtree-Regular';
+  font-size: 16px;
+}
+
 
 // https://codepen.io/kod101/pen/gdjPaW
 .formItem input:focus + label,
@@ -94,22 +102,31 @@ a:hover {
   .login {
     box-shadow: none;
   }
+
+  .formItem input {
+    width: 245px;
+  }
+}
+
+@media only screen and (min-width: 426px) and (max-width: 768px) {
+  .login {
+    box-shadow: none;
+  }
+ 
+  .formItem input {
+    display: flex;
+    width: 400px;
+  }
 }
 
 /*Destop view */
 @media only screen and (min-width: 1024px) and (max-width: 1439px) {
-  .login {
-    width: 650px;
-    height: 350px;
-    padding: 30px 20px 45px 20px;
-  }
-
-  .loginForm > input {
-    padding: 25px;
-    width: 100%;
-    max-width: 450px;
-    font-size: 18px;
-  }
+  // .loginForm > input {
+  //   padding: 25px;
+  //   width: 100%;
+  //   max-width: 450px;
+  //   font-size: 18px;
+  // }
 
   p {
     font-size: 18px;
@@ -117,18 +134,18 @@ a:hover {
 }
 
 @media only screen and (min-width: 1440px) {
-  .login {
-    width: 650px;
-    height: 350px;
-    padding: 30px 20px 65px 20px;
-  }
+  // .login {
+  //   width: 650px;
+  //   height: 350px;
+  //   padding: 30px 20px 65px 20px;
+  // }
 
-  .loginForm > input {
-    padding: 30px;
-    width: 100%;
-    max-width: 450px;
-    font-size: 20px;
-  }
+  // .loginForm > input {
+  //   padding: 30px;
+  //   width: 100%;
+  //   max-width: 450px;
+  //   font-size: 20px;
+  // }
 
   p {
     font-size: 20px;
