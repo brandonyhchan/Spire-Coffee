@@ -117,16 +117,34 @@ a:hover {
     display: flex;
     width: 400px;
   }
+
+  p {
+    font-size: 18px;
+  }
+}
+
+@media only screen and (min-width: 769px) and (max-width: 1023px) {
+  .login {
+    width: 520px;
+    padding: 25px;
+  }
+ 
+  .formItem input {
+    display: flex;
+    width: 350px;
+  }
+
+  p {
+    font-size: 18px;
+  }
 }
 
 /*Destop view */
 @media only screen and (min-width: 1024px) and (max-width: 1439px) {
-  // .loginForm > input {
-  //   padding: 25px;
-  //   width: 100%;
-  //   max-width: 450px;
-  //   font-size: 18px;
-  // }
+  .login {
+    padding: 40px;
+    width: 550px;
+  }
 
   p {
     font-size: 18px;
@@ -134,18 +152,10 @@ a:hover {
 }
 
 @media only screen and (min-width: 1440px) {
-  // .login {
-  //   width: 650px;
-  //   height: 350px;
-  //   padding: 30px 20px 65px 20px;
-  // }
-
-  // .loginForm > input {
-  //   padding: 30px;
-  //   width: 100%;
-  //   max-width: 450px;
-  //   font-size: 20px;
-  // }
+  .login {
+    padding: 40px;
+    width: 550px;
+  }
 
   p {
     font-size: 20px;
