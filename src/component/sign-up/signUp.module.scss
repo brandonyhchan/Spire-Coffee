@@ -6,10 +6,10 @@
 }
 
 .signUpContainer {
-  padding-top: 5rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: 5rem;
 }
 
 .signUp {
@@ -31,15 +31,6 @@
   padding-bottom: 25px;
 }
 
-.signUpForm > input {
-  padding: 20px;
-  width: 100%;
-  max-width: 450px;
-  border-radius: 10px;
-  border-style: solid;
-  font-family: 'Figtree-Regular';
-}
-
 .formItem {
   position: relative;
   display: flex;
@@ -53,6 +44,7 @@
 }
 
 .formItem input {
+  width: 400px;
   background: transparent;
   border: solid 2px #ccc;
   transition: all .3s ease;
