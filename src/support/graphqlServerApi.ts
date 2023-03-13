@@ -1,14 +1,14 @@
 import { gql } from "@apollo/client";
 
 export const signUpMutation = gql`
-  query signup(
+  query signUp(
     $userName: String!
     $email: String!
     $firstName: String!
     $lastName: String!
     $password: String!
   ) {
-    signup(
+    signUp(
       userName: $userName
       email: $email
       firstName: $firstName
