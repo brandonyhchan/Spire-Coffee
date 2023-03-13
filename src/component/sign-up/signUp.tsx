@@ -43,10 +43,12 @@ const SignUp = () => {
   const [signUp] = useLazyQuery(signUpMutation, {
     onError: (error) => {
       setSignUpError(true);
+      alert(error);
       console.log("Error in signup"); // change this to require config/strings.ts later
     },
     onCompleted: (data) => {
       localStorage.setItem("authToken", data.signup.token);
+      alert("Successfully signed up");
       // navigate("/") navigate to another page here
     },
   });

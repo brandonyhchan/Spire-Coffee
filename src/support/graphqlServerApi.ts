@@ -23,3 +23,15 @@ export const signUpMutation = gql`
     }
   }
 `;
+
+export const loginQuery = gql`
+  query login($userName: String!, $password: String!) {
+    login(userName: $userName, password: $password) {
+      token
+      user {
+        id
+        userName
+      }
+    }
+  }
+`;

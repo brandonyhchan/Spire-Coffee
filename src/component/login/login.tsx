@@ -1,4 +1,4 @@
-import React /* MouseEventHandler */ from "react";
+import React, { useState } from "react";
 import { Link /* useNavigate */ } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
@@ -7,6 +7,9 @@ import strings from "../../config/strings";
 import classNames from "classnames";
 import styles from "./login.module.scss";
 import "../../global.scss";
+import { loginQuery } from "../../support/graphqlServerApi";
+import { useLazyQuery } from "@apollo/client";
+import { useNavigate } from "react-router-dom";
 
 type FormData = {
   username: string;
@@ -21,6 +24,33 @@ const Login = () => {
   } = useForm<FormData>();
   const onSubmit = (data: FormData) => {
     console.log(data);
+  };
+
+  const navigate = useNavigate();
+
+  const [loginError, setLoginError] = useState(false);
+
+  const [userName, setUserName] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [login] = useLazyQuery(loginQuery, {
+    onError: (error) => {
+      setLoginError(true), alert(error), console.log("Error in login");
+    },
+    onCompleted: (data) => {
+      localStorage.setItem("authToken", data.login.token);
+      navigate("/home");
+    },
+  });
+
+  const handleLogin = (event: React.MouseEvent<Element, MouseEvent>) => {
+    event.preventDefault();
+    login({
+      variables: {
+        userName: userName,
+        password: password,
+      },
+    });
   };
 
   return (
@@ -41,16 +71,18 @@ const Login = () => {
                 placeholder={strings.login.usernameLabel}
                 required
                 {...register("username", { required: true })}
+                onChange={(e) => setUserName(e.currentTarget.value)}
               />
               <label>{strings.login.usernameLabel}</label>
               {errors.username && <span>Username is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
-                type="text"
+                type="password"
                 placeholder={strings.login.passwordLabel}
                 required
                 {...register("password", { required: true })}
+                onChange={(e) => setPassword(e.currentTarget.value)}
               />
               <label>{strings.login.passwordLabel}</label>
               {errors.password && <span>Password is required.</span>}
@@ -60,6 +92,7 @@ const Login = () => {
               buttonType="submit"
               className={styles.secondary}
               text={strings.login.title}
+              onClick={handleLogin}
             />
             <p>
               {strings.login.text}

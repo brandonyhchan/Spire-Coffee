@@ -1,7 +1,7 @@
-import * as bcrypt from "bcrypt";
-import * as jwt from "jsonwebtoken";
+const bcrypt = require("bcryptjs");
+const jwt = require("jsonwebtoken");
 const APP_SECRET = "SpireCawfee";
-export async function signup(parent, args, context, info) {
+export async function signUp(parent, args, context, info) {
     try {
         const password = await bcrypt.hash(args.password, 10);
         const user = await context.prisma.user.create({
@@ -19,7 +19,7 @@ export async function signup(parent, args, context, info) {
 }
 export async function login(parent, args, context, info) {
     const user = await context.prisma.user.findUnique({
-        where: { username: args.username },
+        where: { userName: args.userName },
     });
     if (!user) {
         throw new Error("No such user found");
