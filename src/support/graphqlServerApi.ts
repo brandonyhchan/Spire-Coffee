@@ -18,7 +18,7 @@ export const signUpMutation = gql`
       token
       user {
         id
-        username
+        userName
       }
     }
   }

@@ -33,7 +33,7 @@ const SignUp = () => {
 
   const [signUpError, setSignUpError] = useState(false);
 
-  const [username, setUsername] = useState("");
+  const [userName, setUserName] = useState("");
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
@@ -55,7 +55,7 @@ const SignUp = () => {
     event.preventDefault();
     signUp({
       variables: {
-        username: username,
+        userName: userName,
         firstName: firstName,
         lastName: lastName,
         email: email,
@@ -82,7 +82,7 @@ const SignUp = () => {
                 required
                 {...register("username", { required: true })}
                 onChange={(e) => {
-                  setUsername(e.currentTarget.value);
+                  setUserName(e.currentTarget.value);
                 }}
               />
               <label>{strings.signUp.usernameLabel}</label>
