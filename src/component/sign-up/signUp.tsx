@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useForm } from "react-hook-form";
 import Button from "../common/Button";
 import strings from "../../config/strings";
 import classNames from "classnames";
@@ -9,36 +8,34 @@ import { useLazyQuery } from "@apollo/client";
 import { signUpMutation } from "../../support/graphqlServerApi";
 import { useNavigate } from "react-router-dom";
 
-type SignUpFormData = {
-  username: string;
-  firstName: string;
-  lastName: string;
-  emailAddress: string;
-  password: string;
-  verifyPassword: string;
-};
-
 const SignUp = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<SignUpFormData>();
-
-  const onSubmit = (data: SignUpFormData) => {
-    console.log(data);
-  };
-
   const navigate = useNavigate();
 
   const [signUpError, setSignUpError] = useState(false);
 
-  const [userName, setUserName] = useState("");
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [confPassword, setConfPassword] = useState(""); // this will be used to check if the password is the same in the
+  const [passwordMatch, setPasswordMatch] = useState(false);
+
+  const [isValidUserName, setIsValidUserName] = useState(false);
+  const [isValidFirstName, setIsValidFirstName] = useState(false);
+  const [isValidLastName, setIsValidLastName] = useState(false);
+  const [isValidEmail, setIsValidEmail] = useState(false);
+  const [isValidPassword, setIsValidPassword] = useState(false);
+
+  const [userInfo, setUserInfo] = useState({
+    userName: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confPassword: "",
+  });
+
+  // const [userName, setUserName] = useState("");
+  // const [firstName, setFirstName] = useState("");
+  // const [lastName, setLastName] = useState("");
+  // const [email, setEmail] = useState("");
+  // const [password, setPassword] = useState("");
+  // const [confPassword, setConfPassword] = useState(""); // this will be used to check if the password is the same in the
 
   const [signUp] = useLazyQuery(signUpMutation, {
     onError: (error) => {
@@ -53,18 +50,41 @@ const SignUp = () => {
     },
   });
 
-  const handleSignup = (event: React.MouseEvent<Element, MouseEvent>) => {
-    event.preventDefault();
-    signUp({
-      variables: {
-        userName: userName,
-        firstName: firstName,
-        lastName: lastName,
-        email: email,
-        password: password,
-      },
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const name = event.target.name;
+    const value = event.currentTarget.value;
+    setUserInfo({
+      ...userInfo,
+      [name]: value,
     });
   };
+
+  const handleSignup = (event: React.MouseEvent<Element, MouseEvent>) => {
+    event.preventDefault();
+    if (passwordMatch) {
+      signUp({
+        variables: {
+          userName: userInfo.userName,
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email,
+          password: userInfo.password,
+        },
+      });
+      console.log("User information submitted.");
+    }
+  };
+
+  React.useEffect(() => {
+    setIsValidUserName(!!userInfo.userName && userInfo.userName !== "");
+    setIsValidFirstName(!!userInfo.firstName && userInfo.firstName !== "");
+    setIsValidLastName(!!userInfo.lastName && userInfo.lastName !== "");
+    setIsValidEmail(!!userInfo.email && userInfo.email !== "");
+    setIsValidPassword(!!userInfo.password && userInfo.password !== "");
+    setPasswordMatch(
+      !!userInfo.password && userInfo.password === userInfo.confPassword
+    );
+  }, [userInfo]);
 
   return (
     <React.Fragment>
@@ -72,94 +92,91 @@ const SignUp = () => {
       <h1 className={classNames(styles.heading)}>{strings.signUp.title}</h1>
       <div className={classNames(styles.signUpContainer)}>
         <div className={classNames(styles.signUp)}>
-          <form
-            className={classNames(styles.signUpForm)}
-            onFocus={handleSubmit(onSubmit)}
-            noValidate
-          >
+          <form className={classNames(styles.signUpForm)} noValidate>
             <div className={classNames(styles.formItem)}>
               <input
                 type="text"
+                name="userName"
+                value={userInfo.userName}
                 placeholder={strings.signUp.usernameLabel}
                 required
-                {...register("username", { required: true })}
-                onChange={(e) => {
-                  setUserName(e.currentTarget.value);
-                }}
+                // onChange={(e) => {
+                //   setUserName(e.currentTarget.value);
+                // }}
+                onChange={handleChange}
               />
               <label>{strings.signUp.usernameLabel}</label>
-              {errors.username && (
-                <span className={classNames(styles.expanded)}>
-                  Username is required.
-                </span>
-              )}
+              {isValidUserName ? null : <span>Username is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
                 type="text"
                 placeholder={strings.signUp.firstNameLabel}
+                name="firstName"
                 required
-                {...register("firstName", { required: true })}
-                onChange={(e) => {
-                  setFirstName(e.currentTarget.value);
-                }}
+                // onChange={(e) => {
+                //   setFirstName(e.currentTarget.value);
+                // }}
+                onChange={handleChange}
               />
               <label>{strings.signUp.firstNameLabel}</label>
-              {errors.firstName && <span>First name is required.</span>}
+              {isValidFirstName ? null : <span>First name is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
                 type="text"
                 placeholder={strings.signUp.lastNameLabel}
+                name="lastName"
                 required
-                {...register("lastName", { required: true })}
-                onChange={(e) => {
-                  setLastName(e.currentTarget.value);
-                }}
+                // onChange={(e) => {
+                //   setLastName(e.currentTarget.value);
+                // }}
+                onChange={handleChange}
               />
               <label>{strings.signUp.lastNameLabel}</label>
-              {errors.lastName && <span>Last name is required.</span>}
+              {isValidLastName ? null : <span>Last name is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
                 type="text"
                 placeholder={strings.signUp.emailLabel}
+                name="email"
                 required
-                {...register("emailAddress", { required: true })}
-                onChange={(e) => {
-                  setEmail(e.currentTarget.value);
-                }}
+                // onChange={(e) => {
+                //   setEmail(e.currentTarget.value);
+                // }}
+                onChange={handleChange}
               />
               <label>{strings.signUp.emailLabel}</label>
-              {errors.emailAddress && <span>Email address is required.</span>}
+              {isValidEmail ? null : <span>Email address is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
                 type="password"
                 placeholder={strings.signUp.passwordLabel}
+                name="password"
                 required
-                {...register("password", { required: true })}
-                onChange={(e) => {
-                  setPassword(e.currentTarget.value);
-                }}
+                // onChange={(e) => {
+                //   setPassword(e.currentTarget.value);
+                // }}
+                onChange={handleChange}
               />
               <label>{strings.signUp.passwordLabel}</label>
-              {errors.password && <span>Password is required.</span>}
+              {isValidPassword ? null : <span>Password is required.</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
                 type="password"
                 placeholder={strings.signUp.verifyPasswordLabel}
                 required
-                {...register("verifyPassword", { required: true })}
-                onChange={(e) => {
-                  setConfPassword(e.currentTarget.value);
-                }}
+                name="confPassword"
+                // onChange={(e) => {
+                //   setConfPassword(e.currentTarget.value);
+                // }}
+                onChange={handleChange}
               />
               <label>{strings.signUp.verifyPasswordLabel}</label>
-              {errors.verifyPassword && (
-                <span>Please re-enter your password.</span>
-              )}
+              {passwordMatch ? null : <span>Passwords do not match.</span>}
             </div>
             <Button
               buttonType="submit"
