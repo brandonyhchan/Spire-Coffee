@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { signUpMutation } from "../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import { validPassword } from "./regexValidator";
 import Button from "../common/Button";
 import classNames from "classnames";
 import strings from "../../config/strings";
@@ -11,7 +12,11 @@ import styles from "./signUp.module.scss";
 const SignUp = () => {
   const navigate = useNavigate();
 
+  const [usernameIsValid, setUsernameIsValid] = useState(false);
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(false);
+  const [passwordRegex, setPasswordRegex] = useState(false);
+  const [validUserInfo, setValidUserInfo] = useState(false);
   const [signUpError, setSignUpError] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
@@ -57,7 +62,7 @@ const SignUp = () => {
 
   const handleSignup = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    if (passwordMatch) {
+    if (validUserInfo) {
       signUp({
         variables: {
           userName: userInfo.username,
@@ -117,7 +122,13 @@ const SignUp = () => {
     setPasswordMatch(
       !!userInfo.password && userInfo.password !== userInfo.confPassword
     );
-  }, [userInfo.password, userInfo.confPassword]);
+    setUsernameIsValid(!!userInfo.username && userInfo.username.length < 5);
+    setPasswordIsValid(!!userInfo.password && userInfo.password.length < 8);
+    setPasswordRegex(
+      !!userInfo.password && !validPassword.test(userInfo.password)
+    );
+    setValidUserInfo(!!userInfo.username && !!userInfo.password && !!userInfo.confPassword);
+  }, [userInfo]);
 
   return (
     <React.Fragment>
@@ -138,6 +149,9 @@ const SignUp = () => {
               />
               <label>{strings.signUp.usernameLabel}</label>
               {errorMessage.username && <span>{errorMessage.username}</span>}
+              {usernameIsValid && (
+                <span>Username must be at least 5 characters in length.</span>
+              )}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -186,6 +200,14 @@ const SignUp = () => {
               />
               <label>{strings.signUp.passwordLabel}</label>
               {errorMessage.password && <span>{errorMessage.password}</span>}
+              {passwordIsValid && (
+                <span>Password must be at least 8 characters in length.</span>
+              )}
+              {passwordRegex && ( // add requirments
+                <span>
+                  Password requires stuff.
+                </span>
+              )}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
