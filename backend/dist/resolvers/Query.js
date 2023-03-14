@@ -1,5 +1,6 @@
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
+import * as bcrypt from "bcrypt";
+import * as jwt from "jsonwebtoken";
+// I think there is still some issue here with compiling into js, need to look into that
 const APP_SECRET = "SpireCawfee";
 export async function signUp(parent, args, context, info) {
     try {

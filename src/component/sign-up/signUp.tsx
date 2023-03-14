@@ -1,28 +1,30 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import Button from "../common/Button";
-import strings from "../../config/strings";
-import classNames from "classnames";
-import styles from "./signUp.module.scss";
-import { useLazyQuery } from "@apollo/client";
 import { signUpMutation } from "../../support/graphqlServerApi";
+import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+import Button from "../common/Button";
+import classNames from "classnames";
+import strings from "../../config/strings";
+import styles from "./signUp.module.scss";
 
 const SignUp = () => {
   const navigate = useNavigate();
 
+  const [passwordMatch, setPasswordMatch] = useState(false);
   const [signUpError, setSignUpError] = useState(false);
 
-  const [passwordMatch, setPasswordMatch] = useState(false);
-
-  const [isValidUserName, setIsValidUserName] = useState(false);
-  const [isValidFirstName, setIsValidFirstName] = useState(false);
-  const [isValidLastName, setIsValidLastName] = useState(false);
-  const [isValidEmail, setIsValidEmail] = useState(false);
-  const [isValidPassword, setIsValidPassword] = useState(false);
-
   const [userInfo, setUserInfo] = useState({
-    userName: "",
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confPassword: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState({
+    username: "",
     firstName: "",
     lastName: "",
     email: "",
@@ -50,6 +52,7 @@ const SignUp = () => {
       ...userInfo,
       [name]: value,
     });
+    validateUserInfo(event);
   };
 
   const handleSignup = (event: React.MouseEvent<Element, MouseEvent>) => {
@@ -57,7 +60,7 @@ const SignUp = () => {
     if (passwordMatch) {
       signUp({
         variables: {
-          userName: userInfo.userName,
+          userName: userInfo.username,
           firstName: userInfo.firstName,
           lastName: userInfo.lastName,
           email: userInfo.email,
@@ -68,16 +71,53 @@ const SignUp = () => {
     }
   };
 
+  const validateUserInfo = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setErrorMessage((userInfo) => {
+      const stateObj = { ...userInfo, [name]: "" };
+      switch (name) {
+        case "username":
+          if (!value) {
+            stateObj[name] = "Username is required.";
+          }
+          break;
+        case "firstName":
+          if (!value) {
+            stateObj[name] = "First name is required.";
+          }
+          break;
+        case "lastName":
+          if (!value) {
+            stateObj[name] = "Last name is required.";
+          }
+          break;
+        case "email":
+          if (!value) {
+            stateObj[name] = "Email address is required.";
+          }
+          break;
+        case "password":
+          if (!value) {
+            stateObj[name] = "Password is required.";
+          }
+          break;
+        case "confPassword":
+          if (!value) {
+            stateObj[name] = "Please re-enter your password.";
+          }
+          break;
+        default:
+          break;
+      }
+      return stateObj;
+    });
+  };
+
   React.useEffect(() => {
-    setIsValidUserName(!!userInfo.userName && userInfo.userName !== "");
-    setIsValidFirstName(!!userInfo.firstName && userInfo.firstName !== "");
-    setIsValidLastName(!!userInfo.lastName && userInfo.lastName !== "");
-    setIsValidEmail(!!userInfo.email && userInfo.email !== "");
-    setIsValidPassword(!!userInfo.password && userInfo.password !== "");
     setPasswordMatch(
-      !!userInfo.password && userInfo.password === userInfo.confPassword
+      !!userInfo.password && userInfo.password !== userInfo.confPassword
     );
-  }, [userInfo]);
+  }, [userInfo.password, userInfo.confPassword]);
 
   return (
     <React.Fragment>
@@ -89,14 +129,15 @@ const SignUp = () => {
             <div className={classNames(styles.formItem)}>
               <input
                 type="text"
-                name="userName"
-                value={userInfo.userName}
+                name="username"
+                value={userInfo.username}
                 placeholder={strings.signUp.usernameLabel}
                 required
                 onChange={handleChange}
+                onBlur={validateUserInfo}
               />
               <label>{strings.signUp.usernameLabel}</label>
-              {isValidUserName ? null : <span>Username is required.</span>}
+              {errorMessage.username && <span>{errorMessage.username}</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -105,9 +146,10 @@ const SignUp = () => {
                 name="firstName"
                 required
                 onChange={handleChange}
+                onBlur={validateUserInfo}
               />
               <label>{strings.signUp.firstNameLabel}</label>
-              {isValidFirstName ? null : <span>First name is required.</span>}
+              {errorMessage.firstName && <span>{errorMessage.firstName}</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -116,9 +158,10 @@ const SignUp = () => {
                 name="lastName"
                 required
                 onChange={handleChange}
+                onBlur={validateUserInfo}
               />
               <label>{strings.signUp.lastNameLabel}</label>
-              {isValidLastName ? null : <span>Last name is required.</span>}
+              {errorMessage.lastName && <span>{errorMessage.lastName}</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -127,9 +170,10 @@ const SignUp = () => {
                 name="email"
                 required
                 onChange={handleChange}
+                onBlur={validateUserInfo}
               />
               <label>{strings.signUp.emailLabel}</label>
-              {isValidEmail ? null : <span>Email address is required.</span>}
+              {errorMessage.email && <span>{errorMessage.email}</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -138,9 +182,10 @@ const SignUp = () => {
                 name="password"
                 required
                 onChange={handleChange}
+                onBlur={validateUserInfo}
               />
               <label>{strings.signUp.passwordLabel}</label>
-              {isValidPassword ? null : <span>Password is required.</span>}
+              {errorMessage.password && <span>{errorMessage.password}</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -149,9 +194,13 @@ const SignUp = () => {
                 required
                 name="confPassword"
                 onChange={handleChange}
+                onBlur={validateUserInfo}
               />
               <label>{strings.signUp.verifyPasswordLabel}</label>
-              {passwordMatch ? null : <span>Passwords do not match.</span>}
+              {errorMessage.confPassword && (
+                <span>{errorMessage.confPassword}</span>
+              )}
+              {passwordMatch && <span>Passwords do not match.</span>}
             </div>
             <Button
               buttonType="submit"

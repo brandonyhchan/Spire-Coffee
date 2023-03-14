@@ -1,37 +1,29 @@
 import React, { useState } from "react";
-import { Link /* useNavigate */ } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { useForm } from "react-hook-form";
-import Button from "../common/Button";
-import strings from "../../config/strings";
-import classNames from "classnames";
-import styles from "./login.module.scss";
-import "../../global.scss";
+import { Link /* useNavigate */ } from "react-router-dom";
 import { loginQuery } from "../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
-
-type FormData = {
-  username: string;
-  password: string;
-};
+import Button from "../common/Button";
+import classNames from "classnames";
+import strings from "../../config/strings";
+import styles from "./login.module.scss";
+import "../../global.scss";
 
 const Login = () => {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-  } = useForm<FormData>();
-  const onSubmit = (data: FormData) => {
-    console.log(data);
-  };
-
   const navigate = useNavigate();
 
   const [loginError, setLoginError] = useState(false);
 
-  const [userName, setUserName] = useState("");
-  const [password, setPassword] = useState("");
+  const [loginInfo, setLoginInfo] = useState({
+    userName: "",
+    password: "",
+  });
+
+  const [errorMessage, setErrorMessage] = useState({
+    username: "",
+    password: "",
+  });
 
   const [login] = useLazyQuery(loginQuery, {
     onError: (error) => {
@@ -43,13 +35,49 @@ const Login = () => {
     },
   });
 
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setLoginInfo((loginInfo) => ({
+      ...loginInfo,
+      [name]: value,
+    }));
+    validateLoginInput(event);
+  };
+
   const handleLogin = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
     login({
       variables: {
-        userName: userName,
-        password: password,
+        userName: loginInfo.userName,
+        password: loginInfo.password,
       },
+    });
+    console.log("Login credentials submitted.");
+  };
+
+  const validateLoginInput = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = event.target;
+    setErrorMessage((loginInfo) => {
+      const stateObj = { ...loginInfo, [name]: "" };
+      switch (name) {
+        case "username":
+          if (!value) {
+            stateObj[name] = "Username is required.";
+          }
+          break;
+        case "password":
+          if (!value) {
+            stateObj[name] = "Password is required.";
+          } else {
+            stateObj["password"] = loginInfo.password
+              ? ""
+              : errorMessage.password;
+          }
+          break;
+        default:
+          break;
+      }
+      return stateObj;
     });
   };
 
@@ -60,32 +88,30 @@ const Login = () => {
       <p>{strings.login.description}</p>
       <div className={classNames(styles.loginContainer)}>
         <div className={classNames(styles.login)}>
-          <form
-            className={classNames(styles.loginForm)}
-            onSubmit={handleSubmit(onSubmit)}
-            noValidate
-          >
+          <form className={classNames(styles.loginForm)} noValidate>
             <div className={classNames(styles.formItem)}>
               <input
                 type="text"
                 placeholder={strings.login.usernameLabel}
+                name="username"
                 required
-                {...register("username", { required: true })}
-                onChange={(e) => setUserName(e.currentTarget.value)}
+                onChange={handleChange}
+                onBlur={validateLoginInput}
               />
               <label>{strings.login.usernameLabel}</label>
-              {errors.username && <span>Username is required.</span>}
+              {errorMessage.username && <span>{errorMessage.username}</span>}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
                 type="password"
                 placeholder={strings.login.passwordLabel}
+                name="password"
                 required
-                {...register("password", { required: true })}
-                onChange={(e) => setPassword(e.currentTarget.value)}
+                onChange={handleChange}
+                onBlur={validateLoginInput}
               />
               <label>{strings.login.passwordLabel}</label>
-              {errors.password && <span>Password is required.</span>}
+              {errorMessage.password && <span>{errorMessage.password}</span>}
             </div>
             <Button
               type="secondary"
