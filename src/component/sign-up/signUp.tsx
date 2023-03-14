@@ -30,13 +30,6 @@ const SignUp = () => {
     confPassword: "",
   });
 
-  // const [userName, setUserName] = useState("");
-  // const [firstName, setFirstName] = useState("");
-  // const [lastName, setLastName] = useState("");
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  // const [confPassword, setConfPassword] = useState(""); // this will be used to check if the password is the same in the
-
   const [signUp] = useLazyQuery(signUpMutation, {
     onError: (error) => {
       setSignUpError(true);
@@ -100,9 +93,6 @@ const SignUp = () => {
                 value={userInfo.userName}
                 placeholder={strings.signUp.usernameLabel}
                 required
-                // onChange={(e) => {
-                //   setUserName(e.currentTarget.value);
-                // }}
                 onChange={handleChange}
               />
               <label>{strings.signUp.usernameLabel}</label>
@@ -114,9 +104,6 @@ const SignUp = () => {
                 placeholder={strings.signUp.firstNameLabel}
                 name="firstName"
                 required
-                // onChange={(e) => {
-                //   setFirstName(e.currentTarget.value);
-                // }}
                 onChange={handleChange}
               />
               <label>{strings.signUp.firstNameLabel}</label>
@@ -128,9 +115,6 @@ const SignUp = () => {
                 placeholder={strings.signUp.lastNameLabel}
                 name="lastName"
                 required
-                // onChange={(e) => {
-                //   setLastName(e.currentTarget.value);
-                // }}
                 onChange={handleChange}
               />
               <label>{strings.signUp.lastNameLabel}</label>
@@ -142,9 +126,6 @@ const SignUp = () => {
                 placeholder={strings.signUp.emailLabel}
                 name="email"
                 required
-                // onChange={(e) => {
-                //   setEmail(e.currentTarget.value);
-                // }}
                 onChange={handleChange}
               />
               <label>{strings.signUp.emailLabel}</label>
@@ -156,9 +137,6 @@ const SignUp = () => {
                 placeholder={strings.signUp.passwordLabel}
                 name="password"
                 required
-                // onChange={(e) => {
-                //   setPassword(e.currentTarget.value);
-                // }}
                 onChange={handleChange}
               />
               <label>{strings.signUp.passwordLabel}</label>
@@ -170,9 +148,6 @@ const SignUp = () => {
                 placeholder={strings.signUp.verifyPasswordLabel}
                 required
                 name="confPassword"
-                // onChange={(e) => {
-                //   setConfPassword(e.currentTarget.value);
-                // }}
                 onChange={handleChange}
               />
               <label>{strings.signUp.verifyPasswordLabel}</label>
