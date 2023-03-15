@@ -1,6 +1,5 @@
 import * as bcrypt from "bcrypt";
-import * as jwt from "jsonwebtoken";
-// I think there is still some issue here with compiling into js, need to look into that
+import jwt from "jsonwebtoken";
 
 const APP_SECRET = "SpireCawfee";
 

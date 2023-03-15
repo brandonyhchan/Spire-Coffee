@@ -1,4 +1,4 @@
-import * as jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 export const APP_SECRET = "SpireCawfee";
 // function getTokenPayload(token) {
 //   return jwt.verify(token, APP_SECRET);
@@ -20,6 +20,7 @@ export const APP_SECRET = "SpireCawfee";
 //   }
 //   throw new AuthenticationError("User is not authenticated ");
 // }
+// eslint-disable-next-line @typescript-eslint/ban-types
 export function getUserId(authHeader) {
     const token = authHeader.replace("Bearer", "");
     if (!token) {

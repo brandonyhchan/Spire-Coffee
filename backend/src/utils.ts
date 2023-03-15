@@ -1,4 +1,4 @@
-import * as jwt from "jsonwebtoken";
+import jwt from "jsonwebtoken";
 import { AuthenticationError } from "apollo-server";
 export const APP_SECRET = "SpireCawfee";
 
@@ -29,9 +29,10 @@ export interface AuthTokenPayload {
 //   throw new AuthenticationError("User is not authenticated ");
 // }
 
-export function getUserId(authHeader): AuthTokenPayload {
+// eslint-disable-next-line @typescript-eslint/ban-types
+export function getUserId(authHeader: String): AuthTokenPayload {
   const token = authHeader.replace("Bearer", "");
-
+  
   if (!token) {
     throw new Error("No token found");
   }
