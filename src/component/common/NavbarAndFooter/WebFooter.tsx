@@ -1,6 +1,5 @@
 import classNames from "classnames";
 import { Link } from "react-router-dom";
-//import styled from "styled-components";
 import styles from "./WebFooter.module.scss";
 
 const WebFooter = () => (
