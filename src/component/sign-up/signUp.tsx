@@ -16,7 +16,6 @@ const SignUp = () => {
   const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(false);
   const [passwordRegex, setPasswordRegex] = useState(false);
-  const [validUserInfo, setValidUserInfo] = useState(false);
   const [signUpError, setSignUpError] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
@@ -62,18 +61,16 @@ const SignUp = () => {
 
   const handleSignup = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    if (validUserInfo) {
-      signUp({
-        variables: {
-          userName: userInfo.username,
-          firstName: userInfo.firstName,
-          lastName: userInfo.lastName,
-          email: userInfo.email,
-          password: userInfo.password,
-        },
-      });
-      console.log("User information submitted.");
-    }
+    signUp({
+      variables: {
+        userName: userInfo.username,
+        firstName: userInfo.firstName,
+        lastName: userInfo.lastName,
+        email: userInfo.email,
+        password: userInfo.password,
+      },
+    });
+    console.log("User information submitted.");
   };
 
   const validateUserInfo = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,12 +119,15 @@ const SignUp = () => {
     setPasswordMatch(
       !!userInfo.password && userInfo.password !== userInfo.confPassword
     );
-    setUsernameIsValid(!!userInfo.username && userInfo.username.length < 5);
+    setUsernameIsValid(
+      !!userInfo.username &&
+        userInfo.username.length < 5 &&
+        userInfo.username.length > 20
+    );
     setPasswordIsValid(!!userInfo.password && userInfo.password.length < 8);
     setPasswordRegex(
       !!userInfo.password && !validPassword.test(userInfo.password)
     );
-    setValidUserInfo(!!userInfo.username && !!userInfo.password && !!userInfo.confPassword);
   }, [userInfo]);
 
   return (
@@ -204,9 +204,7 @@ const SignUp = () => {
                 <span>Password must be at least 8 characters in length.</span>
               )}
               {passwordRegex && ( // add requirments
-                <span>
-                  Password requires stuff.
-                </span>
+                <span>Password requires stuff.</span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
