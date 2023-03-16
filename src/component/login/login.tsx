@@ -16,7 +16,7 @@ const Login = () => {
   const [loginError, setLoginError] = useState(false);
 
   const [loginInfo, setLoginInfo] = useState({
-    userName: "",
+    username: "",
     password: "",
   });
 
@@ -31,12 +31,14 @@ const Login = () => {
     },
     onCompleted: (data) => {
       localStorage.setItem("authToken", data.login.token);
-      navigate("/home");
+      console.log("User authenticated, logging in ");
+      // navigate("/home");
     },
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
+    const name = event.target.name;
+    const value = event.currentTarget.value;
     setLoginInfo((loginInfo) => ({
       ...loginInfo,
       [name]: value,
@@ -48,7 +50,7 @@ const Login = () => {
     event.preventDefault();
     login({
       variables: {
-        userName: loginInfo.userName,
+        userName: loginInfo.username,
         password: loginInfo.password,
       },
     });
