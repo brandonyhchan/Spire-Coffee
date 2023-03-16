@@ -9,6 +9,21 @@
   @media (max-width: 600px) {
     display: none;
   }
+
+  p {
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  p > a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding-bottom: 6px;
+    }
+  }
 }
 
 .padding {
@@ -31,28 +46,19 @@
   align-self: center;
 }
 
-p {
-  align-self: center;
-  margin-bottom: 0;
-}
-
 .link {
   margin-bottom: 0;
 }
 
-.navbar p > a {
-  text-decoration: none;
-  color: white;
-  padding: 10px;
-  &:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-bottom: 3px solid var(--secondary);
-    padding-bottom: 6px;
-  }
-}
+// .active {
+//   background-color: pink;
+//   border-bottom: 3px solid var(--secondary);
+//   padding-bottom: 6px;
+// }
 
-.active {
-  background-color: pink;
-  border-bottom: 3px solid var(--secondary);
-  padding-bottom: 6px;
+.underline {
+  background: blue;
+  border-radius: .25em;
+  height: 5px;
+  mix-blend-mode: initial;
 }

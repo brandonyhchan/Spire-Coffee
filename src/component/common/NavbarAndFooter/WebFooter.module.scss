@@ -26,6 +26,7 @@
     font-size: 14px;
     &:hover{
       text-decoration: underline;
+      color: #b7b1c7;
     }
   }
 
@@ -105,8 +106,9 @@
 .aboutUs {
   display: flex;
   flex-direction: column;
-  height: 200px;
-  justify-content: center;
+  height: 103px;
+  justify-content: flex-start;
+  align-self: center;
 
   @media (max-width: 920px) {
 

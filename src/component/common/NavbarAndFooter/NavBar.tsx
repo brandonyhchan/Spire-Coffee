@@ -13,6 +13,21 @@ import styles from "./NavBar.module.scss";
 import { NavLink } from "react-router-dom";
 import { useState } from "react";
 
+// const active: React.CSSProperties = {
+//   borderBottom: "3px solid var(--secondary)",
+//   paddingBottom: "6px",
+// };
+
+function ul(index: number) {
+  console.log('click!' + index)
+	
+	var underlines = document.querySelectorAll(".underline");
+
+	for (var i = 0; i < underlines.length; i++) {
+		underlines[i].style.transform = 'translate3d(' + index * 100 + '%,0,0)';
+	}
+}
+
 export const navbar = () => {
 
   return (
@@ -39,39 +54,33 @@ export const navbar = () => {
           </div>
 
           <div className={classNames(styles.navLinks)}>
-            <Stack direction="row" spacing={1}>
+            <Stack direction="row" spacing={1} className={classNames(styles.link, styles.underline)}>
               <p className={classNames(styles.link)}>
                 <NavLink
-                  style={({ isActive }) => isActive ? {
-                    borderBottom: "3px solid var(--secondary)",
-                    paddingBottom: "6px", }: {}
-                }
+                  //style={({ isActive }) => isActive ? active : {} }
                   to="/addCafe"
                   color="inherit"
+                  onClick={ul(0)}
                 >
                   Add a Cafe
                 </NavLink>
               </p>
               <p className={classNames(styles.link)}>
                 <NavLink
-                  style={({ isActive }) => isActive ? {
-                        borderBottom: "3px solid var(--secondary)",
-                        paddingBottom: "6px", }: {}
-                  }
+                  //style={({ isActive }) => isActive ? active : {} }
                   to="/explore"
                   color="inherit"
+                  onClick={ul(1)}
                 >
                   Explore
                 </NavLink>
               </p>
               <p className={classNames(styles.link)}>
                 <NavLink
-                  style={({ isActive }) => isActive ? {
-                    borderBottom: "3px solid var(--secondary)",
-                    paddingBottom: "6px", }: {}
-                  }
+                  //style={({ isActive }) => isActive ? active : {} }
                   to="/account"
                   color="inherit"
+                  onClick={ul(2)}
                 >
                   Account
                 </NavLink>
@@ -79,6 +88,7 @@ export const navbar = () => {
               <p className={classNames(styles.link)}>
                 <NavLink
                   to="/"
+                  onClick={ul(3)}
                 >
                   Sign out
                 </NavLink>
