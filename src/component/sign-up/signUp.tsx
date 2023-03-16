@@ -15,7 +15,6 @@ const SignUp = () => {
   const [usernameIsValid, setUsernameIsValid] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(false);
-  const [passwordRegex, setPasswordRegex] = useState(false);
   const [signUpError, setSignUpError] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
@@ -56,20 +55,22 @@ const SignUp = () => {
       ...userInfo,
       [name]: value,
     });
-    validateUserInfo(event);
   };
 
   const handleSignup = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    signUp({
-      variables: {
-        userName: userInfo.username,
-        firstName: userInfo.firstName,
-        lastName: userInfo.lastName,
-        email: userInfo.email,
-        password: userInfo.password,
-      },
-    });
+    setPasswordMatch(userInfo.password === userInfo.confPassword);
+    if (usernameIsValid && passwordIsValid && passwordMatch) {
+      signUp({
+        variables: {
+          userName: userInfo.username,
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email,
+          password: userInfo.password,
+        },
+      });
+    }
     console.log("User information submitted.");
   };
 
@@ -115,21 +116,6 @@ const SignUp = () => {
     });
   };
 
-  React.useEffect(() => {
-    setPasswordMatch(
-      !!userInfo.password && userInfo.password !== userInfo.confPassword
-    );
-    setUsernameIsValid(
-      !!userInfo.username &&
-        userInfo.username.length < 5 &&
-        userInfo.username.length > 20
-    );
-    setPasswordIsValid(!!userInfo.password && userInfo.password.length < 8);
-    setPasswordRegex(
-      !!userInfo.password && !validPassword.test(userInfo.password)
-    );
-  }, [userInfo]);
-
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
@@ -145,12 +131,20 @@ const SignUp = () => {
                 placeholder={strings.signUp.usernameLabel}
                 required
                 onChange={handleChange}
-                onBlur={validateUserInfo}
+                onBlur={() =>
+                  setUsernameIsValid(
+                    userInfo.username.length < 5 ||
+                      userInfo.username.length > 15
+                  )
+                }
+                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.usernameLabel}</label>
               {errorMessage.username && <span>{errorMessage.username}</span>}
-              {usernameIsValid && (
-                <span>Username must be at least 5 characters in length.</span>
+              {!usernameIsValid ? (
+                <></>
+              ) : (
+                <span>Username must be between 5-15 characters in length</span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
@@ -160,7 +154,7 @@ const SignUp = () => {
                 name="firstName"
                 required
                 onChange={handleChange}
-                onBlur={validateUserInfo}
+                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.firstNameLabel}</label>
               {errorMessage.firstName && <span>{errorMessage.firstName}</span>}
@@ -172,7 +166,7 @@ const SignUp = () => {
                 name="lastName"
                 required
                 onChange={handleChange}
-                onBlur={validateUserInfo}
+                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.lastNameLabel}</label>
               {errorMessage.lastName && <span>{errorMessage.lastName}</span>}
@@ -184,7 +178,7 @@ const SignUp = () => {
                 name="email"
                 required
                 onChange={handleChange}
-                onBlur={validateUserInfo}
+                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.emailLabel}</label>
               {errorMessage.email && <span>{errorMessage.email}</span>}
@@ -196,15 +190,20 @@ const SignUp = () => {
                 name="password"
                 required
                 onChange={handleChange}
-                onBlur={validateUserInfo}
+                onBlur={() =>
+                  setPasswordIsValid(!validPassword.test(userInfo.password))
+                }
+                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.passwordLabel}</label>
               {errorMessage.password && <span>{errorMessage.password}</span>}
-              {passwordIsValid && (
-                <span>Password must be at least 8 characters in length.</span>
-              )}
-              {passwordRegex && ( // add requirments
-                <span>Password requires stuff.</span>
+              {!passwordIsValid ? (
+                <></>
+              ) : (
+                <span>
+                  Password must have 1 uppercase, 1 lowercase, 1 number, a
+                  special character (!@#$%^&*), and be of length 8-20
+                </span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
@@ -214,13 +213,16 @@ const SignUp = () => {
                 required
                 name="confPassword"
                 onChange={handleChange}
-                onBlur={validateUserInfo}
+                onBlur={() =>
+                  setPasswordMatch(userInfo.password !== userInfo.confPassword)
+                }
+                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.verifyPasswordLabel}</label>
               {errorMessage.confPassword && (
                 <span>{errorMessage.confPassword}</span>
               )}
-              {passwordMatch && <span>Passwords do not match.</span>}
+              {!passwordMatch ? <></> : <span>Passwords do not match.</span>}
             </div>
             <Button
               buttonType="submit"
