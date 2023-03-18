@@ -3,7 +3,13 @@ import { Helmet } from "react-helmet-async";
 import { signUpMutation } from "../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
-import { validPassword } from "./regexValidator";
+import {
+  validFirstName,
+  validLastName,
+  validPassword,
+  validUsername,
+  validEmail,
+} from "./regexValidator";
 import Button from "../common/Button";
 import classNames from "classnames";
 import strings from "../../config/strings";
@@ -15,18 +21,12 @@ const SignUp = () => {
   const [usernameIsValid, setUsernameIsValid] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(false);
+  const [firstNameIsValid, setFirstNameIsValid] = useState(false);
+  const [lastNameIsValid, setLastNameIsValid] = useState(false);
+  const [emailIsValid, setEmailIsValid] = useState(false);
   const [signUpError, setSignUpError] = useState(false);
 
   const [userInfo, setUserInfo] = useState({
-    username: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confPassword: "",
-  });
-
-  const [errorMessage, setErrorMessage] = useState({
     username: "",
     firstName: "",
     lastName: "",
@@ -74,48 +74,6 @@ const SignUp = () => {
     console.log("User information submitted.");
   };
 
-  const validateUserInfo = (event: React.ChangeEvent<HTMLInputElement>) => {
-    const { name, value } = event.target;
-    setErrorMessage((userInfo) => {
-      const stateObj = { ...userInfo, [name]: "" };
-      switch (name) {
-        case "username":
-          if (!value) {
-            stateObj[name] = "Username is required.";
-          }
-          break;
-        case "firstName":
-          if (!value) {
-            stateObj[name] = "First name is required.";
-          }
-          break;
-        case "lastName":
-          if (!value) {
-            stateObj[name] = "Last name is required.";
-          }
-          break;
-        case "email":
-          if (!value) {
-            stateObj[name] = "Email address is required.";
-          }
-          break;
-        case "password":
-          if (!value) {
-            stateObj[name] = "Password is required.";
-          }
-          break;
-        case "confPassword":
-          if (!value) {
-            stateObj[name] = "Please re-enter your password.";
-          }
-          break;
-        default:
-          break;
-      }
-      return stateObj;
-    });
-  };
-
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
@@ -132,19 +90,17 @@ const SignUp = () => {
                 required
                 onChange={handleChange}
                 onBlur={() =>
-                  setUsernameIsValid(
-                    userInfo.username.length < 5 ||
-                      userInfo.username.length > 15
-                  )
+                  setUsernameIsValid(!validUsername.test(userInfo.username))
                 }
-                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.usernameLabel}</label>
-              {errorMessage.username && <span>{errorMessage.username}</span>}
               {!usernameIsValid ? (
                 <></>
               ) : (
-                <span>Username must be between 5-15 characters in length</span>
+                <span>
+                  Username must be between 5-15 characters in length,
+                  alphanumeric and _ are allowed
+                </span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
@@ -154,10 +110,20 @@ const SignUp = () => {
                 name="firstName"
                 required
                 onChange={handleChange}
-                onFocus={validateUserInfo}
+                maxLength={40}
+                onBlur={() =>
+                  setFirstNameIsValid(!validFirstName.test(userInfo.firstName))
+                }
               />
               <label>{strings.signUp.firstNameLabel}</label>
-              {errorMessage.firstName && <span>{errorMessage.firstName}</span>}
+              {!firstNameIsValid ? (
+                <></>
+              ) : (
+                <span>
+                  First name is required and only alphabet characters are
+                  allowed
+                </span>
+              )}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -166,10 +132,19 @@ const SignUp = () => {
                 name="lastName"
                 required
                 onChange={handleChange}
-                onFocus={validateUserInfo}
+                maxLength={40}
+                onBlur={() =>
+                  setLastNameIsValid(!validLastName.test(userInfo.lastName))
+                }
               />
               <label>{strings.signUp.lastNameLabel}</label>
-              {errorMessage.lastName && <span>{errorMessage.lastName}</span>}
+              {!lastNameIsValid ? (
+                <></>
+              ) : (
+                <span>
+                  Last name is required and only alphabet characters are allowed
+                </span>
+              )}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -178,10 +153,14 @@ const SignUp = () => {
                 name="email"
                 required
                 onChange={handleChange}
-                onFocus={validateUserInfo}
+                onBlur={() => setEmailIsValid(!validEmail.test(userInfo.email))}
               />
               <label>{strings.signUp.emailLabel}</label>
-              {errorMessage.email && <span>{errorMessage.email}</span>}
+              {!emailIsValid ? (
+                <></>
+              ) : (
+                <span>Please enter a valid email address</span>
+              )}
             </div>
             <div className={classNames(styles.formItem)}>
               <input
@@ -193,16 +172,14 @@ const SignUp = () => {
                 onBlur={() =>
                   setPasswordIsValid(!validPassword.test(userInfo.password))
                 }
-                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.passwordLabel}</label>
-              {errorMessage.password && <span>{errorMessage.password}</span>}
               {!passwordIsValid ? (
                 <></>
               ) : (
                 <span>
-                  Password must have 1 uppercase, 1 lowercase, 1 number, a
-                  special character (!@#$%^&*), and be of length 8-20
+                  Password must have 1 uppercase, 1 number, a special character
+                  (!@#$%^&*), and be of length 8-20
                 </span>
               )}
             </div>
@@ -216,12 +193,8 @@ const SignUp = () => {
                 onBlur={() =>
                   setPasswordMatch(userInfo.password !== userInfo.confPassword)
                 }
-                onFocus={validateUserInfo}
               />
               <label>{strings.signUp.verifyPasswordLabel}</label>
-              {errorMessage.confPassword && (
-                <span>{errorMessage.confPassword}</span>
-              )}
               {!passwordMatch ? <></> : <span>Passwords do not match.</span>}
             </div>
             <Button
