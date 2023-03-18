@@ -11,6 +11,7 @@ import {
   validEmail,
 } from "./regexValidator";
 import Button from "../common/Button";
+import Input from "../common/Input";
 import classNames from "classnames";
 import strings from "../../config/strings";
 import styles from "./signUp.module.scss";
@@ -21,6 +22,7 @@ const SignUp = () => {
   const [usernameIsValid, setUsernameIsValid] = useState(false);
   const [passwordIsValid, setPasswordIsValid] = useState(false);
   const [passwordMatch, setPasswordMatch] = useState(false);
+  const [passwordRequired, setPasswordRequired] = useState(false);
   const [firstNameIsValid, setFirstNameIsValid] = useState(false);
   const [lastNameIsValid, setLastNameIsValid] = useState(false);
   const [emailIsValid, setEmailIsValid] = useState(false);
@@ -74,6 +76,18 @@ const SignUp = () => {
     console.log("User information submitted.");
   };
 
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    event.preventDefault();
+    const name = event.target.name;
+    const value = event.currentTarget.value;
+    setUserInfo({
+      ...userInfo,
+      [name]: value,
+    });
+    setPasswordRequired(!value);
+    setPasswordMatch(userInfo.password !== userInfo.confPassword);
+  };
+
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
@@ -82,7 +96,7 @@ const SignUp = () => {
         <div className={classNames(styles.signUp)}>
           <form className={classNames(styles.signUpForm)} noValidate>
             <div className={classNames(styles.formItem)}>
-              <input
+              <Input
                 type="text"
                 name="username"
                 value={userInfo.username}
@@ -104,7 +118,7 @@ const SignUp = () => {
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <input
+              <Input
                 type="text"
                 placeholder={strings.signUp.firstNameLabel}
                 name="firstName"
@@ -126,7 +140,7 @@ const SignUp = () => {
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <input
+              <Input
                 type="text"
                 placeholder={strings.signUp.lastNameLabel}
                 name="lastName"
@@ -147,7 +161,7 @@ const SignUp = () => {
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <input
+              <Input
                 type="text"
                 placeholder={strings.signUp.emailLabel}
                 name="email"
@@ -163,7 +177,7 @@ const SignUp = () => {
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <input
+              <Input
                 type="password"
                 placeholder={strings.signUp.passwordLabel}
                 name="password"
@@ -184,18 +198,21 @@ const SignUp = () => {
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <input
+              <Input
                 type="password"
                 placeholder={strings.signUp.verifyPasswordLabel}
                 required
                 name="confPassword"
                 onChange={handleChange}
-                onBlur={() =>
-                  setPasswordMatch(userInfo.password !== userInfo.confPassword)
-                }
+                onBlur={handlePassword}
               />
               <label>{strings.signUp.verifyPasswordLabel}</label>
-              {!passwordMatch ? <></> : <span>Passwords do not match.</span>}
+              {!passwordRequired ? (
+                <></>
+              ) : (
+                <span>Please re-enter your password</span>
+              )}
+              {!passwordMatch ? <></> : <span>Passwords do not match</span>}
             </div>
             <Button
               buttonType="submit"
