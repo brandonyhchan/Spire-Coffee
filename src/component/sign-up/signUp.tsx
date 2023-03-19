@@ -77,13 +77,7 @@ const SignUp = () => {
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
-    event.preventDefault();
-    const name = event.target.name;
     const value = event.currentTarget.value;
-    setUserInfo({
-      ...userInfo,
-      [name]: value,
-    });
     setPasswordRequired(!value);
     setPasswordMatch(userInfo.password !== userInfo.confPassword);
   };
@@ -112,8 +106,8 @@ const SignUp = () => {
                 <></>
               ) : (
                 <span>
-                  Username must be between 5-15 characters in length,
-                  alphanumeric and _ are allowed
+                  Username must be between 5-15 characters, only alphanumeric
+                  and _ are allowed
                 </span>
               )}
             </div>
@@ -177,7 +171,7 @@ const SignUp = () => {
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <Input
+              <input
                 type="password"
                 placeholder={strings.signUp.passwordLabel}
                 name="password"
@@ -192,13 +186,13 @@ const SignUp = () => {
                 <></>
               ) : (
                 <span>
-                  Password must have 1 uppercase, 1 number, a special character
-                  (!@#$%^&*), and be of length 8-20
+                  Password must be 8-20 characters with 1 uppercase, 1 number, 1
+                  special character
                 </span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <Input
+              <input
                 type="password"
                 placeholder={strings.signUp.verifyPasswordLabel}
                 required
