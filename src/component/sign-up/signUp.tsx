@@ -3,20 +3,14 @@ import { Helmet } from "react-helmet-async";
 import { signUpMutation } from "../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
-import {
-  validFirstName,
-  validLastName,
-  validPassword,
-  validUsername,
-  validEmail,
-} from "./regexValidator";
+import RegexValidator from "./regexValidator";
 import Button from "../common/Button";
-import Input from "../common/Input";
 import classNames from "classnames";
 import strings from "../../config/strings";
 import styles from "./signUp.module.scss";
 
 const SignUp = () => {
+  const regexValidator: RegexValidator = new RegexValidator();
   const navigate = useNavigate();
 
   const [usernameIsValid, setUsernameIsValid] = useState(false);
@@ -26,7 +20,7 @@ const SignUp = () => {
   const [firstNameIsValid, setFirstNameIsValid] = useState(false);
   const [lastNameIsValid, setLastNameIsValid] = useState(false);
   const [emailIsValid, setEmailIsValid] = useState(false);
-  const [signUpError, setSignUpError] = useState(false);
+  const [signUpError, setSignUpError] = useState(false); // please fill in all fields
 
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -61,7 +55,7 @@ const SignUp = () => {
 
   const handleSignup = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    setPasswordMatch(userInfo.password === userInfo.confPassword);
+    setPasswordMatch(userInfo.password === userInfo.confPassword); // reqire everything
     if (usernameIsValid && passwordIsValid && passwordMatch) {
       signUp({
         variables: {
@@ -73,7 +67,6 @@ const SignUp = () => {
         },
       });
     }
-    console.log("User information submitted.");
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -90,7 +83,7 @@ const SignUp = () => {
         <div className={classNames(styles.signUp)}>
           <form className={classNames(styles.signUpForm)} noValidate>
             <div className={classNames(styles.formItem)}>
-              <Input
+              <input
                 type="text"
                 name="username"
                 value={userInfo.username}
@@ -98,21 +91,18 @@ const SignUp = () => {
                 required
                 onChange={handleChange}
                 onBlur={() =>
-                  setUsernameIsValid(!validUsername.test(userInfo.username))
+                  setUsernameIsValid(
+                    !regexValidator.validUsername.test(userInfo.username)
+                  )
                 }
               />
               <label>{strings.signUp.usernameLabel}</label>
-              {!usernameIsValid ? (
-                <></>
-              ) : (
-                <span>
-                  Username must be between 5-15 characters, only alphanumeric
-                  and _ are allowed
-                </span>
+              {!usernameIsValid ? null : (
+                <span>{strings.signUp.errorMessage.username}</span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <Input
+              <input
                 type="text"
                 placeholder={strings.signUp.firstNameLabel}
                 name="firstName"
@@ -120,21 +110,18 @@ const SignUp = () => {
                 onChange={handleChange}
                 maxLength={40}
                 onBlur={() =>
-                  setFirstNameIsValid(!validFirstName.test(userInfo.firstName))
+                  setFirstNameIsValid(
+                    !regexValidator.validFirstName.test(userInfo.firstName)
+                  )
                 }
               />
               <label>{strings.signUp.firstNameLabel}</label>
-              {!firstNameIsValid ? (
-                <></>
-              ) : (
-                <span>
-                  First name is required and only alphabet characters are
-                  allowed
-                </span>
+              {!firstNameIsValid ? null : (
+                <span>{strings.signUp.errorMessage.firstName}</span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <Input
+              <input
                 type="text"
                 placeholder={strings.signUp.lastNameLabel}
                 name="lastName"
@@ -142,32 +129,32 @@ const SignUp = () => {
                 onChange={handleChange}
                 maxLength={40}
                 onBlur={() =>
-                  setLastNameIsValid(!validLastName.test(userInfo.lastName))
+                  setLastNameIsValid(
+                    !regexValidator.validLastName.test(userInfo.lastName)
+                  )
                 }
               />
               <label>{strings.signUp.lastNameLabel}</label>
-              {!lastNameIsValid ? (
-                <></>
-              ) : (
-                <span>
-                  Last name is required and only alphabet characters are allowed
-                </span>
+              {!lastNameIsValid ? null : (
+                <span>{strings.signUp.errorMessage.lastName}</span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
-              <Input
+              <input
                 type="text"
                 placeholder={strings.signUp.emailLabel}
                 name="email"
                 required
                 onChange={handleChange}
-                onBlur={() => setEmailIsValid(!validEmail.test(userInfo.email))}
+                onBlur={() =>
+                  setEmailIsValid(
+                    !regexValidator.validEmail.test(userInfo.email)
+                  )
+                }
               />
               <label>{strings.signUp.emailLabel}</label>
-              {!emailIsValid ? (
-                <></>
-              ) : (
-                <span>Please enter a valid email address</span>
+              {!emailIsValid ? null : (
+                <span>{strings.signUp.errorMessage.email}</span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
@@ -178,17 +165,14 @@ const SignUp = () => {
                 required
                 onChange={handleChange}
                 onBlur={() =>
-                  setPasswordIsValid(!validPassword.test(userInfo.password))
+                  setPasswordIsValid(
+                    !regexValidator.validPassword.test(userInfo.password)
+                  )
                 }
               />
               <label>{strings.signUp.passwordLabel}</label>
-              {!passwordIsValid ? (
-                <></>
-              ) : (
-                <span>
-                  Password must be 8-20 characters with 1 uppercase, 1 number, 1
-                  special character
-                </span>
+              {!passwordIsValid ? null : (
+                <span>{strings.signUp.errorMessage.password}</span>
               )}
             </div>
             <div className={classNames(styles.formItem)}>
@@ -201,12 +185,12 @@ const SignUp = () => {
                 onBlur={handlePassword}
               />
               <label>{strings.signUp.verifyPasswordLabel}</label>
-              {!passwordRequired ? (
-                <></>
-              ) : (
-                <span>Please re-enter your password</span>
+              {!passwordRequired ? null : (
+                <span>{strings.signUp.errorMessage.confPassword}</span>
               )}
-              {!passwordMatch ? <></> : <span>Passwords do not match</span>}
+              {!passwordMatch ? null : (
+                <span>{strings.signUp.errorMessage.passwordMatch}</span>
+              )}
             </div>
             <Button
               buttonType="submit"

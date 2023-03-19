@@ -22,6 +22,17 @@ const strings = new LocalizedStrings({
       emailLabel: "Email Address",
       passwordLabel: "Password",
       verifyPasswordLabel: "Confirm Password",
+      errorMessage: {
+        username:
+          "Username must be between 5-15 characters, only alphanumeric and _ are allowed",
+        firstName: "First name is required",
+        lastName: "Last name is required",
+        email: "Please enter a valid email address",
+        password:
+          "Password must be 8-20 characters with 1 uppercase, 1 number, 1 special character",
+        confPassword: "Please re-enter your password",
+        passwordMatch: "Passwords do not match",
+      },
     },
   },
 });
