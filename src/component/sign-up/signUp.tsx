@@ -53,10 +53,10 @@ const SignUp = () => {
     });
   };
 
-  const handleSignup = (event: React.MouseEvent<Element, MouseEvent>) => {
+  const handleSignup = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    setPasswordMatch(userInfo.password === userInfo.confPassword); // reqire everything
-    if (usernameIsValid && passwordIsValid && passwordMatch) {
+    if (signUpError === false) {
+      console.log("sign up success");
       signUp({
         variables: {
           userName: userInfo.username,
@@ -75,13 +75,33 @@ const SignUp = () => {
     setPasswordMatch(userInfo.password !== userInfo.confPassword);
   };
 
+  const checkForm = () => {
+    if (
+      userInfo.username === "" ||
+      userInfo.firstName === "" ||
+      userInfo.lastName === "" ||
+      userInfo.email === "" ||
+      userInfo.password === "" ||
+      userInfo.confPassword === "" ||
+      passwordMatch === true
+    ) {
+      setSignUpError(true);
+    } else {
+      setSignUpError(false);
+    }
+  };
+
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
       <h1 className={classNames(styles.heading)}>{strings.signUp.title}</h1>
       <div className={classNames(styles.signUpContainer)}>
         <div className={classNames(styles.signUp)}>
-          <form className={classNames(styles.signUpForm)} noValidate>
+          <form
+            className={classNames(styles.signUpForm)}
+            noValidate
+            onSubmit={handleSignup}
+          >
             <div className={classNames(styles.formItem)}>
               <input
                 type="text"
@@ -196,7 +216,7 @@ const SignUp = () => {
               buttonType="submit"
               className="signUpButton"
               text={strings.signUp.buttonText}
-              onClick={handleSignup}
+              onClick={checkForm}
             />
           </form>
         </div>
