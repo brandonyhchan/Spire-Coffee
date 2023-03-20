@@ -4,7 +4,7 @@ import { Link /* useNavigate */ } from "react-router-dom";
 import { loginQuery } from "../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/images/not-creepily-saving-mika-as-placeholder-image.jpg";
+import Logo from "../../assets/images/placeholder-logo.jpg";
 import Button from "../common/Button";
 import classNames from "classnames";
 import strings from "../../config/strings";
