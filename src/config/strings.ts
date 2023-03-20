@@ -32,6 +32,7 @@ const strings = new LocalizedStrings({
           "Password must be 8-20 characters with 1 uppercase, 1 number, 1 special character",
         confPassword: "Please re-enter your password",
         passwordMatch: "Passwords do not match",
+        message: "Please fill in all required fields",
       },
     },
   },

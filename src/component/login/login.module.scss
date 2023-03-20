@@ -1,3 +1,8 @@
+$_xlarge_font_size: 20px;
+$_large_font_size: 18px;
+$_medium_font_size: 16px;
+$_small_font_size: 14px;
+
 *,
 *:focus{outline: none}
 
@@ -46,6 +51,7 @@
   padding: 20px;
   border-radius: 10px;
   font-family: 'Figtree-Regular';
+  font-size: $_medium_font_size;
 }
 
 .formItem input:focus {
@@ -57,9 +63,9 @@
 }
 
 .formItem span {
-  color: var(--secondary);
+  color: var(--warning);
   font-family: 'Figtree-Regular';
-  font-size: 16px;
+  font-size: $_medium_font_size;
 }
 
 
@@ -68,7 +74,8 @@
 .formItem input:valid + label {
   display: block;
   position: absolute;
-  font-size: 14px;
+  font-size: $_medium_font_size;
+  font-weight: bold;
   top: -8px;
   left: 10px;
   font-family: 'Figtree-Regular';
@@ -84,7 +91,7 @@
 }
 
 p {
-  font-size: 16px;
+  font-size: $_medium_font_size;
 }
 
 p > a {
@@ -119,7 +126,7 @@ a:hover {
   }
 
   p {
-    font-size: 18px;
+    font-size: $_large_font_size;
   }
 }
 
@@ -135,7 +142,7 @@ a:hover {
   }
 
   p {
-    font-size: 18px;
+    font-size: $_large_font_size;
   }
 }
 
@@ -147,7 +154,7 @@ a:hover {
   }
 
   p {
-    font-size: 18px;
+    font-size: $_large_font_size;
   }
 }
 
@@ -158,6 +165,6 @@ a:hover {
   }
 
   p {
-    font-size: 20px;
+    font-size: $_xlarge_font_size;
   }
 }

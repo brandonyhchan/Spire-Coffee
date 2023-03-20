@@ -21,6 +21,7 @@ const SignUp = () => {
   const [lastNameIsValid, setLastNameIsValid] = useState(false);
   const [emailIsValid, setEmailIsValid] = useState(false);
   const [signUpError, setSignUpError] = useState(false); // please fill in all fields
+  const [signUpErrorMessage, setSignUpErrorMessage] = useState(false); // please fill in all fields
 
   const [userInfo, setUserInfo] = useState({
     username: "",
@@ -56,7 +57,6 @@ const SignUp = () => {
   const handleSignup = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (signUpError === false) {
-      console.log("sign up success");
       signUp({
         variables: {
           userName: userInfo.username,
@@ -86,8 +86,10 @@ const SignUp = () => {
       passwordMatch === true
     ) {
       setSignUpError(true);
+      setSignUpErrorMessage(true);
     } else {
       setSignUpError(false);
+      setSignUpErrorMessage(false);
     }
   };
 
@@ -212,6 +214,9 @@ const SignUp = () => {
                 <span>{strings.signUp.errorMessage.passwordMatch}</span>
               )}
             </div>
+            {signUpErrorMessage && (
+              <span>{strings.signUp.errorMessage.message}</span>
+            )}
             <Button
               buttonType="submit"
               className="signUpButton"
