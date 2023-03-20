@@ -3,14 +3,16 @@ import LocalizedStrings from "react-localization";
 const strings = new LocalizedStrings({
   en: {
     login: {
-      title: "Login",
+      title: "Spire Coffee",
+      button: "Login",
       description: `Got that craving while studying? Can’t find a spot to do your work? 
       We’ve been there but have you BeanHere? Join now and discover new cafes.`,
       text: `Don't have an account? `,
-      link: "Sign up.",
+      link: "Sign up",
       helmet: "Login",
       usernameLabel: "Username",
       passwordLabel: "Password",
+      errorMessage: "Username or password is incorrect",
     },
     signUp: {
       title: "Create an account",
