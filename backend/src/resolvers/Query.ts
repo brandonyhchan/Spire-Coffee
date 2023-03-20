@@ -1,15 +1,16 @@
 import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
-const APP_SECRET = "SpireCawfee";
-
 export async function signUp(parent, args, context, info) {
   try {
     const password = await bcrypt.hash(args.password, 10);
     const user = await context.prisma.user.create({
       data: { ...args, password },
     });
-    const token = jwt.sign({ userId: user.id }, APP_SECRET);
+    const token = jwt.sign(
+      { userId: user.id },
+      <jwt.Secret>process.env.APP_SECRET
+    );
     return {
       token,
       user,
@@ -30,7 +31,10 @@ export async function login(parent, args, context, info) {
   if (!valid) {
     throw new Error("Invalid password");
   }
-  const token = jwt.sign({ userId: user.id }, APP_SECRET);
+  const token = jwt.sign(
+    { userId: user.id },
+    <jwt.Secret>process.env.APP_SECRET
+  );
   return {
     token,
     user,
