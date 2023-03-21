@@ -10,7 +10,7 @@ const Account = () => {
     <div style={{ position: "relative" }}>
       <Helmet title="Account"></Helmet>
       <NavBar></NavBar>
-      <div style={{ height: "1000px" }}>
+      <div style={{ height: "100vh" }}>
         <p>Account Page</p>
       </div>
       <Footer></Footer>

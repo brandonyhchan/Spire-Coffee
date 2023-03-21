@@ -16,10 +16,10 @@ export const MobileFooter = () => {
   return (
     <div className={classNames(styles.mobileFooter)}>
       <BottomNavigation value={value} onChange = {(event, newValue) => {setValue(newValue)}}>
-        <BottomNavigationAction component={Link} to="/home" value={"/home"} label="Favorites" icon={<FavoriteIcon />}></BottomNavigationAction>
-        <BottomNavigationAction component={Link} to="/addCafe" value={"/addCafe"} label="Add" icon={<AddIcon />}></BottomNavigationAction>
-        <BottomNavigationAction component={Link} to="/explore" value={"/explore"} label="Explore" icon={<ExploreIcon />}></BottomNavigationAction>
-        <BottomNavigationAction component={Link} to="/account" value={"/account"} label="Account" icon={<AccountIcon />}></BottomNavigationAction>
+        <BottomNavigationAction component={Link} to="/home" value={"/home"} icon={<FavoriteIcon />}></BottomNavigationAction>
+        <BottomNavigationAction component={Link} to="/addCafe" value={"/addCafe"} icon={<AddIcon />}></BottomNavigationAction>
+        <BottomNavigationAction component={Link} to="/explore" value={"/explore"} icon={<ExploreIcon />}></BottomNavigationAction>
+        <BottomNavigationAction component={Link} to="/account" value={"/account"} icon={<AccountIcon />}></BottomNavigationAction>
       </BottomNavigation>
     </div>
   )

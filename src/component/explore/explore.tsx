@@ -10,7 +10,7 @@ const Explore = () => {
     <div style={{ position: "relative" }}>
       <Helmet title="Explore"></Helmet>
       <NavBar></NavBar>
-      <div style={{ height: "1000px" }}>
+      <div style={{ height: "100vh" }}>
         <p>Explore Page</p>
       </div>
       <Footer></Footer>
