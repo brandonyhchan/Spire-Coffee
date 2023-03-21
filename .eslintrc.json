@@ -23,6 +23,7 @@
         "@typescript-eslint"
     ],
     "rules": {
-        "linebreak-style": 1
+        "linebreak-style": 1,
+        "no-console": 1
     }
 }

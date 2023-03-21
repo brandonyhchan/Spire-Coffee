@@ -14,5 +14,6 @@ const server = new ApolloServer({
     context,
 });
 server.listen().then(({ url }) => {
+    // eslint-disable-next-line no-console
     console.log(`Server is running on ${url}`);
 });
