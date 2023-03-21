@@ -50,15 +50,8 @@
   margin-bottom: 0;
 }
 
-// .active {
-//   background-color: pink;
-//   border-bottom: 3px solid var(--secondary);
-//   padding-bottom: 6px;
-// }
-
-.underline {
-  background: blue;
-  border-radius: .25em;
-  height: 5px;
-  mix-blend-mode: initial;
+.active {
+  background-color: rgb(0, 0, 0, 0.87);
+  border-bottom: 3px solid var(--secondary);
+  padding-bottom: 6px;
 }
