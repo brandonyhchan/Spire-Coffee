@@ -1,7 +1,5 @@
-$_xlarge_font_size: 20px;
-$_large_font_size: 18px;
-$_medium_font_size: 16px;
-$_small_font_size: 14px;
+$_large_font_size: 20px;
+$_medium_font_size: 18px;
 
 *,
 *:focus{outline: none}
@@ -10,17 +8,23 @@ $_small_font_size: 14px;
   padding: 100px;
 }
 
-.header {
+.header,
+.loginContainer,
+.loginForm,
+.login,
+.logo,
+.formItem {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
 
+.header {
+  padding-bottom: 0px;
+}
+
 .logo {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 160px;
 }
 
@@ -28,13 +32,6 @@ $_small_font_size: 14px;
   width: 100%;
   height: 100%;
   clip-path: circle(80px);
-}
-
-.loginContainer {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
 }
 
 .login {
@@ -52,24 +49,13 @@ h4 {
 }
 
 .loginForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 15px;
-  padding: 50px;
-  padding-bottom: 25px;
+  padding: 40px 20px 40px 20px;
 }
 
 .formItem {
   position: relative;
-  display: flex;
-  flex-direction: column;
   align-items: flex-start;
-}
-
-.formItem span {
-  margin-left: 5px;
-  padding-top: 5px;
 }
 
 .formItem input {
@@ -81,7 +67,7 @@ h4 {
   border-radius: 10px;
   font-family: 'Figtree-Regular';
   border-width: 3px;
-  font-size: $_large_font_size;
+  font-size: $_medium_font_size;
 }
 
 .formItem input:focus {
@@ -97,7 +83,15 @@ span,
 .errorMessage {
   color: var(--warning);
   font-family: 'Figtree-Regular';
-  font-size: $_large_font_size;
+  font-size: $_medium_font_size;
+  text-align: flex-start;
+  margin-left: 5px;
+  padding-top: 5px;
+}
+
+.errorMessage {
+  padding-bottom: 20px;
+  padding-top: 0px;
 }
 
 // https://codepen.io/kod101/pen/gdjPaW
@@ -118,11 +112,12 @@ span,
 
 .formItem input:focus + label {
   color: var(--secondary);
-  font-size: $_large_font_size;
+  font-size: $_medium_font_size;
 }
 
 p {
-  font-size: $_large_font_size;
+  font-size: $_medium_font_size;
+  padding-top: 20px;
 }
 
 p > a {
@@ -151,7 +146,7 @@ a:hover {
   }
 
   .header {
-    padding: 0px;
+    padding: 0 20px 0 20px;
   }
 
   .formItem {
@@ -170,7 +165,7 @@ a:hover {
   }
 
   .header {
-    padding-bottom: 40px;
+    padding: 0 20px 0 20px;
   }
  
   .formItem input {
@@ -179,7 +174,7 @@ a:hover {
   }
 
   p {
-    font-size: $_large_font_size;
+    font-size: $_medium_font_size;
   }
 }
 
@@ -190,7 +185,7 @@ a:hover {
   }
 
   .header {
-    padding-bottom: 40px;
+    padding: 0 70px 25px 70px;
   }
  
   .formItem input {
@@ -199,7 +194,7 @@ a:hover {
   }
 
   p {
-    font-size: $_large_font_size;
+    font-size: $_medium_font_size;
   }
 }
 
@@ -223,7 +218,7 @@ a:hover {
   }
 
   p {
-    font-size: $_large_font_size;
+    font-size: $_medium_font_size;
   }
 }
 
@@ -244,6 +239,6 @@ a:hover {
   }
 
   p {
-    font-size: $_xlarge_font_size;
+    font-size: $_large_font_size;
   }
 }

@@ -64,12 +64,12 @@ const Login = () => {
       switch (name) {
         case "username":
           if (!value) {
-            stateObj[name] = "Username is required";
+            stateObj[name] = strings.login.errorMessage.username;
           }
           break;
         case "password":
           if (!value) {
-            stateObj[name] = "Password is required";
+            stateObj[name] = strings.login.errorMessage.password;
           } else {
             stateObj["password"] = loginInfo.password
               ? ""
@@ -125,23 +125,23 @@ const Login = () => {
                 <label>{strings.login.passwordLabel}</label>
                 {errorMessage.password && <span>{errorMessage.password}</span>}
               </div>
-              {loginError && (
-                <span className={classNames(styles.errorMessage)}>
-                  {strings.login.errorMessage}
-                </span>
-              )}
-              <Button
-                type="secondary"
-                buttonType="submit"
-                className={styles.secondary}
-                text={strings.login.button}
-                onClick={handleLogin}
-              />
-              <p>
-                {strings.login.text}
-                <Link to="/signUp">{strings.login.link}</Link>
-              </p>
             </form>
+            {loginError && (
+              <span className={classNames(styles.errorMessage)}>
+                {strings.login.errorMessage.invalid}
+              </span>
+            )}
+            <Button
+              type="secondary"
+              buttonType="submit"
+              className={styles.secondary}
+              text={strings.login.button}
+              onClick={handleLogin}
+            />
+            <p>
+              {strings.login.text}
+              <Link to="/signUp">{strings.login.link}</Link>
+            </p>
           </div>
         </div>
       </div>

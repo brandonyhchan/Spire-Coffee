@@ -12,7 +12,11 @@ const strings = new LocalizedStrings({
       helmet: "Login",
       usernameLabel: "Username",
       passwordLabel: "Password",
-      errorMessage: "Username or password is incorrect",
+      errorMessage: {
+        invalid: "Username or password is incorrect",
+        username: "Username is required",
+        password: "Password is required",
+      },
     },
     signUp: {
       title: "Create an account",
