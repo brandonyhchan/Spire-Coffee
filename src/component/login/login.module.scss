@@ -1,5 +1,7 @@
 $_large_font_size: 20px;
 $_medium_font_size: 18px;
+$_tablet_padding: 50px;
+$_desktop_padding: 60px;
 
 *,
 *:focus{outline: none}
@@ -42,6 +44,7 @@ $_medium_font_size: 18px;
   width: 500px;
   min-width: 300px;
   background-color: white;
+  gap: 25px;
 }
 
 h4 {
@@ -89,11 +92,6 @@ span,
   padding-top: 5px;
 }
 
-.errorMessage {
-  padding-bottom: 20px;
-  padding-top: 0px;
-}
-
 // https://codepen.io/kod101/pen/gdjPaW
 .formItem input:focus + label,
 .formItem input:valid + label {
@@ -117,7 +115,7 @@ span,
 
 p {
   font-size: $_medium_font_size;
-  padding-top: 20px;
+  margin: 0px;
 }
 
 p > a {
@@ -137,8 +135,12 @@ a:hover {
     width: 100%;
   }
 
+  .header {
+    padding: 20px;
+  }
+
   .container {
-    padding: 0px;
+    padding: 0px 0px 25px 0px;
   }
 
   .loginForm {
@@ -146,7 +148,7 @@ a:hover {
   }
 
   .header {
-    padding: 0 20px 0 20px;
+    padding: 40px 20px 20px 20px;
   }
 
   .formItem {
@@ -158,11 +160,16 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 426px) and (max-width: 768px) {
+@media only screen and (min-width: 426px) and (max-width: 767px) {
   .login {
     box-shadow: none;
     width: 100%;
   }
+
+  .loginForm {
+    padding: 50px 0px 0px 0px;
+  }
+
 
   .header {
     padding: 0 20px 0 20px;
@@ -178,10 +185,24 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 769px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
   .login {
     width: 520px;
     padding: 25px;
+    padding-top: $_tablet_padding;
+    padding-bottom: $_tablet_padding;
+  }
+
+  .loginContainer {
+    padding: 0px;
+  }
+
+  .loginForm {
+    padding: 0px 0px 0px 0px;
+  }
+
+  .login {
+    gap: 20px;
   }
 
   .header {
@@ -203,6 +224,8 @@ a:hover {
   .login {
     padding: 40px;
     width: 550px;
+    padding-top: $_tablet_padding;
+    padding-bottom: $_tablet_padding;
   }
 
   .header {
@@ -210,7 +233,11 @@ a:hover {
   }
 
   .loginContainer {
-    padding-top: 0px;
+    padding: 0px;
+  }
+
+  .loginForm {
+    padding: 0px 0px 0px 0px;
   }
 
   .container {
@@ -226,10 +253,19 @@ a:hover {
   .login {
     padding: 40px;
     width: 550px;
+    padding-bottom: $_desktop_padding;
   }
 
   .header {
     padding-right: 100px;
+  }
+
+  .loginContainer {
+    padding: 0px;
+  }
+
+  .loginForm {
+    padding: 30px 0px 0px 0px;
   }
 
   .container {
