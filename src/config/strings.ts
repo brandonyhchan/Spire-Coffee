@@ -30,12 +30,13 @@ const strings = new LocalizedStrings({
       verifyPasswordLabel: "Confirm Password",
       errorMessage: {
         username:
-          "Username must be between 5-15 characters, only alphanumeric and _ are allowed",
+          "Length must be 5-15 characters, letters and _ allowed",
         firstName: "First name is required",
         lastName: "Last name is required",
         email: "Please enter a valid email address",
         password:
-          "Password must be 8-20 characters with 1 uppercase, 1 number, 1 special character",
+          "Length must be 8-20",
+        passwordChar: "At least 1 uppercase, 1 number, 1 special character required",
         confPassword: "Please re-enter your password",
         passwordMatch: "Passwords do not match",
         message: "Please fill in all required fields",

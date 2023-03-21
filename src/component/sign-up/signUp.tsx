@@ -194,7 +194,10 @@ const SignUp = () => {
               />
               <label>{strings.signUp.passwordLabel}</label>
               {!passwordIsValid ? null : (
-                <span>{strings.signUp.errorMessage.password}</span>
+                <>
+                  <span>{strings.signUp.errorMessage.password}</span>
+                  <span>{strings.signUp.errorMessage.passwordChar}</span>
+                </>
               )}
             </div>
             <div className={classNames(styles.formItem)}>

@@ -37,7 +37,6 @@ $_small_font_size: 14px;
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start !important; // this is being overrided by align-items: center in .App
 }
 
 .formItem input {
@@ -92,7 +91,7 @@ $_small_font_size: 14px;
 }
 
 /* Mobile view */
-@media only screen and (min-width: 320px) and (max-width: 425px) {
+@media only screen and (min-width: 320px) and (max-width: 374px) {
   .signUpContainer {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -107,8 +106,22 @@ $_small_font_size: 14px;
   }
 }
 
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  .signUpContainer {
+    padding-top: 0px;
+    padding-bottom: 0px;
+  }
 
-@media only screen and (min-width: 426px) and (max-width: 600px) {
+  .signUp {
+    box-shadow: none;
+  }
+
+  .formItem input {
+    width: 300px;
+  }
+}
+
+@media only screen and (min-width: 425px) and (max-width: 767px) {
   .signUpContainer {
     padding-top: 0px;
     padding-bottom: 0px;
@@ -120,31 +133,27 @@ $_small_font_size: 14px;
   }
 
   .formItem input {
-    width: 420px;
+    width: 350px;
   }
 }
 
-@media only screen and (min-width: 601px) and (max-width: 768px) {
+@media only screen and (min-width: 768px) and (max-width: 900px) {
   .signUpContainer {
-    padding-top: 0px;
-    padding-bottom: 0px;
+    padding:0px;
   }
 
   .signUp {
-    box-shadow: none;
-    padding: 30px;
+    padding: 0px;
   }
 
   .formItem input {
-    width: 480px;
+    width: 450px;
   }
 }
 
-
-@media only screen and (min-width: 769px) and (max-width: 1023px) {
+@media only screen and (min-width: 901px) and (max-width: 1023px) {
   .signUpContainer {
-    padding-top: 50px;
-    padding-bottom: 20px;
+    padding:0px;
   }
 
   .signUp {
