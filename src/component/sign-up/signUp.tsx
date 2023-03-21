@@ -218,7 +218,9 @@ const SignUp = () => {
               )}
             </div>
             {signUpErrorMessage && (
-              <span>{strings.signUp.errorMessage.message}</span>
+              <span className={classNames(styles.errorMessage)}>
+                {strings.signUp.errorMessage.message}
+              </span>
             )}
             <Button
               buttonType="submit"

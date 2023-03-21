@@ -53,7 +53,6 @@ h4 {
 
 .loginForm {
   gap: 15px;
-  padding: 40px 20px 40px 20px;
 }
 
 .formItem {
@@ -82,14 +81,18 @@ h4 {
 }
 
 .formItem span, 
-span,
-.errorMessage {
+span {
   color: var(--warning);
   font-family: 'Figtree-Regular';
   font-size: $_medium_font_size;
   text-align: flex-start;
   margin-left: 5px;
   padding-top: 5px;
+}
+
+.errorMessage {
+  font-size: $_medium_font_size;
+  text-align: center;
 }
 
 // https://codepen.io/kod101/pen/gdjPaW
@@ -143,10 +146,6 @@ a:hover {
     padding: 0px 0px 25px 0px;
   }
 
-  .loginForm {
-    padding: 0px;
-  }
-
   .header {
     padding: 40px 20px 20px 20px;
   }
@@ -167,7 +166,7 @@ a:hover {
   }
 
   .loginForm {
-    padding: 50px 0px 0px 0px;
+    padding-top: $_tablet_padding;
   }
 
 
@@ -195,10 +194,6 @@ a:hover {
 
   .loginContainer {
     padding: 0px;
-  }
-
-  .loginForm {
-    padding: 0px 0px 0px 0px;
   }
 
   .login {
@@ -236,10 +231,6 @@ a:hover {
     padding: 0px;
   }
 
-  .loginForm {
-    padding: 0px 0px 0px 0px;
-  }
-
   .container {
     padding: 40px;
   }
@@ -265,8 +256,9 @@ a:hover {
   }
 
   .loginForm {
-    padding: 30px 0px 0px 0px;
+    padding-top: $_desktop_padding;
   }
+
 
   .container {
     display: flex;

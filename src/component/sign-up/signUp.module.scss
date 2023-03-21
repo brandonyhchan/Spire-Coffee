@@ -1,6 +1,6 @@
 $_large_font_size: 16px;
-$_medium_font_size: 15px;
-$_small_font_size: 14px;
+$_tablet_padding: 40px;
+$_desktop_padding: 60px;
 
 *,
 *:focus{outline: none}
@@ -13,6 +13,7 @@ $_small_font_size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding-top: $_desktop_padding;
 }
 
 .signUp {
@@ -21,14 +22,13 @@ $_small_font_size: 14px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   padding: 10px;
   padding-bottom: 50px;
-  width: 650px;
 }
 
 .signUpForm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 15px;
+  gap: 25px;
   padding-top: 40px;
   padding-bottom: 10px;
 }
@@ -82,6 +82,11 @@ $_small_font_size: 14px;
   color: var(--primary);
 }
 
+.errorMessage {
+  text-align: center;
+  font-size: $_large_font_size;
+}
+
 .formItem input:focus::placeholder {
   color: transparent;
 }
@@ -94,14 +99,13 @@ $_small_font_size: 14px;
 @media only screen and (min-width: 320px) and (max-width: 374px) {
   .signUpContainer {
     padding-top: 0px;
-    padding-bottom: 0px;
   }
 
   .signUp {
     box-shadow: none;
   }
 
-  .formItem input {
+  .formItem input, span {
     width: 245px;
   }
 }
@@ -109,58 +113,60 @@ $_small_font_size: 14px;
 @media only screen and (min-width: 375px) and (max-width: 424px) {
   .signUpContainer {
     padding-top: 0px;
-    padding-bottom: 0px;
   }
 
   .signUp {
     box-shadow: none;
   }
 
-  .formItem input {
-    width: 300px;
+  .formItem input, span {
+    width: 270px;
   }
 }
 
 @media only screen and (min-width: 425px) and (max-width: 767px) {
   .signUpContainer {
     padding-top: 0px;
-    padding-bottom: 0px;
   }
 
   .signUp {
     box-shadow: none;
-    padding: 30px;
+    padding-bottom: $_tablet_padding;
   }
 
-  .formItem input {
+  .formItem input, span {
     width: 350px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 900px) {
-  .signUpContainer {
-    padding:0px;
+  .signUp {
+    padding: 50px 80px;
   }
 
-  .signUp {
+  .signUpForm {
     padding: 0px;
   }
 
-  .formItem input {
+  .signUpContainer {
+    padding-bottom: $_desktop_padding;
+  }
+
+  .formItem input, span {
     width: 450px;
   }
 }
 
 @media only screen and (min-width: 901px) and (max-width: 1023px) {
-  .signUpContainer {
-    padding:0px;
-  }
-
   .signUp {
-    padding: 50px;
+   padding: 50px 80px;
   }
 
-  .formItem input {
+  .signUpForm {
+    padding: 0px;
+  }
+  
+  .formItem input, span {
     width: 480px;
   }
 }
@@ -179,7 +185,7 @@ $_small_font_size: 14px;
     padding-bottom: 45px;
   }
 
-  .formItem input {
+  .formItem input, span {
     width: 500px;
   }
 }
