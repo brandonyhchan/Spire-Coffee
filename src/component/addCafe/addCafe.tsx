@@ -10,7 +10,7 @@ const AddCafe = () => {
     <div style={{ position: "relative" }}>
       <Helmet title="AddCafe"></Helmet>
       <NavBar></NavBar>
-      <div style={{ height: "100vh" }}>
+      <div style={{ minHeight: "100vh" }}>
         <p>Add Cafe Page</p>
       </div>
       <Footer></Footer>

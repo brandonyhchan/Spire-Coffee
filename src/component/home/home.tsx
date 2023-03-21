@@ -9,7 +9,7 @@ const Home = () => {
     <div style={{ position: "relative" }}>
       <Helmet title="Home"></Helmet>
       <NavBar></NavBar>
-      <div style={{ height: "100vh" }}>
+      <div style={{ minHeight: "100vh" }}>
         <p>Welcome User</p>
       </div>
       <WebFooter></WebFooter>

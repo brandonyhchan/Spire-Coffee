@@ -10,7 +10,7 @@ const Faq = () => {
     <div style={{ position: "relative" }}>
       <Helmet title="Faq"></Helmet>
       <NavBar></NavBar>
-      <div style={{ height: "100vh" }}>
+      <div style={{ minHeight: "100vh" }}>
         <p>Faq Page</p>
       </div>
       <WebFooter></WebFooter>

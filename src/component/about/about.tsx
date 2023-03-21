@@ -11,7 +11,7 @@ const About = () => {
     <div style={{ position: "relative" }}>
       <Helmet title="About"></Helmet>
       <NavBar></NavBar>
-      <div style={{ height: "100vh" }}>
+      <div style={{ minHeight: "100vh" }}>
         <p>About us Page</p>
       </div>
       <Footer></Footer>
