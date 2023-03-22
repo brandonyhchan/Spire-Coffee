@@ -1,0 +1,57 @@
+.navbar {
+  height: 70px;
+  width: 100%;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 2;
+
+  @media (max-width: 600px) {
+    display: none;
+  }
+
+  p {
+    align-self: center;
+    margin-bottom: 0;
+  }
+
+  p > a {
+    text-decoration: none;
+    color: white;
+    padding: 10px;
+    &:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      padding-bottom: 6px;
+    }
+  }
+}
+
+.padding {
+  min-height: 70px;
+}
+
+.toolBar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: var(--primary);
+}
+
+.logo {
+  display: flex;
+  flex-direction: row;
+}
+
+.name {
+  align-self: center;
+}
+
+.link {
+  margin-bottom: 0;
+}
+
+.active {
+  background-color: rgb(0, 0, 0, 0.87);
+  border-bottom: 3px solid var(--secondary);
+  padding-bottom: 6px;
+}

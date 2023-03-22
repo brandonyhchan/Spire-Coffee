@@ -1,0 +1,13 @@
+.mobileFooter {
+  display: none;
+
+  @media (max-width: 600px) {
+    display: block;
+    width: 100%;
+    z-index: 100;
+    position: sticky;
+    bottom: 0;
+    left: 0;
+    flex-shrink: 0;
+  }
+}
