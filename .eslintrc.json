@@ -23,7 +23,9 @@
         "@typescript-eslint"
     ],
     "rules": {
+        "prettier/prettier": ["error"],
         "linebreak-style": 1,
-        "no-console": 1
+        "no-console": 1,
+        "max-len": [2, 120]
     }
 }
