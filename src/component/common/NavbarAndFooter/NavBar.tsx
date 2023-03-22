@@ -1,10 +1,5 @@
-import {
-  AppBar,
-  Toolbar,
-  IconButton,
-  Typography,
-  Stack,
-} from "@mui/material";
+import React from "react";
+import { AppBar, Toolbar, IconButton, Typography, Stack } from "@mui/material";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import classNames from "classnames";
 import "../../../global.scss";
@@ -17,7 +12,6 @@ const active: React.CSSProperties = {
 };
 
 export const navbar = () => {
-
   return (
     <div className={classNames(styles.navbar)}>
       <AppBar position="static" elevation={0}>
@@ -42,10 +36,14 @@ export const navbar = () => {
           </div>
 
           <div className={classNames(styles.navLinks)}>
-            <Stack direction="row" spacing={1} className={classNames(styles.link, styles.underline)}>
+            <Stack
+              direction="row"
+              spacing={1}
+              className={classNames(styles.link, styles.underline)}
+            >
               <p className={classNames(styles.link)}>
                 <NavLink
-                  style={({ isActive }) => isActive ? active : {} }
+                  style={({ isActive }) => (isActive ? active : {})}
                   to="/addCafe"
                   color="inherit"
                 >
@@ -54,7 +52,7 @@ export const navbar = () => {
               </p>
               <p className={classNames(styles.link)}>
                 <NavLink
-                  style={({ isActive }) => isActive ? active : {} }
+                  style={({ isActive }) => (isActive ? active : {})}
                   to="/explore"
                   color="inherit"
                 >
@@ -63,7 +61,7 @@ export const navbar = () => {
               </p>
               <p className={classNames(styles.link)}>
                 <NavLink
-                  style={({ isActive }) => isActive ? active : {} }
+                  style={({ isActive }) => (isActive ? active : {})}
                   to="/account"
                   color="inherit"
                 >
@@ -71,11 +69,7 @@ export const navbar = () => {
                 </NavLink>
               </p>
               <p className={classNames(styles.link)}>
-                <NavLink
-                  to="/"
-                >
-                  Sign out
-                </NavLink>
+                <NavLink to="/">Sign out</NavLink>
               </p>
             </Stack>
           </div>

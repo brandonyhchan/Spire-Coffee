@@ -1,6 +1,5 @@
 import React from "react";
-import { Route, Routes, BrowserRouter } from "react-router-dom";
-import { Helmet } from "react-helmet";
+import { Route, Routes } from "react-router-dom";
 
 import About from "./component/about/about";
 import Faq from "./component/faq/faq";

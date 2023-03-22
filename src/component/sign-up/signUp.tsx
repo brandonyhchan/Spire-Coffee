@@ -41,7 +41,7 @@ const SignUp = () => {
     onCompleted: (data) => {
       localStorage.setItem("authToken", data.signup.token);
       alert("Successfully signed up");
-      // navigate("/") navigate to another page here
+      navigate("/explore");
     },
   });
 
