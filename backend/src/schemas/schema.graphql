@@ -1,0 +1,14 @@
+#import './AuthPayload/authpayload.graphql'
+#import './User/user.graphql'
+
+type Query {
+  allUsers: [User!]!
+  signUp(
+    userName: String!
+    email: String!
+    firstName: String!
+    lastName: String!
+    password: String!
+  ): AuthPayload
+  login(userName: String!, password: String!): AuthPayload
+}

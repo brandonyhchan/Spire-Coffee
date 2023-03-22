@@ -9,6 +9,34 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 import "bootstrap-icons/font/bootstrap-icons.css";
 
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from "@apollo/client";
+import { setContext } from "@apollo/client/link/context";
+
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("authToken");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
+const client = new ApolloClient({
+  link: authLink.concat(
+    createHttpLink({
+      uri: "http://localhost:4000",
+      credentials: "same-origin",
+    })
+  ),
+  cache: new InMemoryCache(),
+});
+
 const container = document.getElementById("root");
 
 if (container === null) throw new Error("Root container missing in index.html");
@@ -16,13 +44,15 @@ const root = createRoot(container);
 
 const render = (Component: FunctionComponent) => {
   root.render(
-    <React.StrictMode>
-      <HelmetProvider>
-        <Router>
-          <Component />
-        </Router>
-      </HelmetProvider>
-    </React.StrictMode>
+    <ApolloProvider client={client}>
+      <React.StrictMode>
+        <HelmetProvider>
+          <Router>
+            <Component />
+          </Router>
+        </HelmetProvider>
+      </React.StrictMode>
+    </ApolloProvider>
   );
 };
 

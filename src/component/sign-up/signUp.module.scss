@@ -1,0 +1,204 @@
+$_large_font_size: 16px;
+$_tablet_padding: 40px;
+$_desktop_padding: 60px;
+
+*,
+*:focus{outline: none}
+
+.heading {
+  color: var(--primary);
+}
+
+.signUpContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: $_desktop_padding;
+}
+
+.signUp {
+  border-color: grey;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
+  padding: 10px;
+  padding-bottom: 50px;
+}
+
+.signUpForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 25px;
+  padding-top: 40px;
+  padding-bottom: 10px;
+}
+
+.formItem {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+}
+
+.formItem input {
+  width: 400px;
+  background: transparent;
+  border: solid 2px #ccc;
+  transition: all .3s ease;
+  padding: 20px;
+  border-radius: 10px;
+  font-family: 'Figtree-Regular';
+  font-size: $_large_font_size;
+  border-width: 3px;
+}
+
+.formItem input:focus {
+  border-color: var(--primary);
+}
+
+.formItem label {
+  display: none;
+}
+
+.formItem span, span {
+  color: var(--warning);
+  font-family: 'Figtree-Regular';
+  font-size: $_large_font_size;
+  margin-left: 5px;
+  padding-top: 5px;
+  text-align: start;
+}
+
+// https://codepen.io/kod101/pen/gdjPaW
+.formItem input:focus + label,
+.formItem input:valid + label {
+  display: block;
+  position: absolute;
+  font-size: $_large_font_size;
+  font-weight: bold;
+  top: -8px;
+  left: 10px;
+  font-family: 'Figtree-Regular';
+  background: #fff;
+  color: var(--primary);
+}
+
+.errorMessage {
+  text-align: center;
+  font-size: $_large_font_size;
+}
+
+.formItem input:focus::placeholder {
+  color: transparent;
+}
+
+.formItem input:focus + label {
+  color: var(--primary);
+}
+
+/* Mobile view */
+@media only screen and (min-width: 320px) and (max-width: 374px) {
+
+  .signUpContainer,
+  .signUpForm {
+    padding-top: 0px;
+    gap: 20px;
+  }
+
+  .signUp {
+    box-shadow: none;
+  }
+
+  .formItem input, span {
+    width: 245px;
+  }
+
+  .formItem input {
+    padding: 15px;
+  }
+}
+
+@media only screen and (min-width: 375px) and (max-width: 424px) {
+  .signUpContainer,
+  .signUpForm {
+    padding-top: 0px;
+    gap: 15px;
+  }
+
+  .signUp {
+    box-shadow: none;
+  }
+
+  .formItem input, span {
+    width: 270px;
+  }
+
+  .formItem input {
+    padding: 15px;
+  }
+}
+
+@media only screen and (min-width: 425px) and (max-width: 767px) {
+  .signUpContainer {
+    padding-top: 0px;
+  }
+
+  .signUp {
+    box-shadow: none;
+    padding-bottom: $_tablet_padding;
+  }
+
+  .formItem input, span {
+    width: 350px;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 900px) {
+  .signUp {
+    padding: 50px 80px;
+  }
+
+  .signUpForm {
+    padding: 0px;
+  }
+
+  .signUpContainer {
+    padding-bottom: $_desktop_padding;
+  }
+
+  .formItem input, span {
+    width: 450px;
+  }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1023px) {
+  .signUp {
+   padding: 50px 80px;
+  }
+
+  .signUpForm {
+    padding: 0px;
+  }
+  
+  .formItem input, span {
+    width: 480px;
+  }
+}
+
+
+/*Destop view */
+@media only screen and (min-width: 1024px) {
+  .signUpContainer {
+    padding-top: 50px;
+    padding-bottom: 30px;
+  }
+
+  .signUp {
+    padding: 20px;
+    width: 750px;
+    padding-bottom: 45px;
+  }
+
+  .formItem input {
+    width: 500px;
+  }
+}

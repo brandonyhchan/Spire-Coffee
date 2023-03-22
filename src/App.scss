@@ -1,7 +1,17 @@
+@font-face {
+    font-family: 'Figtree-Regular';
+    src: url('assets/fonts/Figtree-Regular.ttf');
+  }
+  
+@font-face { 
+  font-family: 'Figtree-Bold';
+  src: url('assets/fonts/Figtree-Bold.ttf');
+}
+
 .App {
-    text-align: center;
-    background-color: white;
-    color: blue;
-    font-size: 18px;
-    min-height: 100vh;
+  text-align: center;
+  background-color: white;
+  color: var(--secondary);
+  font-size: 18px;
+  max-height: 100vh;
 }

@@ -1,6 +1,17 @@
+@font-face {
+  font-family: 'Figtree-Regular';
+  src: url('assets/fonts/Figtree-Regular.ttf');
+}
+
+@font-face { 
+  font-family: 'Figtree-Bold';
+  src: url('assets/fonts/Figtree-Bold.ttf');
+}
+
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family:'Figtree-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
