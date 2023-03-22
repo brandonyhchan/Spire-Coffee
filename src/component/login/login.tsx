@@ -107,11 +107,7 @@ const Login = () => {
                   onBlur={validateLoginInput}
                 />
                 <label>{strings.login.usernameLabel}</label>
-                {errorMessage.username && (
-                  <span className={classNames(styles.errorMessage)}>
-                    {errorMessage.username}
-                  </span>
-                )}
+                {errorMessage.username && <span>{errorMessage.username}</span>}
               </div>
               <div className={classNames(styles.formItem)}>
                 <input
