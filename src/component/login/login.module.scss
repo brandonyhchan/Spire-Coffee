@@ -185,7 +185,44 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 1023px) {
+@media only screen and (min-width: 768px) and (max-width: 911px) {
+  .login {
+    width: 520px;
+    padding: 25px;
+    padding-top: $_tablet_padding;
+    padding-bottom: $_tablet_padding;
+  }
+
+  .loginContainer {
+    padding: 0px;
+  }
+
+  .loginForm {
+    padding: 0px 0px 0px 0px;
+  }
+
+  .login {
+    gap: 20px;
+  }
+
+  .header {
+    padding: 0 70px 25px 70px;
+  }
+ 
+  .formItem {
+    align-items: center;
+  }
+
+  .formItem span {
+    margin-left: 10px;
+  }
+
+  p {
+    font-size: $_medium_font_size;
+  }
+}
+
+@media only screen and (min-width: 912px) and (max-width: 1023px) {
   .login {
     width: 520px;
     padding: 25px;
