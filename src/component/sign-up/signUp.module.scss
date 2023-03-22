@@ -97,8 +97,11 @@ $_desktop_padding: 60px;
 
 /* Mobile view */
 @media only screen and (min-width: 320px) and (max-width: 374px) {
-  .signUpContainer {
+
+  .signUpContainer,
+  .signUpForm {
     padding-top: 0px;
+    gap: 20px;
   }
 
   .signUp {
@@ -108,11 +111,17 @@ $_desktop_padding: 60px;
   .formItem input, span {
     width: 245px;
   }
+
+  .formItem input {
+    padding: 15px;
+  }
 }
 
 @media only screen and (min-width: 375px) and (max-width: 424px) {
-  .signUpContainer {
+  .signUpContainer,
+  .signUpForm {
     padding-top: 0px;
+    gap: 15px;
   }
 
   .signUp {
@@ -121,6 +130,10 @@ $_desktop_padding: 60px;
 
   .formItem input, span {
     width: 270px;
+  }
+
+  .formItem input {
+    padding: 15px;
   }
 }
 
