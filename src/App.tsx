@@ -9,13 +9,15 @@ import HelpUs from "./component/helpUs/helpUs";
 import AddCafe from "./component/addCafe/addCafe";
 import Explore from "./component/explore/explore";
 import Account from "./component/account/account";
+import { Route, Routes } from "react-router-dom";
 import "./App.scss";
+import Body from "./component/Body";
+import Login from "./component/login/login";
 
 function App() {
   return (
     <div className="App">
-      <Helmet title="React Starter" />
-      <BrowserRouter>
+      <Body>
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/home" element={<Home />} />
@@ -27,7 +29,7 @@ function App() {
           <Route path="/explore" element={<Explore/>} />
 
         </Routes>
-      </BrowserRouter>
+      </Body>
     </div>
   );
 }
