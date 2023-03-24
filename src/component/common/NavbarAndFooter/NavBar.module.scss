@@ -1,3 +1,5 @@
+$_medium_font_size: 18px;
+
 .navbar {
   height: 70px;
   width: 100%;
@@ -44,6 +46,8 @@
 
 .name {
   align-self: center;
+  font-family: 'Figtree-Regular' !important;
+  font-size: $_medium_font_size;
 }
 
 .link {

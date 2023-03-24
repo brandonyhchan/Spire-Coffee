@@ -17,7 +17,7 @@ const WebFooter = () => {
         <div className={classNames(styles.aboutUs)}>
           <h5 className={classNames(styles.aboutUs__about)}>About</h5>
           <p className={classNames(styles.aboutUs__whoAreWe)}>
-            <Link to="/about">Who are we</Link>
+            <Link to="/aboutUs">Who are we</Link>
           </p>
           <p className={classNames(styles.aboutUs__faq)}>
             <Link to="/faq">FAQ</Link>

@@ -4,7 +4,7 @@ import { signUpMutation } from "../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import RegexValidator from "./regexValidator";
-import Button from "../common/Button";
+import Button from "../../component/common/Button";
 import classNames from "classnames";
 import strings from "../../config/strings";
 import styles from "./signUp.module.scss";
@@ -39,7 +39,8 @@ const SignUp = () => {
       console.log("Error in signup"); // change this to require config/strings.ts later
     },
     onCompleted: (data) => {
-      localStorage.setItem("authToken", data.signup.token);
+      localStorage.setItem("authToken", data.signUp.token);
+      setSignUpError(false);
       alert("Successfully signed up");
       navigate("/explore");
     },
@@ -54,7 +55,7 @@ const SignUp = () => {
     });
   };
 
-  const handleSignup = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUp = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (signUpError === false) {
       signUp({
@@ -104,7 +105,7 @@ const SignUp = () => {
           <form
             className={classNames(styles.signUpForm)}
             noValidate
-            onSubmit={handleSignup}
+            onSubmit={handleSignUp}
           >
             <div className={classNames(styles.formItem)}>
               <input

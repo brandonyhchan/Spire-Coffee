@@ -5,7 +5,7 @@ import { loginQuery } from "../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import Logo from "../../assets/images/placeholder-logo.jpg";
-import Button from "../common/Button";
+import Button from "../../component/common/Button";
 import classNames from "classnames";
 import strings from "../../config/strings";
 import styles from "./login.module.scss";
