@@ -26,25 +26,25 @@ export const MobileFooter = () => {
           to="/home"
           value={"/home"}
           icon={<FavoriteIcon />}
-        ></BottomNavigationAction>
+        />
         <BottomNavigationAction
           component={Link}
           to="/addCafe"
           value={"/addCafe"}
           icon={<AddIcon />}
-        ></BottomNavigationAction>
+        />
         <BottomNavigationAction
           component={Link}
           to="/explore"
           value={"/explore"}
           icon={<ExploreIcon />}
-        ></BottomNavigationAction>
+        />
         <BottomNavigationAction
           component={Link}
           to="/account"
           value={"/account"}
           icon={<AccountIcon />}
-        ></BottomNavigationAction>
+        />
       </BottomNavigation>
     </div>
   );

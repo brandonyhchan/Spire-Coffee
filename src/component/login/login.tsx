@@ -34,7 +34,7 @@ const Login = () => {
       localStorage.setItem("authToken", data.login.token);
       setLoginError(false); // need to verify if error message is hidden if user exists in DB
       console.log("User authenticated, logging in ");
-      // navigate("/home");
+      navigate("/explore");
     },
   });
 

@@ -11,7 +11,6 @@ const Body = ({ children = null }: BodyPropsType) => (
   <main
     className={classNames(
       styles.body,
-      "py-3",
       "d-flex",
       "flex-column",
       "align-items-center"
