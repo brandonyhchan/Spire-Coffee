@@ -9,6 +9,10 @@ $_desktop_padding: 60px;
   color: var(--primary);
 }
 
+.signUpTitle {
+  padding-top: $_desktop_padding;
+}
+
 .signUpContainer {
   display: flex;
   justify-content: center;
@@ -16,6 +20,7 @@ $_desktop_padding: 60px;
   padding-top: $_desktop_padding;
   width: 100vw;
 }
+
 
 .signUp {
   border-color: grey;

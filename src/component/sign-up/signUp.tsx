@@ -96,7 +96,9 @@ const SignUp = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
-      <h1 className={classNames(styles.heading)}>{strings.signUp.title}</h1>
+      <div className={classNames(styles.signUpTitle)}>
+        <h1 className={classNames(styles.heading)}>{strings.signUp.title}</h1>
+      </div>
       <div className={classNames(styles.signUpContainer)}>
         <div className={classNames(styles.signUp)}>
           <form
