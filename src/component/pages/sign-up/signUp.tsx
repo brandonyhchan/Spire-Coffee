@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { signUpMutation } from "../../support/graphqlServerApi";
+import { signUpMutation } from "../../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import RegexValidator from "./regexValidator";
-import Button from "../common/Button";
+import Button from "../../common/Button";
+import Footer from "../../common/NavbarAndFooter/WebFooter";
 import classNames from "classnames";
-import strings from "../../config/strings";
+import strings from "../../../config/strings";
 import styles from "./signUp.module.scss";
 
 const SignUp = () => {
@@ -39,7 +40,8 @@ const SignUp = () => {
       console.log("Error in signup"); // change this to require config/strings.ts later
     },
     onCompleted: (data) => {
-      localStorage.setItem("authToken", data.signup.token);
+      localStorage.setItem("authToken", data.signUp.token);
+      setSignUpError(false);
       alert("Successfully signed up");
       navigate("/explore");
     },
@@ -54,7 +56,7 @@ const SignUp = () => {
     });
   };
 
-  const handleSignup = (event: React.FormEvent<HTMLFormElement>) => {
+  const handleSignUp = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (signUpError === false) {
       signUp({
@@ -104,7 +106,7 @@ const SignUp = () => {
           <form
             className={classNames(styles.signUpForm)}
             noValidate
-            onSubmit={handleSignup}
+            onSubmit={handleSignUp}
           >
             <div className={classNames(styles.formItem)}>
               <input
@@ -232,6 +234,7 @@ const SignUp = () => {
             />
           </form>
         </div>
+        {/* <Footer /> This is buggy, need to work on a fix */}
       </div>
     </React.Fragment>
   );

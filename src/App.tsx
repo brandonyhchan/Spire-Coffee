@@ -1,16 +1,16 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import About from "./component/about/about";
-import Faq from "./component/faq/faq";
-import HelpUs from "./component/helpUs/helpUs";
-import AddCafe from "./component/addCafe/addCafe";
-import Explore from "./component/explore/explore";
-import Account from "./component/account/account";
+import AboutUs from "./component/pages/aboutUs/aboutUs";
+import Faq from "./component/pages/faq/faq";
+import HelpUs from "./component/pages/helpUs/helpUs";
+import AddCafe from "./component/pages/addCafe/addCafe";
+import Explore from "./component/pages/explore/explore";
+import Account from "./component/pages/account/account";
 import "./App.scss";
 import Body from "./component/Body";
-import Login from "./component/login/login";
-import SignUp from "./component/sign-up/signUp";
+import Login from "./component/pages/login/login";
+import SignUp from "./component/pages/sign-up/signUp";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="/signUp" element={<SignUp />} />
-          <Route path="/about" element={<About />} />
+          <Route path="/aboutUs" element={<AboutUs />} />
           <Route path="/faq" element={<Faq />} />
           <Route path="/helpUs" element={<HelpUs />} />
           <Route path="/account" element={<Account />} />
