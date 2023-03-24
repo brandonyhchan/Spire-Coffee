@@ -1,16 +1,16 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import AboutUs from "./pages/about/aboutUs";
-import Faq from "./pages/faq/faq";
-import HelpUs from "./pages/helpUs/helpUs";
-import AddCafe from "./pages/addCafe/addCafe";
-import Explore from "./pages/explore/explore";
-import Account from "./pages/account/account";
+import AboutUs from "./component/pages/aboutUs/aboutUs";
+import Faq from "./component/pages/faq/faq";
+import HelpUs from "./component/pages/helpUs/helpUs";
+import AddCafe from "./component/pages/addCafe/addCafe";
+import Explore from "./component/pages/explore/explore";
+import Account from "./component/pages/account/account";
 import "./App.scss";
 import Body from "./component/Body";
-import Login from "./pages/login/login";
-import SignUp from "./pages/sign-up/signUp";
+import Login from "./component/pages/login/login";
+import SignUp from "./component/pages/sign-up/signUp";
 
 function App() {
   return (

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { Link /* useNavigate */ } from "react-router-dom";
-import { loginQuery } from "../../support/graphqlServerApi";
+import { loginQuery } from "../../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
-import Logo from "../../assets/images/placeholder-logo.jpg";
-import Button from "../../component/common/Button";
+import Logo from "../../../assets/images/placeholder-logo.jpg";
+import Button from "../../common/Button";
+import Footer from "../../common/NavbarAndFooter/WebFooter";
 import classNames from "classnames";
-import strings from "../../config/strings";
+import strings from "../../../config/strings";
 import styles from "./login.module.scss";
-import "../../global.scss";
+import "../../../global.scss";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -140,6 +141,7 @@ const Login = () => {
             </p>
           </div>
         </div>
+        {/* <Footer /> This is buggy, need to work on a fix */}
       </div>
     </React.Fragment>
   );

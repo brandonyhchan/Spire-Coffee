@@ -1,21 +1,20 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import NavBar from "../../common/NavbarAndFooter/NavBar";
+import Footer from "../../common/NavbarAndFooter/WebFooter";
+import MobileFooter from "../../common/NavbarAndFooter/MobileFooter";
 import classNames from "classnames";
-import NavBar from "../../component/common/NavbarAndFooter/NavBar";
-import Footer from "../../component/common/NavbarAndFooter/WebFooter";
-import MobileFooter from "../../component/common/NavbarAndFooter/MobileFooter";
+import styles from "./explore.module.scss";
 
-import styles from "./account.module.scss";
-
-const Account = () => {
+const Explore = () => {
   return (
     <React.Fragment>
-      <Helmet title="Account" />
+      <Helmet title="Explore" />
       <div className={classNames(styles.container)}>
         <NavBar />
         <div>
-          <p>Account Page</p>
+          <p>Explore Page</p>
         </div>
         <Footer />
         <MobileFooter />
@@ -24,4 +23,4 @@ const Account = () => {
   );
 };
 
-export default Account;
+export default Explore;
