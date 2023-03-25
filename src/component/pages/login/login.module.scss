@@ -1,13 +1,13 @@
 $_large_font_size: 20px;
 $_medium_font_size: 18px;
-$_tablet_padding: 50px;
+$_tablet_padding: 40px;
 $_desktop_padding: 60px;
 
 *,
 *:focus{outline: none}
 
 .container {
-  padding: 100px;
+  padding: 25px;
   width: 100vw;
 }
 
@@ -23,13 +23,8 @@ $_desktop_padding: 60px;
   flex-direction: column;
 }
 
-.header {
-  padding-bottom: 0px;
-}
-
 .logo {
   width: 160px;
-  padding-bottom: 10px;
 }
 
 .logo > img {
@@ -42,7 +37,6 @@ $_desktop_padding: 60px;
   border-color: grey;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
-  padding-bottom: 20px;
   width: 500px;
   min-width: 300px;
   background-color: white;
@@ -123,7 +117,9 @@ h4 {
 
 p {
   font-size: $_medium_font_size;
-  margin: 0px;
+  padding: 10px;
+  margin-bottom: 0px !important;
+  padding: 0px;
 }
 
 p > a {
@@ -138,20 +134,25 @@ a:hover {
 
 /* Mobile view */
 @media only screen and (min-width: 320px) and (max-width: 374px) {
-  .login {
-    box-shadow: none;
+  .container {
+    padding: 0px 0px 0px 0px;
   }
 
-  .container {
-    padding: 0px 0px 25px 0px;
+  .header {
+    padding-top: 10px;
+  }
+
+  .logo {
+    padding-bottom: 10px;
+  }
+
+  .login {
+    box-shadow: none;
+    gap: 15px;
   }
 
   .loginForm {
     padding: 0px;
-  }
-
-  .header {
-    padding: 10px 20px 20px 20px;
   }
 
   .formItem {
@@ -163,21 +164,27 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 375px) and (max-width: 425px) {
-  .login {
-    box-shadow: none;
+@media only screen and (min-width: 375px) and (max-width: 414px) {
+  .container {
+    padding: 0px 0px 0px 0px;
   }
 
-  .container {
-    padding: 0px 0px 25px 0px;
+  .header {
+    padding-top: 10px;
+    padding-bottom: 20px;
+  }
+
+  .logo {
+    padding-bottom: 10px;
+  }
+
+  .login {
+    box-shadow: none;
+    gap: 15px;
   }
 
   .loginForm {
     padding: 0px;
-  }
-
-  .header {
-    padding: 10px 20px 20px 20px;
   }
 
   .formItem {
@@ -187,21 +194,33 @@ a:hover {
   .formItem input {
     width: 280px;
   }
+
+  .header > p {
+    padding: 0px 20px 0px 20px;
+  }
 }
 
-@media only screen and (min-width: 426px) and (max-width: 767px) {
+@media only screen and (min-width: 415px) and (max-width: 767px) {
+  .container {
+    padding: 20px;
+  }
+
+  .logo {
+    padding-bottom: 15px;
+  }
   .login {
     box-shadow: none;
     width: 100%;
+    gap: 15px;
   }
 
   .loginForm {
-    padding: 50px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
   }
 
 
   .header {
-    padding: 0 20px 0 20px;
+    padding: 0 10px 10px 10px;
   }
  
   .formItem input {
@@ -209,35 +228,37 @@ a:hover {
     width: 400px;
   }
 
-  p {
+  .header > p {
     font-size: $_medium_font_size;
+    padding: 10px 10px 0px 10px;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 900px) {
-  .login {
-    width: 520px;
-    padding: 25px;
-    padding-top: $_tablet_padding;
-    padding-bottom: $_tablet_padding;
+@media only screen and (min-width: 768px) and (max-width: 911px) {
+  .header {
+    padding-bottom: 20px;
   }
 
+  .logo {
+    padding-bottom: 15px;
+  }
+  
   .loginContainer {
     padding: 0px;
+  }
+
+  .login {
+    width: 520px;
+    padding: 15px;
+    padding-top: $_tablet_padding;
+    padding-bottom: $_tablet_padding;
+    gap: 20px;
   }
 
   .loginForm {
     padding: 0px 0px 0px 0px;
   }
 
-  .login {
-    gap: 20px;
-  }
-
-  .header {
-    padding: 0 70px 25px 70px;
-  }
- 
   .formItem {
     align-items: center;
   }
@@ -250,116 +271,141 @@ a:hover {
     margin-left: 10px;
   }
 
-  p {
+  .header > p {
     font-size: $_medium_font_size;
+    padding: 0px 80px 0px 80px;
   }
 }
 
-@media only screen and (min-width: 901px) and (max-width: 1023px) {
+@media only screen and (min-width: 912px) and (max-width: 1023px) {
+  .header {
+    padding-bottom: 30px;
+  }
+  .logo {
+    padding-bottom: 15px;
+  }
+
+  .loginContainer {
+    padding: 0px;
+  }
+
   .login {
     width: 520px;
     padding: 25px;
     padding-top: $_tablet_padding;
     padding-bottom: $_tablet_padding;
+    gap: 20px;
   }
-
-  .loginContainer {
-    padding: 0px;
-  }
-
+ 
   .loginForm {
     padding: 0px 0px 0px 0px;
   }
 
-  .login {
-    gap: 20px;
-  }
-
-  .header {
-    padding: 0 70px 25px 70px;
-  }
- 
   .formItem {
     align-items: center;
   }
 
   .formItem input {
-    width: 390px;
+    width: 370px;
   }
 
   .formItem span {
-    margin-left: 40px;
+    margin-left: 10px;
   }
 
-  p {
+  .header > p {
     font-size: $_medium_font_size;
+    padding: 0px 125px 0px 125px;
   }
 }
 
 /*Destop view */
-@media only screen and (min-width: 1024px) and (max-width: 1200px) {
-  .login {
-    padding: 40px;
-    width: 550px;
-    padding-top: $_tablet_padding;
-    padding-bottom: $_tablet_padding;
-  }
-
-  .header {
-    padding: 0 250px 25px 250px;
-  }
-
-  .loginContainer {
-    padding: 0px;
-  }
-
-  .loginForm {
-    padding: 0px 0px 0px 0px;
-  }
-
-  .container {
-    padding: 40px;
-  }
-
-  p {
-    font-size: $_medium_font_size;
-  }
-
-  .formItem input {
-    width: 400px;
-  }
-}
-
-@media only screen and (min-width: 1201px) {
-  .login {
-    padding: 40px;
-    width: 550px;
-    padding-bottom: $_desktop_padding;
-  }
-
-  .header {
-    padding-right: 100px;
-  }
-
-  .loginContainer {
-    padding: 0px;
-  }
-
-  .loginForm {
-    padding: 30px 0px 0px 0px;
-  }
-
+@media only screen and (min-width: 1024px) and (max-width: 1279px) {
   .container {
     display: flex;
     flex-direction: row;
     background-color: var(--primary-light);
   }
 
-  p {
-    font-size: $_large_font_size;
+  .logo {
+    padding-bottom: 15px;
+  }
+
+  .loginContainer {
+    padding: 0px;
+  }
+
+  .login {
+    width: 520px;
+    padding: 25px;
+    padding-top: $_tablet_padding;
+    padding-bottom: $_tablet_padding;
+    gap: 15px;
+  }
+ 
+  .loginForm {
+    padding: 0px 0px 0px 0px;
+  }
+
+  .formItem {
+    align-items: center;
   }
 
   .formItem input {
-    width: 430px;
+    width: 370px;
+  }
+
+  .formItem span {
+    margin-left: 10px;
+  }
+
+  .header > p {
+    font-size: $_medium_font_size;
+    padding: 0px 15px 0px 15px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .container {
+    display: flex;
+    flex-direction: row;
+    background-color: var(--primary-light);
+  }
+
+  .logo {
+    padding-bottom: 15px;
+  }
+
+  .loginContainer {
+    padding: 0px;
+  }
+
+  .login {
+    width: 520px;
+    padding: 25px;
+    padding-top: $_tablet_padding;
+    padding-bottom: $_tablet_padding;
+    gap: 15px;
+  }
+ 
+  .loginForm {
+    padding: 0px 0px 0px 0px;
+  }
+
+  .formItem {
+    align-items: center;
+  }
+
+  .formItem input {
+    width: 370px;
+  }
+
+  .formItem span {
+    margin-left: 10px;
+  }
+
+  .header > p {
+    font-size: $_medium_font_size;
+    padding: 0px 40px 0px 40px;
   }
 }
