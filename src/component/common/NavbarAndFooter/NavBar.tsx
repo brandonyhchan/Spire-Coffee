@@ -1,10 +1,12 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, IconButton, Typography, Stack } from "@mui/material";
 import CoffeeIcon from "@mui/icons-material/Coffee";
 import classNames from "classnames";
-import "../../../global.scss";
+import "global.scss";
 import styles from "./NavBar.module.scss";
 import { NavLink } from "react-router-dom";
+import Button from "../Button";
 
 const active: React.CSSProperties = {
   borderBottom: "3px solid var(--secondary)",
@@ -12,6 +14,14 @@ const active: React.CSSProperties = {
 };
 
 export const navbar = () => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("authToken");
+    navigate("/");
+    window.location.reload();
+  };
+
   return (
     <div className={classNames(styles.navbar)}>
       <AppBar position="static" elevation={0}>
@@ -68,9 +78,7 @@ export const navbar = () => {
                   Account
                 </NavLink>
               </p>
-              <p className={classNames(styles.link)}>
-                <NavLink to="/">Sign out</NavLink>
-              </p>
+              <Button text={"Sign Out"} onClick={handleLogout} />
             </Stack>
           </div>
         </Toolbar>
