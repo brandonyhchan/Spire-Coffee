@@ -9,34 +9,28 @@ $_desktop_padding: 60px;
   color: var(--primary);
 }
 
-.signUpTitle {
-  padding-top: $_desktop_padding;
-}
-
 .signUpContainer {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding-top: $_desktop_padding;
+  flex-direction: column;
   width: 100vw;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  gap: 10px;
 }
-
 
 .signUp {
   border-color: grey;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
-  padding: 10px;
-  padding-bottom: 50px;
 }
 
 .signUpForm {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 25px;
-  padding-top: 40px;
-  padding-bottom: 10px;
+  gap: 15px;
 }
 
 .formItem {
@@ -103,72 +97,63 @@ $_desktop_padding: 60px;
 
 /* Mobile view */
 @media only screen and (min-width: 320px) and (max-width: 374px) {
-
-  .signUpContainer,
-  .signUpForm {
-    padding-top: 0px;
-    gap: 20px;
-  }
-
   .signUp {
     box-shadow: none;
+  }
+
+  .formItem input {
+    padding: 15px;
   }
 
   .formItem input, span {
     width: 245px;
   }
-
-  .formItem input {
-    padding: 15px;
-  }
 }
 
 @media only screen and (min-width: 375px) and (max-width: 414px) {
-  .signUpContainer,
-  .signUpForm {
-    padding-top: 0px;
-    gap: 15px;
-  }
-
   .signUp {
     box-shadow: none;
+  }
+
+  .formItem input {
+    padding: 15px;
   }
 
   .formItem input, span {
     width: 270px;
   }
-
-  .formItem input {
-    padding: 15px;
-  }
 }
 
 @media only screen and (min-width: 415px) and (max-width: 767px) {
   .signUpContainer {
-    padding-top: 0px;
+    gap: 10px;
   }
-
+  
   .signUp {
     box-shadow: none;
-    padding-bottom: $_tablet_padding;
+  }
+  
+  .signUpForm {
+    gap: 15px;
   }
 
-  .formItem input, span {
+  .formItem input {
     width: 350px;
+    padding: 15px;
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 900px) {
+@media only screen and (min-width: 768px) and (max-width: 911px) {
+  .signUpContainer {
+    gap: 20px;
+  }
+ 
   .signUp {
-    padding: 50px 80px;
+    padding: 50px 70px;
   }
 
   .signUpForm {
     padding: 0px;
-  }
-
-  .signUpContainer {
-    padding-bottom: $_desktop_padding;
   }
 
   .formItem input, span {
@@ -176,7 +161,12 @@ $_desktop_padding: 60px;
   }
 }
 
-@media only screen and (min-width: 901px) and (max-width: 1023px) {
+@media only screen and (min-width: 912px) and (max-width: 1023px) {
+  .signUpContainer {
+    gap: 20px;
+    padding-top: 20px;
+  }
+ 
   .signUp {
    padding: 50px 80px;
   }
@@ -190,21 +180,23 @@ $_desktop_padding: 60px;
   }
 }
 
-
 /*Destop view */
 @media only screen and (min-width: 1024px) {
   .signUpContainer {
-    padding-top: 50px;
-    padding-bottom: 30px;
+    gap: 20px;
+    padding-top: 20px;
+    padding-bottom: 35px;
   }
-
+ 
   .signUp {
-    padding: 20px;
-    width: 750px;
-    padding-bottom: 45px;
+   padding: 50px 80px;
   }
 
-  .formItem input {
+  .signUpForm {
+    padding: 0px;
+  }
+  
+  .formItem input, span {
     width: 500px;
   }
 }

@@ -4,7 +4,9 @@ $_tablet_padding: 40px;
 $_desktop_padding: 60px;
 
 *,
-*:focus{outline: none}
+*:focus{
+  outline: none
+}
 
 .container {
   padding: 25px;
