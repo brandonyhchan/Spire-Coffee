@@ -1,13 +1,14 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { signUpMutation } from "../../../support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
+
+import { signUpMutation } from "support/graphqlServerApi";
 import RegexValidator from "./regexValidator";
-import Button from "../../common/Button";
-import Footer from "../../common/NavbarAndFooter/WebFooter";
+import Button from "component/common/Button";
+import Footer from "component/common/NavbarAndFooter/WebFooter";
 import classNames from "classnames";
-import strings from "../../../config/strings";
+import strings from "config/strings";
 import styles from "./signUp.module.scss";
 
 const SignUp = () => {
