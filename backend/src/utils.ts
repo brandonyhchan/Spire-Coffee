@@ -11,8 +11,7 @@ export function getUserId(authHeader: String): AuthTokenPayload {
   if (!token) {
     throw new Error("No token found");
   }
-  return jwt.verify(
-    token,
-    <jwt.Secret>process.env.APP_SECRET
-  ) as AuthTokenPayload;
+  return jwt.verify(token, <jwt.Secret>process.env.PUBLIC_KEY, {
+    algorithms: ["RS256"],
+  }) as AuthTokenPayload;
 }

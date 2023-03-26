@@ -27,5 +27,6 @@
         "linebreak-style": 1,
         "no-console": 1,
         "max-len": [2, 120]
-    }
+    },
+    "ignorePatterns": ["backend/dist/*"]
 }

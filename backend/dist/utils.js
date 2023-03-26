@@ -5,5 +5,7 @@ export function getUserId(authHeader) {
     if (!token) {
         throw new Error("No token found");
     }
-    return jwt.verify(token, process.env.APP_SECRET);
+    return jwt.verify(token, process.env.PUBLIC_KEY, {
+        algorithms: ["RS256"],
+    });
 }

@@ -2,22 +2,24 @@ import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 
 export async function signUp(parent, args, context, info) {
-  try {
-    const password = await bcrypt.hash(args.password, 10);
-    const user = await context.prisma.user.create({
-      data: { ...args, password },
-    });
-    const token = jwt.sign(
-      { userId: user.id },
-      <jwt.Secret>process.env.APP_SECRET
-    );
-    return {
-      token,
-      user,
-    };
-  } catch (error) {
-    throw new Error("User already exists");
-  }
+  const password = await bcrypt.hash(args.password, 10);
+  const user = await context.prisma.user.create({
+    data: { ...args, password },
+  });
+  console.log(process.env.PRIVATE_KEY);
+  console.log(process.env.PUBLIC_KEY);
+  const token = jwt.sign(
+    { userId: user.id, userName: user.userName },
+    <jwt.Secret>process.env.PRIVATE_KEY,
+    { expiresIn: "3h", algorithm: "RS256" }
+  );
+  return {
+    token,
+    user,
+  };
+  // } catch (error) {
+  //   throw new Error("User already exists");
+  // }
 }
 
 export async function login(parent, args, context, info) {
@@ -32,8 +34,9 @@ export async function login(parent, args, context, info) {
     throw new Error("Invalid password");
   }
   const token = jwt.sign(
-    { userId: user.id },
-    <jwt.Secret>process.env.APP_SECRET
+    { userId: user.id, userName: user.userName },
+    <jwt.Secret>process.env.PRIVATE_KEY,
+    { expiresIn: "3h", algorithm: "RS256" }
   );
   return {
     token,
