@@ -95,8 +95,8 @@ $_desktop_padding: 60px;
   color: var(--primary);
 }
 
-/* Mobile view */
-@media only screen and (min-width: 320px) and (max-width: 374px) {
+/* Mobile view */ 
+@media only screen and (max-width: 767px) {
   .signUp {
     box-shadow: none;
   }
@@ -110,15 +110,8 @@ $_desktop_padding: 60px;
   }
 }
 
+/* Specific mobile media queries */
 @media only screen and (min-width: 375px) and (max-width: 414px) {
-  .signUp {
-    box-shadow: none;
-  }
-
-  .formItem input {
-    padding: 15px;
-  }
-
   .formItem input, span {
     width: 270px;
   }
@@ -129,74 +122,56 @@ $_desktop_padding: 60px;
     gap: 10px;
   }
   
-  .signUp {
-    box-shadow: none;
-  }
-  
   .signUpForm {
     gap: 15px;
   }
 
   .formItem input {
-    width: 350px;
-    padding: 15px;
+    width: 390px;
   }
 }
+/* End */
 
-@media only screen and (min-width: 768px) and (max-width: 911px) {
+/* Tablet and desktop view */
+@media only screen and (min-width: 768px) {
   .signUpContainer {
     gap: 20px;
+    padding-top: 20px;
   }
- 
+
   .signUp {
-    padding: 50px 70px;
-  }
+    padding: 50px 80px;
+   }
 
   .signUpForm {
     padding: 0px;
   }
+}
 
+/* Specific tablet and desktop media queries */
+@media only screen and (min-width: 768px) and (max-width: 911px) {
+  .signUp {
+    padding: 50px 70px;
+  }
+  
   .formItem input, span {
     width: 450px;
   }
 }
 
-@media only screen and (min-width: 912px) and (max-width: 1023px) {
-  .signUpContainer {
-    gap: 20px;
-    padding-top: 20px;
-  }
- 
-  .signUp {
-   padding: 50px 80px;
-  }
-
-  .signUpForm {
-    padding: 0px;
-  }
-  
+@media only screen and (min-width: 912px) and (max-width: 1023px) {  
   .formItem input, span {
     width: 480px;
   }
 }
 
-/*Destop view */
 @media only screen and (min-width: 1024px) {
   .signUpContainer {
-    gap: 20px;
-    padding-top: 20px;
     padding-bottom: 35px;
   }
- 
-  .signUp {
-   padding: 50px 80px;
-  }
 
-  .signUpForm {
-    padding: 0px;
-  }
-  
   .formItem input, span {
     width: 500px;
   }
 }
+/* End */
