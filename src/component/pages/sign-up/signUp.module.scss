@@ -7,17 +7,23 @@ $_desktop_padding: 60px;
 
 .heading {
   color: var(--primary);
+  padding-bottom: 15px;
 }
 
 .signUpContainer {
+  // width: 100vw;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  gap: 10px;
+}
+
+.signUpForm,
+.signUp,
+.formItem {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  width: 100vw;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  gap: 10px;
 }
 
 .signUp {
@@ -27,28 +33,29 @@ $_desktop_padding: 60px;
 }
 
 .signUpForm {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   gap: 15px;
+  width: 100%;
 }
+
+.signUp, .formItem span {
+  // width: 100%;
+}
+
 
 .formItem {
   position: relative;
-  display: flex;
-  flex-direction: column;
 }
 
 .formItem input {
-  width: 400px;
+  width: auto;
   background: transparent;
   border: solid 2px #ccc;
   transition: all .3s ease;
   padding: 20px;
   border-radius: 10px;
   font-family: 'Figtree-Regular';
-  font-size: $_large_font_size;
   border-width: 3px;
+  font-size: $_large_font_size;
 }
 
 .formItem input:focus {
@@ -68,6 +75,11 @@ $_desktop_padding: 60px;
   text-align: start;
 }
 
+.errorMessage {
+  text-align: center;
+  font-size: $_large_font_size;
+}
+
 // https://codepen.io/kod101/pen/gdjPaW
 .formItem input:focus + label,
 .formItem input:valid + label {
@@ -80,11 +92,6 @@ $_desktop_padding: 60px;
   font-family: 'Figtree-Regular';
   background: #fff;
   color: var(--primary);
-}
-
-.errorMessage {
-  text-align: center;
-  font-size: $_large_font_size;
 }
 
 .formItem input:focus::placeholder {
@@ -126,7 +133,7 @@ $_desktop_padding: 60px;
     gap: 15px;
   }
 
-  .formItem input {
+  .formItem input, span {
     width: 390px;
   }
 }
