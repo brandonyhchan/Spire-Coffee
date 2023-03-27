@@ -73,7 +73,7 @@ export const navbar = () => {
               <p className={classNames(styles.link)}>
                 <NavLink
                   style={({ isActive }) => (isActive ? active : {})}
-                  to="/favorites"
+                  to="/favourites"
                   color="inherit"
                 >
                   Favorites

@@ -40,6 +40,30 @@ const strings = new LocalizedStrings({
         message: "Please fill in all required fields",
       },
     },
+    explore: {
+      title: "Explore Page",
+      helmet: "Explore",
+    },
+    aboutUs: {
+      title: "About us page",
+      helmet: "Who we are",
+    },
+    account: {
+      title: "Account Page",
+      helmet: "Account",
+    },
+    addCafe: {
+      title: "Add Cafe Page",
+      helmet: "add a Cafe",
+    },
+    faq: {
+      title: "FAQ Page",
+      helmet: "FAQ",
+    },
+    favourites: {
+      title: "Favourites Page",
+      helmet: "Favourites",
+    },
   },
 });
 

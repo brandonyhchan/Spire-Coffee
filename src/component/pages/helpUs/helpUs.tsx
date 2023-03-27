@@ -11,11 +11,11 @@ import styles from "./helpUs.module.scss";
 const HelpUs = () => {
   return (
     <React.Fragment>
-      <Helmet title="Explore" />
+      <Helmet title="Help us out" />
       <div className={classNames(styles.container)}>
         <NavBar />
         <div>
-          <p>Explore Page</p>
+          <p>Help us out</p>
         </div>
         <Footer />
         <MobileFooter />
