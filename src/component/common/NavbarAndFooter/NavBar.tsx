@@ -27,6 +27,7 @@ export const navbar = () => {
       <AppBar position="static" elevation={0}>
         <Toolbar className={classNames(styles.toolBar)}>
           <div className={classNames(styles.logo)}>
+            {/*Replacing this button once we get our logo! Only using it as a visual*/}
             <IconButton
               size="large"
               edge="start"
@@ -72,13 +73,26 @@ export const navbar = () => {
               <p className={classNames(styles.link)}>
                 <NavLink
                   style={({ isActive }) => (isActive ? active : {})}
+                  to="/favorites"
+                  color="inherit"
+                >
+                  Favorites
+                </NavLink>
+              </p>
+              <p className={classNames(styles.link)}>
+                <NavLink
+                  style={({ isActive }) => (isActive ? active : {})}
                   to="/account"
                   color="inherit"
                 >
                   Account
                 </NavLink>
               </p>
-              <Button text={"Sign Out"} onClick={handleLogout} />
+              <Button
+                text={"Sign Out"}
+                onClick={handleLogout}
+                type={"navbar"}
+              />
             </Stack>
           </div>
         </Toolbar>

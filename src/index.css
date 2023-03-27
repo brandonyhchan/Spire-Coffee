@@ -4,10 +4,14 @@
 }
 
 @font-face { 
+  font-family: 'Figtree-SemiBold';
+  src: url('assets/fonts/Figtree-SemiBold.ttf');
+}
+
+@font-face { 
   font-family: 'Figtree-Bold';
   src: url('assets/fonts/Figtree-Bold.ttf');
 }
-
 
 body {
   margin: 0;

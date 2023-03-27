@@ -7,6 +7,7 @@ $_medium_font_size: 18px;
   top: 0;
   left: 0;
   z-index: 2;
+  font-family:'Figtree-Regular';
 
   @media (max-width: 600px) {
     display: none;
@@ -15,9 +16,11 @@ $_medium_font_size: 18px;
   p {
     align-self: center;
     margin-bottom: 0;
+    font-size: 17px;
   }
 
   p > a {
+    font-size: 17px;
     text-decoration: none;
     color: white;
     padding: 10px;

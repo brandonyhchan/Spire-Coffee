@@ -5,7 +5,7 @@ import styles from "./button.module.scss";
 type ButtonPropsType = {
   onClick?: MouseEventHandler;
   text?: string;
-  type?: "primary" | "secondary";
+  type?: "primary" | "secondary" | "navbar";
   buttonType?: "button" | "submit" | "reset";
   className?: string;
   disabled?: boolean;
