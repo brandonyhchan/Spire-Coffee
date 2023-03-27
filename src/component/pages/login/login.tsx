@@ -141,8 +141,8 @@ const Login = () => {
             </p>
           </div>
         </div>
-        {/* <Footer /> This is buggy, need to work on a fix */}
       </div>
+      <Footer />
     </React.Fragment>
   );
 };

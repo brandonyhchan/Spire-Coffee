@@ -9,8 +9,13 @@ $_desktop_padding: 60px;
 }
 
 .container {
-  padding: 25px;
   width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
 }
 
 .header,
@@ -135,13 +140,13 @@ a:hover {
 }
 
 /* Mobile view */
-@media only screen and (min-width: 320px) and (max-width: 374px) {
+@media only screen and (max-width: 374px) {
   .container {
     padding: 0px 0px 0px 0px;
   }
 
   .header {
-    padding-top: 10px;
+    padding: 0px 10px 10px 10px;
   }
 
   .logo {
@@ -204,12 +209,17 @@ a:hover {
 
 @media only screen and (min-width: 415px) and (max-width: 767px) {
   .container {
-    padding: 20px;
+    padding-bottom: 200px;
   }
 
+  .header {
+    padding: 0 20px 20px 20px;
+  }
+  
   .logo {
     padding-bottom: 15px;
   }
+
   .login {
     box-shadow: none;
     width: 100%;
@@ -219,11 +229,6 @@ a:hover {
   .loginForm {
     padding: 0px 0px 0px 0px;
   }
-
-
-  .header {
-    padding: 0 10px 10px 10px;
-  }
  
   .formItem input {
     display: flex;
@@ -232,11 +237,15 @@ a:hover {
 
   .header > p {
     font-size: $_medium_font_size;
-    padding: 10px 10px 0px 10px;
+    padding: 10px 70px 0px 70px;
   }
 }
 
 @media only screen and (min-width: 768px) and (max-width: 911px) {
+  .container {
+    padding-bottom: 200px;
+  }
+
   .header {
     padding-bottom: 20px;
   }
@@ -275,11 +284,15 @@ a:hover {
 
   .header > p {
     font-size: $_medium_font_size;
-    padding: 0px 80px 0px 80px;
+    padding: 0px 120px 0px 120px;
   }
 }
 
 @media only screen and (min-width: 912px) and (max-width: 1023px) {
+  .container {
+    padding-bottom: 225px;
+  }
+
   .header {
     padding-bottom: 30px;
   }
@@ -317,7 +330,7 @@ a:hover {
 
   .header > p {
     font-size: $_medium_font_size;
-    padding: 0px 125px 0px 125px;
+    padding: 0px 170px 0px 170px;
   }
 }
 
@@ -327,6 +340,11 @@ a:hover {
     display: flex;
     flex-direction: row;
     background-color: var(--primary-light);
+    padding: 0px 30px 170px 30px;
+  }
+
+  .header {
+    padding-right: 25spx;
   }
 
   .logo {
@@ -372,6 +390,11 @@ a:hover {
     display: flex;
     flex-direction: row;
     background-color: var(--primary-light);
+    padding: 0px 30px 170px 30px;
+  }
+
+  .header {
+    padding-right: 15px;
   }
 
   .logo {
@@ -409,5 +432,6 @@ a:hover {
   .header > p {
     font-size: $_medium_font_size;
     padding: 0px 40px 0px 40px;
+    width: 700px;
   }
 }

@@ -233,7 +233,7 @@ const SignUp = () => {
             />
           </form>
         </div>
-        {/* <Footer /> This is buggy, need to work on a fix */}
+        <Footer />
       </div>
     </React.Fragment>
   );

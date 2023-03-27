@@ -8,6 +8,6 @@ export default class RegexValidator {
     "^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#$%^&*])"
   );
   validEmail = new RegExp(
-    "^[a-zA-Z0-9]+[a-zA-Z0-9-.]*@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
+    "^[a-zA-Z0-9]+[a-zA-Z0-9-._]*@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$"
   );
 }
