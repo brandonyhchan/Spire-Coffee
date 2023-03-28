@@ -101,7 +101,7 @@ const SignUp = () => {
       <Helmet title={strings.signUp.helmet} />
       <div className={classNames(styles.container)}>
         <div className={classNames(styles.signUpContainer)}>
-          <h1 className={classNames(styles.heading)}>{strings.signUp.title}</h1>
+          <h3 className={classNames(styles.heading)}>{strings.signUp.title}</h3>
           <div className={classNames(styles.signUp)}>
             <form
               className={classNames(styles.signUpForm)}
@@ -235,8 +235,8 @@ const SignUp = () => {
             </form>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </React.Fragment>
   );
 };

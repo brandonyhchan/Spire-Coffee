@@ -11,14 +11,24 @@ $_desktop_padding: 60px;
 }
 
 .container {
-  overflow-y: hidden;
-  height: 100vh;
+  height: 100%;
+  width: 100vw;
+  position: relative;
 }
 
 .signUpContainer {
   padding-top: 20px;
-  padding-bottom: 15px;
-  gap: 10px;
+  padding-bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.signUp {
+  border-color: grey;
+  border-radius: 10px;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
 }
 
 .signUpForm,
@@ -32,7 +42,6 @@ $_desktop_padding: 60px;
 
 .signUpForm {
   gap: 15px;
-  width: 100%;
 }
 
 .formItem {
@@ -44,7 +53,7 @@ $_desktop_padding: 60px;
   background: transparent;
   border: solid 2px #ccc;
   transition: all .3s ease;
-  padding: 20px;
+  padding: 10px;
   border-radius: 10px;
   font-family: 'Figtree-Regular';
   border-width: 3px;
@@ -102,7 +111,7 @@ $_desktop_padding: 60px;
   }
 
   .formItem input {
-    padding: 15px;
+    padding: 10px;
   }
 
   .formItem input, span {
@@ -135,31 +144,26 @@ $_desktop_padding: 60px;
 /* Tablet and desktop view */
 @media only screen and (min-width: 768px) {
   .signUpContainer {
-    gap: 20px;
     padding-top: 20px;
   }
 
-  .signUp {
-    padding: 50px 80px;
-   }
-
   .signUpForm {
     padding: 0px;
+  }
+  
+  .signUp {
+    padding: 40px 80px;
   }
 }
 
 /* Specific tablet and desktop media queries */
 @media only screen and (min-width: 768px) and (max-width: 911px) {
-  .signUp {
-    padding: 50px 70px;
-  }
-  
   .formItem input, span {
-    width: 450px;
+    width: 400px;
   }
 }
 
-@media only screen and (min-width: 912px) and (max-width: 1023px) {  
+@media only screen and (min-width: 912px) and (max-width: 1023px) {
   .formItem input, span {
     width: 480px;
   }
@@ -172,22 +176,6 @@ $_desktop_padding: 60px;
 
   .formItem input, span {
     width: 500px;
-  }
-}
-
-@media only screen and (width: 1024px) and (height: 600px) {
-  .container {
-    overflow-y: scroll;
-    height: 80vh;
-    width: 100vw;
-  }
-}
-
-@media only screen and (width: 1280px) and (height: 800px) {
-  .container {
-    overflow-y: scroll;
-    height: 85vh;
-    width: 100vw;
   }
 }
 /* End */
