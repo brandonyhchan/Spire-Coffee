@@ -9,16 +9,16 @@ $_desktop_padding: 60px;
 }
 
 .loginMainContainer {
-  width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
   overflow-y: hidden;
+  width: 100vw;
+  height: 100vh;
 }
 
 .header {
-  padding-top: 35px;
+  padding-top: 25px;
 }
 
 .header,
@@ -59,7 +59,7 @@ h4 {
 
 .loginForm {
   gap: 15px;
-  padding: 40px 20px 40px 20px;
+  padding: 40px 20px;
   width: 100%;
 }
 
@@ -143,8 +143,8 @@ a:hover {
 }
 
 /* Mobile view */
-@media only screen and (max-width: 374px) {
-  .container {
+@media only screen and (max-width: 414px) {
+  .loginMainContainer {
     padding: 0px;
   }
 
@@ -168,45 +168,25 @@ a:hover {
   .formItem {
     padding: 0px;
   }
+}
 
+@media only screen and (max-width: 374px) {
   .formItem input {
     width: 245px;
+  }
+
+  .header > p {
+    padding: 0px 10px;
   }
 }
 
 @media only screen and (min-width: 375px) and (max-width: 414px) {
-  .container {
-    padding: 0px;
-  }
-
-  .header {
-    padding-top: 10px;
-    padding-bottom: 20px;
-  }
-
-  .logo {
-    padding-bottom: 10px;
-  }
-
-  .login {
-    box-shadow: none;
-    gap: 15px;
-  }
-
-  .loginForm {
-    padding: 0px;
-  }
-
-  .formItem {
-    padding: 0px;
-  }
-
   .formItem input {
-    width: 280px;
+    width: 300px;
   }
 
   .header > p {
-    padding: 0px 20px 0px 20px;
+    padding: 0px 20px;
   }
 }
 
@@ -226,7 +206,7 @@ a:hover {
   }
 
   .loginForm {
-    padding: 0px 0px 0px 0px;
+    padding: 0px;
   }
  
   .formItem input {
@@ -240,61 +220,15 @@ a:hover {
   }
 }
 
-@media only screen and (min-width: 768px) and (max-width: 911px) {
-  .container {
-    padding-bottom: 200px;
-  }
-
-  .header {
-    padding-bottom: 20px;
-  }
-
-  .logo {
-    padding-bottom: 15px;
-  }
-  
-  .loginContainer {
-    padding: 0px;
-  }
-
-  .login {
-    width: 520px;
-    padding: 15px;
-    padding-top: $_tablet_padding;
-    padding-bottom: $_tablet_padding;
-    gap: 20px;
-  }
-
-  .loginForm {
-    padding: 0px 0px 0px 0px;
-  }
-
-  .formItem {
-    align-items: center;
-  }
-
-  .formItem input {
-    width: 370px;
-  }
-
-  .formItem span {
-    margin-left: 10px;
-  }
-
-  .header > p {
-    font-size: $_medium_font_size;
-    padding: 0px 120px 0px 120px;
-  }
-}
-
-@media only screen and (min-width: 912px) and (max-width: 1023px) {
-  .container {
+@media only screen and (min-width: 768px) and (max-width: 1200px) {
+  .loginMainContainer {
     padding-bottom: 225px;
   }
 
   .header {
     padding-bottom: 30px;
   }
+
   .logo {
     padding-bottom: 15px;
   }
@@ -305,14 +239,14 @@ a:hover {
 
   .login {
     width: 520px;
-    padding: 25px;
     padding-top: $_tablet_padding;
     padding-bottom: $_tablet_padding;
     gap: 20px;
+    padding: 25px;
   }
- 
+
   .loginForm {
-    padding: 0px 0px 0px 0px;
+    padding: 0px;
   }
 
   .formItem {
@@ -329,21 +263,22 @@ a:hover {
 
   .header > p {
     font-size: $_medium_font_size;
-    padding: 0px 170px 0px 170px;
+    padding: 0px 170px;
   }
 }
 
 /*Destop view */
-@media only screen and (min-width: 1024px) and (max-width: 1279px) {
-  .container {
+@media only screen and (min-width: 1201px) {
+  .loginMainContainer {
     display: flex;
     flex-direction: row;
+    justify-content: center;
     background-color: var(--primary-light);
-    padding: 0px 30px 170px 30px;
+    padding-bottom: 170px;
   }
 
   .header {
-    padding-right: 25px;
+    padding-right: 50px;
   }
 
   .logo {
@@ -363,59 +298,9 @@ a:hover {
   }
  
   .loginForm {
-    padding: 0px 0px 0px 0px;
-  }
-
-  .formItem {
-    align-items: center;
-  }
-
-  .formItem input {
-    width: 370px;
-  }
-
-  .formItem span {
-    margin-left: 10px;
-  }
-
-  .header > p {
-    font-size: $_medium_font_size;
-    padding: 0px 15px 0px 15px;
-  }
-}
-
-@media only screen and (min-width: 1280px) {
-  .container {
-    display: flex;
-    flex-direction: row;
-    background-color: var(--primary-light);
-    padding: 0px 30px 170px 30px;
-  }
-
-  .header {
-    padding-right: 15px;
-  }
-
-  .logo {
-    padding-bottom: 15px;
-  }
-
-  .loginContainer {
     padding: 0px;
   }
 
-  .login {
-    width: 520px;
-    padding: 25px;
-    padding-top: $_tablet_padding;
-    padding-bottom: $_tablet_padding;
-    gap: 15px;
-  }
- 
-  .loginForm {
-    padding: 0px 0px 0px 0px;
-  }
-
   .formItem {
     align-items: center;
   }
@@ -430,18 +315,19 @@ a:hover {
 
   .header > p {
     font-size: $_medium_font_size;
-    padding: 0px 40px 0px 40px;
-    width: 700px;
+    padding-bottom: 20px;
+    width: 600px;
   }
 }
 
+/* Media queries for Nest Hub and Nest Hub Max */
 @media only screen and (width: 1024px) and (height: 600px) {
   .header {
     display: none;
   }
-  
+
   .loginMainContainer {
-    padding-top: 35px;
+    padding-top: 40px;
   }
 }
 
@@ -458,3 +344,4 @@ a:hover {
     padding-top: 35px;
   }
 }
+/* END */
