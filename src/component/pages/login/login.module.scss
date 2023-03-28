@@ -8,14 +8,17 @@ $_desktop_padding: 60px;
   outline: none
 }
 
-.container {
+.loginMainContainer {
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  vertical-align: middle;
+  overflow-y: hidden;
+}
+
+.header {
+  padding-top: 35px;
 }
 
 .header,
@@ -142,11 +145,11 @@ a:hover {
 /* Mobile view */
 @media only screen and (max-width: 374px) {
   .container {
-    padding: 0px 0px 0px 0px;
+    padding: 0px;
   }
 
   .header {
-    padding: 0px 10px 10px 10px;
+    padding: 10px;
   }
 
   .logo {
@@ -173,7 +176,7 @@ a:hover {
 
 @media only screen and (min-width: 375px) and (max-width: 414px) {
   .container {
-    padding: 0px 0px 0px 0px;
+    padding: 0px;
   }
 
   .header {
@@ -208,12 +211,8 @@ a:hover {
 }
 
 @media only screen and (min-width: 415px) and (max-width: 767px) {
-  .container {
-    padding-bottom: 200px;
-  }
-
   .header {
-    padding: 0 20px 20px 20px;
+    padding: 20px;
   }
   
   .logo {
@@ -344,7 +343,7 @@ a:hover {
   }
 
   .header {
-    padding-right: 25spx;
+    padding-right: 25px;
   }
 
   .logo {
@@ -433,5 +432,29 @@ a:hover {
     font-size: $_medium_font_size;
     padding: 0px 40px 0px 40px;
     width: 700px;
+  }
+}
+
+@media only screen and (width: 1024px) and (height: 600px) {
+  .header {
+    display: none;
+  }
+  
+  .loginMainContainer {
+    padding-top: 35px;
+  }
+}
+
+@media only screen and (width: 1280px) and (height: 800px) {
+  .logo {
+    display: none;
+  }
+
+  .header {
+    padding-bottom: 15px;
+  }
+
+  .loginMainContainer {
+    padding-top: 35px;
   }
 }

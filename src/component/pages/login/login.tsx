@@ -87,7 +87,7 @@ const Login = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.login.helmet} />
-      <div className={classNames(styles.container)}>
+      <div className={classNames(styles.loginMainContainer)}>
         <div className={classNames(styles.header)}>
           <div className={classNames(styles.logo)}>
             <img src={Logo} alt={Logo} />

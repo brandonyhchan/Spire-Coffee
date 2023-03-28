@@ -10,8 +10,12 @@ $_desktop_padding: 60px;
   padding-bottom: 15px;
 }
 
+.container {
+  overflow-y: hidden;
+  height: 100vh;
+}
+
 .signUpContainer {
-  // width: 100vw;
   padding-top: 20px;
   padding-bottom: 15px;
   gap: 10px;
@@ -26,21 +30,10 @@ $_desktop_padding: 60px;
   flex-direction: column;
 }
 
-.signUp {
-  border-color: grey;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
-}
-
 .signUpForm {
   gap: 15px;
   width: 100%;
 }
-
-.signUp, .formItem span {
-  // width: 100%;
-}
-
 
 .formItem {
   position: relative;
@@ -179,6 +172,22 @@ $_desktop_padding: 60px;
 
   .formItem input, span {
     width: 500px;
+  }
+}
+
+@media only screen and (width: 1024px) and (height: 600px) {
+  .container {
+    overflow-y: scroll;
+    height: 80vh;
+    width: 100vw;
+  }
+}
+
+@media only screen and (width: 1280px) and (height: 800px) {
+  .container {
+    overflow-y: scroll;
+    height: 85vh;
+    width: 100vw;
   }
 }
 /* End */

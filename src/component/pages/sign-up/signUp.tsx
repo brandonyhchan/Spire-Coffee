@@ -99,142 +99,144 @@ const SignUp = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
-      <div className={classNames(styles.signUpContainer)}>
-        <h1 className={classNames(styles.heading)}>{strings.signUp.title}</h1>
-        <div className={classNames(styles.signUp)}>
-          <form
-            className={classNames(styles.signUpForm)}
-            noValidate
-            onSubmit={handleSignUp}
-          >
-            <div className={classNames(styles.formItem)}>
-              <input
-                type="text"
-                name="username"
-                value={userInfo.username}
-                placeholder={strings.signUp.usernameLabel}
-                required
-                onChange={handleChange}
-                onBlur={() =>
-                  setUsernameIsValid(
-                    !regexValidator.validUsername.test(userInfo.username)
-                  )
-                }
+      <div className={classNames(styles.container)}>
+        <div className={classNames(styles.signUpContainer)}>
+          <h1 className={classNames(styles.heading)}>{strings.signUp.title}</h1>
+          <div className={classNames(styles.signUp)}>
+            <form
+              className={classNames(styles.signUpForm)}
+              noValidate
+              onSubmit={handleSignUp}
+            >
+              <div className={classNames(styles.formItem)}>
+                <input
+                  type="text"
+                  name="username"
+                  value={userInfo.username}
+                  placeholder={strings.signUp.usernameLabel}
+                  required
+                  onChange={handleChange}
+                  onBlur={() =>
+                    setUsernameIsValid(
+                      !regexValidator.validUsername.test(userInfo.username)
+                    )
+                  }
+                />
+                <label>{strings.signUp.usernameLabel}</label>
+                {!usernameIsValid ? null : (
+                  <span>{strings.signUp.errorMessage.username}</span>
+                )}
+              </div>
+              <div className={classNames(styles.formItem)}>
+                <input
+                  type="text"
+                  placeholder={strings.signUp.firstNameLabel}
+                  name="firstName"
+                  required
+                  onChange={handleChange}
+                  maxLength={40}
+                  onBlur={() =>
+                    setFirstNameIsValid(
+                      !regexValidator.validFirstName.test(userInfo.firstName)
+                    )
+                  }
+                />
+                <label>{strings.signUp.firstNameLabel}</label>
+                {!firstNameIsValid ? null : (
+                  <span>{strings.signUp.errorMessage.firstName}</span>
+                )}
+              </div>
+              <div className={classNames(styles.formItem)}>
+                <input
+                  type="text"
+                  placeholder={strings.signUp.lastNameLabel}
+                  name="lastName"
+                  required
+                  onChange={handleChange}
+                  maxLength={40}
+                  onBlur={() =>
+                    setLastNameIsValid(
+                      !regexValidator.validLastName.test(userInfo.lastName)
+                    )
+                  }
+                />
+                <label>{strings.signUp.lastNameLabel}</label>
+                {!lastNameIsValid ? null : (
+                  <span>{strings.signUp.errorMessage.lastName}</span>
+                )}
+              </div>
+              <div className={classNames(styles.formItem)}>
+                <input
+                  type="text"
+                  placeholder={strings.signUp.emailLabel}
+                  name="email"
+                  required
+                  onChange={handleChange}
+                  onBlur={() =>
+                    setEmailIsValid(
+                      !regexValidator.validEmail.test(userInfo.email)
+                    )
+                  }
+                />
+                <label>{strings.signUp.emailLabel}</label>
+                {!emailIsValid ? null : (
+                  <span>{strings.signUp.errorMessage.email}</span>
+                )}
+              </div>
+              <div className={classNames(styles.formItem)}>
+                <input
+                  type="password"
+                  placeholder={strings.signUp.passwordLabel}
+                  name="password"
+                  required
+                  onChange={handleChange}
+                  onBlur={() =>
+                    setPasswordIsValid(
+                      !regexValidator.validPassword.test(userInfo.password)
+                    )
+                  }
+                />
+                <label>{strings.signUp.passwordLabel}</label>
+                {!passwordIsValid ? null : (
+                  <>
+                    <span>{strings.signUp.errorMessage.password}</span>
+                    <span>{strings.signUp.errorMessage.passwordChar}</span>
+                  </>
+                )}
+              </div>
+              <div className={classNames(styles.formItem)}>
+                <input
+                  type="password"
+                  placeholder={strings.signUp.verifyPasswordLabel}
+                  required
+                  name="confPassword"
+                  onChange={handleChange}
+                  onBlur={handlePassword}
+                />
+                <label>{strings.signUp.verifyPasswordLabel}</label>
+                {!passwordRequired ? null : (
+                  <span>{strings.signUp.errorMessage.confPassword}</span>
+                )}
+                {!passwordMatch ? null : (
+                  <span>{strings.signUp.errorMessage.passwordMatch}</span>
+                )}
+              </div>
+              {signUpErrorMessage && (
+                <span className={classNames(styles.errorMessage)}>
+                  {strings.signUp.errorMessage.message}
+                </span>
+              )}
+              <Button
+                buttonType="submit"
+                className="signUpButton"
+                text={strings.signUp.buttonText}
+                onClick={checkForm}
               />
-              <label>{strings.signUp.usernameLabel}</label>
-              {!usernameIsValid ? null : (
-                <span>{strings.signUp.errorMessage.username}</span>
-              )}
-            </div>
-            <div className={classNames(styles.formItem)}>
-              <input
-                type="text"
-                placeholder={strings.signUp.firstNameLabel}
-                name="firstName"
-                required
-                onChange={handleChange}
-                maxLength={40}
-                onBlur={() =>
-                  setFirstNameIsValid(
-                    !regexValidator.validFirstName.test(userInfo.firstName)
-                  )
-                }
-              />
-              <label>{strings.signUp.firstNameLabel}</label>
-              {!firstNameIsValid ? null : (
-                <span>{strings.signUp.errorMessage.firstName}</span>
-              )}
-            </div>
-            <div className={classNames(styles.formItem)}>
-              <input
-                type="text"
-                placeholder={strings.signUp.lastNameLabel}
-                name="lastName"
-                required
-                onChange={handleChange}
-                maxLength={40}
-                onBlur={() =>
-                  setLastNameIsValid(
-                    !regexValidator.validLastName.test(userInfo.lastName)
-                  )
-                }
-              />
-              <label>{strings.signUp.lastNameLabel}</label>
-              {!lastNameIsValid ? null : (
-                <span>{strings.signUp.errorMessage.lastName}</span>
-              )}
-            </div>
-            <div className={classNames(styles.formItem)}>
-              <input
-                type="text"
-                placeholder={strings.signUp.emailLabel}
-                name="email"
-                required
-                onChange={handleChange}
-                onBlur={() =>
-                  setEmailIsValid(
-                    !regexValidator.validEmail.test(userInfo.email)
-                  )
-                }
-              />
-              <label>{strings.signUp.emailLabel}</label>
-              {!emailIsValid ? null : (
-                <span>{strings.signUp.errorMessage.email}</span>
-              )}
-            </div>
-            <div className={classNames(styles.formItem)}>
-              <input
-                type="password"
-                placeholder={strings.signUp.passwordLabel}
-                name="password"
-                required
-                onChange={handleChange}
-                onBlur={() =>
-                  setPasswordIsValid(
-                    !regexValidator.validPassword.test(userInfo.password)
-                  )
-                }
-              />
-              <label>{strings.signUp.passwordLabel}</label>
-              {!passwordIsValid ? null : (
-                <>
-                  <span>{strings.signUp.errorMessage.password}</span>
-                  <span>{strings.signUp.errorMessage.passwordChar}</span>
-                </>
-              )}
-            </div>
-            <div className={classNames(styles.formItem)}>
-              <input
-                type="password"
-                placeholder={strings.signUp.verifyPasswordLabel}
-                required
-                name="confPassword"
-                onChange={handleChange}
-                onBlur={handlePassword}
-              />
-              <label>{strings.signUp.verifyPasswordLabel}</label>
-              {!passwordRequired ? null : (
-                <span>{strings.signUp.errorMessage.confPassword}</span>
-              )}
-              {!passwordMatch ? null : (
-                <span>{strings.signUp.errorMessage.passwordMatch}</span>
-              )}
-            </div>
-            {signUpErrorMessage && (
-              <span className={classNames(styles.errorMessage)}>
-                {strings.signUp.errorMessage.message}
-              </span>
-            )}
-            <Button
-              buttonType="submit"
-              className="signUpButton"
-              text={strings.signUp.buttonText}
-              onClick={checkForm}
-            />
-          </form>
+            </form>
+          </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </React.Fragment>
   );
 };
