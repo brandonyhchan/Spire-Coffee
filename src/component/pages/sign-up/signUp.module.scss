@@ -11,8 +11,8 @@ $_desktop_padding: 60px;
 }
 
 .container {
-  overflow-y: hidden;
-  height: 100vh;
+  height: 100%;
+  width: 100%;
 }
 
 .signUpContainer {
@@ -32,7 +32,6 @@ $_desktop_padding: 60px;
 
 .signUpForm {
   gap: 15px;
-  width: 100%;
 }
 
 .formItem {

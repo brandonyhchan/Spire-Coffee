@@ -1,3 +1,14 @@
-.body {
-    min-height: 100vh;
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+}
+
+* {
+  box-sizing: border-box;
 }
