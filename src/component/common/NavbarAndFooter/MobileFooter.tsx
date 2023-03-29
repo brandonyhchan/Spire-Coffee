@@ -23,8 +23,8 @@ export const MobileFooter = () => {
       >
         <BottomNavigationAction
           component={Link}
-          to="/favorites"
-          value={"/favorites"}
+          to="/favourites"
+          value={"/favourites"}
           icon={<FavoriteIcon />}
         />
         <BottomNavigationAction

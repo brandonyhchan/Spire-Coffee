@@ -24,7 +24,7 @@ const Account = () => {
       <Helmet title={strings.account.helmet} />
       <div className={classNames(styles.container)}>
         <NavBar />
-        <div>
+        <div className={classNames(styles.account)}>
           <p>{strings.account.title}</p>
         </div>
         <Footer />

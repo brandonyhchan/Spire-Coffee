@@ -76,7 +76,7 @@ export const navbar = () => {
                   to="/favourites"
                   color="inherit"
                 >
-                  Favorites
+                  Favourites
                 </NavLink>
               </p>
               <p className={classNames(styles.link)}>

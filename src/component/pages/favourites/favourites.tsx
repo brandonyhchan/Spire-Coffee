@@ -9,13 +9,13 @@ import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import styles from "./favourites.module.scss";
 import strings from "config/strings";
 
-const Favorites = () => {
+const Favourites = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.favourites.helmet} />
       <div className={classNames(styles.container)}>
         <NavBar />
-        <div>
+        <div className={classNames(styles.favourites)}>
           <p>{strings.favourites.title}</p>
         </div>
         <Footer />
@@ -25,4 +25,4 @@ const Favorites = () => {
   );
 };
 
-export default Favorites;
+export default Favourites;

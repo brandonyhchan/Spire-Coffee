@@ -25,7 +25,7 @@ const AddCafe = () => {
       <Helmet title={strings.addCafe.helmet} />
       <div className={classNames(styles.container)}>
         <NavBar />
-        <div>
+        <div className={classNames(styles.addCafe)}>
           <p>{strings.addCafe.title}</p>
         </div>
         <Footer />

@@ -24,7 +24,7 @@ const Explore = () => {
       <Helmet title={strings.explore.helmet} />
       <div className={classNames(styles.container)}>
         <NavBar />
-        <div>
+        <div className={classNames(styles.explore)}>
           <p>{strings.explore.title}</p>
         </div>
         <Footer />

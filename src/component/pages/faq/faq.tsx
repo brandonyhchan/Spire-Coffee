@@ -15,7 +15,7 @@ const Faq = () => {
       <Helmet title={strings.faq.helmet} />
       <div className={classNames(styles.container)}>
         <NavBar />
-        <div>
+        <div className={classNames(styles.faq)}>
           <p>{strings.faq.title}</p>
         </div>
         <Footer />

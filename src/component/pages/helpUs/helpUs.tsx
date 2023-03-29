@@ -14,7 +14,7 @@ const HelpUs = () => {
       <Helmet title="Help us out" />
       <div className={classNames(styles.container)}>
         <NavBar />
-        <div>
+        <div className={classNames(styles.helpUs)}>
           <p>Help us out</p>
         </div>
         <Footer />

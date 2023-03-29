@@ -15,7 +15,7 @@ const aboutUs = () => {
       <Helmet title={strings.aboutUs.helmet} />
       <div className={classNames(styles.container)}>
         <NavBar />
-        <div>
+        <div className={classNames(styles.aboutUs)}>
           <p>{strings.aboutUs.title}</p>
         </div>
         <Footer />
