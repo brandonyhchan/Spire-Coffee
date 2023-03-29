@@ -72,7 +72,7 @@ const strings = new LocalizedStrings({
       about: "About",
       like: "Like us?",
       help: "Help us out",
-      connect: "Let's connect",
+      connect: "Let's Connect",
     },
   },
 });
