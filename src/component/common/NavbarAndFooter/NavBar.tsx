@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import { AppBar, Toolbar, IconButton, Typography, Stack } from "@mui/material";
 import CoffeeIcon from "@mui/icons-material/Coffee";
+import strings from "config/strings";
 import classNames from "classnames";
 import "global.scss";
 import styles from "./NavBar.module.scss";
@@ -42,7 +43,7 @@ export const navbar = () => {
               component="div"
               sx={{ marginLeft: "10px" }}
             >
-              SpireCoffee
+              {strings.global.title}
             </Typography>
           </div>
 
@@ -58,7 +59,7 @@ export const navbar = () => {
                   to="/addCafe"
                   color="inherit"
                 >
-                  Add a Cafe
+                  {strings.addCafe.helmet}
                 </NavLink>
               </p>
               <p className={classNames(styles.link)}>
@@ -67,7 +68,7 @@ export const navbar = () => {
                   to="/explore"
                   color="inherit"
                 >
-                  Explore
+                  {strings.explore.title}
                 </NavLink>
               </p>
               <p className={classNames(styles.link)}>
@@ -76,7 +77,7 @@ export const navbar = () => {
                   to="/favourites"
                   color="inherit"
                 >
-                  Favourites
+                  {strings.favourites.helmet}
                 </NavLink>
               </p>
               <p className={classNames(styles.link)}>
@@ -85,7 +86,7 @@ export const navbar = () => {
                   to="/account"
                   color="inherit"
                 >
-                  Account
+                  {strings.account.helmet}
                 </NavLink>
               </p>
               <Button

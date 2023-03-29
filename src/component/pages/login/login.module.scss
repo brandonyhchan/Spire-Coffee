@@ -205,7 +205,7 @@ a:hover {
 
   .header > p {
     padding-bottom: 25px;
-    width: 600px;
+    width: 400px;
   }
 
   @media (max-width: 768px) {
@@ -228,6 +228,10 @@ a:hover {
       flex-direction: row;
       justify-content: center;
       background-color: var(--primary-light);
+    }
+
+    .login {
+      padding: 50px;
     }
 
     .header > p {

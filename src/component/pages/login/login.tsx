@@ -92,7 +92,7 @@ const Login = () => {
           <div className={classNames(styles.logo)}>
             <img src={Logo} alt={Logo} />
           </div>
-          <h1>{strings.login.title}</h1>
+          <h1>{strings.global.title}</h1>
           <p>{strings.login.description}</p>
         </div>
         <div className={classNames(styles.loginContainer)}>

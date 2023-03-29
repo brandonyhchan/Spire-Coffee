@@ -2,8 +2,10 @@ import LocalizedStrings from "react-localization";
 
 const strings = new LocalizedStrings({
   en: {
+    global: {
+      title: "SpireCoffee",
+    },
     login: {
-      title: "Spire Coffee",
       button: "Login",
       description: `Got that craving while studying? Can’t find a spot to do your work? 
       We’ve been there but have you BeanHere? Join now and discover new cafes.`,
@@ -54,7 +56,7 @@ const strings = new LocalizedStrings({
     },
     addCafe: {
       title: "Add Cafe Page",
-      helmet: "add a Cafe",
+      helmet: "Add a Cafe",
     },
     faq: {
       title: "FAQ Page",
@@ -63,6 +65,14 @@ const strings = new LocalizedStrings({
     favourites: {
       title: "Favourites Page",
       helmet: "Favourites",
+    },
+    footer: {
+      copyright: "Copyright © 2023 SpireTech, Inc",
+      email: "spiretechconsulting@gmail.com",
+      about: "About",
+      like: "Like us?",
+      help: "Help us out",
+      connect: "Let's connect",
     },
   },
 });
