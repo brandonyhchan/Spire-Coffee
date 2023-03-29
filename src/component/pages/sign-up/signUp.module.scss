@@ -20,8 +20,8 @@ $_desktop_padding: 60px;
 }
 
 .signUpContainer {
-  // padding-top: 20px;
-  // padding-bottom: 20px;
+  padding-top: 20px;
+  padding-bottom: 20px;
   display: flex;
   align-items: center;
   flex-direction: column;
@@ -120,29 +120,19 @@ $_desktop_padding: 60px;
   .formItem input, span {
     width: 245px;
   }
-}
 
-/* Specific mobile media queries */
-@media only screen and (min-width: 375px) and (max-width: 414px) {
-  .formItem input, span {
-    width: 270px;
-  }
-}
-
-@media only screen and (min-width: 415px) and (max-width: 767px) {
-  .signUpContainer {
-    gap: 10px;
-  }
-  
-  .signUpForm {
-    gap: 15px;
+  @media (max-width: 414px) {
+    .formItem input, span {
+      width: 270px;
+    }
   }
 
-  .formItem input, span {
-    width: 390px;
+  @media (min-width: 415px) {
+    .formItem input, span {
+      width: 370px;
+    }
   }
 }
-/* End */
 
 /* Tablet and desktop view */
 @media only screen and (min-width: 768px) {
@@ -157,28 +147,18 @@ $_desktop_padding: 60px;
   .signUp {
     padding: 40px 80px;
   }
-}
 
-/* Specific tablet and desktop media queries */
-@media only screen and (min-width: 768px) and (max-width: 911px) {
-  .formItem input, span {
-    width: 400px;
-  }
-}
-
-@media only screen and (min-width: 912px) and (max-width: 1023px) {
   .formItem input, span {
     width: 480px;
   }
-}
-
-@media only screen and (min-width: 1024px) {
-  .signUpContainer {
-    padding-bottom: 35px;
+  
+  @media (min-width: 1024px) {
+    .signUpContainer {
+      padding-bottom: 35px;
+    }
+  
+    .formItem input, span {
+      width: 500px;
+    }
   }
-
-  .formItem input, span {
-    width: 500px;
-  }
 }
-/* End */
