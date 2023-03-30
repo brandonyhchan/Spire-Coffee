@@ -45,15 +45,15 @@ const Explore = () => {
               />
             </form>
           </div>
-          {CafeData.filter((post) => {
+          {CafeData.filter((cafe) => {
             if (query === "") {
-              return post;
-            } else if (post.name.toLowerCase().includes(query.toLowerCase())) {
-              return post;
+              return cafe;
+            } else if (cafe.name.toLowerCase().includes(query.toLowerCase())) {
+              return cafe;
             }
-          }).map((post, index) => (
-            <div className="box" key={index}>
-              <p>{post.name}</p>
+          }).map((cafe, index) => (
+            <div key={index}>
+              <p>{cafe.name}</p>
             </div>
           ))}
         </div>
