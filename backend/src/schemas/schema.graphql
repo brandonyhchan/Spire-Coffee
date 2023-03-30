@@ -1,5 +1,6 @@
 #import './AuthPayload/authpayload.graphql'
 #import './User/user.graphql'
+#import './Cafe/cafe.graphql'
 
 type Query {
   allUsers: [User!]!

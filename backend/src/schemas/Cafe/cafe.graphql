@@ -1,0 +1,45 @@
+type Cafe {
+  id: ID!
+  name: String!
+  street: String!
+  province: Province!
+  postalCode: String!
+  phoneNumber: String
+  website: String
+  hours: [CafeHours]!
+}
+
+type CafeHours {
+  id: ID!
+  day: Day!
+  open: Boolean!
+  openTime: DateTime!
+  closeTime: DateTime!
+}
+
+enum Province {
+  AB
+  BC
+  MB
+  NB
+  NL
+  NT
+  NS
+  NU
+  ON
+  PE
+  QC
+  SK
+  YT
+}
+
+enum Day {
+  Monday
+  Tuesday
+  Wednesday
+  Thursday
+  Friday
+  Saturday
+  Sunday
+  Holiday
+}
