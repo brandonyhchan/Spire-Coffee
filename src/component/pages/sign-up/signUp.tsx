@@ -235,8 +235,8 @@ const SignUp = () => {
             </form>
           </div>
         </div>
-        <Footer />
       </div>
+      <Footer />
     </React.Fragment>
   );
 };

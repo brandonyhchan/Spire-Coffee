@@ -11,20 +11,12 @@ $_desktop_padding: 60px;
 }
 
 .container {
-  min-height: 100vh;
+  overflow-y: hidden;
   width: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-  overflow-x: hidden;
+  height: 100vh;
 }
 
 .signUpContainer {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
   flex: 1;
 }
 
@@ -34,6 +26,8 @@ $_desktop_padding: 60px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
 }
 
+.container,
+.signUpContainer,
 .signUpForm,
 .signUp,
 .formItem {
@@ -136,10 +130,6 @@ $_desktop_padding: 60px;
 
 /* Tablet and desktop view */
 @media only screen and (min-width: 768px) {
-  .signUpContainer {
-    padding-top: 20px;
-  }
-
   .signUpForm {
     padding: 0px;
   }
@@ -153,8 +143,8 @@ $_desktop_padding: 60px;
   }
   
   @media (min-width: 1024px) {
-    .signUpContainer {
-      padding-bottom: 35px;
+    .heading {
+      padding-bottom: 30px;
     }
   
     .formItem input, span {
