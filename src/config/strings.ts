@@ -43,7 +43,7 @@ const strings = new LocalizedStrings({
       },
     },
     explore: {
-      title: "Explore Page",
+      title: "Explore",
       helmet: "Explore",
     },
     aboutUs: {

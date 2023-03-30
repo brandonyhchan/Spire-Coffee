@@ -98,10 +98,6 @@ export const navbar = () => {
           </div>
         </Toolbar>
       </AppBar>
-
-      {/* This is ugly but its so that there will be space between navbar and content, can take out in future
- when we see what our page content will look like */}
-      <div className={classNames(styles.padding)}></div>
     </div>
   );
 };

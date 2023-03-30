@@ -8,3 +8,41 @@
 .explore {
   flex: 1;
 }
+
+input {
+  border: 0;
+}
+
+.searchBarContainer {
+  display: flex;
+  justify-content: center;
+}
+
+.searchBar {
+  border: 2px;
+  border-radius: 30px;
+  padding: 8px;
+  width: 300px;
+  display: flex;
+  justify-content: flex-start;
+  border-width: 2px;
+  font-family: 'Figtree-Regular';
+  font-size: 18px;
+}
+
+.searchBar, 
+input {
+  background-color: var(--light-grey);
+  padding-left: 10px;
+}
+
+.searchBar input::placeholder {
+  color: var(--dark-grey);
+}
+
+.searchBarIcon {
+  color: var(--dark-grey);
+  transform: scale(1.4);
+  margin-top: 3px;
+  margin-left: 10px;
+}
