@@ -36,6 +36,7 @@ model CafeHours {
   Cafe      Cafe?    @relation(fields: [cafeId], references: [id])
   cafeId    Int      @unique
   day       Day
+  open      Boolean
   openTime  DateTime
   closeTime DateTime
 }
