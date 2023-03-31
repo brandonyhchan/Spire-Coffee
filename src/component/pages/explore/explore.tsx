@@ -13,9 +13,17 @@ import styles from "./explore.module.scss";
 import strings from "config/strings";
 
 const Explore = () => {
-  const [query, setQuery] = useState("");
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
+
+  const [query, setQuery] = useState("");
+  const [showCloseButton, setShowCloseButton] = useState(false);
+
+  const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
+    event.preventDefault();
+    setQuery("");
+    setShowCloseButton(false);
+  };
 
   useEffect(() => {
     if (!token) {
@@ -43,14 +51,18 @@ const Explore = () => {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   setQuery(event.target.value)
                 }
+                onFocus={() => setShowCloseButton(true)}
                 value={query}
               />
-              <div className={classNames(styles.clearButtonContainer)}>
-                <CloseRoundedIcon
-                  className={classNames(styles.clearButton)}
-                  onClick={() => setQuery("")}
-                ></CloseRoundedIcon>
-              </div>
+              {!showCloseButton ? null : (
+                <div className={classNames(styles.clearButtonContainer)}>
+                  <CloseRoundedIcon
+                    className={classNames(styles.clearButton)}
+                    // onClick={() => setQuery("")}
+                    onClick={handleClick}
+                  ></CloseRoundedIcon>
+                </div>
+              )}
             </form>
           </div>
           {CafeData.filter((cafe) => {

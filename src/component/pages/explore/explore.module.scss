@@ -11,7 +11,7 @@
 
 input {
   border: 0;
-  width: 315px;
+  width: 100%;
 }
 
 .searchBarContainer {
@@ -45,11 +45,12 @@ input {
   color: var(--dark-grey);
   transform: scale(1.4);
   margin-top: 3px;
-  margin-left: 10px;
+  margin-left: 8px;
 }
 
 .clearButton {
   color: var(--dark-grey);
   transform: scale(1.2);
   cursor: pointer;
+  margin-right: 5px;
 }
