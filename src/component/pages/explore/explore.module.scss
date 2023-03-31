@@ -11,6 +11,7 @@
 
 input {
   border: 0;
+  width: 315px;
 }
 
 .searchBarContainer {
@@ -22,9 +23,9 @@ input {
   border: 2px;
   border-radius: 30px;
   padding: 8px;
-  width: 300px;
+  width: 400px;
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-evenly;
   border-width: 2px;
   font-family: 'Figtree-Regular';
   font-size: 18px;
@@ -45,4 +46,10 @@ input {
   transform: scale(1.4);
   margin-top: 3px;
   margin-left: 10px;
+}
+
+.clearButton {
+  color: var(--dark-grey);
+  transform: scale(1.2);
+  cursor: pointer;
 }

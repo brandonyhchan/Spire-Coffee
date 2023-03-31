@@ -7,6 +7,7 @@ import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import classNames from "classnames";
 import { CafeData } from "./mockCafeData";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
@@ -42,7 +43,14 @@ const Explore = () => {
                 onChange={(event: React.ChangeEvent<HTMLInputElement>) =>
                   setQuery(event.target.value)
                 }
+                value={query}
               />
+              <div className={classNames(styles.clearButtonContainer)}>
+                <CloseRoundedIcon
+                  className={classNames(styles.clearButton)}
+                  onClick={() => setQuery("")}
+                ></CloseRoundedIcon>
+              </div>
             </form>
           </div>
           {CafeData.filter((cafe) => {
