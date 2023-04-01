@@ -45,6 +45,9 @@ const strings = new LocalizedStrings({
     explore: {
       title: "Explore",
       helmet: "Explore",
+      filterByDistance: "Distance",
+      filterByBusyness: "Busyness",
+      filterByNoiseLevel: "Noise Level",
     },
     aboutUs: {
       title: "About us page",

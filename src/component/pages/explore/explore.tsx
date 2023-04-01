@@ -40,10 +40,9 @@ const Explore = () => {
         <div className={classNames(styles.explore)}>
           <div className={classNames(styles.exploreContainer)}>
             <div className={classNames(styles.filterContainer)}>
-              <Filter></Filter>
-              <Filter></Filter>
-              <Filter></Filter>
-              <Filter></Filter>
+              <Filter text={strings.explore.filterByDistance}></Filter>
+              <Filter text={strings.explore.filterByBusyness}></Filter>
+              <Filter text={strings.explore.filterByNoiseLevel}></Filter>
             </div>
             <div className={classNames(styles.searchBarContainer)}>
               <form className={classNames(styles.searchBar)}>

@@ -4,10 +4,10 @@ import styles from "./Filter.module.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 
 type FilterPropsType = {
-  text?: string;
+  text: string;
 };
 
-const Filter = (text: FilterPropsType) => {
+const Filter = ({ text }: FilterPropsType) => {
   const [showExpandedSection, setShowExpandedSection] = useState(false);
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
@@ -19,7 +19,7 @@ const Filter = (text: FilterPropsType) => {
         className={classNames(styles.expandedItemGroup)}
         onClick={handleClick}
       >
-        <div className={classNames(styles.filterButton)}></div>
+        <div className={classNames(styles.filterButton)}>{text}</div>
         <ExpandMoreRoundedIcon
           className={classNames(styles.dropDownIcon)}
           onClick={handleClick}
