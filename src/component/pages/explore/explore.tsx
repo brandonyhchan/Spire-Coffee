@@ -38,10 +38,11 @@ const Explore = () => {
       <div className={classNames(styles.container)}>
         <NavBar />
         <div className={classNames(styles.explore)}>
-          {/*Remove the title after*/}
-          <p>{strings.explore.title}</p>
           <div className={classNames(styles.exploreContainer)}>
             <div className={classNames(styles.filterContainer)}>
+              <Filter></Filter>
+              <Filter></Filter>
+              <Filter></Filter>
               <Filter></Filter>
             </div>
             <div className={classNames(styles.searchBarContainer)}>

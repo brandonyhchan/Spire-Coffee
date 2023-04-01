@@ -18,20 +18,21 @@
 }
 
 .filterContainer {
-  width: 25vw;
-}
-
-input {
-  border: 0;
-  width: 100%;
+  width: 20vw;
 }
 
 .searchBarContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 75vw;
+  width: 80vw;
+  padding-top: 15px;
+}
+
+.searchBar, 
+input {
+  background-color: var(--light-grey);
+  padding-left: 10px;
 }
 
 .searchBar {
@@ -46,21 +47,20 @@ input {
   font-size: 18px;
 }
 
-.searchBar, 
-input {
-  background-color: var(--light-grey);
-  padding-left: 10px;
-}
-
-.searchBar input::placeholder {
-  color: var(--dark-grey);
-}
-
 .searchBarIcon {
   color: var(--dark-grey);
   transform: scale(1.4);
   margin-top: 3px;
   margin-left: 8px;
+}
+
+input {
+  border: 0;
+  width: 100%;
+}
+
+.searchBar input::placeholder {
+  color: var(--dark-grey);
 }
 
 .clearButton {

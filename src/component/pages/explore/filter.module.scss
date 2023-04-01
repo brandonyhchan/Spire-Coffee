@@ -1,4 +1,46 @@
 .container {
-  background-color: var(--blue);
-  height: 100vh;
+  min-height: calc(100vh - 64px);
+  border-right: 2px solid var(--dark-grey); //this is temporary to see the div
+}
+
+.expandableItems {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.expandedItemGroup {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background-color: azure;
+  width: 100%;
+  cursor: pointer;
+}
+
+.dropDownIcon {
+  margin: 15px;
+  margin-top: 10px;
+  transform: scale(1.0);
+  color: var(--dark-grey);
+  cursor: pointer;
+}
+
+.filterButton {
+  padding: 20px;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: var(--dark-grey);
+  height: auto;
+  border-radius: 0px;
+  font-size: 18px;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+
+  &:hover { 
+    background-color: rgba(255, 255, 255, 0.1);
+  }
 }
