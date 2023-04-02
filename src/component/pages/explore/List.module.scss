@@ -1,0 +1,18 @@
+.listWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: start;
+  width: 100%;
+}
+
+.listWrapper input {
+  width: 15px;
+  margin: 15px 7px 15px 15px;
+}
+
+label {
+  margin-top: 8px;
+  font-size: 16px;
+  color: var(--dark-grey);
+}

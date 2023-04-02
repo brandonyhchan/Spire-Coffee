@@ -1,13 +1,14 @@
-import React, { useState } from "react";
+import React, { ReactElement, useState } from "react";
 import classNames from "classnames";
 import styles from "./Filter.module.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 
 type FilterPropsType = {
   text: string;
+  children?: ReactElement | ReactElement[];
 };
 
-const Filter = ({ text }: FilterPropsType) => {
+const Filter = ({ text, children }: FilterPropsType) => {
   const [showExpandedSection, setShowExpandedSection] = useState(false);
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
@@ -25,7 +26,7 @@ const Filter = ({ text }: FilterPropsType) => {
           onClick={handleClick}
         ></ExpandMoreRoundedIcon>
       </div>
-      {showExpandedSection ? <div>hello</div> : null}
+      {showExpandedSection ? children : null}
     </div>
   );
 };
