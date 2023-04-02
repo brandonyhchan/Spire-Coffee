@@ -4,8 +4,6 @@ import { Helmet } from "react-helmet";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
-import Filter from "../../common/Filter/Filter";
-import List from "../../common/List/List";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import classNames from "classnames";
 import { CafeData } from "./mockCafeData";
@@ -25,7 +23,11 @@ const Explore = () => {
 
   const [query, setQuery] = useState("");
   const [showCloseButton, setShowCloseButton] = useState(false);
-  const [checked, setChecked] = useState("");
+  const [filterSelected, setFilterSelected] = useState(false);
+
+  const updateFilterSelected = (filterSelected: boolean): void => {
+    setFilterSelected(filterSelected);
+  };
 
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
@@ -47,14 +49,24 @@ const Explore = () => {
         <div className={classNames(styles.explore)}>
           <div className={classNames(styles.exploreContainer)}>
             <div className={classNames(styles.filterContainer)}>
-              <FilterByDistance></FilterByDistance>
-              <FilterByBusyness></FilterByBusyness>
-              <FilterByNoiseLevel></FilterByNoiseLevel>
-              <FilterByAmenities></FilterByAmenities>
-              <div className={classNames(styles.filterButtonWrapper)}>
-                <Button text="Clear" type={"clear"}></Button>
-                <Button text="Search" type={"search"}></Button>
-              </div>
+              <FilterByDistance
+                updateFilterSelected={updateFilterSelected}
+              ></FilterByDistance>
+              <FilterByBusyness
+                updateFilterSelected={updateFilterSelected}
+              ></FilterByBusyness>
+              <FilterByNoiseLevel
+                updateFilterSelected={updateFilterSelected}
+              ></FilterByNoiseLevel>
+              <FilterByAmenities
+                updateFilterSelected={updateFilterSelected}
+              ></FilterByAmenities>
+              {filterSelected ? (
+                <div className={classNames(styles.filterButtonWrapper)}>
+                  <Button text="Clear" type={"clear"}></Button>
+                  <Button text="Search" type={"search"}></Button>
+                </div>
+              ) : null}
             </div>
             <div className={classNames(styles.searchBarContainer)}>
               <form className={classNames(styles.searchBar)}>

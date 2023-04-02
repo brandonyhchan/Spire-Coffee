@@ -5,8 +5,20 @@ import strings from "config/strings";
 import classNames from "classnames";
 import styles from "component/common/Filter/Filter.module.scss";
 
-const FilterByNoiseLevel = () => {
+interface FilterByNoiseLevelProps {
+  updateFilterSelected: (arg: boolean) => void;
+}
+
+const FilterByNoiseLevel: React.FC<FilterByNoiseLevelProps> = ({
+  updateFilterSelected,
+}) => {
   const [checked, setChecked] = useState(""); // pass in the state?
+  const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
+    setChecked(event.target.value);
+    if (!checked) {
+      updateFilterSelected(true);
+    }
+  };
 
   return (
     <Filter text={strings.explore.filterByNoiseLevel}>
@@ -15,27 +27,21 @@ const FilterByNoiseLevel = () => {
         text={strings.list.quietness1}
         value={strings.list.quietness1}
         checked={checked === strings.list.quietness1}
-        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-          setChecked(event.target.value)
-        }
+        onChange={handleFilter}
       ></List>
       <List
         className={classNames(styles.listWrapper)}
         text={strings.list.quietness2}
         value={strings.list.quietness2}
         checked={checked === strings.list.quietness2}
-        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-          setChecked(event.target.value)
-        }
+        onChange={handleFilter}
       ></List>
       <List
         className={classNames(styles.listWrapper)}
         text={strings.list.quietness3}
         value={strings.list.quietness3}
         checked={checked === strings.list.quietness3}
-        onChange={(event: ChangeEvent<HTMLInputElement>) =>
-          setChecked(event.target.value)
-        }
+        onChange={handleFilter}
       ></List>
     </Filter>
   );
