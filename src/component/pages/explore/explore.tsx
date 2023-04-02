@@ -14,6 +14,10 @@ import Button from "component/common/Button";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
+import FilterByDistance from "./filterComponent/filterByDistance";
+import FilterByBusyness from "./filterComponent/filterByBusyness";
+import FilterByNoiseLevel from "./filterComponent/filterByNoiseLevel";
+import FilterByAmenities from "./filterComponent/filterByAmenities";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -43,152 +47,10 @@ const Explore = () => {
         <div className={classNames(styles.explore)}>
           <div className={classNames(styles.exploreContainer)}>
             <div className={classNames(styles.filterContainer)}>
-              <Filter text={strings.explore.filterByDistance}>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.distance1}
-                  value={strings.list.distance1}
-                  checked={checked === strings.list.distance1}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.distance2}
-                  value={strings.list.distance2}
-                  checked={checked === strings.list.distance2}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.distance3}
-                  value={strings.list.distance3}
-                  checked={checked === strings.list.distance3}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.distance4}
-                  value={strings.list.distance4}
-                  checked={checked === strings.list.distance4}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-              </Filter>
-              <Filter text={strings.explore.filterByBusyness}>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.busyness1}
-                  value={strings.list.busyness1}
-                  checked={checked === strings.list.busyness1}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.busyness2}
-                  value={strings.list.busyness2}
-                  checked={checked === strings.list.busyness2}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.busyness3}
-                  value={strings.list.busyness3}
-                  checked={checked === strings.list.busyness3}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-              </Filter>
-              <Filter text={strings.explore.filterByNoiseLevel}>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.quietness1}
-                  value={strings.list.quietness1}
-                  checked={checked === strings.list.quietness1}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.quietness2}
-                  value={strings.list.quietness2}
-                  checked={checked === strings.list.quietness2}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.quietness3}
-                  value={strings.list.quietness3}
-                  checked={checked === strings.list.quietness3}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-              </Filter>
-              <Filter text={strings.explore.filterByAmenities}>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.amenities1}
-                  value={strings.list.amenities1}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.amenities2}
-                  value={strings.list.amenities2}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.amenities3}
-                  value={strings.list.amenities3}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.amenities4}
-                  value={strings.list.amenities4}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.amenities5}
-                  value={strings.list.amenities5}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-                <List
-                  className={classNames(styles.listWrapper)}
-                  text={strings.list.amenities6}
-                  value={strings.list.amenities6}
-                  onChange={(event: ChangeEvent<HTMLInputElement>) =>
-                    setChecked(event.target.value)
-                  }
-                ></List>
-              </Filter>
+              <FilterByDistance></FilterByDistance>
+              <FilterByBusyness></FilterByBusyness>
+              <FilterByNoiseLevel></FilterByNoiseLevel>
+              <FilterByAmenities></FilterByAmenities>
               <div className={classNames(styles.filterButtonWrapper)}>
                 <Button text="Clear" type={"clear"}></Button>
                 <Button text="Search" type={"search"}></Button>

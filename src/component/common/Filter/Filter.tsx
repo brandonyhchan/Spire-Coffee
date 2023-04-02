@@ -2,6 +2,7 @@ import React, { ReactElement, useState } from "react";
 import classNames from "classnames";
 import styles from "./Filter.module.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
+import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
 
 type FilterPropsType = {
   text: string;
@@ -21,10 +22,15 @@ const Filter = ({ text, children }: FilterPropsType) => {
         onClick={handleClick}
       >
         <div className={classNames(styles.filterButton)}>{text}</div>
-        <ExpandMoreRoundedIcon
-          className={classNames(styles.dropDownIcon)}
-          onClick={handleClick}
-        ></ExpandMoreRoundedIcon>
+        {!showExpandedSection ? (
+          <ExpandMoreRoundedIcon
+            className={classNames(styles.expandMoreIcon)}
+          ></ExpandMoreRoundedIcon>
+        ) : (
+          <ExpandLessRoundedIcon
+            className={classNames(styles.expandLessIcon)}
+          ></ExpandLessRoundedIcon>
+        )}
       </div>
       {showExpandedSection ? children : null}
     </div>
