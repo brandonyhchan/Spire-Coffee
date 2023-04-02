@@ -69,3 +69,13 @@ input {
   cursor: pointer;
   margin-right: 5px;
 }
+
+.filterButtonWrapper {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.clearFilterButton {
+  padding-right: 10px;
+}

@@ -4,12 +4,13 @@ import { Helmet } from "react-helmet";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
-import Filter from "./Filter";
-import List from "./List";
+import Filter from "../../common/Filter/Filter";
+import List from "../../common/List/List";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import classNames from "classnames";
 import { CafeData } from "./mockCafeData";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+import Button from "component/common/Button";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
@@ -188,6 +189,10 @@ const Explore = () => {
                   }
                 ></List>
               </Filter>
+              <div className={classNames(styles.filterButtonWrapper)}>
+                <Button text="Clear" type={"clear"}></Button>
+                <Button text="Search" type={"search"}></Button>
+              </div>
             </div>
             <div className={classNames(styles.searchBarContainer)}>
               <form className={classNames(styles.searchBar)}>
