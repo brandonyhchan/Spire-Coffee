@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import Filter from "component/common/Filter/Filter";
-import List from "component/common/List/List";
+import List from "component/common/Checkbox/Checkbox";
 import strings from "config/strings";
 import classNames from "classnames";
 import styles from "component/common/Filter/Filter.module.scss";
@@ -12,12 +12,14 @@ interface FilterByBusynessProps {
 const FilterByBusyness: React.FC<FilterByBusynessProps> = ({
   updateFilterSelected,
 }) => {
-  const [checked, setChecked] = useState(""); // pass in the state?
+  const [checkedOption, setCheckedOption] = useState(""); // pass in the state?
   const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.value);
-    if (!checked) {
-      updateFilterSelected(true);
-    }
+    setCheckedOption(event.target.value);
+    // if (!checked) {
+    //   updateFilterSelected(true);
+    // } else {
+    //   updateFilterSelected(false);
+    // }
   };
 
   return (
@@ -26,21 +28,21 @@ const FilterByBusyness: React.FC<FilterByBusynessProps> = ({
         className={classNames(styles.listWrapper)}
         text={strings.list.busyness1}
         value={strings.list.busyness1}
-        checked={checked === strings.list.busyness1}
+        checked={checkedOption === strings.list.busyness1}
         onChange={handleFilter}
       ></List>
       <List
         className={classNames(styles.listWrapper)}
         text={strings.list.busyness2}
         value={strings.list.busyness2}
-        checked={checked === strings.list.busyness2}
+        checked={checkedOption === strings.list.busyness2}
         onChange={handleFilter}
       ></List>
       <List
         className={classNames(styles.listWrapper)}
         text={strings.list.busyness3}
         value={strings.list.busyness3}
-        checked={checked === strings.list.busyness3}
+        checked={checkedOption === strings.list.busyness3}
         onChange={handleFilter}
       ></List>
     </Filter>

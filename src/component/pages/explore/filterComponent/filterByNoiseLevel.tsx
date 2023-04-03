@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import Filter from "component/common/Filter/Filter";
-import List from "component/common/List/List";
+import List from "component/common/Checkbox/Checkbox";
 import strings from "config/strings";
 import classNames from "classnames";
 import styles from "component/common/Filter/Filter.module.scss";
@@ -17,6 +17,8 @@ const FilterByNoiseLevel: React.FC<FilterByNoiseLevelProps> = ({
     setChecked(event.target.value);
     if (!checked) {
       updateFilterSelected(true);
+    } else {
+      updateFilterSelected(false);
     }
   };
 

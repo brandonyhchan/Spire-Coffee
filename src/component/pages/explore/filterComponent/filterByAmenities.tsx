@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import Filter from "component/common/Filter/Filter";
-import List from "component/common/List/List";
+import List from "component/common/Checkbox/Checkbox";
 import strings from "config/strings";
 import classNames from "classnames";
 import styles from "component/common/Filter/Filter.module.scss";
@@ -12,11 +12,20 @@ interface FilterByAmenitiesProps {
 const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
   updateFilterSelected,
 }) => {
-  const [checked, setChecked] = useState(""); // pass in the state?
-  const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.value);
-    if (!checked) {
+  const [checkedOption, setCheckedOption] = useState(""); // pass in the state?
+  const [isChecked, setIsChecked] = useState(false);
+
+  // const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
+  //   // setCheckedOption(event.target.value);
+  //   setIsChecked(isChecked);
+  // };
+
+  const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
+    setIsChecked(!isChecked);
+    if (!isChecked) {
       updateFilterSelected(true);
+    } else {
+      updateFilterSelected(false);
     }
   };
 
@@ -26,15 +35,17 @@ const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
         className={classNames(styles.listWrapper)}
         text={strings.list.amenities1}
         value={strings.list.amenities1}
-        onChange={handleFilter}
+        // onChange={handleFilter}
+        onClick={handleClick}
       ></List>
       <List
         className={classNames(styles.listWrapper)}
         text={strings.list.amenities2}
         value={strings.list.amenities2}
-        onChange={handleFilter}
+        // onChange={handleFilter}
+        onClick={handleClick}
       ></List>
-      <List
+      {/* <List
         className={classNames(styles.listWrapper)}
         text={strings.list.amenities3}
         value={strings.list.amenities3}
@@ -57,7 +68,7 @@ const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
         text={strings.list.amenities6}
         value={strings.list.amenities6}
         onChange={handleFilter}
-      ></List>
+      ></List> */}
     </Filter>
   );
 };

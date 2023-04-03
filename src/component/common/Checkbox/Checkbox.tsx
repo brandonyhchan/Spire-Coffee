@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import classNames from "classnames";
-import styles from "./List.module.scss";
+import styles from "./Checkbox.module.scss";
 
 type ListPropsType = {
   text: string;
@@ -8,9 +8,10 @@ type ListPropsType = {
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
   value?: string;
+  onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
 };
 
-const List = ({ text, onChange, checked, value }: ListPropsType) => {
+const List = ({ text, onChange, checked, value, onClick }: ListPropsType) => {
   return (
     <div className={classNames(styles.listWrapper)}>
       <input
@@ -18,6 +19,7 @@ const List = ({ text, onChange, checked, value }: ListPropsType) => {
         checked={checked}
         onChange={onChange}
         value={value}
+        onClick={onClick}
       />
       <label>{text}</label>
     </div>
