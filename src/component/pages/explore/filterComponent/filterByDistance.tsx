@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import Filter from "component/common/Filter/Filter";
-import List from "component/common/Checkbox/Checkbox";
+import Input from "component/common/Input/Input";
 import strings from "config/strings";
 import classNames from "classnames";
 import styles from "component/common/Filter/Filter.module.scss";
@@ -22,34 +22,38 @@ const FilterByDistance: React.FC<FilterByDistanceProps> = ({
 
   return (
     <Filter text={strings.explore.filterByDistance}>
-      <List
+      <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.distance1}
+        type="radio"
         value={strings.list.distance1}
         checked={checkedOption === strings.list.distance1}
         onChange={handleFilter}
-      ></List>
-      <List
+      ></Input>
+      <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.distance2}
+        type="radio"
         value={strings.list.distance2}
         checked={checkedOption === strings.list.distance2}
         onChange={handleFilter}
-      ></List>
-      <List
+      ></Input>
+      <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.distance3}
+        type="radio"
         value={strings.list.distance3}
         checked={checkedOption === strings.list.distance3}
         onChange={handleFilter}
-      ></List>
-      <List
+      ></Input>
+      <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.distance4}
+        type="radio"
         value={strings.list.distance4}
         checked={checkedOption === strings.list.distance4}
         onChange={handleFilter}
-      ></List>
+      ></Input>
     </Filter>
   );
 };

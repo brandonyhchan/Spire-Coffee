@@ -1,9 +1,10 @@
 import React, { ChangeEvent, useState } from "react";
 import classNames from "classnames";
-import styles from "./Checkbox.module.scss";
+import styles from "./Input.module.scss";
 
-type CheckboxPropsType = {
+type InputPropsType = {
   text: string;
+  type: string;
   className?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
@@ -12,18 +13,19 @@ type CheckboxPropsType = {
   name?: string;
 };
 
-const Checkbox = ({
+const Input = ({
   text,
+  type,
   onChange,
   checked,
   value,
   onClick,
   name,
-}: CheckboxPropsType) => {
+}: InputPropsType) => {
   return (
     <div className={classNames(styles.listWrapper)}>
       <input
-        type="checkbox"
+        type={type}
         checked={checked}
         onChange={onChange}
         value={value}
@@ -35,4 +37,4 @@ const Checkbox = ({
   );
 };
 
-export default Checkbox;
+export default Input;

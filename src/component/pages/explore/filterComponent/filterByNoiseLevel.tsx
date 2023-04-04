@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import Filter from "component/common/Filter/Filter";
-import List from "component/common/Checkbox/Checkbox";
+import Input from "component/common/Input/Input";
 import strings from "config/strings";
 import classNames from "classnames";
 import styles from "component/common/Filter/Filter.module.scss";
@@ -22,27 +22,30 @@ const FilterByNoiseLevel: React.FC<FilterByNoiseLevelProps> = ({
 
   return (
     <Filter text={strings.explore.filterByNoiseLevel}>
-      <List
+      <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.quietness1}
+        type="radio"
         value={strings.list.quietness1}
         checked={checkedOption === strings.list.quietness1}
         onChange={handleFilter}
-      ></List>
-      <List
+      ></Input>
+      <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.quietness2}
+        type="radio"
         value={strings.list.quietness2}
         checked={checkedOption === strings.list.quietness2}
         onChange={handleFilter}
-      ></List>
-      <List
+      ></Input>
+      <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.quietness3}
+        type="radio"
         value={strings.list.quietness3}
         checked={checkedOption === strings.list.quietness3}
         onChange={handleFilter}
-      ></List>
+      ></Input>
     </Filter>
   );
 };
