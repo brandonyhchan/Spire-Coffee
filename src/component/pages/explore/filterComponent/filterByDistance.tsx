@@ -12,14 +12,11 @@ interface FilterByDistanceProps {
 const FilterByDistance: React.FC<FilterByDistanceProps> = ({
   updateFilterSelected,
 }) => {
-  const [checked, setChecked] = useState(""); // pass in the state?
-
+  const [checkedOption, setCheckedOption] = useState(""); // pass in the state?
   const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
-    setChecked(event.target.value);
-    if (!checked) {
+    setCheckedOption(event.target.value);
+    if (!checkedOption) {
       updateFilterSelected(true);
-    } else {
-      updateFilterSelected(false);
     }
   };
 
@@ -29,28 +26,28 @@ const FilterByDistance: React.FC<FilterByDistanceProps> = ({
         className={classNames(styles.listWrapper)}
         text={strings.list.distance1}
         value={strings.list.distance1}
-        checked={checked === strings.list.distance1}
+        checked={checkedOption === strings.list.distance1}
         onChange={handleFilter}
       ></List>
       <List
         className={classNames(styles.listWrapper)}
         text={strings.list.distance2}
         value={strings.list.distance2}
-        checked={checked === strings.list.distance2}
+        checked={checkedOption === strings.list.distance2}
         onChange={handleFilter}
       ></List>
       <List
         className={classNames(styles.listWrapper)}
         text={strings.list.distance3}
         value={strings.list.distance3}
-        checked={checked === strings.list.distance3}
+        checked={checkedOption === strings.list.distance3}
         onChange={handleFilter}
       ></List>
       <List
         className={classNames(styles.listWrapper)}
         text={strings.list.distance4}
         value={strings.list.distance4}
-        checked={checked === strings.list.distance4}
+        checked={checkedOption === strings.list.distance4}
         onChange={handleFilter}
       ></List>
     </Filter>

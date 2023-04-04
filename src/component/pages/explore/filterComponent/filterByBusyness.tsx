@@ -15,11 +15,9 @@ const FilterByBusyness: React.FC<FilterByBusynessProps> = ({
   const [checkedOption, setCheckedOption] = useState(""); // pass in the state?
   const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
     setCheckedOption(event.target.value);
-    // if (!checked) {
-    //   updateFilterSelected(true);
-    // } else {
-    //   updateFilterSelected(false);
-    // }
+    if (!checkedOption) {
+      updateFilterSelected(true);
+    }
   };
 
   return (
