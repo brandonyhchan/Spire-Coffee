@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { Link /* useNavigate */ } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { loginQuery } from "support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
-import { useNavigate } from "react-router-dom";
 import Logo from "assets/images/placeholder-logo.jpg";
 import Button from "component/common/Button";
 import Footer from "component/common/NavbarAndFooter/WebFooter";

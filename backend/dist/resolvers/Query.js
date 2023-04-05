@@ -6,7 +6,7 @@ export async function signUp(parent, args, context, info) {
         const user = await context.prisma.user.create({
             data: { ...args, password },
         });
-        const token = jwt.sign({ userId: user.id, userName: user.userName }, process.env.PRIVATE_KEY, { expiresIn: "3h", algorithm: "RS256" });
+        const token = jwt.sign({ userId: user.id, userName: user.userName }, process.env.PRIVATE_KEY, { algorithm: "RS256" });
         return {
             token,
             user,
@@ -27,9 +27,12 @@ export async function login(parent, args, context, info) {
     if (!valid) {
         throw new Error("Invalid password");
     }
-    const token = jwt.sign({ userId: user.id, userName: user.userName }, process.env.PRIVATE_KEY, { expiresIn: "3h", algorithm: "RS256" });
+    const token = jwt.sign({ userId: user.id, userName: user.userName }, process.env.PRIVATE_KEY, { algorithm: "RS256" });
     return {
         token,
         user,
     };
+}
+export async function returnAllCafes(parent, args, context, info) {
+    return context.prisma.cafe.findMany();
 }

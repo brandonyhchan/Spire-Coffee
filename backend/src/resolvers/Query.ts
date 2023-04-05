@@ -10,7 +10,7 @@ export async function signUp(parent, args, context, info) {
     const token = jwt.sign(
       { userId: user.id, userName: user.userName },
       <jwt.Secret>process.env.PRIVATE_KEY,
-      { expiresIn: "3h", algorithm: "RS256" }
+      { algorithm: "RS256" }
     );
     return {
       token,
@@ -35,10 +35,14 @@ export async function login(parent, args, context, info) {
   const token = jwt.sign(
     { userId: user.id, userName: user.userName },
     <jwt.Secret>process.env.PRIVATE_KEY,
-    { expiresIn: "3h", algorithm: "RS256" }
+    { algorithm: "RS256" }
   );
   return {
     token,
     user,
   };
+}
+
+export async function returnAllCafes(parent, args, context, info) {
+  return context.prisma.cafe.findMany();
 }

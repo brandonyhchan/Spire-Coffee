@@ -2,6 +2,7 @@ type Cafe {
   id: ID!
   name: String!
   street: String!
+  city: String!
   province: Province!
   postalCode: String!
   phoneNumber: String
