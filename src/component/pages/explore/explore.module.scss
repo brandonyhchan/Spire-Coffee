@@ -22,61 +22,10 @@
   padding-bottom: 10px;
 }
 
-.searchBarContainer {
+.searchContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 80vw;
   padding-top: 15px;
-}
-
-.searchBar, 
-input {
-  background-color: var(--light-grey);
-  padding-left: 10px;
-}
-
-.searchBar {
-  border: 2px;
-  border-radius: 30px;
-  padding: 8px;
-  width: 400px;
-  display: flex;
-  justify-content: space-evenly;
-  border-width: 2px;
-  font-family: 'Figtree-Regular';
-  font-size: 18px;
-}
-
-.searchBarIcon {
-  color: var(--dark-grey);
-  transform: scale(1.4);
-  margin-top: 3px;
-  margin-left: 8px;
-}
-
-input {
-  border: 0;
-  width: 100%;
-}
-
-.searchBar input::placeholder {
-  color: var(--dark-grey);
-}
-
-.clearButton {
-  color: var(--dark-grey);
-  transform: scale(1.2);
-  cursor: pointer;
-  margin-right: 5px;
-}
-
-.filterButtonWrapper {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
-}
-
-.clearFilterButton {
-  padding-right: 10px;
 }
