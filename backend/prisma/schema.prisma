@@ -20,7 +20,7 @@ model User {
 }
 
 model Cafe {
-  id          Int         @id @default(autoincrement())
+  id          Int      @id @default(autoincrement())
   name        String
   street      String
   city        String
@@ -28,17 +28,6 @@ model Cafe {
   postalCode  String
   phoneNumber String?
   website     String?
-  hours       CafeHours[]
-}
-
-model CafeHours {
-  id        Int      @id @default(autoincrement())
-  Cafe      Cafe?    @relation(fields: [cafeId], references: [id])
-  cafeId    Int      @unique
-  day       Day
-  open      Boolean
-  openTime  DateTime
-  closeTime DateTime
 }
 
 enum Province {
@@ -55,15 +44,4 @@ enum Province {
   QC
   SK
   YT
-}
-
-enum Day {
-  Monday
-  Tuesday
-  Wednesday
-  Thursday
-  Friday
-  Saturday
-  Sunday
-  Holiday
 }
