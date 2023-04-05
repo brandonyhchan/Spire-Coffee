@@ -13,6 +13,7 @@ import Button from "component/common/Button";
 import styles from "./explore.module.scss";
 import strings from "config/strings";
 import FilterByDistance from "./filterComponent/filterByDistance";
+import FilterByDistanceSlider from "./filterComponent/filterByDistanceSlider";
 import FilterByBusyness from "./filterComponent/filterByBusyness";
 import FilterByNoiseLevel from "./filterComponent/filterByNoiseLevel";
 import FilterByAmenities from "./filterComponent/filterByAmenities";
@@ -49,9 +50,9 @@ const Explore = () => {
         <div className={classNames(styles.explore)}>
           <div className={classNames(styles.exploreContainer)}>
             <div className={classNames(styles.filterContainer)}>
-              <FilterByDistance
-                updateFilterSelected={updateFilterSelected}
-              ></FilterByDistance>
+
+              <FilterByDistanceSlider></FilterByDistanceSlider>
+              
               <FilterByBusyness
                 updateFilterSelected={updateFilterSelected}
               ></FilterByBusyness>
