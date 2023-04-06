@@ -41,7 +41,9 @@ export const cafeQuery = gql`
     returnAllCafes {
       id
       name
+      street
       city
+      province
     }
   }
 `;
