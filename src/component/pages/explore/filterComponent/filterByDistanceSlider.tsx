@@ -4,7 +4,7 @@ import Filter from "component/common/Filter/Filter";
 import Input from "component/common/Input/Input";
 import strings from "config/strings";
 import classNames from "classnames";
-import styles from "component/common/Filter/Filter.module.scss";
+import styles from "./filterComponentSlider.module.scss";;
 import { Box, Slider } from "@mui/material";
 
 const distanceValue = [
@@ -22,7 +22,7 @@ const distanceValue = [
   },
   {
     value: 15,
-    label: "10km",
+    label: "15km",
   },
   {
     value: 20,
@@ -41,21 +41,30 @@ function valueLabelFormat(value: number) {
   );
 }
 
+//Gets the distance value to send to db
+const getDistance=(e: any, value: any)=>{
+  console.log(value)
+}
+
 function FilterByDistanceSlider() {
   return (
-    <Filter text={strings.explore.filterByDistance}>
-      <Box sx={{ width: 220 }}>
-        <Slider
-          aria-label="Restricted values"
-          step={5}
-          valueLabelFormat={valueLabelFormat}
-          getAriaValueText={valuetext}
-          marks={distanceValue}
-          min={0}
-          max={20}
-        />
-      </Box>
-    </Filter>
+    <div  className={classNames(styles.sliderFilterContainer)}>
+      <Filter text={strings.explore.filterByDistance}>
+        <Box sx={{ width: 220 }}>
+          <Slider
+            aria-label="Restricted values"
+            step={5}
+            valueLabelFormat={valueLabelFormat}
+            getAriaValueText={valuetext}
+            marks={distanceValue}
+            min={0}
+            max={20}
+            onChangeCommitted={getDistance}
+            className={classNames(styles.slider)}
+          />
+        </Box>
+      </Filter>
+    </div>
   );
 }
 
