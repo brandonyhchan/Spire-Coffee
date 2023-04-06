@@ -96,6 +96,10 @@ const strings = new LocalizedStrings({
       amenities5: "Accessible by transit",
       amenities6: "Parking available",
     },
+    cafeCard: {
+      busynessLabel: "Busyness",
+      noisinessLabel: "Noisiness",
+    },
   },
 });
 

@@ -1,9 +1,9 @@
 import React, { ChangeEvent, useState } from "react";
-import Filter from "component/common/Filter/Filter";
-import Input from "component/common/Input/Input";
+import Filter from "component/common/FilterComponent/FilterComponent";
+import Input from "component/common/FilterOption/FilterOption";
 import strings from "config/strings";
 import classNames from "classnames";
-import styles from "component/common/Filter/Filter.module.scss";
+import styles from "component/common/FilterComponent/FilterComponent.module.scss";
 
 interface FilterByAmenitiesProps {
   updateFilterSelected: (arg: boolean) => void;

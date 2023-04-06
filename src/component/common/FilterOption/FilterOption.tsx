@@ -1,6 +1,6 @@
 import React, { ChangeEvent, useState } from "react";
 import classNames from "classnames";
-import styles from "./Input.module.scss";
+import styles from "./FilterOption.module.scss";
 
 type InputPropsType = {
   text: string;

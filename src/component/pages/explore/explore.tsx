@@ -9,11 +9,11 @@ import Button from "component/common/Button";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
-import FilterByDistanceSlider from "./filterComponent/filterByDistanceSlider";
-import FilterByBusyness from "./filterComponent/filterByBusyness";
-import FilterByNoiseLevel from "./filterComponent/filterByNoiseLevel";
-import FilterByAmenities from "./filterComponent/filterByAmenities";
-import SearchBar from "./searchBar";
+import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
+import FilterByBusyness from "./exploreFilters/filterByBusyness";
+import FilterByNoiseLevel from "./exploreFilters/filterByNoiseLevel";
+import FilterByAmenities from "./exploreFilters/filterByAmenities";
+import SearchBar from "../../common/SearchBar/searchBar";
 
 const Explore = () => {
   const navigate = useNavigate();

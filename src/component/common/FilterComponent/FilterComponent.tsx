@@ -1,15 +1,15 @@
 import React, { ReactElement, useState } from "react";
 import classNames from "classnames";
-import styles from "./Filter.module.scss";
+import styles from "./FilterComponent.module.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
 
-type FilterPropsType = {
+type FilterComponentPropsType = {
   text: string;
   children?: ReactElement | ReactElement[];
 };
 
-const Filter = ({ text, children }: FilterPropsType) => {
+const FilterComponent = ({ text, children }: FilterComponentPropsType) => {
   const [showExpandedSection, setShowExpandedSection] = useState(false);
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
@@ -37,4 +37,4 @@ const Filter = ({ text, children }: FilterPropsType) => {
   );
 };
 
-export default Filter;
+export default FilterComponent;

@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import React, { ChangeEvent, useState } from "react";
-import Filter from "component/common/Filter/Filter";
-import Input from "component/common/Input/Input";
+import Filter from "component/common/FilterComponent/FilterComponent";
 import strings from "config/strings";
 import classNames from "classnames";
 import styles from "./filterComponentSlider.module.scss";;

@@ -1,15 +1,15 @@
 import React, { ChangeEvent, useState } from "react";
-import Filter from "component/common/Filter/Filter";
-import Input from "component/common/Input/Input";
+import Filter from "component/common/FilterComponent/FilterComponent";
+import Input from "component/common/FilterOption/FilterOption";
 import strings from "config/strings";
 import classNames from "classnames";
-import styles from "component/common/Filter/Filter.module.scss";
+import styles from "component/common/FilterComponent/FilterComponent.module.scss";
 
-interface FilterByNoiseLevelProps {
+interface FilterByBusynessProps {
   updateFilterSelected: (arg: boolean) => void;
 }
 
-const FilterByNoiseLevel: React.FC<FilterByNoiseLevelProps> = ({
+const FilterByBusyness: React.FC<FilterByBusynessProps> = ({
   updateFilterSelected,
 }) => {
   const [checkedOption, setCheckedOption] = useState(""); // pass in the state?
@@ -21,33 +21,33 @@ const FilterByNoiseLevel: React.FC<FilterByNoiseLevelProps> = ({
   };
 
   return (
-    <Filter text={strings.explore.filterByNoiseLevel}>
+    <Filter text={strings.explore.filterByBusyness}>
       <Input
         className={classNames(styles.listWrapper)}
-        text={strings.list.quietness1}
+        text={strings.list.busyness1}
         type="radio"
-        value={strings.list.quietness1}
-        checked={checkedOption === strings.list.quietness1}
+        value={strings.list.busyness1}
+        checked={checkedOption === strings.list.busyness1}
         onChange={handleFilter}
       ></Input>
       <Input
         className={classNames(styles.listWrapper)}
-        text={strings.list.quietness2}
+        text={strings.list.busyness2}
         type="radio"
-        value={strings.list.quietness2}
-        checked={checkedOption === strings.list.quietness2}
+        value={strings.list.busyness2}
+        checked={checkedOption === strings.list.busyness2}
         onChange={handleFilter}
       ></Input>
       <Input
         className={classNames(styles.listWrapper)}
-        text={strings.list.quietness3}
+        text={strings.list.busyness3}
         type="radio"
-        value={strings.list.quietness3}
-        checked={checkedOption === strings.list.quietness3}
+        value={strings.list.busyness3}
+        checked={checkedOption === strings.list.busyness3}
         onChange={handleFilter}
       ></Input>
     </Filter>
   );
 };
 
-export default FilterByNoiseLevel;
+export default FilterByBusyness;

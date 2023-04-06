@@ -1,0 +1,55 @@
+.cafeCardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 60px;
+  width: auto;
+  padding-top: 60px;
+}
+
+.cafeCard {
+  border-color: grey;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  display: flex;
+  flex-direction: row;
+  width: 580px;
+  height: auto;
+  gap: 25px;
+  margin-left: 5px;
+  border-radius: 5px;
+}
+
+.logo {
+  width: 175px;
+}
+
+.logo > img {
+  width: 100%;
+  height: 100%;
+}
+
+.cafeCardInfo {
+  color: var(--dark-grey);
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+  text-align: start;
+}
+
+.cafeCardIcons {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+}
+
+.busynessIcon,
+.noisinessIcon,
+.priceIconGroup {
+  transform: scale(1.2);
+  padding-right: 3px;
+}
+
+.priceIcon {
+  margin: -6px !important;
+}

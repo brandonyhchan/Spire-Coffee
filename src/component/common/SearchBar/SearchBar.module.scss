@@ -1,5 +1,3 @@
-
-
 .searchBar, 
 input {
   background-color: var(--light-grey);
@@ -10,12 +8,15 @@ input {
   border: 2px;
   border-radius: 30px;
   padding: 8px;
-  width: 400px;
+  width: 1000px;
   display: flex;
   justify-content: space-evenly;
   border-width: 2px;
   font-family: 'Figtree-Regular';
   font-size: 18px;
+  @media (max-width: 1400px) {
+    width: 600px;
+  }
 }
 
 .searchBarIcon {
@@ -49,53 +50,4 @@ input {
 
 .clearFilterButton {
   padding-right: 10px;
-}
-
-.logo {
-  width: 150px;
-}
-
-.logo > img {
-  width: 100%;
-  height: 100%;
-}
-
-.cafeCardContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 50px;
-  padding: 50px 15px 15px 15px;
-  width: auto;
-}
-
-.cafeCard {
-  border-color: grey;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
-  display: flex;
-  flex-direction: row;
-  width: 400px;
-  height: auto;
-  gap: 25px;
-}
-
-.cafeCardInfo {
-  color: var(--dark-grey);
-  padding: 15px 0px;
-  display: flex;
-  flex-direction: column;
-  text-align: start;
-}
-
-.cafeCardIcons {
-  display: flex;
-  flex-direction: row;
-  gap: 10px;
-}
-
-.busynessIcon,
-.noisinessIcon {
-  transform: scale(1.2);
-  padding-right: 3px;
 }
