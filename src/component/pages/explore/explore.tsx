@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
+import { cafeQuery } from "support/graphqlServerApi";
+import { useQuery } from "@apollo/client";
+import { Cafe } from "types/api/cafe";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
@@ -30,6 +33,20 @@ const Explore = () => {
       navigate("/");
     }
   }, [navigate, token]);
+
+  const [cafes, setCafes] = useState<Cafe[]>([]);
+
+  const { loading, error, refetch } = useQuery(cafeQuery, {
+    onError: (error) => {
+      throw error;
+    },
+    onCompleted: (data) => {
+      setCafes(data?.returnAllCafes);
+    },
+  });
+
+  console.log(cafes);
+  console.log(cafes[4].profilePhotoURL);
 
   return (
     <React.Fragment>

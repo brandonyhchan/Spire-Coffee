@@ -1,8 +1,9 @@
 #import './AuthPayload/authpayload.graphql'
 #import './User/user.graphql'
+#import './Cafe/cafe.graphql'
 
 type Query {
-  allUsers: [User!]!
+  allUsers: [User]
   signUp(
     userName: String!
     email: String!
@@ -11,4 +12,5 @@ type Query {
     password: String!
   ): AuthPayload
   login(userName: String!, password: String!): AuthPayload
+  returnAllCafes: [Cafe]
 }

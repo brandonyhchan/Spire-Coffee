@@ -35,3 +35,17 @@ export const loginQuery = gql`
     }
   }
 `;
+
+export const cafeQuery = gql`
+  query ReturnAllCafes {
+    returnAllCafes {
+      id
+      name
+      street
+      city
+      province
+      profilePhotoName
+      profilePhotoURL
+    }
+  }
+`;

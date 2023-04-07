@@ -1,0 +1,28 @@
+type Cafe {
+  id: ID!
+  name: String!
+  street: String!
+  city: String!
+  province: Province!
+  postalCode: String!
+  phoneNumber: String
+  website: String
+  profilePhotoName: String
+  profilePhotoURL: String
+}
+
+enum Province {
+  AB
+  BC
+  MB
+  NB
+  NL
+  NT
+  NS
+  NU
+  ON
+  PE
+  QC
+  SK
+  YT
+}

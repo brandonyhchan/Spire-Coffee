@@ -1,11 +1,12 @@
 import { ApolloServer } from "apollo-server";
 import { context } from "./context.js";
-import { signUp, login } from "./resolvers/Query.js";
+import { signUp, login, returnAllCafes } from "./resolvers/Query.js";
 import { loadFile } from "graphql-import-files";
 const resolvers = {
     Query: {
         signUp,
         login,
+        returnAllCafes,
     },
 };
 const server = new ApolloServer({
