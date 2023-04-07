@@ -54,4 +54,15 @@ export const CafeData = [
     noisiness: 2,
     busyness: 1,
   },
+  {
+    typename: "Cafe",
+    id: "6",
+    name: "Mr. Mustache Tea & Dessert",
+    street: "6125 Sussex Ave #110",
+    city: "Burnaby",
+    province: "BC",
+    price: 2,
+    noisiness: 2,
+    busyness: 1,
+  },
 ];

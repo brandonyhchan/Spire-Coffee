@@ -99,6 +99,7 @@ const strings = new LocalizedStrings({
     cafeCard: {
       busynessLabel: "Busyness",
       noisinessLabel: "Noisiness",
+      seeMore: "See more",
     },
   },
 });

@@ -56,6 +56,7 @@ const Explore = () => {
                 </div>
               ) : null}
             </div>
+            <div className={classNames(styles.spacer)}></div>
             <div className={classNames(styles.searchContainer)}>
               <SearchBar></SearchBar>
             </div>

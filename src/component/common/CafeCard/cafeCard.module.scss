@@ -6,6 +6,7 @@
   gap: 30px;
   width: auto;
   padding-top: 60px;
+  align-items: center;
 }
 
 .cafeCard {
@@ -54,4 +55,13 @@
 
 .priceIcon {
   margin: -6px !important;
+}
+
+.cafeLink {
+  cursor: pointer;
+  color: var(--dark-grey);
+}
+
+.cafeLink:hover {
+  color: var(--secondary);
 }

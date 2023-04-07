@@ -110,6 +110,15 @@ const CafeCard = ({ query }: CafeCardPropsType) => {
                   ))}
               </div>
             </div>
+            <Grid alignItems={"flex-end"}>
+              <Typography
+                textAlign={"end"}
+                paddingTop={2}
+                className={classNames(styles.cafeLink)}
+              >
+                {strings.cafeCard.seeMore}
+              </Typography>
+            </Grid>
           </div>
         </div>
       ))}
