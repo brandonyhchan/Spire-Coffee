@@ -7,6 +7,8 @@ type Cafe {
   postalCode: String!
   phoneNumber: String
   website: String
+  profilePhotoName: String
+  profilePhotoURL: String
 }
 
 enum Province {

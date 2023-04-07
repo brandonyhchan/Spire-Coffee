@@ -44,6 +44,8 @@ export const cafeQuery = gql`
       street
       city
       province
+      profilePhotoName
+      profilePhotoURL
     }
   }
 `;

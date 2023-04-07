@@ -5,4 +5,6 @@ type User {
   firstName: String!
   lastName: String!
   password: String!
+  photoName: String
+  photoURL: String
 }

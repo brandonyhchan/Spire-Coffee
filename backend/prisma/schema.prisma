@@ -11,23 +11,27 @@ datasource db {
 }
 
 model User {
-  id        Int    @id @default(autoincrement())
-  userName  String @unique
-  email     String @unique
+  id        Int     @id @default(autoincrement())
+  userName  String  @unique
+  email     String  @unique
   firstName String
   lastName  String
   password  String
+  photoName String?
+  photoURL  String?
 }
 
 model Cafe {
-  id          Int      @id @default(autoincrement())
-  name        String
-  street      String
-  city        String
-  province    Province
-  postalCode  String
-  phoneNumber String?
-  website     String?
+  id               Int      @id @default(autoincrement())
+  name             String
+  street           String
+  city             String
+  province         Province
+  postalCode       String
+  phoneNumber      String?
+  website          String?
+  profilePhotoName String?
+  profilePhotoURL  String?
 }
 
 enum Province {
