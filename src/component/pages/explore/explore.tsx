@@ -46,7 +46,7 @@ const Explore = () => {
   });
 
   console.log(cafes);
-  console.log(cafes[4].profilePhotoURL);
+  // console.log(cafes[4].profilePhotoURL);
 
   return (
     <React.Fragment>

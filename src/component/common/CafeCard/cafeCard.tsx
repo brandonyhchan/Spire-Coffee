@@ -75,8 +75,8 @@ const CafeCard = ({ query }: CafeCardPropsType) => {
         } else if (cafe.name.toLowerCase().includes(query.toLowerCase())) {
           return cafe;
         }
-      }).map((cafe, index) => (
-        <div key={index} className={classNames(styles.cafeCard)}>
+      }).map((cafe) => (
+        <div key={cafe.id} className={classNames(styles.cafeCard)}>
           <div className={classNames(styles.logo)}>
             <img src={Logo} alt={Logo} />
           </div>
@@ -102,10 +102,10 @@ const CafeCard = ({ query }: CafeCardPropsType) => {
               <div className={classNames(styles.priceIconGroup)}>
                 {Array(cafe.price)
                   .fill("")
-                  .map((x) => (
+                  .map((cafe) => (
                     <AttachMoneyRoundedIcon
                       className={classNames(styles.priceIcon)}
-                      key={x}
+                      key={cafe.id}
                     ></AttachMoneyRoundedIcon>
                   ))}
               </div>
