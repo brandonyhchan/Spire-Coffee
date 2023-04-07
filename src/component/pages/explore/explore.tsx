@@ -42,6 +42,7 @@ const Explore = () => {
         <NavBar />
         <div className={classNames(styles.explore)}>
           <p>{strings.explore.title}</p>
+          <img src={cafes[4].profilePhotoURL} />
         </div>
         <Footer />
         <MobileFooter />

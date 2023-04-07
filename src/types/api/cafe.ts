@@ -4,4 +4,5 @@ export interface Cafe {
   street: string;
   city: string;
   province: string;
+  profilePhotoURL: string;
 }
