@@ -3,7 +3,7 @@
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 60px;
+  gap: 30px;
   width: auto;
   padding-top: 60px;
 }
@@ -15,13 +15,14 @@
   flex-direction: row;
   width: 580px;
   height: auto;
-  gap: 25px;
   margin-left: 5px;
   border-radius: 5px;
 }
 
 .logo {
-  width: 175px;
+  width: 180px;
+  display: block;
+  padding: 10px;
 }
 
 .logo > img {
@@ -31,10 +32,11 @@
 
 .cafeCardInfo {
   color: var(--dark-grey);
-  padding: 15px 0px;
+  padding: 15px;
   display: flex;
   flex-direction: column;
-  text-align: start;
+  text-align: start; 
+  width: 400px;
 }
 
 .cafeCardIcons {
