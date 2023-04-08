@@ -18,14 +18,13 @@ import FilterByNoiseLevel from "./exploreFilters/filterByNoiseLevel";
 import FilterByAmenities from "./exploreFilters/filterByAmenities";
 import SearchBar from "component/common/SearchBar/searchBar";
 import { Box, CircularProgress } from "@mui/material";
-import CafeCard from "../../common/CafeCard/cafeCard";
 
 const Explore = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
-  const query = "";
 
   const [filterSelected, setFilterSelected] = useState(false);
+
   const updateFilterSelected = (filterSelected: boolean): void => {
     setFilterSelected(filterSelected);
   };
@@ -75,9 +74,9 @@ const Explore = () => {
                 </div>
               ) : null}
             </div>
+            <div className={classNames(styles.spacer)}></div>
             <div className={classNames(styles.searchContainer)}>
-              <SearchBar query={query} />
-              <CafeCard query={query} />
+              <SearchBar />
             </div>
           </div>
         </div>

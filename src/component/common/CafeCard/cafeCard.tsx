@@ -100,7 +100,7 @@ const CafeCard = ({ query }: CafeCardPropsType) => {
                     <AttachMoneyRoundedIcon
                       className={classNames(styles.priceIcon)}
                       key={cafe.id}
-                    />
+                    ></AttachMoneyRoundedIcon>
                   ))}
               </div>
             </div>
