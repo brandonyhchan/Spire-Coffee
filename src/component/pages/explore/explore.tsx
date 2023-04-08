@@ -16,7 +16,8 @@ import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
 import FilterByBusyness from "./exploreFilters/filterByBusyness";
 import FilterByNoiseLevel from "./exploreFilters/filterByNoiseLevel";
 import FilterByAmenities from "./exploreFilters/filterByAmenities";
-import SearchBar from "../../common/SearchBar/searchBar";
+import SearchBar from "component/common/SearchBar/searchBar";
+import { Box, CircularProgress } from "@mui/material";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -54,6 +55,12 @@ const Explore = () => {
       <div className={classNames(styles.container)}>
         <NavBar />
         <div className={classNames(styles.explore)}>
+          {loading && (
+            <Box sx={{ display: "flex" }}>
+              <CircularProgress />
+            </Box>
+          )}
+
           <div className={classNames(styles.exploreContainer)}>
             <div className={classNames(styles.filterContainer)}>
               <FilterByDistanceSlider />
