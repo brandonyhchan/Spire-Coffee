@@ -18,15 +18,21 @@ import FilterByNoiseLevel from "./exploreFilters/filterByNoiseLevel";
 import FilterByAmenities from "./exploreFilters/filterByAmenities";
 import SearchBar from "component/common/SearchBar/searchBar";
 import { Box, CircularProgress } from "@mui/material";
+import CafeCard from "component/common/CafeCard/cafeCard";
 
 const Explore = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
   const [filterSelected, setFilterSelected] = useState(false);
+  const [newQuery, setNewQuery] = useState("");
 
   const updateFilterSelected = (filterSelected: boolean): void => {
     setFilterSelected(filterSelected);
+  };
+
+  const updateQuery = (newQuery: string): void => {
+    setNewQuery(newQuery);
   };
 
   useEffect(() => {
@@ -76,7 +82,21 @@ const Explore = () => {
             </div>
             <div className={classNames(styles.spacer)}></div>
             <div className={classNames(styles.searchContainer)}>
-              <SearchBar />
+              <SearchBar updateQuery={updateQuery} />
+              {cafes
+                .filter((cafes) => {
+                  if (newQuery === "") {
+                    return cafes;
+                  } else if (
+                    cafes.name.toLowerCase().includes(newQuery.toLowerCase())
+                  ) {
+                    return cafes;
+                  }
+                })
+                .map((cafes) => (
+                  <CafeCard query={newQuery} cafe={cafes} key={cafes.id} />
+                ))}
+              {/* needs to be fixed, doesn't render cafe cards anymore */}
             </div>
           </div>
         </div>
