@@ -9,6 +9,7 @@ import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import classNames from "classnames";
 import Button from "component/common/Button";
+import { CafeData } from "../../pages/explore/mockCafeData";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
@@ -80,23 +81,19 @@ const Explore = () => {
                 </div>
               ) : null}
             </div>
-            <div className={classNames(styles.spacer)}></div>
             <div className={classNames(styles.searchContainer)}>
               <SearchBar updateQuery={updateQuery} />
-              {cafes
-                .filter((cafes) => {
-                  if (newQuery === "") {
-                    return cafes;
-                  } else if (
-                    cafes.name.toLowerCase().includes(newQuery.toLowerCase())
-                  ) {
-                    return cafes;
-                  }
-                })
-                .map((cafes) => (
-                  <CafeCard query={newQuery} cafe={cafes} key={cafes.id} />
-                ))}
-              {/* needs to be fixed, doesn't render cafe cards anymore */}
+              {CafeData.filter((cafe) => { //need to change CafeData (imported data) to cafes (from db) but cafes doesn't render
+                if (newQuery === "") {
+                  return cafe;
+                } else if (
+                  cafe.name.toLowerCase().includes(newQuery.toLowerCase())
+                ) {
+                  return cafe;
+                }
+              }).map((cafe) => (
+                <CafeCard cafe={cafe} query={newQuery} key={cafe.id} /> // Type compatibility error
+              ))}
             </div>
           </div>
         </div>

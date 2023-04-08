@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { CafeData } from "../../pages/explore/mockCafeData";
 import Logo from "assets/images/placeholder-logo.jpg";
 import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
 import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
@@ -99,15 +98,6 @@ const CafeCard = ({ cafe }: CafeCardPropsType) => {
                 ))}
             </div>
           </div>
-          <Grid alignItems={"flex-end"}>
-            <Typography
-              textAlign={"end"}
-              paddingTop={2}
-              className={classNames(styles.cafeLink)}
-            >
-              {strings.cafeCard.seeMore}
-            </Typography>
-          </Grid>
         </div>
       </div>
     </div>
