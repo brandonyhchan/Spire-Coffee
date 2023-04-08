@@ -17,13 +17,14 @@ import FilterByBusyness from "./exploreFilters/filterByBusyness";
 import FilterByNoiseLevel from "./exploreFilters/filterByNoiseLevel";
 import FilterByAmenities from "./exploreFilters/filterByAmenities";
 import SearchBar from "../../common/SearchBar/searchBar";
+import CafeCard from "../../common/CafeCard/cafeCard";
 
 const Explore = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
+  const query = "";
 
   const [filterSelected, setFilterSelected] = useState(false);
-
   const updateFilterSelected = (filterSelected: boolean): void => {
     setFilterSelected(filterSelected);
   };
@@ -67,9 +68,9 @@ const Explore = () => {
                 </div>
               ) : null}
             </div>
-            <div className={classNames(styles.spacer)}></div>
             <div className={classNames(styles.searchContainer)}>
-              <SearchBar />
+              <SearchBar query={query} />
+              <CafeCard query={query} />
             </div>
           </div>
         </div>

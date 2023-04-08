@@ -3,22 +3,25 @@ import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import classNames from "classnames";
 import styles from "./SearchBar.module.scss";
-import CafeCard from "../CafeCard/cafeCard";
 
-const SearchBar = () => {
+type SearchBarPropsType = {
+  query: string;
+};
+
+const SearchBar = ({ query }: SearchBarPropsType) => {
+  const setQuery = (arg: string) => arg;
+  const arg = "";
+
   const [showCloseButton, setShowCloseButton] = useState(false);
-  const [query, setQuery] = useState("");
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    setQuery("");
+    setQuery(arg);
     setShowCloseButton(false);
   };
   return (
     <React.Fragment>
       <form className={classNames(styles.searchBar)}>
-        <SearchRoundedIcon
-          className={classNames(styles.searchBarIcon)}
-        ></SearchRoundedIcon>
+        <SearchRoundedIcon className={classNames(styles.searchBarIcon)} />
         <input
           type="text"
           placeholder="Search..."
@@ -34,11 +37,10 @@ const SearchBar = () => {
             <CloseRoundedIcon
               className={classNames(styles.clearButton)}
               onClick={handleClick}
-            ></CloseRoundedIcon>
+            />
           </div>
         )}
       </form>
-      <CafeCard query={query}></CafeCard>
     </React.Fragment>
   );
 };

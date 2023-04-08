@@ -22,21 +22,15 @@ const CafeCard = ({ query }: CafeCardPropsType) => {
     switch (icon) {
       case 1:
         return (
-          <VolumeMuteRoundedIcon
-            className={classNames(styles.noisinessIcon)}
-          ></VolumeMuteRoundedIcon>
+          <VolumeMuteRoundedIcon className={classNames(styles.noisinessIcon)} />
         );
       case 2:
         return (
-          <VolumeDownRoundedIcon
-            className={classNames(styles.noisinessIcon)}
-          ></VolumeDownRoundedIcon>
+          <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
         );
       case 3:
         return (
-          <VolumeUpRoundedIcon
-            className={classNames(styles.noisinessIcon)}
-          ></VolumeUpRoundedIcon>
+          <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
         );
       default:
         return null;
@@ -49,19 +43,19 @@ const CafeCard = ({ query }: CafeCardPropsType) => {
         return (
           <HourglassEmptyRoundedIcon
             className={classNames(styles.busynessIcon)}
-          ></HourglassEmptyRoundedIcon>
+          />
         );
       case 2:
         return (
           <HourglassBottomRoundedIcon
             className={classNames(styles.busynessIcon)}
-          ></HourglassBottomRoundedIcon>
+          />
         );
       case 3:
         return (
           <HourglassFullRoundedIcon
             className={classNames(styles.busynessIcon)}
-          ></HourglassFullRoundedIcon>
+          />
         );
       default:
         return null;
@@ -106,7 +100,7 @@ const CafeCard = ({ query }: CafeCardPropsType) => {
                     <AttachMoneyRoundedIcon
                       className={classNames(styles.priceIcon)}
                       key={cafe.id}
-                    ></AttachMoneyRoundedIcon>
+                    />
                   ))}
               </div>
             </div>
