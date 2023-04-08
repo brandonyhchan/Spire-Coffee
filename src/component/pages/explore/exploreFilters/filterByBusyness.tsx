@@ -29,7 +29,7 @@ const FilterByBusyness: React.FC<FilterByBusynessProps> = ({
         value={strings.list.busyness1}
         checked={checkedOption === strings.list.busyness1}
         onChange={handleFilter}
-      ></Input>
+      />
       <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.busyness2}
@@ -37,7 +37,7 @@ const FilterByBusyness: React.FC<FilterByBusynessProps> = ({
         value={strings.list.busyness2}
         checked={checkedOption === strings.list.busyness2}
         onChange={handleFilter}
-      ></Input>
+      />
       <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.busyness3}
@@ -45,7 +45,7 @@ const FilterByBusyness: React.FC<FilterByBusynessProps> = ({
         value={strings.list.busyness3}
         checked={checkedOption === strings.list.busyness3}
         onChange={handleFilter}
-      ></Input>
+      />
     </Filter>
   );
 };

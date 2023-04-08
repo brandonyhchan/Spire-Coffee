@@ -29,7 +29,7 @@ const FilterByNoiseLevel: React.FC<FilterByNoiseLevelProps> = ({
         value={strings.list.quietness1}
         checked={checkedOption === strings.list.quietness1}
         onChange={handleFilter}
-      ></Input>
+      />
       <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.quietness2}
@@ -37,7 +37,7 @@ const FilterByNoiseLevel: React.FC<FilterByNoiseLevelProps> = ({
         value={strings.list.quietness2}
         checked={checkedOption === strings.list.quietness2}
         onChange={handleFilter}
-      ></Input>
+      />
       <Input
         className={classNames(styles.listWrapper)}
         text={strings.list.quietness3}
@@ -45,7 +45,7 @@ const FilterByNoiseLevel: React.FC<FilterByNoiseLevelProps> = ({
         value={strings.list.quietness3}
         checked={checkedOption === strings.list.quietness3}
         onChange={handleFilter}
-      ></Input>
+      />
     </Filter>
   );
 };

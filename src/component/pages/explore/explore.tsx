@@ -56,26 +56,20 @@ const Explore = () => {
         <div className={classNames(styles.explore)}>
           <div className={classNames(styles.exploreContainer)}>
             <div className={classNames(styles.filterContainer)}>
-              <FilterByDistanceSlider></FilterByDistanceSlider>
-              <FilterByBusyness
-                updateFilterSelected={updateFilterSelected}
-              ></FilterByBusyness>
-              <FilterByNoiseLevel
-                updateFilterSelected={updateFilterSelected}
-              ></FilterByNoiseLevel>
-              <FilterByAmenities
-                updateFilterSelected={updateFilterSelected}
-              ></FilterByAmenities>
+              <FilterByDistanceSlider />
+              <FilterByBusyness updateFilterSelected={updateFilterSelected} />
+              <FilterByNoiseLevel updateFilterSelected={updateFilterSelected} />
+              <FilterByAmenities updateFilterSelected={updateFilterSelected} />
               {filterSelected ? (
                 <div className={classNames(styles.filterButtonWrapper)}>
-                  <Button text="Clear" type={"clear"}></Button>
-                  <Button text="Search" type={"search"}></Button>
+                  <Button text="Clear" type={"clear"} />
+                  <Button text="Search" type={"search"} />
                 </div>
               ) : null}
             </div>
             <div className={classNames(styles.spacer)}></div>
             <div className={classNames(styles.searchContainer)}>
-              <SearchBar></SearchBar>
+              <SearchBar />
             </div>
           </div>
         </div>
