@@ -31,3 +31,13 @@
   padding-top: 30px;
   padding-bottom: 30px;
 }
+
+.cafeCardContainer {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 10px;
+  width: 80vw;
+  padding-top: 30px;
+}

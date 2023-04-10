@@ -1,27 +1,18 @@
-.cafeCardContainer {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 30px;
-  width: auto;
-  padding-top: 60px;
-  align-items: center;
-}
-
 .cafeCard {
   border-color: grey;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
   display: flex;
   flex-direction: row;
-  width: 580px;
+  width: 620px;
   height: auto;
   margin-left: 5px;
   border-radius: 5px;
+  font-family: 'Figtree-Regular';
 }
 
 .logo {
-  width: 180px;
+  width: 200px;
+  height: 200px;
   display: block;
   padding: 10px;
 }
@@ -37,31 +28,36 @@
   display: flex;
   flex-direction: column;
   text-align: start; 
-  width: 400px;
+  width: 420px;
 }
 
 .cafeCardIcons {
   display: flex;
   flex-direction: row;
-  gap: 50px;
+  gap: 40px;
 }
 
-.busynessIcon,
-.noisinessIcon,
+.cafeCardIcons label {
+  font-size: 20px;
+  padding-left: 5px;
+}
+
+.busynessIcon {
+  transform: scale(1.8);
+  padding-right: 5px;
+}
+
 .priceIconGroup {
-  transform: scale(1.2);
-  padding-right: 3px;
+  transform: scale(1.6);
+  padding-right: 5px;
+}
+
+.noisinessIcon {
+  transform: scale(2.0);
+  padding-right: 5px;
 }
 
 .priceIcon {
   margin: -6px !important;
-}
-
-.cafeLink {
-  cursor: pointer;
-  color: var(--dark-grey);
-}
-
-.cafeLink:hover {
-  color: var(--secondary);
+  margin-top: 8px !important;
 }
