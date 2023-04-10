@@ -15,19 +15,20 @@
 .exploreContainer {
   display: flex;
   flex-direction: row;
+  min-height: 100vh;
 }
 
 .filterContainer {
-  width: 25vw;
+  width: 350px;
   padding-bottom: 10px;
+  background-color: azure;
 }
 
 .searchContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-  width: 80vw;
+  width: calc(100vw - 350px);
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -38,6 +39,6 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  width: 80vw;
   padding-top: 30px;
+  width: auto;
 }

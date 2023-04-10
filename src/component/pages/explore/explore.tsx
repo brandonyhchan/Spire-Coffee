@@ -86,15 +86,15 @@ const Explore = () => {
                 ) : null}
               </div>
               <div className={classNames(styles.searchContainer)}>
-                <SearchBar updateQuery={updateQuery} />
-                <div className={classNames(styles.cafeCardWrapper)}>
-                  <div className={classNames(styles.cafeCardContainer)}>
-                    {cafes.map((cafe: Cafe, index) => (
-                      <Grid item key={index}>
-                        <CafeCard key={cafe.id} {...cafe} />
-                      </Grid>
-                    ))}
-                  </div>
+                <div className={classNames(styles.searchBarContainer)}>
+                  <SearchBar updateQuery={updateQuery} />
+                </div>
+                <div className={classNames(styles.cafeCardContainer)}>
+                  {cafes.map((cafe: Cafe, index) => (
+                    <Grid item key={index}>
+                      <CafeCard key={cafe.id} {...cafe} />
+                    </Grid>
+                  ))}
                 </div>
               </div>
             </div>

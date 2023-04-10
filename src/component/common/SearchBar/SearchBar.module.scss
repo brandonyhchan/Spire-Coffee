@@ -10,12 +10,12 @@ input {
   padding: 8px;
   width: 1000px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   border-width: 2px;
   font-family: 'Figtree-Regular';
   font-size: 18px;
-  @media (max-width: 1594px) {
-    width: 600px;
+  @media (max-width: 1610px) {
+    width: 625px;
   }
 }
 
