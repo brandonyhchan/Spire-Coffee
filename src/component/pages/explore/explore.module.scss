@@ -33,6 +33,13 @@
   padding-bottom: 30px;
 }
 
+.cafeCardWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: center !important;
+  max-width: 1750px;
+}
+
 .cafeCardContainer {
   display: flex;
   flex-direction: row;
@@ -40,5 +47,15 @@
   justify-content: center;
   gap: 10px;
   padding-top: 30px;
-  width: auto;
+  min-width: 620px;
+  @media (max-width: 1615px) {
+    width: 50vw;
+  }
+  @media (min-width: 1616px) {
+    width: 78vw;
+    display: grid;
+    grid-template-columns: repeat(2, 625px);
+    column-gap: 10px;
+    row-gap: 15px;
+  }
 }

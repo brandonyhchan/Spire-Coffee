@@ -19,7 +19,6 @@ import FilterByAmenities from "./exploreFilters/filterByAmenities";
 import SearchBar from "component/common/SearchBar/searchBar";
 import { Box, CircularProgress } from "@mui/material";
 import CafeCard from "component/common/CafeCard/cafeCard";
-import { Grid } from "@mui/material";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -69,6 +68,7 @@ const Explore = () => {
           )}
           {!!cafes.length && (
             <div className={classNames(styles.exploreContainer)}>
+              {/* need filter for price */}
               <div className={classNames(styles.filterContainer)}>
                 <FilterByDistanceSlider />
                 <FilterByBusyness updateFilterSelected={updateFilterSelected} />
@@ -89,12 +89,12 @@ const Explore = () => {
                 <div className={classNames(styles.searchBarContainer)}>
                   <SearchBar updateQuery={updateQuery} />
                 </div>
-                <div className={classNames(styles.cafeCardContainer)}>
-                  {cafes.map((cafe: Cafe, index) => (
-                    <Grid item key={index}>
+                <div className={classNames(styles.cafeCardWrapper)}>
+                  <div className={classNames(styles.cafeCardContainer)}>
+                    {cafes.map((cafe: Cafe, index) => (
                       <CafeCard key={cafe.id} {...cafe} />
-                    </Grid>
-                  ))}
+                    ))}
+                  </div>
                 </div>
               </div>
             </div>
