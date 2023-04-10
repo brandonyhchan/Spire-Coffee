@@ -9,6 +9,9 @@ type Cafe {
   website: String
   profilePhotoName: String
   profilePhotoURL: String
+  busyness: filterOptions
+  noisiness: filterOptions
+  price: filterOptions
 }
 
 enum Province {
@@ -25,4 +28,10 @@ enum Province {
   QC
   SK
   YT
+}
+
+enum filterOptions {
+  LOW
+  MEDIUM
+  HIGH
 }

@@ -9,7 +9,6 @@ import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import classNames from "classnames";
 import Button from "component/common/Button";
-import { CafeData } from "../../pages/explore/mockCafeData";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
@@ -44,7 +43,8 @@ const Explore = () => {
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
-  const { loading, error, refetch } = useQuery(cafeQuery, {
+  // refetch could be added in case needed
+  const { loading, error } = useQuery(cafeQuery, {
     onError: (error) => {
       throw error;
     },
@@ -54,7 +54,6 @@ const Explore = () => {
   });
 
   console.log(cafes);
-  // console.log(cafes[4].profilePhotoURL);
 
   return (
     <React.Fragment>
@@ -67,35 +66,32 @@ const Explore = () => {
               <CircularProgress />
             </Box>
           )}
-
-          <div className={classNames(styles.exploreContainer)}>
-            <div className={classNames(styles.filterContainer)}>
-              <FilterByDistanceSlider />
-              <FilterByBusyness updateFilterSelected={updateFilterSelected} />
-              <FilterByNoiseLevel updateFilterSelected={updateFilterSelected} />
-              <FilterByAmenities updateFilterSelected={updateFilterSelected} />
-              {filterSelected ? (
-                <div className={classNames(styles.filterButtonWrapper)}>
-                  <Button text="Clear" type={"clear"} />
-                  <Button text="Search" type={"search"} />
-                </div>
-              ) : null}
+          {!!cafes.length && (
+            <div className={classNames(styles.exploreContainer)}>
+              <div className={classNames(styles.filterContainer)}>
+                <FilterByDistanceSlider />
+                <FilterByBusyness updateFilterSelected={updateFilterSelected} />
+                <FilterByNoiseLevel
+                  updateFilterSelected={updateFilterSelected}
+                />
+                <FilterByAmenities
+                  updateFilterSelected={updateFilterSelected}
+                />
+                {filterSelected ? (
+                  <div className={classNames(styles.filterButtonWrapper)}>
+                    <Button text="Clear" type={"clear"} />
+                    <Button text="Search" type={"search"} />
+                  </div>
+                ) : null}
+              </div>
+              <div className={classNames(styles.searchContainer)}>
+                <SearchBar updateQuery={updateQuery} />
+                {cafes.map((cafe: Cafe) => (
+                  <CafeCard key={cafe.id} {...cafe} />
+                ))}
+              </div>
             </div>
-            <div className={classNames(styles.searchContainer)}>
-              <SearchBar updateQuery={updateQuery} />
-              {CafeData.filter((cafe) => { //need to change CafeData (imported data) to cafes (from db) but cafes doesn't render
-                if (newQuery === "") {
-                  return cafe;
-                } else if (
-                  cafe.name.toLowerCase().includes(newQuery.toLowerCase())
-                ) {
-                  return cafe;
-                }
-              }).map((cafe) => (
-                <CafeCard cafe={cafe} query={newQuery} key={cafe.id} /> // Type compatibility error
-              ))}
-            </div>
-          </div>
+          )}
         </div>
         <Footer />
         <MobileFooter />

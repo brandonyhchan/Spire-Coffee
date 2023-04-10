@@ -22,7 +22,7 @@ model User {
 }
 
 model Cafe {
-  id               Int      @id @default(autoincrement())
+  id               Int            @id @default(autoincrement())
   name             String
   street           String
   city             String
@@ -32,6 +32,9 @@ model Cafe {
   website          String?
   profilePhotoName String?
   profilePhotoURL  String?
+  busyness         filterOptions?
+  noisiness        filterOptions?
+  price            filterOptions?
 }
 
 enum Province {
@@ -48,4 +51,10 @@ enum Province {
   QC
   SK
   YT
+}
+
+enum filterOptions {
+  LOW
+  MEDIUM
+  HIGH
 }

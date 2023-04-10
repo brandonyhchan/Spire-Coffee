@@ -46,6 +46,9 @@ export const cafeQuery = gql`
       province
       profilePhotoName
       profilePhotoURL
+      busyness
+      noisiness
+      price
     }
   }
 `;

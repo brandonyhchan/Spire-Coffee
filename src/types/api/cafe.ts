@@ -4,8 +4,8 @@ export interface Cafe {
   street: string;
   city: string;
   province: string;
-  // profilePhotoURL: string;
-  busyness: number;
-  noisiness: number;
-  price: number;
+  profilePhotoURL: string;
+  busyness: string;
+  noisiness: string;
+  price: string;
 }

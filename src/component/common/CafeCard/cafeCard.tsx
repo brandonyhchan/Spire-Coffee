@@ -11,25 +11,41 @@ import classNames from "classnames";
 import styles from "./cafeCard.module.scss";
 import strings from "config/strings";
 import { Grid, Typography } from "@mui/material";
-import { Cafe } from "types/api/cafe";
 
 type CafeCardPropsType = {
-  query: string;
-  cafe: Cafe;
+  id: number;
+  name: string;
+  street: string;
+  city: string;
+  province: string;
+  profilePhotoURL: string;
+  busyness: string;
+  noisiness: string;
+  price: string;
 };
 
-const CafeCard = ({ cafe }: CafeCardPropsType) => {
-  const getNoisinessIcon = (icon: number) => {
+const CafeCard = ({
+  id,
+  name,
+  street,
+  city,
+  province,
+  profilePhotoURL,
+  busyness,
+  noisiness,
+  price,
+}: CafeCardPropsType) => {
+  const getNoisinessIcon = (icon: string) => {
     switch (icon) {
-      case 1:
+      case "LOW":
         return (
           <VolumeMuteRoundedIcon className={classNames(styles.noisinessIcon)} />
         );
-      case 2:
+      case "MEDIUM":
         return (
           <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
         );
-      case 3:
+      case "HIGH":
         return (
           <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
         );
@@ -38,21 +54,21 @@ const CafeCard = ({ cafe }: CafeCardPropsType) => {
     }
   };
 
-  const getBusynessIcon = (icon: number) => {
+  const getBusynessIcon = (icon: string) => {
     switch (icon) {
-      case 1:
+      case "LOW":
         return (
           <HourglassEmptyRoundedIcon
             className={classNames(styles.busynessIcon)}
           />
         );
-      case 2:
+      case "MEDIUM":
         return (
           <HourglassBottomRoundedIcon
             className={classNames(styles.busynessIcon)}
           />
         );
-      case 3:
+      case "HIGH":
         return (
           <HourglassFullRoundedIcon
             className={classNames(styles.busynessIcon)}
@@ -64,37 +80,37 @@ const CafeCard = ({ cafe }: CafeCardPropsType) => {
   };
   return (
     <div className={classNames(styles.cafeCardContainer)}>
-      <div key={cafe.id} className={classNames(styles.cafeCard)}>
+      <div className={classNames(styles.cafeCard)}>
         <div className={classNames(styles.logo)}>
-          <img src={Logo} alt={Logo} />
+          <img src={profilePhotoURL} />
         </div>
         <div className={classNames(styles.cafeCardInfo)}>
           <Grid item zeroMinWidth className={classNames(styles.header)}>
             <Typography noWrap fontSize={20}>
-              {cafe.name}
+              {name}
             </Typography>
-            <Typography>{cafe.street}</Typography>
+            <Typography>{street}</Typography>
             <Typography>
-              {cafe.city}, {cafe.province}
+              {city}, {province}
             </Typography>
           </Grid>
           <div className={classNames(styles.cafeCardIcons)}>
             <div className={classNames(styles.busyness)}>
-              {getBusynessIcon(cafe.busyness)}
+              {getBusynessIcon(busyness)}
               <label>{strings.cafeCard.busynessLabel}</label>
             </div>
             <div className={classNames(styles.noisiness)}>
-              {getNoisinessIcon(cafe.noisiness)}
+              {getNoisinessIcon(noisiness)}
               <label>{strings.cafeCard.noisinessLabel}</label>
             </div>
             <div className={classNames(styles.priceIconGroup)}>
-              {Array(cafe.price)
+              {Array(price)
                 .fill("")
                 .map((cafe) => (
                   <AttachMoneyRoundedIcon
                     className={classNames(styles.priceIcon)}
-                    key={cafe.id}
-                  ></AttachMoneyRoundedIcon>
+                    key={id}
+                  />
                 ))}
             </div>
           </div>
