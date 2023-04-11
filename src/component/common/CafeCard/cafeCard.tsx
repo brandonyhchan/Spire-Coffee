@@ -114,25 +114,16 @@ const CafeCard = ({
         <Grid item zeroMinWidth>
           <Typography
             noWrap
-            fontSize={26}
+            fontSize={22}
             fontFamily={"Figtree-Regular"}
             fontWeight={"600"}
-            paddingBottom={"8px"}
           >
             {name}
           </Typography>
-          <Typography
-            fontSize={20}
-            fontFamily={"Figtree-Regular"}
-            paddingBottom={"8px"}
-          >
+          <Typography fontSize={18} fontFamily={"Figtree-Regular"}>
             {street}
           </Typography>
-          <Typography
-            fontSize={20}
-            fontFamily={"Figtree-Regular"}
-            paddingBottom={"8px"}
-          >
+          <Typography fontSize={18} fontFamily={"Figtree-Regular"}>
             {city}, {province}
           </Typography>
         </Grid>

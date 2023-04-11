@@ -12,6 +12,7 @@ import Button from "component/common/Button";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
+import FilterByPrice from "./exploreFilters/filterByPrice";
 import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
 import FilterByBusyness from "./exploreFilters/filterByBusyness";
 import FilterByNoiseLevel from "./exploreFilters/filterByNoiseLevel";
@@ -68,20 +69,20 @@ const Explore = () => {
           )}
           {!!cafes.length && (
             <div className={classNames(styles.exploreContainer)}>
-              {/* need filter for price */}
               <div className={classNames(styles.filterContainer)}>
                 <FilterByDistanceSlider />
                 <FilterByBusyness updateFilterSelected={updateFilterSelected} />
                 <FilterByNoiseLevel
                   updateFilterSelected={updateFilterSelected}
                 />
+                <FilterByPrice updateFilterSelected={updateFilterSelected} />
                 <FilterByAmenities
                   updateFilterSelected={updateFilterSelected}
                 />
                 {filterSelected ? (
                   <div className={classNames(styles.filterButtonWrapper)}>
                     <Button text="Clear" type={"clear"} />
-                    <Button text="Search" type={"search"} />
+                    <Button text="Filter" type={"filter"} />
                   </div>
                 ) : null}
               </div>

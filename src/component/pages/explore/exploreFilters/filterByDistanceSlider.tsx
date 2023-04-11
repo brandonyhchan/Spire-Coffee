@@ -9,27 +9,27 @@ import { Box, Slider } from "@mui/material";
 const distanceValue = [
   {
     value: 0,
-    label: "0km",
+    label: "0",
   },
   {
     value: 5,
-    label: "5km",
+    label: "5",
   },
   {
     value: 10,
-    label: "10km",
+    label: "10",
   },
   {
     value: 15,
-    label: "15km",
+    label: "15",
   },
   {
     value: 20,
-    label: "20km",
+    label: "20",
   },
 ];
 
-function valuetext(distanceValue: number) {
+function valueText(distanceValue: number) {
   return `${distanceValue}km`;
 }
 
@@ -54,7 +54,7 @@ function FilterByDistanceSlider() {
             aria-label="Restricted values"
             step={5}
             valueLabelFormat={valueLabelFormat}
-            getAriaValueText={valuetext}
+            getAriaValueText={valueText}
             marks={distanceValue}
             min={0}
             max={20}

@@ -5,11 +5,11 @@ import strings from "config/strings";
 import classNames from "classnames";
 import styles from "component/common/FilterComponent/FilterComponent.module.scss";
 
-interface FilterByAmenitiesProps {
+interface FilterByPriceProps {
   updateFilterSelected: (arg: boolean) => void;
 }
 
-const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
+const FilterByPrice: React.FC<FilterByPriceProps> = ({
   updateFilterSelected,
 }) => {
   const [checkedOption, setCheckedOption] = useState(""); // pass in the state?
@@ -21,30 +21,30 @@ const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
   };
 
   return (
-    <Filter text={strings.explore.filterByAmenities}>
+    <Filter text={strings.explore.filterByPrice}>
       <Input
         className={classNames(styles.listWrapper)}
-        text={strings.list.amenities1}
+        text={strings.list.price1}
         type="checkbox"
-        value={strings.list.amenities1}
+        value={strings.list.price1}
         onChange={handleFilter}
       />
       <Input
         className={classNames(styles.listWrapper)}
-        text={strings.list.amenities2}
+        text={strings.list.price2}
         type="checkbox"
-        value={strings.list.amenities2}
+        value={strings.list.price2}
         onChange={handleFilter}
       />
       <Input
         className={classNames(styles.listWrapper)}
-        text={strings.list.amenities3}
+        text={strings.list.price3}
         type="checkbox"
-        value={strings.list.amenities3}
+        value={strings.list.price3}
         onChange={handleFilter}
       />
     </Filter>
   );
 };
 
-export default FilterByAmenities;
+export default FilterByPrice;

@@ -4,11 +4,17 @@
   justify-content: flex-start;
   align-items: start;
   width: 100%;
+  padding-left: 20px;
 }
 
 .listWrapper input {
   width: 15px;
   margin: 15px 7px 15px 15px;
+}
+
+input[type='radio'],
+input[type='checkbox'] {
+  accent-color: var(--secondary);
 }
 
 label {
