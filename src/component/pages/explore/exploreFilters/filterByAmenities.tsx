@@ -12,7 +12,17 @@ interface FilterByAmenitiesProps {
 const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
   updateFilterSelected,
 }) => {
-  const [checkedOption, setCheckedOption] = useState(""); // pass in the state?
+  const [filterSelection, setFilterSelection] = useState<{
+    selections: string[];
+  }>({ selections: [] });
+  const options = [
+    strings.list.amenities1,
+    strings.list.amenities2,
+    strings.list.amenities3,
+  ];
+
+  const [checkedOption, setCheckedOption] = useState("");
+
   const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
     setCheckedOption(event.target.value);
     if (!checkedOption) {
@@ -20,32 +30,34 @@ const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
     }
   };
 
+  function handleSelectedFilters(key: string) {
+    const selection = filterSelection.selections;
+    const findOption = selection.indexOf(key);
+    if (findOption > -1) {
+      selection.splice(findOption, 1);
+    } else {
+      selection.push(key);
+    }
+
+    setFilterSelection({
+      selections: selection,
+    });
+    console.log(filterSelection);
+  }
+
   return (
     <Filter text={strings.explore.filterByAmenities}>
-      <Input
-        className={classNames(styles.listWrapper)}
-        text={strings.list.amenities1}
-        type="checkbox"
-        value={strings.list.amenities1}
-        onChange={handleFilter}
-        name={"outlets"}
-      />
-      <Input
-        className={classNames(styles.listWrapper)}
-        text={strings.list.amenities2}
-        type="checkbox"
-        value={strings.list.amenities2}
-        onChange={handleFilter}
-        name={"tables"}
-      />
-      <Input
-        className={classNames(styles.listWrapper)}
-        text={strings.list.amenities3}
-        type="checkbox"
-        value={strings.list.amenities3}
-        onChange={handleFilter}
-        name={"outdoorSeating"}
-      />
+      {options.map((option) => (
+        <Input
+          key={option}
+          className={classNames(styles.listWrapper)}
+          text={option}
+          type="checkbox"
+          value={option}
+          onChange={() => handleSelectedFilters(option)}
+          checked={filterSelection.selections.includes(option)}
+        />
+      ))}
     </Filter>
   );
 };
