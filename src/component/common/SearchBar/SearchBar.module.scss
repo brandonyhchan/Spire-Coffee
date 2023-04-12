@@ -1,3 +1,9 @@
+.searchBarContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
 .searchBar, 
 input {
   background-color: var(--light-grey);
@@ -17,6 +23,10 @@ input {
   @media (max-width: 1610px) {
     width: 525px;
   }
+
+  @media (max-width: 600px) {
+    width: 275px;
+  }
 }
 
 .searchBarIcon {
@@ -30,6 +40,7 @@ input {
   border: 0;
   width: 100%;
   border-radius: 30px;
+  display: inline-block;
 }
 
 .searchBar input::placeholder {
@@ -51,4 +62,18 @@ input {
 
 .clearFilterButton {
   padding-right: 10px;
+}
+
+.mobileFilter {
+  display: none;
+  @media (max-width: 600px) {
+    display: contents;
+  }
+}
+
+.filterIcon {
+  color: var(--dark-grey);
+  transform: scale(1.4);
+  margin-top: 8px;
+  margin-left: 8px;
 }

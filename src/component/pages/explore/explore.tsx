@@ -70,6 +70,9 @@ const Explore = () => {
           {!!cafes.length && (
             <div className={classNames(styles.exploreContainer)}>
               <div className={classNames(styles.filterContainer)}>
+                <div>
+                  <h2 className={classNames(styles.filterTitle)}>Filters</h2>
+                </div>
                 <FilterByDistanceSlider />
                 <FilterByBusyness updateFilterSelected={updateFilterSelected} />
                 <FilterByNoiseLevel
@@ -86,6 +89,11 @@ const Explore = () => {
                   </div>
                 ) : null}
               </div>
+              {/* 
+              
+              Search bar and cards start here
+
+              */}
               <div className={classNames(styles.searchContainer)}>
                 <div className={classNames(styles.searchBarContainer)}>
                   <SearchBar updateQuery={updateQuery} />

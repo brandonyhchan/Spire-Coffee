@@ -47,9 +47,9 @@ const getDistance=(e: any, value: any)=>{
 
 function FilterByDistanceSlider() {
   return (
-    <div  className={classNames(styles.sliderFilterContainer)}>
+    <div className={classNames(styles.sliderFilterContainer)}>
       <Filter text={strings.explore.filterByDistance}>
-        <Box sx={{ width: 220 }}>
+        <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Restricted values"
             step={5}
