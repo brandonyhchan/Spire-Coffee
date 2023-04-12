@@ -28,6 +28,7 @@ const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
         type="checkbox"
         value={strings.list.amenities1}
         onChange={handleFilter}
+        name={"outlets"}
       />
       <Input
         className={classNames(styles.listWrapper)}
@@ -35,6 +36,7 @@ const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
         type="checkbox"
         value={strings.list.amenities2}
         onChange={handleFilter}
+        name={"tables"}
       />
       <Input
         className={classNames(styles.listWrapper)}
@@ -42,6 +44,7 @@ const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
         type="checkbox"
         value={strings.list.amenities3}
         onChange={handleFilter}
+        name={"outdoorSeating"}
       />
     </Filter>
   );

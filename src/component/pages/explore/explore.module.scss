@@ -1,4 +1,6 @@
 $_card_size: 550px;
+$_filter_section_size: 550px;
+$_filter_section_min_size: 400px;
 
 .container {
   min-height: 100vh;
@@ -21,7 +23,8 @@ $_card_size: 550px;
 }
 
 .filterContainer {
-  width: 350px;
+  width: $_filter_section_size;
+  min-width: $_filter_section_min_size;
   padding-bottom: 10px;
 }
 

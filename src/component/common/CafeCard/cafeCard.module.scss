@@ -1,5 +1,5 @@
-$_logo_size: 160px;
-$_card_size: 550px;
+$_logo_size: 150px;
+$_card_size: 490px;
 
 .cafeCard {
   border-color: grey;
@@ -27,17 +27,17 @@ $_card_size: 550px;
 
 .cafeCardInfo {
   color: var(--dark-grey);
-  padding: 15px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   text-align: start; 
-  width: 380px;
+  width: 340px;
 }
 
 .cafeCardIcons {
   display: flex;
   flex-direction: row;
-  gap: 40px;
+  gap: 30px;
 }
 
 .cafeCardIcons label {
@@ -45,14 +45,18 @@ $_card_size: 550px;
   padding-left: 5px;
 }
 
-.busynessIcon,
 .noisinessIcon {
-  transform: scale(1.8);
+  transform: scale(1.5);
   padding-right: 5px;
 }
 
-.priceIconGroup {
-  transform: scale(1.5);
+.busynessIcon {
+  transform: scale(1.2);
+  padding-right: 5px;
+}
+
+.priceIconGroup  {
+  transform: scale(1.0);
   padding-right: 5px;
 }
 
