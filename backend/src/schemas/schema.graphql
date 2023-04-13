@@ -12,5 +12,5 @@ type Query {
     password: String!
   ): AuthPayload
   login(userName: String!, password: String!): AuthPayload
-  returnAllCafes: [Cafe]
+  returnAllCafes(filterByName: String): [Cafe]
 }

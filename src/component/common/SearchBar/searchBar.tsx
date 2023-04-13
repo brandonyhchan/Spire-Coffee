@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { ChangeEvent, useState } from "react";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import classNames from "classnames";
@@ -22,27 +22,26 @@ const SearchBar: React.FC<SearchBarProps> = ({ updateQuery }) => {
   };
 
   return (
-    <React.Fragment>
-      <form className={classNames(styles.searchBar)}>
-        <SearchRoundedIcon className={classNames(styles.searchBarIcon)} />
-        <input
-          type="text"
-          placeholder="Search..."
-          name="search"
-          onChange={handleQuery}
-          onFocus={() => setShowCloseButton(true)}
-          value={query}
-        />
-        {!showCloseButton ? null : (
-          <div className={classNames(styles.clearButtonContainer)}>
-            <CloseRoundedIcon
-              className={classNames(styles.clearButton)}
-              onClick={handleClick}
-            />
-          </div>
-        )}
-      </form>
-    </React.Fragment>
+    <form className={classNames(styles.searchBar)}>
+      <SearchRoundedIcon className={classNames(styles.searchBarIcon)} />
+      <input
+        type="text"
+        placeholder="Search..."
+        name="search"
+        onChange={handleQuery}
+        onFocus={() => setShowCloseButton(true)}
+        value={query}
+      />
+      {!showCloseButton ? null : (
+        <div className={classNames(styles.clearButtonContainer)}>
+          <CloseRoundedIcon
+            className={classNames(styles.clearButton)}
+            onClick={handleClick}
+            // * FOR LATER oncClick={() => {handleClick, refetch}}
+          />
+        </div>
+      )}
+    </form>
   );
 };
 

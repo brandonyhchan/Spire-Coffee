@@ -26,21 +26,15 @@ const Explore = () => {
   const token = localStorage.getItem("authToken");
 
   const [filterSelected, setFilterSelected] = useState(false);
-  const [newQuery, setNewQuery] = useState("");
+  const [searchCafeName, setSearchCafeName] = useState("");
 
   const updateFilterSelected = (filterSelected: boolean): void => {
     setFilterSelected(filterSelected);
   };
 
   const updateQuery = (newQuery: string): void => {
-    setNewQuery(newQuery);
+    setSearchCafeName(newQuery);
   };
-
-  useEffect(() => {
-    if (!token) {
-      navigate("/");
-    }
-  }, [navigate, token]);
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
@@ -52,9 +46,14 @@ const Explore = () => {
     onCompleted: (data) => {
       setCafes(data?.returnAllCafes);
     },
+    variables: { filterByName: searchCafeName },
   });
 
-  console.log(cafes);
+  useEffect(() => {
+    if (!token) {
+      navigate("/");
+    }
+  }, [navigate, token]);
 
   return (
     <React.Fragment>
@@ -87,12 +86,12 @@ const Explore = () => {
                 ) : null}
               </div>
               <div className={classNames(styles.searchContainer)}>
-                <div className={classNames(styles.searchBarContainer)}>
+                <div className={"searchBarContainer"}>
                   <SearchBar updateQuery={updateQuery} />
                 </div>
                 <div className={classNames(styles.cafeCardWrapper)}>
                   <div className={classNames(styles.cafeCardContainer)}>
-                    {cafes.map((cafe: Cafe, index) => (
+                    {cafes.map((cafe: Cafe) => (
                       <CafeCard key={cafe.id} {...cafe} />
                     ))}
                   </div>
