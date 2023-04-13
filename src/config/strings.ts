@@ -50,6 +50,7 @@ const strings = new LocalizedStrings({
       filterByNoiseLevel: "Noise Level",
       filterByPrice: "Price",
       filterByAmenities: "Amenities",
+      filterTitle: "Filters",
     },
     aboutUs: {
       title: "About us page",

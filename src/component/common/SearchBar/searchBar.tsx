@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-import TuneIcon from "@mui/icons-material/Tune";
 import classNames from "classnames";
 import styles from "./SearchBar.module.scss";
 
@@ -44,9 +43,6 @@ const SearchBar: React.FC<SearchBarProps> = ({ updateQuery }) => {
             </div>
           )}
         </form>
-        <div className={classNames(styles.mobileFilter)}>
-          <TuneIcon className={classNames(styles.filterIcon)} />
-        </div>
       </div>
     </React.Fragment>
   );

@@ -20,6 +20,9 @@ import FilterByAmenities from "./exploreFilters/filterByAmenities";
 import SearchBar from "component/common/SearchBar/searchBar";
 import { Box, CircularProgress } from "@mui/material";
 import CafeCard from "component/common/CafeCard/cafeCard";
+import MobileFilterComponent from "./exploreFilters/mobileFilterComponent";
+
+import TuneIcon from "@mui/icons-material/Tune";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -56,6 +59,14 @@ const Explore = () => {
 
   console.log(cafes);
 
+  const [mobileFilters, setMobileFilters] = useState<boolean>(false);
+
+  //What type should this be?
+  function showMobileFilters(): any {
+    setMobileFilters(!mobileFilters);
+    console.log("clicked on mobile filter");
+  }
+
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
@@ -71,7 +82,9 @@ const Explore = () => {
             <div className={classNames(styles.exploreContainer)}>
               <div className={classNames(styles.filterContainer)}>
                 <div>
-                  <h2 className={classNames(styles.filterTitle)}>Filters</h2>
+                  <h2 className={classNames(styles.filterTitle)}>
+                    {strings.explore.filterTitle}
+                  </h2>
                 </div>
                 <FilterByDistanceSlider />
                 <FilterByBusyness updateFilterSelected={updateFilterSelected} />
@@ -94,10 +107,17 @@ const Explore = () => {
               Search bar and cards start here
 
               */}
-              <div className={classNames(styles.searchContainer)}>
+              <div className={classNames(styles.exploreSectionContainer)}>
                 <div className={classNames(styles.searchBarContainer)}>
                   <SearchBar updateQuery={updateQuery} />
+                  <div className={classNames(styles.mobileFilter)}>
+                    <TuneIcon
+                      className={classNames(styles.filterIcon)}
+                      onClick={showMobileFilters}
+                    />
+                  </div>
                 </div>
+                {!mobileFilters ? null : <MobileFilterComponent />}
                 <div className={classNames(styles.cafeCardWrapper)}>
                   <div className={classNames(styles.cafeCardContainer)}>
                     {cafes.map((cafe: Cafe, index) => (
