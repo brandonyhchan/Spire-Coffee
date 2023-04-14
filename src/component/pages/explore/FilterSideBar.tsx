@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, ChangeEvent } from "react";
 import RadioFilter from "component/common/Filter/RadioFilter";
 import CheckboxFilter from "component/common/Filter/CheckboxFilter";
 import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
@@ -14,15 +14,41 @@ enum SelectOptions {
 }
 
 const FilterSideBar = () => {
-  const [filterSelection, setFilterSelection] = useState<SelectOptions>();
-
-  const updateFilterSelection = (filterSelection: SelectOptions): void => {
-    setFilterSelection(filterSelection);
-  };
-
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    console.log(filterSelection);
+    console.log("busyness: " + busynessSelection);
+    console.log("noisiness: " + noisinessSelection);
+  };
+
+  const [busynessSelection, setBusynessSelection] = useState<SelectOptions>();
+  const [noisinessSelection, setNoisinessSelection] = useState<SelectOptions>();
+  const [busynessChecked, setBusynessChecked] = useState("");
+  const [noisinessChecked, setNoisinessChecked] = useState("");
+
+  const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
+    const option = event.target.value;
+    if (option === "Not too busy") {
+      setBusynessSelection(SelectOptions.LOW);
+    } else if (option === "A little busy") {
+      setBusynessSelection(SelectOptions.MEDIUM);
+    } else {
+      setBusynessSelection(SelectOptions.HIGH);
+    }
+    setBusynessChecked(option);
+    console.log("value: " + event.target.value);
+  };
+
+  const handleNoisinessFilter = (event: ChangeEvent<HTMLInputElement>) => {
+    const option = event.target.value;
+    if (option === "Quiet") {
+      setNoisinessSelection(SelectOptions.LOW);
+    } else if (option === "A little noisy") {
+      setNoisinessSelection(SelectOptions.MEDIUM);
+    } else {
+      setNoisinessSelection(SelectOptions.HIGH);
+    }
+    setNoisinessChecked(option);
+    console.log("value: " + event.target.value);
   };
 
   return (
@@ -37,8 +63,9 @@ const FilterSideBar = () => {
           ]}
           type="radio"
           text={strings.explore.filterByBusyness}
-          filterSelection={filterSelection}
-          updateFilterSelection={updateFilterSelection}
+          filterSelection={busynessSelection}
+          checked={busynessChecked}
+          handleFilter={handleBusynessFilter}
         />
         <RadioFilter
           options={[
@@ -48,8 +75,9 @@ const FilterSideBar = () => {
           ]}
           type="radio"
           text={strings.explore.filterByNoiseLevel}
-          filterSelection={filterSelection}
-          updateFilterSelection={updateFilterSelection}
+          filterSelection={noisinessSelection}
+          checked={noisinessChecked}
+          handleFilter={handleNoisinessFilter}
         />
         <CheckboxFilter
           options={[

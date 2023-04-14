@@ -15,35 +15,17 @@ type RadioFilterPropsType = {
   type: string;
   text: string;
   filterSelection: SelectOptions | undefined;
-  updateFilterSelection: (arg: SelectOptions) => void;
+  checked: string;
+  handleFilter: (event: ChangeEvent<HTMLInputElement>) => void;
 };
 
 const RadioFilter = ({
   options,
   type,
   text,
-  updateFilterSelection,
+  checked,
+  handleFilter,
 }: RadioFilterPropsType) => {
-  const [filterSelection, setFilterSelection] = useState<SelectOptions>();
-  const [checked, setChecked] = useState("");
-
-  const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
-    const option = event.target.value;
-    if (option === "Not too busy") {
-      setFilterSelection(SelectOptions.LOW);
-      updateFilterSelection(SelectOptions.LOW);
-    } else if (option === "A little busy") {
-      setFilterSelection(SelectOptions.MEDIUM);
-      updateFilterSelection(SelectOptions.MEDIUM);
-    } else {
-      setFilterSelection(SelectOptions.HIGH);
-      updateFilterSelection(SelectOptions.HIGH);
-    }
-    setChecked(option);
-    console.log("value: " + event.target.value);
-    console.log("state: " + filterSelection);
-  };
-
   return (
     <FilterComponent text={text}>
       {options.map((option) => (
