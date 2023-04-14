@@ -6,16 +6,23 @@ import Button from "component/common/Button";
 import strings from "config/strings";
 import styles from "./explore.module.scss";
 import classNames from "classnames";
-import { SelectOptions } from "../../common/Filter/SelectOptions";
+
+enum SelectOptions {
+  LOW,
+  MEDIUM,
+  HIGH,
+}
 
 const FilterSideBar = () => {
   const [filterSelection, setFilterSelection] = useState<SelectOptions>();
-  const [checked, setChecked] = useState("");
+
+  const updateFilterSelection = (filterSelection: SelectOptions): void => {
+    setFilterSelection(filterSelection);
+  };
 
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    setFilterSelection(filterSelection);
-    console.log("hello");
+    console.log(filterSelection);
   };
 
   return (
@@ -30,9 +37,8 @@ const FilterSideBar = () => {
           ]}
           type="radio"
           text={strings.explore.filterByBusyness}
-          checked={checked}
-          setChecked={setChecked}
-          setFilterSelection={setFilterSelection}
+          filterSelection={filterSelection}
+          updateFilterSelection={updateFilterSelection}
         />
         <RadioFilter
           options={[
@@ -42,9 +48,8 @@ const FilterSideBar = () => {
           ]}
           type="radio"
           text={strings.explore.filterByNoiseLevel}
-          checked={checked}
-          setChecked={setChecked}
-          setFilterSelection={setFilterSelection}
+          filterSelection={filterSelection}
+          updateFilterSelection={updateFilterSelection}
         />
         <CheckboxFilter
           options={[
