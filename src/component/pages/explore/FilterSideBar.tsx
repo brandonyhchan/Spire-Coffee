@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import RadioFilter from "component/common/Filter/RadioFilter";
 import CheckboxFilter from "component/common/Filter/CheckboxFilter";
 import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
@@ -6,15 +6,16 @@ import Button from "component/common/Button";
 import strings from "config/strings";
 import styles from "./explore.module.scss";
 import classNames from "classnames";
+import { SelectOptions } from "../../common/Filter/SelectOptions";
 
-interface FilterSideBarProps {
-  filterSelected: string;
-}
+const FilterSideBar = () => {
+  const [filterSelection, setFilterSelection] = useState<SelectOptions>();
+  const [checked, setChecked] = useState("");
 
-const FilterSideBar = ({ filterSelected }: FilterSideBarProps) => {
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    console.log(filterSelected);
+    setFilterSelection(filterSelection);
+    console.log("hello");
   };
 
   return (
@@ -29,6 +30,9 @@ const FilterSideBar = ({ filterSelected }: FilterSideBarProps) => {
           ]}
           type="radio"
           text={strings.explore.filterByBusyness}
+          checked={checked}
+          setChecked={setChecked}
+          setFilterSelection={setFilterSelection}
         />
         <RadioFilter
           options={[
@@ -38,6 +42,9 @@ const FilterSideBar = ({ filterSelected }: FilterSideBarProps) => {
           ]}
           type="radio"
           text={strings.explore.filterByNoiseLevel}
+          checked={checked}
+          setChecked={setChecked}
+          setFilterSelection={setFilterSelection}
         />
         <CheckboxFilter
           options={[

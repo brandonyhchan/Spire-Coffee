@@ -24,14 +24,9 @@ const Explore = () => {
   const token = localStorage.getItem("authToken");
 
   const [newQuery, setNewQuery] = useState("");
-  const [filters, setFilters] = useState("");
 
   const updateQuery = (newQuery: string): void => {
     setNewQuery(newQuery);
-  };
-
-  const updateFilters = (filters: string): void => {
-    setFilters(filters);
   };
 
   useEffect(() => {
@@ -81,8 +76,7 @@ const Explore = () => {
                     {strings.explore.filterTitle}
                   </h2>
                 </div>
-                {/* this needs to be changed to send all the filters selected on click of filter button*/}
-                <FilterSideBar filterSelected="" />
+                <FilterSideBar />
               </div>
               {/* 
               
