@@ -7,7 +7,7 @@ input {
 .searchBar {
   border: 2px;
   border-radius: 30px;
-  padding: 3px;
+  padding: 6px;
   width: 850px;
   display: flex;
   justify-content: center;
@@ -16,6 +16,10 @@ input {
   font-size: 18px;
   @media (max-width: 1610px) {
     width: 525px;
+  }
+
+  @media (max-width: 600px) {
+    width: 270px;
   }
 }
 
@@ -30,6 +34,7 @@ input {
   border: 0;
   width: 100%;
   border-radius: 30px;
+  display: inline-block;
 }
 
 .searchBar input::placeholder {

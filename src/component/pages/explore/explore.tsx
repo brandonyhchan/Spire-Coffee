@@ -8,29 +8,22 @@ import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import classNames from "classnames";
-import Button from "component/common/Button";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
-import FilterByPrice from "./exploreFilters/filterByPrice";
-import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
-import FilterByBusyness from "./exploreFilters/filterByBusyness";
-import FilterByNoiseLevel from "./exploreFilters/filterByNoiseLevel";
-import FilterByAmenities from "./exploreFilters/filterByAmenities";
 import SearchBar from "component/common/SearchBar/searchBar";
 import { Box, CircularProgress } from "@mui/material";
 import CafeCard from "component/common/CafeCard/cafeCard";
+import FilterSideBar from "./FilterSideBar";
+import MobileFilterComponent from "./exploreFilters/mobileFilterComponent";
+
+import TuneIcon from "@mui/icons-material/Tune";
 
 const Explore = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
-  const [filterSelected, setFilterSelected] = useState(false);
   const [searchCafeName, setSearchCafeName] = useState("");
-
-  const updateFilterSelected = (filterSelected: boolean): void => {
-    setFilterSelected(filterSelected);
-  };
 
   const updateQuery = (newQuery: string): void => {
     setSearchCafeName(newQuery);
@@ -55,6 +48,14 @@ const Explore = () => {
     }
   }, [navigate, token]);
 
+  const [mobileFilters, setMobileFilters] = useState<boolean>(false);
+
+  //What type should this be?
+  function showMobileFilters(): any {
+    setMobileFilters(!mobileFilters);
+    console.log("clicked on mobile filter");
+  }
+
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
@@ -69,26 +70,29 @@ const Explore = () => {
           {!!cafes.length && (
             <div className={classNames(styles.exploreContainer)}>
               <div className={classNames(styles.filterContainer)}>
-                <FilterByDistanceSlider />
-                <FilterByBusyness updateFilterSelected={updateFilterSelected} />
-                <FilterByNoiseLevel
-                  updateFilterSelected={updateFilterSelected}
-                />
-                <FilterByPrice updateFilterSelected={updateFilterSelected} />
-                <FilterByAmenities
-                  updateFilterSelected={updateFilterSelected}
-                />
-                {filterSelected ? (
-                  <div className={classNames(styles.filterButtonWrapper)}>
-                    <Button text="Clear" type={"clear"} />
-                    <Button text="Filter" type={"filter"} />
-                  </div>
-                ) : null}
-              </div>
-              <div className={classNames(styles.searchContainer)}>
-                <div className={"searchBarContainer"}>
-                  <SearchBar updateQuery={updateQuery} />
+                <div>
+                  <h2 className={classNames(styles.filterTitle)}>
+                    {strings.explore.filterTitle}
+                  </h2>
                 </div>
+                <FilterSideBar />
+              </div>
+              {/* 
+              
+              Search bar and cards start here
+
+              */}
+              <div className={classNames(styles.exploreSectionContainer)}>
+                <div className={classNames(styles.searchBarContainer)}>
+                  <SearchBar updateQuery={updateQuery} />
+                  <div className={classNames(styles.mobileFilter)}>
+                    <TuneIcon
+                      className={classNames(styles.filterIcon)}
+                      onClick={showMobileFilters}
+                    />
+                  </div>
+                </div>
+                {!mobileFilters ? null : <MobileFilterComponent />}
                 <div className={classNames(styles.cafeCardWrapper)}>
                   <div className={classNames(styles.cafeCardContainer)}>
                     {cafes.map((cafe: Cafe) => (

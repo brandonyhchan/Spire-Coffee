@@ -22,26 +22,29 @@ const SearchBar: React.FC<SearchBarProps> = ({ updateQuery }) => {
   };
 
   return (
-    <form className={classNames(styles.searchBar)}>
-      <SearchRoundedIcon className={classNames(styles.searchBarIcon)} />
-      <input
-        type="text"
-        placeholder="Search..."
-        name="search"
-        onChange={handleQuery}
-        onFocus={() => setShowCloseButton(true)}
-        value={query}
-      />
-      {!showCloseButton ? null : (
-        <div className={classNames(styles.clearButtonContainer)}>
-          <CloseRoundedIcon
-            className={classNames(styles.clearButton)}
-            onClick={handleClick}
-            // * FOR LATER oncClick={() => {handleClick, refetch}}
+    <React.Fragment>
+      <div className={classNames(styles.searchBarContainer)}>
+        <form className={classNames(styles.searchBar)}>
+          <SearchRoundedIcon className={classNames(styles.searchBarIcon)} />
+          <input
+            type="text"
+            placeholder="Search..."
+            name="search"
+            onChange={handleQuery}
+            onFocus={() => setShowCloseButton(true)}
+            value={query}
           />
-        </div>
-      )}
-    </form>
+          {!showCloseButton ? null : (
+            <div className={classNames(styles.clearButtonContainer)}>
+              <CloseRoundedIcon
+                className={classNames(styles.clearButton)}
+                onClick={handleClick}
+              />
+            </div>
+          )}
+        </form>
+      </div>
+    </React.Fragment>
   );
 };
 
