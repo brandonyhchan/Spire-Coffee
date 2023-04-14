@@ -3,7 +3,6 @@ import FilterComponent from "component/common/FilterComponent/FilterComponent";
 import FilterOption from "component/common/FilterOption/FilterOption";
 import classNames from "classnames";
 import styles from "component/common/FilterComponent/FilterComponent.module.scss";
-import Button from "component/common/Button";
 
 enum SelectOptions {
   LOW,
@@ -19,18 +18,20 @@ type RadioFilterPropsType = {
 
 const RadioFilter = ({ options, type, text }: RadioFilterPropsType) => {
   const [filterSelection, setFilterSelection] = useState<SelectOptions>();
-  const [checked, setChecked] = useState(false);
+  const [checked, setChecked] = useState("");
 
   const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
     if (option === "Not too busy") {
       setFilterSelection(SelectOptions.LOW);
+      setChecked(option);
     } else if (option === "A little busy") {
       setFilterSelection(SelectOptions.MEDIUM);
+      setChecked(option);
     } else {
       setFilterSelection(SelectOptions.HIGH);
+      setChecked(option);
     }
-    setChecked(!checked);
     console.log("value: " + event.target.value);
     console.log("state: " + filterSelection);
   };
@@ -44,8 +45,7 @@ const RadioFilter = ({ options, type, text }: RadioFilterPropsType) => {
           text={option}
           type={type}
           value={option}
-          // *TO DO: need to fix this boolean value to toggle to be based on enum value using a map
-          // checked={}
+          checked={checked === option}
           onChange={handleFilter}
         />
       ))}
