@@ -8,32 +8,27 @@ import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import classNames from "classnames";
-import Button from "component/common/Button";
 
 import styles from "./explore.module.scss";
 import strings from "config/strings";
-import FilterByPrice from "./exploreFilters/filterByPrice";
-import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
-import FilterByBusyness from "./exploreFilters/filterByBusyness";
-import FilterByNoiseLevel from "./exploreFilters/filterByNoiseLevel";
-import FilterByAmenities from "./exploreFilters/filterByAmenities";
 import SearchBar from "component/common/SearchBar/searchBar";
 import { Box, CircularProgress } from "@mui/material";
 import CafeCard from "component/common/CafeCard/cafeCard";
+import FilterSideBar from "./FilterSideBar";
 
 const Explore = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
-  const [filterSelected, setFilterSelected] = useState(false);
   const [newQuery, setNewQuery] = useState("");
-
-  const updateFilterSelected = (filterSelected: boolean): void => {
-    setFilterSelected(filterSelected);
-  };
+  const [filters, setFilters] = useState("");
 
   const updateQuery = (newQuery: string): void => {
     setNewQuery(newQuery);
+  };
+
+  const updateFilters = (filters: string): void => {
+    setFilters(filters);
   };
 
   useEffect(() => {
@@ -73,21 +68,8 @@ const Explore = () => {
                 <div>
                   <h2 className={classNames(styles.filterTitle)}>Filters</h2>
                 </div>
-                <FilterByDistanceSlider />
-                <FilterByBusyness updateFilterSelected={updateFilterSelected} />
-                <FilterByNoiseLevel
-                  updateFilterSelected={updateFilterSelected}
-                />
-                <FilterByPrice updateFilterSelected={updateFilterSelected} />
-                <FilterByAmenities
-                  updateFilterSelected={updateFilterSelected}
-                />
-                {filterSelected ? (
-                  <div className={classNames(styles.filterButtonWrapper)}>
-                    <Button text="Clear" type={"clear"} />
-                    <Button text="Filter" type={"filter"} />
-                  </div>
-                ) : null}
+                {/* this needs to be changed to send all the filters selected on click of filter button*/}
+                <FilterSideBar filterSelected="" />
               </div>
               {/* 
               
@@ -100,7 +82,7 @@ const Explore = () => {
                 </div>
                 <div className={classNames(styles.cafeCardWrapper)}>
                   <div className={classNames(styles.cafeCardContainer)}>
-                    {cafes.map((cafe: Cafe, index) => (
+                    {cafes.map((cafe: Cafe) => (
                       <CafeCard key={cafe.id} {...cafe} />
                     ))}
                   </div>

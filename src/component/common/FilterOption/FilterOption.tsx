@@ -1,27 +1,29 @@
-import React, { ChangeEvent, useState } from "react";
+import React, { ChangeEvent } from "react";
 import classNames from "classnames";
 import styles from "./FilterOption.module.scss";
 
-type InputPropsType = {
+type FilterOptionPropsType = {
   text: string;
   type: string;
   className?: string;
   onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+  onFocus?: (event: ChangeEvent<HTMLInputElement>) => void;
   checked?: boolean;
   value?: string;
-  onClick?: (event: React.MouseEvent<Element, MouseEvent>) => void;
   name?: string;
+  onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
 };
 
-const Input = ({
+const FilterOption = ({
   text,
   type,
   onChange,
   checked,
   value,
-  onClick,
   name,
-}: InputPropsType) => {
+  onClick,
+  onFocus,
+}: FilterOptionPropsType) => {
   return (
     <div className={classNames(styles.listWrapper)}>
       <input
@@ -29,12 +31,13 @@ const Input = ({
         checked={checked}
         onChange={onChange}
         value={value}
-        onClick={onClick}
         name={name}
+        onClick={onClick}
+        onFocus={onFocus}
       />
       <label>{text}</label>
     </div>
   );
 };
 
-export default Input;
+export default FilterOption;

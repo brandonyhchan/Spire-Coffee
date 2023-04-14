@@ -1,34 +1,19 @@
-import React, { ChangeEvent, useState } from "react";
-import Filter from "component/common/FilterComponent/FilterComponent";
-import Input from "component/common/FilterOption/FilterOption";
-import strings from "config/strings";
+import React, { useState } from "react";
+import FilterComponent from "component/common/FilterComponent/FilterComponent";
+import FilterOption from "component/common/FilterOption/FilterOption";
 import classNames from "classnames";
 import styles from "component/common/FilterComponent/FilterComponent.module.scss";
 
-interface FilterByAmenitiesProps {
-  updateFilterSelected: (arg: boolean) => void;
-}
+type CheckboxFilterPropsType = {
+  options: string[];
+  type: string;
+  text: string;
+};
 
-const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
-  updateFilterSelected,
-}) => {
+const CheckboxFilter = ({ options, type, text }: CheckboxFilterPropsType) => {
   const [filterSelection, setFilterSelection] = useState<{
     selections: string[];
   }>({ selections: [] });
-  const options = [
-    strings.list.amenities1,
-    strings.list.amenities2,
-    strings.list.amenities3,
-  ];
-
-  const [checkedOption, setCheckedOption] = useState("");
-
-  const handleFilter = (event: ChangeEvent<HTMLInputElement>) => {
-    setCheckedOption(event.target.value);
-    if (!checkedOption) {
-      updateFilterSelected(true);
-    }
-  };
 
   function handleSelectedFilters(key: string) {
     const selection = filterSelection.selections;
@@ -46,20 +31,20 @@ const FilterByAmenities: React.FC<FilterByAmenitiesProps> = ({
   }
 
   return (
-    <Filter text={strings.explore.filterByAmenities}>
+    <FilterComponent text={text}>
       {options.map((option) => (
-        <Input
+        <FilterOption
           key={option}
           className={classNames(styles.listWrapper)}
           text={option}
-          type="checkbox"
+          type={type}
           value={option}
           onChange={() => handleSelectedFilters(option)}
           checked={filterSelection.selections.includes(option)}
         />
       ))}
-    </Filter>
+    </FilterComponent>
   );
 };
 
-export default FilterByAmenities;
+export default CheckboxFilter;
