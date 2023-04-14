@@ -18,12 +18,15 @@ import FilterSideBar from "./FilterSideBar";
 import MobileFilterComponent from "./exploreFilters/mobileFilterComponent";
 
 import TuneIcon from "@mui/icons-material/Tune";
+import { SelectOptions } from "component/common/Filter/RadioFilter";
 
 const Explore = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
   const [searchCafeName, setSearchCafeName] = useState("");
+  const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
+  const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
 
   const updateQuery = (newQuery: string): void => {
     setSearchCafeName(newQuery);
@@ -32,14 +35,18 @@ const Explore = () => {
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
   // refetch could be added in case needed
-  const { loading, error } = useQuery(cafeQuery, {
+  const { loading, error, refetch } = useQuery(cafeQuery, {
     onError: (error) => {
       throw error;
     },
     onCompleted: (data) => {
       setCafes(data?.returnAllCafes);
     },
-    variables: { filterByName: searchCafeName },
+    variables: {
+      filterByName: searchCafeName,
+      busyFilter: busynessLevel,
+      noiseFilter: noiseLevel,
+    },
   });
 
   useEffect(() => {
@@ -56,6 +63,8 @@ const Explore = () => {
     console.log("clicked on mobile filter");
   }
 
+  console.log(`busyness ${busynessLevel}`);
+  console.log(`noisiness ${noiseLevel}`);
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
@@ -75,7 +84,13 @@ const Explore = () => {
                     {strings.explore.filterTitle}
                   </h2>
                 </div>
-                <FilterSideBar />
+                <FilterSideBar
+                  busynessState={busynessLevel}
+                  setBusynessState={setBusynessLevel}
+                  noiseState={noiseLevel}
+                  setNoiseState={setNoiseLevel}
+                  handleClick={() => refetch}
+                />
               </div>
               {/* 
               

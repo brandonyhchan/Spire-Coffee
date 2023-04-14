@@ -12,5 +12,9 @@ type Query {
     password: String!
   ): AuthPayload
   login(userName: String!, password: String!): AuthPayload
-  returnAllCafes(filterByName: String): [Cafe]
+  returnAllCafes(
+    filterByName: String
+    busyFilter: filterOptions
+    noiseFilter: filterOptions
+  ): [Cafe]
 }

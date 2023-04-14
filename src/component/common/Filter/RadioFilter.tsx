@@ -1,13 +1,13 @@
-import React, { useState, ChangeEvent } from "react";
+import React, { ChangeEvent } from "react";
 import FilterComponent from "component/common/FilterComponent/FilterComponent";
 import FilterOption from "component/common/FilterOption/FilterOption";
 import classNames from "classnames";
 import styles from "component/common/FilterComponent/FilterComponent.module.scss";
 
-enum SelectOptions {
-  LOW,
-  MEDIUM,
-  HIGH,
+export enum SelectOptions {
+  LOW = "LOW",
+  MEDIUM = "MEDIUM",
+  HIGH = "HIGH",
 }
 
 type RadioFilterPropsType = {
