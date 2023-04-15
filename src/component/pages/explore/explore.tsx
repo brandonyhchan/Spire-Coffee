@@ -16,6 +16,7 @@ import CafeCard from "component/common/CafeCard/cafeCard";
 import FilterSideBar from "./FilterSideBar";
 
 import TuneIcon from "@mui/icons-material/Tune";
+import { SelectOptions } from "component/common/Filter/RadioFilter";
 
 import classNames from "classnames";
 import styles from "./explore.module.scss";
@@ -27,17 +28,28 @@ const Explore = () => {
 
   const [searchCafeName, setSearchCafeName] = useState("");
   const [mobileFilters, setMobileFilters] = useState<boolean>(false);
+  const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
+  const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
+
+  const updateQuery = (newQuery: string): void => {
+    setSearchCafeName(newQuery);
+  };
+
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
   // refetch could be added in case needed
-  const { loading, error } = useQuery(cafeQuery, {
+  const { loading, error, refetch } = useQuery(cafeQuery, {
     onError: (error) => {
       throw error;
     },
     onCompleted: (data) => {
       setCafes(data?.returnAllCafes);
     },
-    variables: { filterByName: searchCafeName },
+    variables: {
+      filterByName: searchCafeName,
+      busyFilter: busynessLevel,
+      noiseFilter: noiseLevel,
+    },
   });
 
   useEffect(() => {
@@ -46,16 +58,14 @@ const Explore = () => {
     }
   }, [navigate, token]);
 
-  const updateQuery = (newQuery: string): void => {
-    setSearchCafeName(newQuery);
-  };
-
   //What type should this be? //should be void because it doesnt return anything
   function showMobileFilters(): void {
     setMobileFilters(!mobileFilters);
     console.log("clicked on mobile filter");
   }
 
+  console.log(`busyness ${busynessLevel}`);
+  console.log(`noisiness ${noiseLevel}`);
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
@@ -75,7 +85,13 @@ const Explore = () => {
                     {strings.explore.filterTitle}
                   </h2>
                 </div>
-                <FilterSideBar />
+                <FilterSideBar
+                  busynessState={busynessLevel}
+                  setBusynessState={setBusynessLevel}
+                  noiseState={noiseLevel}
+                  setNoiseState={setNoiseLevel}
+                  handleClick={() => refetch}
+                />
               </div>
               {/* 
               

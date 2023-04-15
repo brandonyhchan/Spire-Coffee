@@ -35,6 +35,10 @@ export async function login(parent, args, context, info) {
 }
 export async function returnAllCafes(parent, args, context, info) {
     return context.prisma.cafe.findMany({
-        where: { name: { contains: args.filterByName, mode: "insensitive" } },
+        where: {
+            name: { contains: args.filterByName, mode: "insensitive" },
+            busyness: args.busyFilter,
+            noisiness: args.noiseFilter,
+        },
     });
 }

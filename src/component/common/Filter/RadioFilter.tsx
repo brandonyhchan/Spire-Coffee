@@ -3,7 +3,12 @@ import FilterComponent from "component/common/FilterComponent/FilterComponent";
 import FilterOption from "component/common/FilterOption/FilterOption";
 import classNames from "classnames";
 import styles from "component/common/FilterComponent/FilterComponent.module.scss";
-import { SelectOptions } from "component/pages/explore/FilterSideBar";
+
+export enum SelectOptions {
+  LOW = "LOW",
+  MEDIUM = "MEDIUM",
+  HIGH = "HIGH",
+}
 
 type RadioFilterPropsType = {
   options: string[];

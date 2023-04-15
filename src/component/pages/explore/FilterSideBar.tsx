@@ -1,5 +1,7 @@
-import React, { useState, ChangeEvent } from "react";
-import RadioFilter from "component/common/Filter/RadioFilter";
+import React, { useState, ChangeEvent, MouseEventHandler } from "react";
+import RadioFilter, {
+  SelectOptions,
+} from "component/common/Filter/RadioFilter";
 import CheckboxFilter from "component/common/Filter/CheckboxFilter";
 import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
 import Button from "component/common/Button";
@@ -7,44 +9,46 @@ import strings from "config/strings";
 import styles from "./explore.module.scss";
 import classNames from "classnames";
 
-export enum SelectOptions {
-  LOW = "LOW",
-  MEDIUM = "MEDIUM",
-  HIGH = "HIGH",
-}
+type FilterSideBarPropsType = {
+  handleClick: MouseEventHandler;
+  busynessState: SelectOptions | undefined;
+  setBusynessState(data: SelectOptions): void;
+  noiseState: SelectOptions | undefined;
+  setNoiseState(data: SelectOptions): void;
+};
 
-const FilterSideBar = () => {
-  const [busynessSelection, setBusynessSelection] = useState<SelectOptions>();
-  const [noisinessSelection, setNoisinessSelection] = useState<SelectOptions>();
-  const [priceSelection, setPriceSelection] = useState<SelectOptions[]>([]);
-
+const FilterSideBar = ({
+  handleClick,
+  busynessState,
+  setBusynessState,
+  noiseState,
+  setNoiseState,
+}: FilterSideBarPropsType) => {
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
     if (option === "Not too busy") {
-      setBusynessSelection(SelectOptions.LOW);
+      setBusynessState(SelectOptions.LOW);
     } else if (option === "A little busy") {
-      setBusynessSelection(SelectOptions.MEDIUM);
+      setBusynessState(SelectOptions.MEDIUM);
     } else {
-      setBusynessSelection(SelectOptions.HIGH);
+      setBusynessState(SelectOptions.HIGH);
     }
     setBusynessChecked(option);
-    console.log("value: " + event.target.value);
   };
 
   const handleNoisinessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
     if (option === "Quiet") {
-      setNoisinessSelection(SelectOptions.LOW);
+      setNoiseState(SelectOptions.LOW);
     } else if (option === "A little noisy") {
-      setNoisinessSelection(SelectOptions.MEDIUM);
+      setNoiseState(SelectOptions.MEDIUM);
     } else {
-      setNoisinessSelection(SelectOptions.HIGH);
+      setNoiseState(SelectOptions.HIGH);
     }
     setNoisinessChecked(option);
-    console.log("value: " + event.target.value);
   };
 
   function handlePriceFilter(option: SelectOptions) {
@@ -59,12 +63,12 @@ const FilterSideBar = () => {
     console.log(priceSelection);
   }
 
-  const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
-    event.preventDefault();
-    console.log("busyness: " + busynessSelection);
-    console.log("noisiness: " + noisinessSelection);
-    console.log("price: " + priceSelection);
-  };
+  // const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
+  //   event.preventDefault();
+  //   console.log("busyness: " + busynessSelection);
+  //   console.log("noisiness: " + noisinessSelection);
+  //   console.log("price: " + priceSelection);
+  // };
 
   return (
     <React.Fragment>
@@ -78,7 +82,7 @@ const FilterSideBar = () => {
           ]}
           type="radio"
           text={strings.explore.filterByBusyness}
-          filterSelection={busynessSelection}
+          filterSelection={busynessState}
           checked={busynessChecked}
           handleFilter={handleBusynessFilter}
         />
@@ -90,7 +94,7 @@ const FilterSideBar = () => {
           ]}
           type="radio"
           text={strings.explore.filterByNoiseLevel}
-          filterSelection={noisinessSelection}
+          filterSelection={noiseState}
           checked={noisinessChecked}
           handleFilter={handleNoisinessFilter}
         />
@@ -113,7 +117,7 @@ const FilterSideBar = () => {
           <Button text="Clear" type={"clear"} />
           <Button
             text="Filter"
-            type={"filter"}
+            type="filter"
             buttonType={"submit"}
             onClick={handleClick}
           />
