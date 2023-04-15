@@ -16,14 +16,10 @@ export enum SelectOptions {
 const FilterSideBar = () => {
   const [busynessSelection, setBusynessSelection] = useState<SelectOptions>();
   const [noisinessSelection, setNoisinessSelection] = useState<SelectOptions>();
-  const [priceSelection, setPriceSelection] = useState<string[]>([]);
+  const [priceSelection, setPriceSelection] = useState<SelectOptions[]>([]);
 
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
-
-  const updatePriceFilter = (selections: string[]): void => {
-    setPriceSelection(selections);
-  };
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
@@ -50,6 +46,18 @@ const FilterSideBar = () => {
     setNoisinessChecked(option);
     console.log("value: " + event.target.value);
   };
+
+  function handlePriceFilter(option: SelectOptions) {
+    const findOption = priceSelection.indexOf(option);
+    if (findOption > -1) {
+      priceSelection.splice(findOption, 1);
+    } else {
+      priceSelection.push(option);
+    }
+
+    setPriceSelection(priceSelection);
+    console.log(priceSelection);
+  }
 
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
@@ -90,7 +98,8 @@ const FilterSideBar = () => {
           type="checkbox"
           text={strings.explore.filterByPrice}
           filterSelection={priceSelection}
-          handleFilter={updatePriceFilter}
+          handleFilter={() => handlePriceFilter}
+          handleSelectedFilter={handlePriceFilter}
         />
         {/* <CheckboxFilter
           options={[

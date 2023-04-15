@@ -50,8 +50,8 @@ const Explore = () => {
     setSearchCafeName(newQuery);
   };
 
-  //What type should this be?
-  function showMobileFilters(): any {
+  //What type should this be? //should be void because it doesnt return anything
+  function showMobileFilters(): void {
     setMobileFilters(!mobileFilters);
     console.log("clicked on mobile filter");
   }
