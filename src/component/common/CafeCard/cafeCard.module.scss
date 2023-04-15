@@ -1,5 +1,5 @@
-$_logo_size: 150px;
-$_card_size: 490px;
+$_logo_size: 140px;
+$_card_size: 460px;
 
 .cafeCard {
   border-color: grey;
@@ -17,7 +17,7 @@ $_card_size: 490px;
   width: $_logo_size;
   height: $_logo_size;
   display: block;
-  padding: 10px;
+  padding: 5px;
 }
 
 .logo > img {
@@ -27,11 +27,11 @@ $_card_size: 490px;
 
 .cafeCardInfo {
   color: var(--dark-grey);
-  padding: 10px;
+  padding: 8px;
   display: flex;
   flex-direction: column;
   text-align: start; 
-  width: 340px;
+  width: 330px;
 }
 
 .cafeCardIcons {

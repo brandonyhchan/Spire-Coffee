@@ -25,7 +25,7 @@ const CheckboxFilter = ({
         text={strings.list.price1}
         type={type}
         value={SelectOptions.LOW}
-        onChange={() => handleFilter(SelectOptions.LOW)}
+        onChange={() => handleFilter}
       />
       <FilterOption
         className={classNames(styles.listWrapper)}
