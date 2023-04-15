@@ -30,12 +30,13 @@ const Explore = () => {
   const [mobileFilters, setMobileFilters] = useState<boolean>(false);
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
+  const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
+
+  const [cafes, setCafes] = useState<Cafe[]>([]);
 
   const updateQuery = (newQuery: string): void => {
     setSearchCafeName(newQuery);
   };
-
-  const [cafes, setCafes] = useState<Cafe[]>([]);
 
   // refetch could be added in case needed
   const { loading, error, refetch } = useQuery(cafeQuery, {
@@ -64,8 +65,6 @@ const Explore = () => {
     console.log("clicked on mobile filter");
   }
 
-  console.log(`busyness ${busynessLevel}`);
-  console.log(`noisiness ${noiseLevel}`);
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
@@ -90,14 +89,12 @@ const Explore = () => {
                   setBusynessState={setBusynessLevel}
                   noiseState={noiseLevel}
                   setNoiseState={setNoiseLevel}
+                  priceFilter={priceOptions}
+                  setPriceFilter={setPriceOptions}
                   handleClick={() => refetch}
                 />
               </div>
-              {/* 
-              
-              Search bar and cards start here
-
-              */}
+              {/* Search bar and cards start here*/}
               <div className={classNames(styles.exploreSectionContainer)}>
                 <div className={classNames(styles.searchBarContainer)}>
                   <SearchBar updateQuery={updateQuery} />

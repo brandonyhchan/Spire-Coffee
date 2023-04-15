@@ -15,6 +15,8 @@ type FilterSideBarPropsType = {
   setBusynessState(data: SelectOptions): void;
   noiseState: SelectOptions | undefined;
   setNoiseState(data: SelectOptions): void;
+  priceFilter: SelectOptions[];
+  setPriceFilter(data: SelectOptions[]): void;
 };
 
 const FilterSideBar = ({
@@ -23,6 +25,8 @@ const FilterSideBar = ({
   setBusynessState,
   noiseState,
   setNoiseState,
+  priceFilter,
+  setPriceFilter,
 }: FilterSideBarPropsType) => {
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
@@ -52,78 +56,56 @@ const FilterSideBar = ({
   };
 
   function handlePriceFilter(option: SelectOptions) {
-    const findOption = priceSelection.indexOf(option);
+    const findOption = priceFilter.indexOf(option);
+    console.log(findOption);
     if (findOption > -1) {
-      priceSelection.splice(findOption, 1);
+      priceFilter.splice(findOption, 1);
     } else {
-      priceSelection.push(option);
+      priceFilter.push(option);
     }
 
-    setPriceSelection(priceSelection);
-    console.log(priceSelection);
+    setPriceFilter(priceFilter);
+    console.log(priceFilter);
   }
 
-  // const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
-  //   event.preventDefault();
-  //   console.log("busyness: " + busynessSelection);
-  //   console.log("noisiness: " + noisinessSelection);
-  //   console.log("price: " + priceSelection);
-  // };
-
   return (
-    <React.Fragment>
-      <form>
-        <FilterByDistanceSlider />
-        <RadioFilter
-          options={[
-            strings.list.busyness1,
-            strings.list.busyness2,
-            strings.list.busyness3,
-          ]}
-          type="radio"
-          text={strings.explore.filterByBusyness}
-          filterSelection={busynessState}
-          checked={busynessChecked}
-          handleFilter={handleBusynessFilter}
+    <form>
+      <FilterByDistanceSlider />
+      <RadioFilter
+        options={[
+          strings.list.busyness1,
+          strings.list.busyness2,
+          strings.list.busyness3,
+        ]}
+        type="radio"
+        text={strings.explore.filterByBusyness}
+        filterSelection={busynessState}
+        checked={busynessChecked}
+        handleFilter={handleBusynessFilter}
+      />
+      <RadioFilter
+        options={[
+          strings.list.noisiness1,
+          strings.list.noisiness2,
+          strings.list.noisiness3,
+        ]}
+        type="radio"
+        text={strings.explore.filterByNoiseLevel}
+        filterSelection={noiseState}
+        checked={noisinessChecked}
+        handleFilter={handleNoisinessFilter}
+      />
+      <CheckboxFilter type="checkbox" text={strings.explore.filterByPrice} />
+      <div className={classNames(styles.filterButtonWrapper)}>
+        <Button text="Clear" type={"clear"} />
+        <Button
+          text="Filter"
+          type="filter"
+          buttonType={"submit"}
+          onClick={handleClick}
         />
-        <RadioFilter
-          options={[
-            strings.list.noisiness1,
-            strings.list.noisiness2,
-            strings.list.noisiness3,
-          ]}
-          type="radio"
-          text={strings.explore.filterByNoiseLevel}
-          filterSelection={noiseState}
-          checked={noisinessChecked}
-          handleFilter={handleNoisinessFilter}
-        />
-        <CheckboxFilter
-          type="checkbox"
-          text={strings.explore.filterByPrice}
-          filterSelection={priceSelection}
-          handleFilter={handlePriceFilter}
-        />
-        {/* <CheckboxFilter
-          options={[
-            SelectOptions.HIGH,
-            SelectOptions.MEDIUM,
-            SelectOptions.LOW,
-          ]}
-          type="checkbox"
-          text={strings.explore.filterByAmenities}
-        /> */}
-        <div className={classNames(styles.filterButtonWrapper)}>
-          <Button text="Clear" type={"clear"} />
-          <Button
-            text="Filter"
-            type="filter"
-            buttonType={"submit"}
-            onClick={handleClick}
-          />
-        </div>
-      </form>
-    </React.Fragment>
+      </div>
+    </form>
   );
 };
 

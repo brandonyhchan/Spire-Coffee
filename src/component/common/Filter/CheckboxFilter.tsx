@@ -4,7 +4,7 @@ import FilterOption from "component/common/FilterOption/FilterOption";
 import classNames from "classnames";
 import strings from "config/strings";
 import styles from "component/common/FilterComponent/FilterComponent.module.scss";
-import { SelectOptions } from "component/pages/explore/FilterSideBar";
+import { SelectOptions } from "./RadioFilter";
 
 type CheckboxFilterPropsType = {
   type: string;
