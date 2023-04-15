@@ -98,8 +98,7 @@ const FilterSideBar = () => {
           type="checkbox"
           text={strings.explore.filterByPrice}
           filterSelection={priceSelection}
-          handleFilter={() => handlePriceFilter}
-          handleSelectedFilter={handlePriceFilter}
+          handleFilter={handlePriceFilter}
         />
         {/* <CheckboxFilter
           options={[

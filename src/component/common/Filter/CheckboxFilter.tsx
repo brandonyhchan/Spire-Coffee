@@ -10,14 +10,13 @@ type CheckboxFilterPropsType = {
   type: string;
   text: string;
   filterSelection: string[];
-  handleFilter: (selections: string[]) => void;
-  handleSelectedFilter: (option: SelectOptions) => void;
+  handleFilter: (option: SelectOptions) => void;
 };
 
 const CheckboxFilter = ({
   type,
   text,
-  handleSelectedFilter,
+  handleFilter,
 }: CheckboxFilterPropsType) => {
   return (
     <FilterComponent text={text}>
@@ -26,21 +25,21 @@ const CheckboxFilter = ({
         text={strings.list.price1}
         type={type}
         value={SelectOptions.LOW}
-        onChange={() => handleSelectedFilter(SelectOptions.LOW)}
+        onChange={() => handleFilter(SelectOptions.LOW)}
       />
       <FilterOption
         className={classNames(styles.listWrapper)}
         text={strings.list.price2}
         type={type}
         value={SelectOptions.MEDIUM}
-        onChange={() => handleSelectedFilter(SelectOptions.MEDIUM)}
+        onChange={() => handleFilter(SelectOptions.MEDIUM)}
       />
       <FilterOption
         className={classNames(styles.listWrapper)}
         text={strings.list.price3}
         type={type}
         value={SelectOptions.HIGH}
-        onChange={() => handleSelectedFilter(SelectOptions.HIGH)}
+        onChange={() => handleFilter(SelectOptions.HIGH)}
       />
     </FilterComponent>
   );
