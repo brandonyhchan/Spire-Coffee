@@ -95,7 +95,12 @@ const FilterSideBar = ({
         checked={noisinessChecked}
         handleFilter={handleNoisinessFilter}
       />
-      <CheckboxFilter type="checkbox" text={strings.explore.filterByPrice} />
+      <CheckboxFilter
+        type="checkbox"
+        text={strings.explore.filterByPrice}
+        filterSelection={priceFilter}
+        handleFilter={handlePriceFilter}
+      />
       <div className={classNames(styles.filterButtonWrapper)}>
         <Button text="Clear" type={"clear"} />
         <Button
