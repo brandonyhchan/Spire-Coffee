@@ -96,6 +96,7 @@ const FilterSideBar = ({
         handleFilter={handleNoisinessFilter}
       />
       <CheckboxFilter
+        options={[SelectOptions.LOW, SelectOptions.MEDIUM, SelectOptions.HIGH]}
         type="checkbox"
         text={strings.explore.filterByPrice}
         filterSelection={priceFilter}

@@ -7,6 +7,7 @@ import styles from "component/common/FilterComponent/FilterComponent.module.scss
 import { SelectOptions } from "./RadioFilter";
 
 type CheckboxFilterPropsType = {
+  options: SelectOptions[];
   type: string;
   text: string;
   filterSelection: string[];
@@ -14,6 +15,7 @@ type CheckboxFilterPropsType = {
 };
 
 const CheckboxFilter = ({
+  options,
   type,
   text,
   handleFilter,
@@ -24,22 +26,22 @@ const CheckboxFilter = ({
         className={classNames(styles.listWrapper)}
         text={strings.list.price1}
         type={type}
-        value={SelectOptions.LOW}
-        onChange={() => handleFilter}
+        value={options[0]}
+        onChange={() => handleFilter(options[0])}
       />
       <FilterOption
         className={classNames(styles.listWrapper)}
         text={strings.list.price2}
         type={type}
-        value={SelectOptions.MEDIUM}
-        onChange={() => handleFilter(SelectOptions.MEDIUM)}
+        value={options[1]}
+        onChange={() => handleFilter(options[1])}
       />
       <FilterOption
         className={classNames(styles.listWrapper)}
         text={strings.list.price3}
         type={type}
-        value={SelectOptions.HIGH}
-        onChange={() => handleFilter(SelectOptions.HIGH)}
+        value={options[2]}
+        onChange={() => handleFilter(options[2])}
       />
     </FilterComponent>
   );
