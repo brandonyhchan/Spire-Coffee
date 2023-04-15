@@ -4,31 +4,29 @@ import { Helmet } from "react-helmet";
 import { cafeQuery } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
+import { Box, CircularProgress } from "@mui/material";
+
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
-import classNames from "classnames";
-
-import styles from "./explore.module.scss";
-import strings from "config/strings";
-import SearchBar from "component/common/SearchBar/searchBar";
-import { Box, CircularProgress } from "@mui/material";
-import CafeCard from "component/common/CafeCard/cafeCard";
-import FilterSideBar from "./FilterSideBar";
 import MobileFilterComponent from "./exploreFilters/mobileFilterComponent";
 
+import SearchBar from "component/common/SearchBar/searchBar";
+import CafeCard from "component/common/CafeCard/cafeCard";
+import FilterSideBar from "./FilterSideBar";
+
 import TuneIcon from "@mui/icons-material/Tune";
+
+import classNames from "classnames";
+import styles from "./explore.module.scss";
+import strings from "config/strings";
 
 const Explore = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
   const [searchCafeName, setSearchCafeName] = useState("");
-
-  const updateQuery = (newQuery: string): void => {
-    setSearchCafeName(newQuery);
-  };
-
+  const [mobileFilters, setMobileFilters] = useState<boolean>(false);
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
   // refetch could be added in case needed
@@ -48,7 +46,9 @@ const Explore = () => {
     }
   }, [navigate, token]);
 
-  const [mobileFilters, setMobileFilters] = useState<boolean>(false);
+  const updateQuery = (newQuery: string): void => {
+    setSearchCafeName(newQuery);
+  };
 
   //What type should this be?
   function showMobileFilters(): any {

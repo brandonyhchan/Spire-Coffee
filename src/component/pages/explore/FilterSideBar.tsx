@@ -7,23 +7,23 @@ import strings from "config/strings";
 import styles from "./explore.module.scss";
 import classNames from "classnames";
 
-enum SelectOptions {
-  LOW,
-  MEDIUM,
-  HIGH,
+export enum SelectOptions {
+  LOW = "LOW",
+  MEDIUM = "MEDIUM",
+  HIGH = "HIGH",
 }
 
 const FilterSideBar = () => {
-  const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
-    event.preventDefault();
-    console.log("busyness: " + busynessSelection);
-    console.log("noisiness: " + noisinessSelection);
-  };
-
   const [busynessSelection, setBusynessSelection] = useState<SelectOptions>();
   const [noisinessSelection, setNoisinessSelection] = useState<SelectOptions>();
+  const [priceSelection, setPriceSelection] = useState<string[]>([]);
+
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
+
+  const updatePriceFilter = (selections: string[]): void => {
+    setPriceSelection(selections);
+  };
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
@@ -49,6 +49,13 @@ const FilterSideBar = () => {
     }
     setNoisinessChecked(option);
     console.log("value: " + event.target.value);
+  };
+
+  const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
+    event.preventDefault();
+    console.log("busyness: " + busynessSelection);
+    console.log("noisiness: " + noisinessSelection);
+    console.log("price: " + priceSelection);
   };
 
   return (
@@ -80,23 +87,20 @@ const FilterSideBar = () => {
           handleFilter={handleNoisinessFilter}
         />
         <CheckboxFilter
-          options={[
-            strings.list.price1,
-            strings.list.price2,
-            strings.list.price3,
-          ]}
           type="checkbox"
           text={strings.explore.filterByPrice}
+          filterSelection={priceSelection}
+          handleFilter={updatePriceFilter}
         />
-        <CheckboxFilter
+        {/* <CheckboxFilter
           options={[
-            strings.list.amenities1,
-            strings.list.amenities2,
-            strings.list.amenities3,
+            SelectOptions.HIGH,
+            SelectOptions.MEDIUM,
+            SelectOptions.LOW,
           ]}
           type="checkbox"
           text={strings.explore.filterByAmenities}
-        />
+        /> */}
         <div className={classNames(styles.filterButtonWrapper)}>
           <Button text="Clear" type={"clear"} />
           <Button

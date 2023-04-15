@@ -1,5 +1,4 @@
-import React, { useState } from "react";
-import Logo from "assets/images/placeholder-logo.jpg";
+import React from "react";
 import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
 import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
@@ -25,7 +24,6 @@ type CafeCardPropsType = {
 };
 
 const CafeCard = ({
-  id,
   name,
   street,
   city,

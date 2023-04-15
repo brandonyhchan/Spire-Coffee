@@ -2,47 +2,60 @@ import React, { useState } from "react";
 import FilterComponent from "component/common/FilterComponent/FilterComponent";
 import FilterOption from "component/common/FilterOption/FilterOption";
 import classNames from "classnames";
+import strings from "config/strings";
 import styles from "component/common/FilterComponent/FilterComponent.module.scss";
+import { SelectOptions } from "component/pages/explore/FilterSideBar";
 
 type CheckboxFilterPropsType = {
-  options: string[];
   type: string;
   text: string;
+  filterSelection: string[];
+  handleFilter: (selections: string[]) => void;
 };
 
-const CheckboxFilter = ({ options, type, text }: CheckboxFilterPropsType) => {
-  const [filterSelection, setFilterSelection] = useState<{
-    selections: string[];
-  }>({ selections: [] });
+const CheckboxFilter = ({
+  type,
+  text,
+  handleFilter,
+}: CheckboxFilterPropsType) => {
+  const [filterSelection, setFilterSelection] = useState<SelectOptions[]>([]);
 
-  function handleSelectedFilters(key: string) {
-    const selection = filterSelection.selections;
-    const findOption = selection.indexOf(key);
+  function handleSelectedFilters(option: SelectOptions) {
+    const findOption = filterSelection.indexOf(option);
     if (findOption > -1) {
-      selection.splice(findOption, 1);
+      filterSelection.splice(findOption, 1);
     } else {
-      selection.push(key);
+      filterSelection.push(option);
     }
 
-    setFilterSelection({
-      selections: selection,
-    });
+    setFilterSelection(filterSelection);
+    handleFilter(filterSelection);
     console.log(filterSelection);
   }
 
   return (
     <FilterComponent text={text}>
-      {options.map((option) => (
-        <FilterOption
-          key={option}
-          className={classNames(styles.listWrapper)}
-          text={option}
-          type={type}
-          value={option}
-          onChange={() => handleSelectedFilters(option)}
-          checked={filterSelection.selections.includes(option)}
-        />
-      ))}
+      <FilterOption
+        className={classNames(styles.listWrapper)}
+        text={strings.list.price1}
+        type={type}
+        value={SelectOptions.LOW}
+        onChange={() => handleSelectedFilters(SelectOptions.LOW)}
+      />
+      <FilterOption
+        className={classNames(styles.listWrapper)}
+        text={strings.list.price2}
+        type={type}
+        value={SelectOptions.MEDIUM}
+        onChange={() => handleSelectedFilters(SelectOptions.MEDIUM)}
+      />
+      <FilterOption
+        className={classNames(styles.listWrapper)}
+        text={strings.list.price3}
+        type={type}
+        value={SelectOptions.HIGH}
+        onChange={() => handleSelectedFilters(SelectOptions.HIGH)}
+      />
     </FilterComponent>
   );
 };
