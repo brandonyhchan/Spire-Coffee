@@ -37,8 +37,16 @@ export const loginQuery = gql`
 `;
 
 export const cafeQuery = gql`
-  query ReturnAllCafes($filterByName: String) {
-    returnAllCafes(filterByName: $filterByName) {
+  query ReturnAllCafes(
+    $filterByName: String
+    $busyFilter: filterOptions
+    $noiseFilter: filterOptions
+  ) {
+    returnAllCafes(
+      filterByName: $filterByName
+      busyFilter: $busyFilter
+      noiseFilter: $noiseFilter
+    ) {
       id
       name
       street
