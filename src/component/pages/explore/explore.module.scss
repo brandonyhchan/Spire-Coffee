@@ -1,6 +1,6 @@
-$_card_size: 550px;
+$_card_size: 460px;
 $_filter_section_size: 550px;
-$_filter_section_min_size: 400px;
+$_filter_section_min_size: 300px;
 
 .container {
   min-height: 100vh;
@@ -24,10 +24,9 @@ $_filter_section_min_size: 400px;
 
 .filterContainer {
   width: $_filter_section_size;
-  min-width: $_filter_section_min_size;
   padding-bottom: 10px;
 
-  @media (max-width: 600px) {
+  @media (max-width: 820px) {
     display: none;
   }
 }
@@ -56,6 +55,10 @@ $_filter_section_min_size: 400px;
   width: calc(100vw);
   padding-top: 30px;
   padding-bottom: 30px;
+
+  @media (min-width: 820px) {
+    padding-right: 20px;
+  }
 }
 
 .searchBarContainer {
@@ -78,18 +81,17 @@ $_filter_section_min_size: 400px;
   justify-content: center;
   gap: 10px;
   padding-top: 30px;
-  min-width: 620px;
+  min-width: $_card_size;
   
-  @media (max-width: 1615px) {
-    width: 50vw;
-  }
-
-  @media (min-width: 1616px) {
-    width: 78vw;
+  @media (min-width: 1281px) {
     display: grid;
     grid-template-columns: repeat(2, $_card_size);
     column-gap: 20px;
     row-gap: 25px;
+  }
+
+  @media (min-width: 1860px) {
+    grid-template-columns: repeat(3, $_card_size);
   }
 }
 
@@ -102,7 +104,7 @@ $_filter_section_min_size: 400px;
 
 .mobileFilter {
   display: none;
-  @media (max-width: 600px) {
+  @media (max-width: 820px) {
     display: contents;
   }
 }
