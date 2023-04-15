@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FilterComponent from "component/common/FilterComponent/FilterComponent";
 import FilterOption from "component/common/FilterOption/FilterOption";
 import classNames from "classnames";
@@ -20,29 +20,24 @@ const CheckboxFilter = ({
   text,
   handleFilter,
 }: CheckboxFilterPropsType) => {
+  const label = [strings.list.price1, strings.list.price2, strings.list.price3];
+  const list = [
+    { label: label[0], option: options[0] },
+    { label: label[1], option: options[1] },
+    { label: label[2], option: options[2] },
+  ];
   return (
     <FilterComponent text={text}>
-      <FilterOption
-        className={classNames(styles.listWrapper)}
-        text={strings.list.price1}
-        type={type}
-        value={options[0]}
-        onChange={() => handleFilter(options[0])}
-      />
-      <FilterOption
-        className={classNames(styles.listWrapper)}
-        text={strings.list.price2}
-        type={type}
-        value={options[1]}
-        onChange={() => handleFilter(options[1])}
-      />
-      <FilterOption
-        className={classNames(styles.listWrapper)}
-        text={strings.list.price3}
-        type={type}
-        value={options[2]}
-        onChange={() => handleFilter(options[2])}
-      />
+      {list.map((item, index) => (
+        <FilterOption
+          key={index}
+          className={classNames(styles.listWrapper)}
+          text={item.label}
+          type={type}
+          value={item.option}
+          onChange={() => handleFilter(item.option)}
+        />
+      ))}
     </FilterComponent>
   );
 };
