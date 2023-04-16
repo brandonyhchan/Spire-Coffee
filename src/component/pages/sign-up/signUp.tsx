@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
-
 import { signUpMutation } from "support/graphqlServerApi";
 import RegexValidator from "./regexValidator";
 import Button from "component/common/Button";

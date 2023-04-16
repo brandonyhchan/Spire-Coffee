@@ -1,6 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { ChangeEvent, useState } from "react";
-import strings from "config/strings";
+import React from "react";
 import classNames from "classnames";
 import styles from "./mobileFilterComponent.module.scss";;
 

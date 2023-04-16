@@ -5,10 +5,9 @@ import RadioFilter, {
 import CheckboxFilter from "component/common/Filter/CheckboxFilter";
 import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
 import Button from "component/common/Button";
+import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./explore.module.scss";
-import classNames from "classnames";
-import { clear } from "console";
 
 type FilterSideBarPropsType = {
   handleClick: MouseEventHandler;

@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
-import React, { ChangeEvent, useState } from "react";
-import Filter from "component/common/FilterComponent/FilterComponent";
-import strings from "config/strings";
-import classNames from "classnames";
-import styles from "./filterComponentSlider.module.scss";;
+import React from "react";
 import { Box, Slider } from "@mui/material";
+import Filter from "component/common/FilterComponent/FilterComponent";
+import classNames from "classnames";
+import strings from "config/strings";
+import styles from "./filterComponentSlider.module.scss";;
 
 const distanceValue = [
   {

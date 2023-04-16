@@ -1,4 +1,5 @@
 import React from "react";
+import { Grid, Typography } from "@mui/material";
 import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
 import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
@@ -7,9 +8,8 @@ import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRound
 import HourglassFullRoundedIcon from "@mui/icons-material/HourglassFullRounded";
 import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
 import classNames from "classnames";
-import styles from "./cafeCard.module.scss";
 import strings from "config/strings";
-import { Grid, Typography } from "@mui/material";
+import styles from "./cafeCard.module.scss";
 
 type CafeCardPropsType = {
   id: number;

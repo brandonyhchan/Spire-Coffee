@@ -5,6 +5,7 @@ import { cafeQuery } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
 import { Box, CircularProgress } from "@mui/material";
+import { SelectOptions } from "component/common/Filter/RadioFilter";
 
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
@@ -14,9 +15,7 @@ import MobileFilterComponent from "./exploreFilters/mobileFilterComponent";
 import SearchBar from "component/common/SearchBar/searchBar";
 import CafeCard from "component/common/CafeCard/cafeCard";
 import FilterSideBar from "./FilterSideBar";
-
 import TuneIcon from "@mui/icons-material/Tune";
-import { SelectOptions } from "component/common/Filter/RadioFilter";
 
 import classNames from "classnames";
 import styles from "./explore.module.scss";
@@ -57,7 +56,6 @@ const Explore = () => {
     }
   }, [navigate, token]);
 
-  //What type should this be? //should be void because it doesnt return anything
   function showMobileFilters(): void {
     setMobileFilters(!mobileFilters);
     console.log("clicked on mobile filter");
