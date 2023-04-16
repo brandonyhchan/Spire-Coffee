@@ -26,11 +26,10 @@ const Explore = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
 
-  const [searchCafeName, setSearchCafeName] = useState("");
-  const [query, setQuery] = useState("");
   const [showCloseButton, setShowCloseButton] = useState(false);
 
   const [mobileFilters, setMobileFilters] = useState<boolean>(false);
+  const [searchCafeName, setSearchCafeName] = useState("");
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
@@ -66,15 +65,13 @@ const Explore = () => {
 
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    setQuery("");
+    setSearchCafeName("");
     setShowCloseButton(false);
   };
 
-  const handleQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
+  const handleSearchQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchCafeName(event.target.value);
     setShowCloseButton(true);
-    console.log(query);
   };
 
   return (
@@ -111,9 +108,9 @@ const Explore = () => {
                 <div className={classNames(styles.searchBarContainer)}>
                   <SearchBar
                     showCloseButton={showCloseButton}
-                    query={query}
+                    query={searchCafeName}
                     handleClick={handleClick}
-                    handleQuery={handleQuery}
+                    handleQuery={handleSearchQuery}
                   />
                   <div className={classNames(styles.mobileFilter)}>
                     <TuneIcon
