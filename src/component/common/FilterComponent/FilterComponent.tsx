@@ -1,8 +1,8 @@
 import React, { ReactElement, useState } from "react";
-import classNames from "classnames";
-import styles from "./FilterComponent.module.scss";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import ExpandLessRoundedIcon from "@mui/icons-material/ExpandLessRounded";
+import classNames from "classnames";
+import styles from "./FilterComponent.module.scss";
 
 type FilterComponentPropsType = {
   text: string;
