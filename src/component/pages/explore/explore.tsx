@@ -27,16 +27,15 @@ const Explore = () => {
   const token = localStorage.getItem("authToken");
 
   const [searchCafeName, setSearchCafeName] = useState("");
+  const [query, setQuery] = useState("");
+  const [showCloseButton, setShowCloseButton] = useState(false);
+
   const [mobileFilters, setMobileFilters] = useState<boolean>(false);
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
-
-  const updateQuery = (newQuery: string): void => {
-    setSearchCafeName(newQuery);
-  };
 
   // refetch could be added in case needed
   const { loading, error, refetch } = useQuery(cafeQuery, {
@@ -64,6 +63,19 @@ const Explore = () => {
     setMobileFilters(!mobileFilters);
     console.log("clicked on mobile filter");
   }
+
+  const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
+    event.preventDefault();
+    setQuery("");
+    setShowCloseButton(false);
+  };
+
+  const handleQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setQuery(event.target.value);
+    setSearchCafeName(event.target.value);
+    setShowCloseButton(true);
+    console.log(query);
+  };
 
   return (
     <React.Fragment>
@@ -97,7 +109,12 @@ const Explore = () => {
               {/* Search bar and cards start here*/}
               <div className={classNames(styles.exploreSectionContainer)}>
                 <div className={classNames(styles.searchBarContainer)}>
-                  <SearchBar updateQuery={updateQuery} />
+                  <SearchBar
+                    showCloseButton={showCloseButton}
+                    query={query}
+                    handleClick={handleClick}
+                    handleQuery={handleQuery}
+                  />
                   <div className={classNames(styles.mobileFilter)}>
                     <TuneIcon
                       className={classNames(styles.filterIcon)}

@@ -5,22 +5,18 @@ import classNames from "classnames";
 import styles from "./SearchBar.module.scss";
 
 interface SearchBarProps {
-  updateQuery: (arg: string) => void;
+  showCloseButton: boolean;
+  query: string;
+  handleClick: (event: React.MouseEvent<Element, MouseEvent>) => void;
+  handleQuery: (event: React.ChangeEvent<HTMLInputElement>) => void;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ updateQuery }) => {
-  const [showCloseButton, setShowCloseButton] = useState(false);
-  const [query, setQuery] = useState("");
-  const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
-    event.preventDefault();
-    setQuery("");
-    setShowCloseButton(false);
-  };
-  const handleQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setQuery(event.target.value);
-    updateQuery(event.target.value);
-  };
-
+const SearchBar: React.FC<SearchBarProps> = ({
+  showCloseButton,
+  query,
+  handleClick,
+  handleQuery,
+}) => {
   return (
     <React.Fragment>
       <div className={classNames(styles.searchBarContainer)}>
@@ -31,7 +27,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ updateQuery }) => {
             placeholder="Search..."
             name="search"
             onChange={handleQuery}
-            onFocus={() => setShowCloseButton(true)}
+            onFocus={handleQuery}
             value={query}
           />
           {!showCloseButton ? null : (

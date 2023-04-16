@@ -8,6 +8,7 @@ import Button from "component/common/Button";
 import strings from "config/strings";
 import styles from "./explore.module.scss";
 import classNames from "classnames";
+import { clear } from "console";
 
 type FilterSideBarPropsType = {
   handleClick: MouseEventHandler;
@@ -103,10 +104,9 @@ const FilterSideBar = ({
         handleFilter={handlePriceFilter}
       />
       <div className={classNames(styles.filterButtonWrapper)}>
-        <Button text="Clear" type={"clear"} />
         <Button
-          text="Filter"
-          type="filter"
+          text="Clear Filters"
+          type="clear"
           buttonType={"submit"}
           onClick={handleClick}
         />

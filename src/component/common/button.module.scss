@@ -50,26 +50,18 @@
   }
 }
 
-.clear, .filter {
-  width: auto;
+.clear {
+  width: 105px;
   height: auto;
-  padding: 0 3px;
-  border-radius: 0px;
+  padding: 5px;
+  border-radius: 20px;
   font-size: 15px;
   font-family:'Figtree-Regular';
   color: var(--dark-grey);
-}
-
-.filter {
   border: solid 1px;
   background-color: rgba(255, 255, 255, 0.616);
   &:hover { 
     background-color: var(--light-grey);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   }
-}
-
-.clear {
-  color: var(--dark-grey);
-  background-color: rgba(255, 255, 255, 0);
-  margin-right: 5px;
 }
