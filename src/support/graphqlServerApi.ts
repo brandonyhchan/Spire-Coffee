@@ -41,11 +41,13 @@ export const cafeQuery = gql`
     $filterByName: String
     $busyFilter: filterOptions
     $noiseFilter: filterOptions
+    $priceFilter: [filterOptions]
   ) {
     returnAllCafes(
       filterByName: $filterByName
       busyFilter: $busyFilter
       noiseFilter: $noiseFilter
+      priceFilter: $priceFilter
     ) {
       id
       name

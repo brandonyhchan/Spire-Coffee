@@ -46,9 +46,25 @@ export async function login(parent, args, context, info) {
 export async function returnAllCafes(parent, args, context, info) {
   return context.prisma.cafe.findMany({
     where: {
+      // OR: [
+      //   { price: { contains: args.priceFilter[0] } },
+      //   { price: { contains: args.priceFilter[1] } },
+      //   { price: { contains: args.priceFilter[2] } },
+      // ],
       name: { contains: args.filterByName, mode: "insensitive" },
       busyness: args.busyFilter,
       noisiness: args.noiseFilter,
+      // OR: [test(args.priceFilter)],
     },
   });
 }
+
+// function test(priceArray: string[]) {
+//   const array: object[] = [];
+//   for (let i = 0; i < priceArray.length; i++) {
+//     array.push(...array, {
+//       price: priceArray[i],
+//     });
+//   }
+//   console.log(array);
+// }
