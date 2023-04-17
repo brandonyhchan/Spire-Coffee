@@ -13,7 +13,7 @@ $_filter_section_min_size: 300px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100vh;
+  min-height: 100vh;
   justify-content: center;
 }
 
@@ -21,7 +21,6 @@ $_filter_section_min_size: 300px;
   display: flex;
   flex-direction: row;
   min-height: 100vh;
-  overflow-y: hidden;
 }
 
 .filterContainer {
@@ -55,9 +54,10 @@ $_filter_section_min_size: 300px;
   flex-direction: column;
   align-items: center;
   width: calc(100vw);
-  height: 100vh;
+  min-height: 100vh;
   padding-top: 30px;
   padding-bottom: 30px;
+  margin-bottom: 25px;
 
   @media (min-width: 820px) {
     padding-right: 20px;
@@ -95,6 +95,10 @@ $_filter_section_min_size: 300px;
 
   @media (min-width: 1860px) {
     grid-template-columns: repeat(3, $_card_size);
+  }
+
+  @media (max-width: 600px) {
+    padding-bottom: 30px;
   }
 }
 

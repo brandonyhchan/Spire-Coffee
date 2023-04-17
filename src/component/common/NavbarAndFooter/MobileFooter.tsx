@@ -20,6 +20,12 @@ export const MobileFooter = () => {
         onChange={(event: any, newValue: React.SetStateAction<string>) => {
           setValue(newValue);
         }}
+        sx={{
+          position: "fixed",
+          bottom: "-2px",
+          width: "100%",
+          zIndex: 100,
+        }}
       >
         <BottomNavigationAction
           component={Link}
