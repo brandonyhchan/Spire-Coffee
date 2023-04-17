@@ -26,6 +26,7 @@ const Explore = () => {
   const token = localStorage.getItem("authToken");
 
   const [showCloseButton, setShowCloseButton] = useState(false);
+  const [showExplorePage, setShowExplorePage] = useState(false);
 
   const [mobileFilters, setMobileFilters] = useState<boolean>(false);
   const [searchCafeName, setSearchCafeName] = useState("");
@@ -42,6 +43,7 @@ const Explore = () => {
     },
     onCompleted: (data) => {
       setCafes(data?.returnAllCafes);
+      setShowExplorePage(true);
     },
     variables: {
       filterByName: searchCafeName,
@@ -79,11 +81,11 @@ const Explore = () => {
         <NavBar />
         <div className={classNames(styles.explore)}>
           {loading && (
-            <Box sx={{ display: "flex" }}>
+            <Box>
               <CircularProgress />
             </Box>
           )}
-          {!!cafes.length && (
+          {showExplorePage && (
             <div className={classNames(styles.exploreContainer)}>
               <div className={classNames(styles.filterContainer)}>
                 <div>
@@ -101,7 +103,6 @@ const Explore = () => {
                   handleClick={() => refetch}
                 />
               </div>
-              {/* Search bar and cards start here*/}
               <div className={classNames(styles.exploreSectionContainer)}>
                 <div className={classNames(styles.searchBarContainer)}>
                   <SearchBar
@@ -119,11 +120,18 @@ const Explore = () => {
                 </div>
                 {!mobileFilters ? null : <MobileFilterComponent />}
                 <div className={classNames(styles.cafeCardWrapper)}>
-                  <div className={classNames(styles.cafeCardContainer)}>
-                    {cafes.map((cafe: Cafe) => (
-                      <CafeCard key={cafe.id} {...cafe} />
-                    ))}
-                  </div>
+                  {cafes.length === 0 ? (
+                    <div className="resultsMessage">
+                      <span>No results found.</span>
+                      {/* TODO: add link to add cafe */}
+                    </div>
+                  ) : (
+                    <div className={classNames(styles.cafeCardContainer)}>
+                      {cafes.map((cafe: Cafe) => (
+                        <CafeCard key={cafe.id} {...cafe} />
+                      ))}
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
