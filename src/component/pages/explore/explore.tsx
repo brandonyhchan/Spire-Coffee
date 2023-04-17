@@ -1,10 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet";
 import { cafeQuery } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
-import { Box, CircularProgress } from "@mui/material";
+import {
+  Box,
+  CircularProgress,
+  createTheme,
+  ThemeProvider,
+} from "@mui/material";
 import { SelectOptions } from "component/common/Filter/RadioFilter";
 
 import NavBar from "component/common/NavbarAndFooter/NavBar";
@@ -20,6 +25,14 @@ import TuneIcon from "@mui/icons-material/Tune";
 import classNames from "classnames";
 import styles from "./explore.module.scss";
 import strings from "config/strings";
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#3f51b5",
+    },
+  },
+});
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -79,69 +92,73 @@ const Explore = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
+      <NavBar />
       <div className={classNames(styles.container)}>
-        <NavBar />
-        <div className={classNames(styles.explore)}>
+        {showExplorePage && (
+          <div className={classNames(styles.filterContainer)}>
+            <div>
+              <h2 className={classNames(styles.filterTitle)}>
+                {strings.explore.filterTitle}
+              </h2>
+            </div>
+            <FilterSideBar
+              busynessState={busynessLevel}
+              setBusynessState={setBusynessLevel}
+              noiseState={noiseLevel}
+              setNoiseState={setNoiseLevel}
+              priceFilter={priceOptions}
+              setPriceFilter={setPriceOptions}
+              handleClick={() => refetch}
+            />
+          </div>
+        )}
+        <div className={classNames(styles.searchContainer)}>
           {loading && (
-            <Box>
-              <CircularProgress />
+            <Box className={classNames(styles.loadingSpinnerContainer)}>
+              <ThemeProvider theme={theme}>
+                <CircularProgress color={"primary"} size={"80px"} />
+              </ThemeProvider>
             </Box>
           )}
           {showExplorePage && (
-            <div className={classNames(styles.exploreContainer)}>
-              <div className={classNames(styles.filterContainer)}>
-                <div>
-                  <h2 className={classNames(styles.filterTitle)}>
-                    {strings.explore.filterTitle}
-                  </h2>
-                </div>
-                <FilterSideBar
-                  busynessState={busynessLevel}
-                  setBusynessState={setBusynessLevel}
-                  noiseState={noiseLevel}
-                  setNoiseState={setNoiseLevel}
-                  priceFilter={priceOptions}
-                  setPriceFilter={setPriceOptions}
-                  handleClick={() => refetch}
+            <div className={classNames(styles.searchWrapper)}>
+              <div className={classNames(styles.searchBarContainer)}>
+                <SearchBar
+                  showCloseButton={showCloseButton}
+                  query={searchCafeName}
+                  handleClick={handleClick}
+                  handleQuery={handleSearchQuery}
                 />
-              </div>
-              <div className={classNames(styles.exploreSectionContainer)}>
-                <div className={classNames(styles.searchBarContainer)}>
-                  <SearchBar
-                    showCloseButton={showCloseButton}
-                    query={searchCafeName}
-                    handleClick={handleClick}
-                    handleQuery={handleSearchQuery}
+                <div className={classNames(styles.mobileFilter)}>
+                  <TuneIcon
+                    className={classNames(styles.filterIcon)}
+                    onClick={showMobileFilters}
                   />
-                  <div className={classNames(styles.mobileFilter)}>
-                    <TuneIcon
-                      className={classNames(styles.filterIcon)}
-                      onClick={showMobileFilters}
-                    />
+                </div>
+              </div>
+              {!mobileFilters ? null : <MobileFilterComponent />}
+              <div className={classNames(styles.cafeCardWrapper)}>
+                {cafes.length === 0 ? (
+                  <div className="resultsMessage">
+                    <span>
+                      {strings.explore.resultsErrorMessage}
+                      <Link to="/addCafe">Add a cafe.</Link>
+                    </span>
                   </div>
-                </div>
-                {!mobileFilters ? null : <MobileFilterComponent />}
-                <div className={classNames(styles.cafeCardWrapper)}>
-                  {cafes.length === 0 ? (
-                    <div className="resultsMessage">
-                      <span>No results found.</span>
-                      {/* TODO: add link to add cafe */}
-                    </div>
-                  ) : (
-                    <div className={classNames(styles.cafeCardContainer)}>
-                      {cafes.map((cafe: Cafe) => (
-                        <CafeCard key={cafe.id} {...cafe} />
-                      ))}
-                    </div>
-                  )}
-                </div>
+                ) : (
+                  <div className={classNames(styles.cafeCardContainer)}>
+                    {cafes.map((cafe: Cafe) => (
+                      <CafeCard key={cafe.id} {...cafe} />
+                    ))}
+                  </div>
+                )}
               </div>
             </div>
           )}
         </div>
-        <Footer />
-        <MobileFooter />
       </div>
+      <Footer />
+      <MobileFooter />
     </React.Fragment>
   );
 };
