@@ -13,13 +13,15 @@ $_filter_section_min_size: 300px;
   flex: 1;
   display: flex;
   flex-direction: column;
-  height: 100%;
+  height: 100vh;
+  justify-content: center;
 }
 
 .exploreContainer {
   display: flex;
   flex-direction: row;
   min-height: 100vh;
+  overflow-y: hidden;
 }
 
 .filterContainer {
@@ -37,7 +39,7 @@ $_filter_section_min_size: 300px;
   color: var(--dark-grey);
   height: auto;
   border-radius: 0px;
-  font-size: 25px;
+  font-size: 23px;
   text-align: left;
   font-family:'Figtree-Bold';
 }
@@ -53,6 +55,7 @@ $_filter_section_min_size: 300px;
   flex-direction: column;
   align-items: center;
   width: calc(100vw);
+  height: 100vh;
   padding-top: 30px;
   padding-bottom: 30px;
 
