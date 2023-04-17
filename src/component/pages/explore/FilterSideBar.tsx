@@ -97,6 +97,7 @@ const FilterSideBar = ({
       />
       <CheckboxFilter
         options={[SelectOptions.LOW, SelectOptions.MEDIUM, SelectOptions.HIGH]}
+        label={[strings.list.price1, strings.list.price2, strings.list.price3]}
         type="checkbox"
         text={strings.explore.filterByPrice}
         filterSelection={priceFilter}

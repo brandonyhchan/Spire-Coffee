@@ -3,7 +3,6 @@ import { SelectOptions } from "./RadioFilter";
 import FilterComponent from "component/common/FilterComponent/FilterComponent";
 import FilterOption from "component/common/FilterOption/FilterOption";
 import classNames from "classnames";
-import strings from "config/strings";
 import styles from "component/common/FilterComponent/FilterComponent.module.scss";
 
 type CheckboxFilterPropsType = {
@@ -12,6 +11,7 @@ type CheckboxFilterPropsType = {
   text: string;
   filterSelection: string[];
   handleFilter: (option: SelectOptions) => void;
+  label: string[];
 };
 
 const CheckboxFilter = ({
@@ -19,8 +19,8 @@ const CheckboxFilter = ({
   type,
   text,
   handleFilter,
+  label,
 }: CheckboxFilterPropsType) => {
-  const label = [strings.list.price1, strings.list.price2, strings.list.price3];
   const list = [
     { label: label[0], option: options[0] },
     { label: label[1], option: options[1] },
