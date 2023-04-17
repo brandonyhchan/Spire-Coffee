@@ -39,6 +39,7 @@ export async function returnAllCafes(parent, args, context, info) {
             name: { contains: args.filterByName, mode: "insensitive" },
             busyness: args.busyFilter,
             noisiness: args.noiseFilter,
+            price: { in: args.priceFilter.length ? args.priceFilter : undefined },
         },
     });
 }

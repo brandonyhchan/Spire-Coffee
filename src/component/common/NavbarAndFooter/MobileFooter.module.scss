@@ -3,12 +3,11 @@
 
   @media (max-width: 600px) {
     display: block;
-    width: 100%;
     z-index: 100;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     left: 0;
     flex-shrink: 0;
-    overflow: hidden;
+    width: 100%;
   }
 }

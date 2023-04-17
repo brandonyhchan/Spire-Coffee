@@ -30,7 +30,6 @@ const FilterSideBar = ({
 }: FilterSideBarPropsType) => {
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
-  // const [priceArray, setPriceArray] = useState<SelectOptions[]>([]);
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
@@ -55,19 +54,6 @@ const FilterSideBar = ({
     }
     setNoisinessChecked(option);
   };
-
-  function handlePriceFilter(option: SelectOptions) {
-    const findOption = priceFilter.indexOf(option);
-    console.log(findOption);
-    if (findOption > -1) {
-      priceFilter.splice(findOption, 1);
-    } else {
-      priceFilter.push(option);
-    }
-
-    setPriceFilter(priceFilter);
-    console.log(priceFilter);
-  }
 
   return (
     <form>

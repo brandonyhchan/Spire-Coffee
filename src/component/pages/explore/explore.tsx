@@ -62,6 +62,7 @@ const Explore = () => {
       filterByName: searchCafeName,
       busyFilter: busynessLevel,
       noiseFilter: noiseLevel,
+      priceFilter: priceOptions,
     },
   });
 
