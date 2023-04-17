@@ -30,6 +30,7 @@ const FilterSideBar = ({
 }: FilterSideBarPropsType) => {
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
+  // const [priceArray, setPriceArray] = useState<SelectOptions[]>([]);
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
@@ -101,7 +102,7 @@ const FilterSideBar = ({
         type="checkbox"
         text={strings.explore.filterByPrice}
         filterSelection={priceFilter}
-        handleFilter={handlePriceFilter}
+        handleFilter={setPriceFilter}
       />
       <div className={classNames(styles.filterButtonWrapper)}>
         <Button

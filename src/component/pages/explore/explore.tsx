@@ -74,6 +74,8 @@ const Explore = () => {
     setShowCloseButton(true);
   };
 
+  console.log(priceOptions);
+
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
