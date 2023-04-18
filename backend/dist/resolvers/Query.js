@@ -34,6 +34,9 @@ export async function login(parent, args, context, info) {
     };
 }
 export async function returnAllCafes(parent, args, context, info) {
+    // const lastPostInResults = firstQueryResults[3]; // Remember: zero-based index! :)
+    // const myCursor = lastPostInResults.id; // Example: 29
+    // TODO: see prisma on pagination https://www.prisma.io/docs/concepts/components/prisma-client/pagination
     return context.prisma.cafe.findMany({
         where: {
             name: { contains: args.filterByName, mode: "insensitive" },
