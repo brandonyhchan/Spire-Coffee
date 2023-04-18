@@ -60,6 +60,9 @@ function FilterByDistanceSlider() {
             max={20}
             onChangeCommitted={getDistance}
             className={classNames(styles.slider)}
+            sx={{
+              fontFamily: 'Figtree-Regular',
+            }}
           />
         </Box>
       </Filter>
