@@ -1,6 +1,6 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { Helmet } from "react-helmet";
+// import { Link, useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet-async";
 import classNames from "classnames";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
