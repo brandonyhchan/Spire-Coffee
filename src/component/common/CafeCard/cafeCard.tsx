@@ -109,7 +109,16 @@ const CafeCard = ({
     }
   };
 
-  const mobileSize = useMediaQuery("(max-width:600px)");
+  const mobileSize = useMediaQuery("(min-width) and (max-width:600px)");
+  const xsMobileSize = useMediaQuery("(max-width:299px)");
+
+  function checkSize() {
+    if (xsMobileSize) {
+      return 14;
+    } else {
+      return 20;
+    }
+  }
 
   return (
     <div className={classNames(styles.cafeCard)}>
@@ -122,19 +131,19 @@ const CafeCard = ({
             className={classNames(styles.mobilefont)}
             noWrap
             fontFamily={"Figtree-Regular"}
-            fontSize={mobileSize ? 15 : 20}
+            fontSize={mobileSize ? 15 : checkSize}
             fontWeight={"600"}
           >
             {name}
           </Typography>
           <Typography
-            fontSize={mobileSize ? 15 : 18}
+            fontSize={mobileSize ? 15 : checkSize}
             fontFamily={"Figtree-Regular"}
           >
             {street}
           </Typography>
           <Typography
-            fontSize={mobileSize ? 15 : 18}
+            fontSize={mobileSize ? 15 : checkSize}
             fontFamily={"Figtree-Regular"}
           >
             {city}, {province}

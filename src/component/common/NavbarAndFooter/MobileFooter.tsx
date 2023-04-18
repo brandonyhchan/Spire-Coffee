@@ -8,10 +8,29 @@ import ExploreIcon from "@mui/icons-material/ExploreOffOutlined";
 import AccountIcon from "@mui/icons-material/PersonOutlined";
 import { useState } from "react";
 import styles from "./MobileFooter.module.scss";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 export const MobileFooter = () => {
   const pathname = window.location.pathname;
   const [value, setValue] = useState(pathname);
+  const xsMobileSize = useMediaQuery("(max-width:300px)");
+
+  //can probably get rid of below because they are the same thing! was just
+  //testing out some stuff
+
+  const sMobileStyle = {
+    position: "fixed",
+    bottom: "-3px",
+    width: "100%",
+    zIndex: 100,
+  };
+
+  const xsMobileStyle = {
+    position: "fixed",
+    bottom: "-3px",
+    width: "100%",
+    zIndex: 100,
+  };
 
   return (
     <div className={classNames(styles.mobileFooter)}>
@@ -20,12 +39,7 @@ export const MobileFooter = () => {
         onChange={(event: any, newValue: React.SetStateAction<string>) => {
           setValue(newValue);
         }}
-        sx={{
-          position: "fixed",
-          bottom: "-2px",
-          width: "100%",
-          zIndex: 100,
-        }}
+        sx={xsMobileSize ? xsMobileStyle : sMobileStyle}
       >
         <BottomNavigationAction
           component={Link}

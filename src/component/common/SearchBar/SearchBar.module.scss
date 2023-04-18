@@ -15,7 +15,11 @@ input {
   font-family: 'Figtree-Regular';
   font-size: 18px;
 
-  @media (max-width: 599px) {
+  @media (max-width: 299px) {
+    width: 200px;
+  }
+
+  @media (min-width: 300px) and (max-width: 599px) {
     width: 300px;
   }
 
