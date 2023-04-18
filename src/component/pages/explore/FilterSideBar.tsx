@@ -5,6 +5,15 @@ import RadioFilter, {
 import CheckboxFilter from "component/common/Filter/CheckboxFilter";
 import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
 import Button from "component/common/Button";
+
+import HourglassEmptyRoundedIcon from "@mui/icons-material/HourglassEmptyRounded";
+import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRounded";
+import HourglassFullRoundedIcon from "@mui/icons-material/HourglassFullRounded";
+
+import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
+import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
+import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
+
 import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./explore.module.scss";
@@ -55,20 +64,31 @@ const FilterSideBar = ({
     setNoisinessChecked(option);
   };
 
+  function renderBusyIcon() {
+    return <HourglassBottomRoundedIcon />;
+  }
+
+  function renderNoiseIcon() {
+    return <VolumeDownRoundedIcon />;
+  }
+
+  const options = [
+    strings.list.busyness1,
+    strings.list.busyness2,
+    strings.list.busyness3,
+  ];
+
   return (
     <form>
       <FilterByDistanceSlider />
       <RadioFilter
-        options={[
-          strings.list.busyness1,
-          strings.list.busyness2,
-          strings.list.busyness3,
-        ]}
+        options={options}
         type="radio"
         text={strings.explore.filterByBusyness}
         filterSelection={busynessState}
         checked={busynessChecked}
         handleFilter={handleBusynessFilter}
+        renderIcon={() => renderBusyIcon()}
       />
       <RadioFilter
         options={[
@@ -81,6 +101,7 @@ const FilterSideBar = ({
         filterSelection={noiseState}
         checked={noisinessChecked}
         handleFilter={handleNoisinessFilter}
+        renderIcon={() => renderNoiseIcon()}
       />
       <CheckboxFilter
         options={[SelectOptions.LOW, SelectOptions.MEDIUM, SelectOptions.HIGH]}

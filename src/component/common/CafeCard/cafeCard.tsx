@@ -1,12 +1,16 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
-import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
-import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
+
 import HourglassEmptyRoundedIcon from "@mui/icons-material/HourglassEmptyRounded";
 import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRounded";
 import HourglassFullRoundedIcon from "@mui/icons-material/HourglassFullRounded";
+
+import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
+import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
+import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
+
 import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
+
 import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./cafeCard.module.scss";

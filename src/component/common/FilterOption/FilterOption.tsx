@@ -12,6 +12,7 @@ type FilterOptionPropsType = {
   value?: string;
   name?: string;
   onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
+  icon?: JSX.Element;
 };
 
 const FilterOption = ({
@@ -23,6 +24,7 @@ const FilterOption = ({
   name,
   onClick,
   onFocus,
+  icon,
 }: FilterOptionPropsType) => {
   return (
     <div className={classNames(styles.listWrapper)}>
@@ -35,7 +37,10 @@ const FilterOption = ({
         onClick={onClick}
         onFocus={onFocus}
       />
-      <label>{text}</label>
+      <label>
+        {text}
+        {icon}
+      </label>
     </div>
   );
 };

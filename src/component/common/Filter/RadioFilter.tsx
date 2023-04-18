@@ -17,6 +17,7 @@ type RadioFilterPropsType = {
   filterSelection: SelectOptions | undefined;
   checked: string;
   handleFilter: (event: ChangeEvent<HTMLInputElement>) => void;
+  renderIcon: (option: string) => JSX.Element;
 };
 
 const RadioFilter = ({
@@ -25,18 +26,20 @@ const RadioFilter = ({
   text,
   checked,
   handleFilter,
+  renderIcon,
 }: RadioFilterPropsType) => {
   return (
     <FilterComponent text={text}>
-      {options.map((option) => (
+      {options.map((option, index) => (
         <FilterOption
-          key={option}
+          key={index}
           className={classNames(styles.listWrapper)}
           text={option}
           type={type}
           value={option}
           checked={checked === option}
           onChange={handleFilter}
+          icon={renderIcon(option)}
         />
       ))}
     </FilterComponent>
