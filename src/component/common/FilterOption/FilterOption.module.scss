@@ -1,10 +1,23 @@
-.listWrapper {
+.listContainer {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   align-items: start;
   width: 100%;
   padding-left: 20px;
+  & label {
+    display: flex;
+    font-size: 18px;
+    color: var(--dark-grey);
+  }
+}
+
+.listWrapper {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: start;
+  width: 50%;
 }
 
 .listWrapper input {
@@ -19,6 +32,4 @@ input[type='checkbox'] {
 
 label {
   margin-top: 8px;
-  font-size: 18px;
-  color: var(--dark-grey);
 }

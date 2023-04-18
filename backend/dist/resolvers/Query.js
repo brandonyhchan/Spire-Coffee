@@ -39,7 +39,6 @@ export async function returnAllCafes(parent, args, context, info) {
     // TODO: see prisma on pagination https://www.prisma.io/docs/concepts/components/prisma-client/pagination
     return context.prisma.cafe.findMany({
         where: {
-            take: 12,
             name: { contains: args.filterByName, mode: "insensitive" },
             busyness: args.busyFilter,
             noisiness: args.noiseFilter,

@@ -27,20 +27,22 @@ const FilterOption = ({
   icon,
 }: FilterOptionPropsType) => {
   return (
-    <div className={classNames(styles.listWrapper)}>
-      <input
-        type={type}
-        checked={checked}
-        onChange={onChange}
-        value={value}
-        name={name}
-        onClick={onClick}
-        onFocus={onFocus}
-      />
-      <label>
-        {text}
-        {icon}
-      </label>
+    <div className={classNames(styles.listContainer)}>
+      <div className={classNames(styles.listWrapper)}>
+        <input
+          type={type}
+          checked={checked}
+          onChange={onChange}
+          value={value}
+          name={name}
+          onClick={onClick}
+          onFocus={onFocus}
+        />
+        <label>{text}</label>
+      </div>
+      <div>
+        <label>{icon}</label>
+      </div>
     </div>
   );
 };

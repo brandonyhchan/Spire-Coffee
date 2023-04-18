@@ -57,6 +57,7 @@ $_card_size: 460px;
   display: flex;
   justify-content: flex-end;
   margin-right: 45px;
+  padding-bottom: 30px;
 }
 
 .searchBarContainer {
@@ -79,7 +80,7 @@ $_card_size: 460px;
   justify-content: center;
   gap: 10px;
   padding-top: 30px;
-  min-width: $_card_size;
+  max-width: $_card_size;
 
   @media (min-width: 821px) {
     display: grid;
@@ -88,7 +89,7 @@ $_card_size: 460px;
     row-gap: 25px;
   }
   
-  @media (min-width: 1380px) {
+  @media (min-width: 1350px) {
     display: grid;
     grid-template-columns: repeat(2, $_card_size);
     column-gap: 20px;
@@ -127,12 +128,19 @@ $_card_size: 460px;
 }
 
 .seeMoreButtonWrapper {
-  padding: 50px 0px;
+  padding-top: 20px;
   & button {
     width: 140px;
   }
 }
 
-.resultsMessage {
-  padding-top: 15px;
+.noResultsMessage {
+  margin-top: 20px;
+  width: 450px;
+  max-width: 800px;
+}
+
+.noResultsMessage a {
+  text-decoration: none;
+  color: var(--secondary);
 }

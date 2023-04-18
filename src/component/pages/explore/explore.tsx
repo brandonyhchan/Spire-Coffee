@@ -155,13 +155,10 @@ const Explore = () => {
               {!mobileFilters ? null : <MobileFilterComponent />}
               <div className={classNames(styles.cafeCardWrapper)}>
                 {cafes.length === 0 ? (
-                  // * TO DO: Make this better
-                  <div className="resultsMessage">
-                    <span>
-                      {strings.explore.noResultsMessage}
-                      <Link to="/addCafe">{strings.explore.addCafe}</Link>
-                    </span>
-                  </div>
+                  <span className={classNames(styles.noResultsMessage)}>
+                    {strings.explore.noResultsMessage}
+                    <Link to="/addCafe">{strings.explore.addCafe}</Link>
+                  </span>
                 ) : (
                   <div className={classNames(styles.cafeCardContainer)}>
                     {cafes.map((cafe: Cafe) => (
@@ -170,14 +167,16 @@ const Explore = () => {
                   </div>
                 )}
               </div>
-              <div className={classNames(styles.seeMoreButtonWrapper)}>
-                <Button
-                  buttonType="submit"
-                  type="primary"
-                  text={strings.explore.seeMoreResults}
-                  onClick={handleMoreResults}
-                />
-              </div>
+              {cafes.length === 0 ? null : (
+                <div className={classNames(styles.seeMoreButtonWrapper)}>
+                  <Button
+                    buttonType="submit"
+                    type="primary"
+                    text={strings.explore.seeMoreResults}
+                    onClick={handleMoreResults}
+                  />
+                </div>
+              )}
             </div>
           )}
         </div>
