@@ -107,7 +107,7 @@ const Explore = () => {
           <div className={classNames(styles.filterContainer)}>
             <div>
               <h2 className={classNames(styles.filterTitle)}>
-                {strings.explore.filterTitle}
+                {strings.explore.filter.filterTitle}
               </h2>
             </div>
             <FilterSideBar
@@ -130,7 +130,11 @@ const Explore = () => {
                 <CircularProgress color={"primary"} size={"80px"} />
               </ThemeProvider>
             </Box>
-            // * TO DO: render error message if db cannot connect
+          )}
+          {error && (
+            <div>
+              <h2>{strings.explore.errorMessage}</h2>
+            </div>
           )}
           {showExplorePage && (
             <div className={classNames(styles.searchWrapper)}>
@@ -155,7 +159,7 @@ const Explore = () => {
                   <div className="resultsMessage">
                     <span>
                       {strings.explore.noResultsMessage}
-                      <Link to="/addCafe">Add a cafe.</Link>
+                      <Link to="/addCafe">{strings.explore.addCafe}</Link>
                     </span>
                   </div>
                 ) : (

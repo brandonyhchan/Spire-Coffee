@@ -109,7 +109,7 @@ const FilterSideBar = ({
       <RadioFilter
         options={busyOptions}
         type="radio"
-        text={strings.explore.filterByBusyness}
+        text={strings.explore.filter.filterByBusyness}
         filterSelection={busynessState}
         checked={busynessChecked}
         handleFilter={handleBusynessFilter}
@@ -118,7 +118,7 @@ const FilterSideBar = ({
       <RadioFilter
         options={noiseOptions}
         type="radio"
-        text={strings.explore.filterByNoiseLevel}
+        text={strings.explore.filter.filterByNoiseLevel}
         filterSelection={noiseState}
         checked={noisinessChecked}
         handleFilter={handleNoisinessFilter}
@@ -128,13 +128,13 @@ const FilterSideBar = ({
         options={[SelectOptions.LOW, SelectOptions.MEDIUM, SelectOptions.HIGH]}
         label={[strings.list.price1, strings.list.price2, strings.list.price3]}
         type="checkbox"
-        text={strings.explore.filterByPrice}
+        text={strings.explore.filter.filterByPrice}
         filterSelection={priceFilter}
         handleFilter={setPriceFilter}
       />
       <div className={classNames(styles.filterButtonWrapper)}>
         <Button
-          text="Clear Filters"
+          text={strings.explore.filter.clearFilters}
           type="filter"
           buttonType="submit"
           onClick={handleClick}

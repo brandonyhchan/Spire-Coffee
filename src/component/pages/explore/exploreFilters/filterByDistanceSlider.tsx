@@ -57,7 +57,7 @@ const FilterByDistanceSlider = ({
 
   return (
     <div className={classNames(styles.sliderFilterContainer)}>
-      <Filter text={strings.explore.filterByDistance}>
+      <Filter text={strings.explore.filter.filterByDistance}>
         <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Restricted values"

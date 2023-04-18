@@ -45,15 +45,20 @@ const strings = new LocalizedStrings({
     explore: {
       title: "Explore",
       helmet: "Explore",
-      filterByDistance: "Distance (km)",
-      filterByBusyness: "Busyness",
-      filterByNoiseLevel: "Noise Level",
-      filterByPrice: "Price",
-      filterByAmenities: "Amenities",
-      filterTitle: "Filters",
+      filter: {
+        filterByDistance: "Distance (km)",
+        filterByBusyness: "Busyness",
+        filterByNoiseLevel: "Noise Level",
+        filterByPrice: "Price",
+        filterByAmenities: "Amenities",
+        filterTitle: "Filters",
+        clearFilters: "Clear Filters",
+      },
       noResultsMessage:
         "No results found! Can't find the cafe you're looking for? ",
       seeMoreResults: "More results...",
+      addCafe: "Add a cafe.",
+      errorMessage: "Oops! There was a loading error, please try again later.",
     },
     aboutUs: {
       title: "About us page",
