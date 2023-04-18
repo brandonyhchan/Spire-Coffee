@@ -51,7 +51,7 @@ const strings = new LocalizedStrings({
       filterByPrice: "Price",
       filterByAmenities: "Amenities",
       filterTitle: "Filters",
-      resultsErrorMessage:
+      noResultsMessage:
         "No results found! Can't find the cafe you're looking for? ",
     },
     aboutUs: {

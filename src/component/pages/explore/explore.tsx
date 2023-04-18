@@ -120,6 +120,7 @@ const Explore = () => {
                 <CircularProgress color={"primary"} size={"80px"} />
               </ThemeProvider>
             </Box>
+            // * TO DO: render error message if db cannot connect
           )}
           {showExplorePage && (
             <div className={classNames(styles.searchWrapper)}>
@@ -140,9 +141,10 @@ const Explore = () => {
               {!mobileFilters ? null : <MobileFilterComponent />}
               <div className={classNames(styles.cafeCardWrapper)}>
                 {cafes.length === 0 ? (
+                  // * TO DO: Make this better
                   <div className="resultsMessage">
                     <span>
-                      {strings.explore.resultsErrorMessage}
+                      {strings.explore.noResultsMessage}
                       <Link to="/addCafe">Add a cafe.</Link>
                     </span>
                   </div>

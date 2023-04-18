@@ -37,6 +37,18 @@ const FilterSideBar = ({
   priceFilter,
   setPriceFilter,
 }: FilterSideBarPropsType) => {
+  const busyOptions = [
+    strings.list.busyness1,
+    strings.list.busyness2,
+    strings.list.busyness3,
+  ];
+
+  const noiseOptions = [
+    strings.list.noisiness1,
+    strings.list.noisiness2,
+    strings.list.noisiness3,
+  ];
+
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
 
@@ -64,44 +76,46 @@ const FilterSideBar = ({
     setNoisinessChecked(option);
   };
 
-  function renderBusyIcon() {
-    return <HourglassBottomRoundedIcon />;
+  function renderBusyIcon(option: string) {
+    if (option === busyOptions[0]) {
+      return <HourglassEmptyRoundedIcon />;
+    } else if (option === busyOptions[1]) {
+      return <HourglassBottomRoundedIcon />;
+    } else {
+      return <HourglassFullRoundedIcon />;
+    }
   }
 
-  function renderNoiseIcon() {
-    return <VolumeDownRoundedIcon />;
+  function renderNoiseIcon(option: string) {
+    if (option === noiseOptions[0]) {
+      return <VolumeMuteRoundedIcon />;
+    } else if (option === noiseOptions[1]) {
+      return <VolumeDownRoundedIcon />;
+    } else {
+      return <VolumeUpRoundedIcon />;
+    }
   }
-
-  const options = [
-    strings.list.busyness1,
-    strings.list.busyness2,
-    strings.list.busyness3,
-  ];
 
   return (
     <form>
       <FilterByDistanceSlider />
       <RadioFilter
-        options={options}
+        options={busyOptions}
         type="radio"
         text={strings.explore.filterByBusyness}
         filterSelection={busynessState}
         checked={busynessChecked}
         handleFilter={handleBusynessFilter}
-        renderIcon={() => renderBusyIcon()}
+        renderIcon={renderBusyIcon}
       />
       <RadioFilter
-        options={[
-          strings.list.noisiness1,
-          strings.list.noisiness2,
-          strings.list.noisiness3,
-        ]}
+        options={noiseOptions}
         type="radio"
         text={strings.explore.filterByNoiseLevel}
         filterSelection={noiseState}
         checked={noisinessChecked}
         handleFilter={handleNoisinessFilter}
-        renderIcon={() => renderNoiseIcon()}
+        renderIcon={renderNoiseIcon}
       />
       <CheckboxFilter
         options={[SelectOptions.LOW, SelectOptions.MEDIUM, SelectOptions.HIGH]}
