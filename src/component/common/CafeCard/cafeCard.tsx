@@ -11,6 +11,8 @@ import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./cafeCard.module.scss";
 
+import useMediaQuery from "@mui/material/useMediaQuery";
+
 type CafeCardPropsType = {
   id: number;
   name: string;
@@ -103,6 +105,8 @@ const CafeCard = ({
     }
   };
 
+  const mobileSize = useMediaQuery("(max-width:600px)");
+
   return (
     <div className={classNames(styles.cafeCard)}>
       <div className={classNames(styles.logo)}>
@@ -111,17 +115,24 @@ const CafeCard = ({
       <div className={classNames(styles.cafeCardInfo)}>
         <Grid item zeroMinWidth>
           <Typography
+            className={classNames(styles.mobilefont)}
             noWrap
-            fontSize={22}
             fontFamily={"Figtree-Regular"}
+            fontSize={mobileSize ? 15 : 18}
             fontWeight={"600"}
           >
             {name}
           </Typography>
-          <Typography fontSize={18} fontFamily={"Figtree-Regular"}>
+          <Typography
+            fontSize={mobileSize ? 15 : 18}
+            fontFamily={"Figtree-Regular"}
+          >
             {street}
           </Typography>
-          <Typography fontSize={18} fontFamily={"Figtree-Regular"}>
+          <Typography
+            fontSize={mobileSize ? 15 : 18}
+            fontFamily={"Figtree-Regular"}
+          >
             {city}, {province}
           </Typography>
         </Grid>

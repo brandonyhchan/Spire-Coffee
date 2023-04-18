@@ -14,7 +14,12 @@ input {
   border-width: 2px;
   font-family: 'Figtree-Regular';
   font-size: 18px;
-  @media (max-width: 819px) {
+
+  @media (max-width: 599px) {
+    width: 300px;
+  }
+
+  @media (min-width: 600px) and (max-width: 819px) {
     width: 360px;
   }
 
