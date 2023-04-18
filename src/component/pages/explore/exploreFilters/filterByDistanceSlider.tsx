@@ -4,7 +4,12 @@ import { Box, Slider } from "@mui/material";
 import Filter from "component/common/FilterComponent/FilterComponent";
 import classNames from "classnames";
 import strings from "config/strings";
-import styles from "./filterComponentSlider.module.scss";;
+import styles from "./filterComponentSlider.module.scss";
+
+type DistanceFilterSliderPropsType = {
+  filterSelection: number;
+  handleFilter(data: number): void;
+};
 
 const distanceValue = [
   {
@@ -29,23 +34,27 @@ const distanceValue = [
   },
 ];
 
-function valueText(distanceValue: number) {
-  return `${distanceValue}km`;
-}
+const FilterByDistanceSlider = ({
+  filterSelection,
+  handleFilter,
+}: DistanceFilterSliderPropsType) => {
+  function valueText(distanceValue: number) {
+    return `${distanceValue}km`;
+  }
 
-function valueLabelFormat(value: number) {
-  return (
-    distanceValue.findIndex((distanceValue) => distanceValue.value === value) +
-    1
-  );
-}
+  function valueLabelFormat(value: number) {
+    return (
+      distanceValue.findIndex(
+        (distanceValue) => distanceValue.value === value
+      ) + 1
+    );
+  }
 
-//Gets the distance value to send to db
-const getDistance=(e: any, value: any)=>{
-  console.log(value)
-}
+  //Gets the distance value to send to db
+  const getDistance = (e: any, value: any) => {
+    handleFilter(value);
+  };
 
-function FilterByDistanceSlider() {
   return (
     <div className={classNames(styles.sliderFilterContainer)}>
       <Filter text={strings.explore.filterByDistance}>
@@ -58,16 +67,17 @@ function FilterByDistanceSlider() {
             marks={distanceValue}
             min={0}
             max={20}
+            value={filterSelection}
             onChangeCommitted={getDistance}
             className={classNames(styles.slider)}
             sx={{
-              fontFamily: 'Figtree-Regular',
+              fontFamily: "Figtree-Regular",
             }}
           />
         </Box>
       </Filter>
     </div>
   );
-}
+};
 
 export default FilterByDistanceSlider;
