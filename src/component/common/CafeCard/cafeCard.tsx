@@ -122,7 +122,7 @@ const CafeCard = ({
             className={classNames(styles.mobilefont)}
             noWrap
             fontFamily={"Figtree-Regular"}
-            fontSize={mobileSize ? 15 : 18}
+            fontSize={mobileSize ? 15 : 20}
             fontWeight={"600"}
           >
             {name}

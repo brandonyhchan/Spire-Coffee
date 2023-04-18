@@ -53,6 +53,7 @@ const strings = new LocalizedStrings({
       filterTitle: "Filters",
       noResultsMessage:
         "No results found! Can't find the cafe you're looking for? ",
+      seeMoreResults: "More results...",
     },
     aboutUs: {
       title: "About us page",

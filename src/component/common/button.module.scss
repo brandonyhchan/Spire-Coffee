@@ -50,18 +50,19 @@
   }
 }
 
-.clear {
-  width: 105px;
+.filter {
+  width: 120px;
   height: auto;
   padding: 5px;
   border-radius: 20px;
-  font-size: 15px;
+  font-size: 17px;
   font-family:'Figtree-Regular';
   color: var(--dark-grey);
   border: solid 1px;
   background-color: rgba(255, 255, 255, 0.616);
   &:hover { 
-    background-color: var(--light-grey);
+    background-color: var(--secondary);
+    color: white;
     box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 3px 0px, rgba(0, 0, 0, 0.06) 0px 1px 2px 0px;
   }
 }

@@ -21,6 +21,7 @@ import SearchBar from "component/common/SearchBar/searchBar";
 import CafeCard from "component/common/CafeCard/cafeCard";
 import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
+import Button from "component/common/Button";
 
 import classNames from "classnames";
 import styles from "./explore.module.scss";
@@ -86,6 +87,12 @@ const Explore = () => {
   const handleSearchQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchCafeName(event.target.value);
     setShowCloseButton(true);
+  };
+
+  const handleMoreResults = (event: React.MouseEvent<HTMLButtonElement>) => {
+    event.preventDefault();
+    // * TO DO: refetch
+    console.log("More results clicked");
   };
 
   console.log(priceOptions);
@@ -155,6 +162,14 @@ const Explore = () => {
                     ))}
                   </div>
                 )}
+              </div>
+              <div className={classNames(styles.seeMoreButtonWrapper)}>
+                <Button
+                  buttonType="submit"
+                  type="filter"
+                  text={strings.explore.seeMoreResults}
+                  onClick={handleMoreResults}
+                />
               </div>
             </div>
           )}

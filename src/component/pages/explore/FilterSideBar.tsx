@@ -128,8 +128,8 @@ const FilterSideBar = ({
       <div className={classNames(styles.filterButtonWrapper)}>
         <Button
           text="Clear Filters"
-          type="clear"
-          buttonType={"submit"}
+          type="filter"
+          buttonType="submit"
           onClick={handleClick}
         />
       </div>
