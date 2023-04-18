@@ -47,6 +47,7 @@ const Explore = () => {
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
+  const [distance, setDistance] = useState(0);
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
@@ -116,6 +117,8 @@ const Explore = () => {
               setNoiseState={setNoiseLevel}
               priceFilter={priceOptions}
               setPriceFilter={setPriceOptions}
+              distanceFilter={distance}
+              setDistanceFilter={setDistance}
               handleClick={() => refetch}
             />
           </div>

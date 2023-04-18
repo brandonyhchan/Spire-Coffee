@@ -26,6 +26,8 @@ type FilterSideBarPropsType = {
   setNoiseState(data: SelectOptions): void;
   priceFilter: SelectOptions[];
   setPriceFilter(data: SelectOptions[]): void;
+  distanceFilter: number;
+  setDistanceFilter(data: number): void;
 };
 
 const FilterSideBar = ({
@@ -36,6 +38,8 @@ const FilterSideBar = ({
   setNoiseState,
   priceFilter,
   setPriceFilter,
+  distanceFilter,
+  setDistanceFilter,
 }: FilterSideBarPropsType) => {
   const busyOptions = [
     strings.list.busyness1,
@@ -98,7 +102,10 @@ const FilterSideBar = ({
 
   return (
     <form>
-      <FilterByDistanceSlider />
+      <FilterByDistanceSlider
+        filterSelection={distanceFilter}
+        handleFilter={setDistanceFilter}
+      />
       <RadioFilter
         options={busyOptions}
         type="radio"
