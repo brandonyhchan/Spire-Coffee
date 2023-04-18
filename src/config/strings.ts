@@ -56,7 +56,7 @@ const strings = new LocalizedStrings({
       },
       noResultsMessage:
         "No results found! Can't find the cafe you're looking for? ",
-      seeMoreResults: "More results...",
+      seeMoreResults: "More Results",
       addCafe: "Add a cafe.",
       errorMessage: "Oops! There was a loading error, please try again later.",
     },

@@ -173,7 +173,7 @@ const Explore = () => {
               <div className={classNames(styles.seeMoreButtonWrapper)}>
                 <Button
                   buttonType="submit"
-                  type="filter"
+                  type="primary"
                   text={strings.explore.seeMoreResults}
                   onClick={handleMoreResults}
                 />
