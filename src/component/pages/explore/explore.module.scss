@@ -2,12 +2,13 @@ $_card_size: 460px;
 
 .container {
   min-height: 100vh;
-  width: 100%;
   display: flex;
   flex-direction: row;
+  width: 100%;
 }
 
 .loadingSpinnerContainer {
+  top: 25%;
   position: fixed;
   width: 100%;
   align-items: center;
@@ -15,6 +16,13 @@ $_card_size: 460px;
 }
 
 .searchContainer {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  width: 100%;
+}
+
+.searchResultContainer {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -55,15 +63,18 @@ $_card_size: 460px;
 
 .filterButtonWrapper {
   display: flex;
-  justify-content: flex-end;
+  justify-content: center;
   margin-right: 45px;
-  padding-bottom: 30px;
+  padding: 20px 0px;
+
 }
 
 .searchBarContainer {
   display: flex;
   flex-direction: row;
-  justify-content: space-between;
+  justify-content: center;
+  width: 100%;
+  padding-top: 30px;
 }
 
 .cafeCardWrapper {
@@ -79,8 +90,6 @@ $_card_size: 460px;
   flex-wrap: wrap;
   justify-content: center;
   gap: 10px;
-  padding-top: 30px;
-  max-width: $_card_size;
 
   @media (min-width: 821px) {
     display: grid;

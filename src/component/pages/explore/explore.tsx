@@ -123,22 +123,24 @@ const Explore = () => {
             />
           </div>
         )}
-        <div className={classNames(styles.explore)}>
-          <div className={classNames(styles.searchBarContainer)}>
-            <SearchBar
-              showCloseButton={showCloseButton}
-              query={searchCafeName}
-              handleClick={handleClick}
-              handleQuery={handleSearchQuery}
-            />
-            <div className={classNames(styles.mobileFilter)}>
-              <TuneIcon
-                className={classNames(styles.filterIcon)}
-                onClick={showMobileFilters}
+        <div className={classNames(styles.searchContainer)}>
+          {showExplorePage && (
+            <div className={classNames(styles.searchBarContainer)}>
+              <SearchBar
+                showCloseButton={showCloseButton}
+                query={searchCafeName}
+                handleClick={handleClick}
+                handleQuery={handleSearchQuery}
               />
+              <div className={classNames(styles.mobileFilter)}>
+                <TuneIcon
+                  className={classNames(styles.filterIcon)}
+                  onClick={showMobileFilters}
+                />
+              </div>
             </div>
-          </div>
-          <div className={classNames(styles.searchContainer)}>
+          )}
+          <div className={classNames(styles.searchResultContainer)}>
             {loading && (
               <Box className={classNames(styles.loadingSpinnerContainer)}>
                 <ThemeProvider theme={theme}>
