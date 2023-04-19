@@ -27,6 +27,7 @@ type CafeCardPropsType = {
   busyness: string;
   noisiness: string;
   price: string;
+  onClick: React.MouseEventHandler<HTMLDivElement>;
 };
 
 const CafeCard = ({
@@ -38,6 +39,7 @@ const CafeCard = ({
   busyness,
   noisiness,
   price,
+  onClick,
 }: CafeCardPropsType) => {
   const getNoisinessIcon = (icon: string) => {
     switch (icon) {
@@ -121,7 +123,7 @@ const CafeCard = ({
   }
 
   return (
-    <div className={classNames(styles.cafeCard)}>
+    <div className={classNames(styles.cafeCard)} onClick={onClick}>
       <div className={classNames(styles.logo)}>
         <img src={profilePhotoURL} />
       </div>
