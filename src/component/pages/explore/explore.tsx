@@ -123,62 +123,64 @@ const Explore = () => {
             />
           </div>
         )}
-        <div className={classNames(styles.searchContainer)}>
-          {loading && (
-            <Box className={classNames(styles.loadingSpinnerContainer)}>
-              <ThemeProvider theme={theme}>
-                <CircularProgress color={"primary"} size={"80px"} />
-              </ThemeProvider>
-            </Box>
-          )}
-          {error && (
-            <div>
-              <h2>{strings.explore.errorMessage}</h2>
+        <div className={classNames(styles.explore)}>
+          <div className={classNames(styles.searchBarContainer)}>
+            <SearchBar
+              showCloseButton={showCloseButton}
+              query={searchCafeName}
+              handleClick={handleClick}
+              handleQuery={handleSearchQuery}
+            />
+            <div className={classNames(styles.mobileFilter)}>
+              <TuneIcon
+                className={classNames(styles.filterIcon)}
+                onClick={showMobileFilters}
+              />
             </div>
-          )}
-          {showExplorePage && (
-            <div className={classNames(styles.searchWrapper)}>
-              <div className={classNames(styles.searchBarContainer)}>
-                <SearchBar
-                  showCloseButton={showCloseButton}
-                  query={searchCafeName}
-                  handleClick={handleClick}
-                  handleQuery={handleSearchQuery}
-                />
-                <div className={classNames(styles.mobileFilter)}>
-                  <TuneIcon
-                    className={classNames(styles.filterIcon)}
-                    onClick={showMobileFilters}
-                  />
-                </div>
+          </div>
+          <div className={classNames(styles.searchContainer)}>
+            {loading && (
+              <Box className={classNames(styles.loadingSpinnerContainer)}>
+                <ThemeProvider theme={theme}>
+                  <CircularProgress color={"primary"} size={"80px"} />
+                </ThemeProvider>
+              </Box>
+            )}
+            {error && (
+              <div>
+                <h2>{strings.explore.errorMessage}</h2>
               </div>
-              {!mobileFilters ? null : <MobileFilterComponent />}
-              <div className={classNames(styles.cafeCardWrapper)}>
-                {cafes.length === 0 ? (
-                  <span className={classNames(styles.noResultsMessage)}>
-                    {strings.explore.noResultsMessage}
-                    <Link to="/addCafe">{strings.explore.addCafe}</Link>
-                  </span>
-                ) : (
-                  <div className={classNames(styles.cafeCardContainer)}>
-                    {cafes.map((cafe: Cafe) => (
-                      <CafeCard key={cafe.id} {...cafe} />
-                    ))}
+            )}
+            {showExplorePage && (
+              <div className={classNames(styles.searchWrapper)}>
+                {!mobileFilters ? null : <MobileFilterComponent />}
+                <div className={classNames(styles.cafeCardWrapper)}>
+                  {cafes.length === 0 ? (
+                    <span className={classNames(styles.noResultsMessage)}>
+                      {strings.explore.noResultsMessage}
+                      <Link to="/addCafe">{strings.explore.addCafe}</Link>
+                    </span>
+                  ) : (
+                    <div className={classNames(styles.cafeCardContainer)}>
+                      {cafes.map((cafe: Cafe) => (
+                        <CafeCard key={cafe.id} {...cafe} />
+                      ))}
+                    </div>
+                  )}
+                </div>
+                {cafes.length === 0 ? null : (
+                  <div className={classNames(styles.seeMoreButtonWrapper)}>
+                    <Button
+                      buttonType="submit"
+                      type="primary"
+                      text={strings.explore.seeMoreResults}
+                      onClick={handleMoreResults}
+                    />
                   </div>
                 )}
               </div>
-              {cafes.length === 0 ? null : (
-                <div className={classNames(styles.seeMoreButtonWrapper)}>
-                  <Button
-                    buttonType="submit"
-                    type="primary"
-                    text={strings.explore.seeMoreResults}
-                    onClick={handleMoreResults}
-                  />
-                </div>
-              )}
-            </div>
-          )}
+            )}
+          </div>
         </div>
       </div>
       <Footer />
