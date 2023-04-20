@@ -36,7 +36,7 @@ export const loginQuery = gql`
   }
 `;
 
-export const cafeQuery = gql`
+export const returnAllCafeQuery = gql`
   query ReturnAllCafes(
     $filterByName: String
     $busyFilter: filterOptions
@@ -55,6 +55,25 @@ export const cafeQuery = gql`
       street
       city
       province
+      profilePhotoURL
+      busyness
+      noisiness
+      price
+    }
+  }
+`;
+
+export const getCafeInfo = gql`
+  query getCafeInfo($stringId: String!) {
+    getCafeInfo(stringId: $stringId) {
+      id
+      name
+      street
+      city
+      province
+      postalCode
+      phoneNumber
+      website
       profilePhotoURL
       busyness
       noisiness

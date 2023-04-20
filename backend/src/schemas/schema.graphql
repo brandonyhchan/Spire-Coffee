@@ -18,4 +18,5 @@ type Query {
     noiseFilter: filterOptions
     priceFilter: [filterOptions]
   ): [Cafe]
+  getCafeInfo(stringId: String!): Cafe
 }

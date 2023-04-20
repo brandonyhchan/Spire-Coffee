@@ -49,3 +49,8 @@ export async function returnAllCafes(parent, args, context, info) {
         },
     });
 }
+export async function getCafeInfo(parent, args, context, info) {
+    return context.prisma.cafe.findUnique({
+        where: { stringId: args.stringId },
+    });
+}

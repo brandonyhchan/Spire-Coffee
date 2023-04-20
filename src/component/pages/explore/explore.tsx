@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { cafeQuery } from "support/graphqlServerApi";
+import { returnAllCafeQuery } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
-import {
-  Box,
-  CircularProgress,
-  createTheme,
-  ThemeProvider,
-} from "@mui/material";
-import { SelectOptions } from "component/common/Filter/RadioFilter";
 
+import classNames from "classnames";
+import styles from "./explore.module.scss";
+import strings from "config/strings";
+
+import { SelectOptions } from "component/common/Filter/RadioFilter";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
@@ -22,18 +20,7 @@ import CafeCard from "component/common/CafeCard/cafeCard";
 import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
 import Button from "component/common/Button";
-
-import classNames from "classnames";
-import styles from "./explore.module.scss";
-import strings from "config/strings";
-
-const theme = createTheme({
-  palette: {
-    primary: {
-      main: "#3f51b5",
-    },
-  },
-});
+import LoadingSpinner from "component/common/LoadingSpinner";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -52,7 +39,7 @@ const Explore = () => {
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
   // refetch could be added in case needed
-  const { loading, error, refetch } = useQuery(cafeQuery, {
+  const { loading, error, refetch } = useQuery(returnAllCafeQuery, {
     onError: (error) => {
       throw error;
     },
@@ -95,8 +82,6 @@ const Explore = () => {
     // * TO DO: refetch
     console.log("More results clicked");
   };
-
-  console.log(priceOptions);
 
   return (
     <React.Fragment>
@@ -141,13 +126,7 @@ const Explore = () => {
             </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>
-            {loading && (
-              <Box className={classNames(styles.loadingSpinnerContainer)}>
-                <ThemeProvider theme={theme}>
-                  <CircularProgress color={"primary"} size={"80px"} />
-                </ThemeProvider>
-              </Box>
-            )}
+            {loading && <LoadingSpinner className={styles.LoadingSpinner} />}
             {error && (
               <div>
                 <h2>{strings.explore.errorMessage}</h2>

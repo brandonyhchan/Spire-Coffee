@@ -20,7 +20,7 @@ model User {
 
 model Cafe {
   id              Int            @id @default(autoincrement())
-  stringId        String
+  stringId        String         @unique
   name            String
   street          String
   city            String
