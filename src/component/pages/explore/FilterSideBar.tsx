@@ -82,21 +82,37 @@ const FilterSideBar = ({
 
   function renderBusyIcon(option: string) {
     if (option === busyOptions[0]) {
-      return <HourglassEmptyRoundedIcon />;
+      return (
+        <HourglassEmptyRoundedIcon
+          className={classNames(styles.busynessIcon)}
+        />
+      );
     } else if (option === busyOptions[1]) {
-      return <HourglassBottomRoundedIcon />;
+      return (
+        <HourglassBottomRoundedIcon
+          className={classNames(styles.busynessIcon)}
+        />
+      );
     } else {
-      return <HourglassFullRoundedIcon />;
+      return (
+        <HourglassFullRoundedIcon className={classNames(styles.busynessIcon)} />
+      );
     }
   }
 
   function renderNoiseIcon(option: string) {
     if (option === noiseOptions[0]) {
-      return <VolumeMuteRoundedIcon />;
+      return (
+        <VolumeMuteRoundedIcon className={classNames(styles.noisinessIcon)} />
+      );
     } else if (option === noiseOptions[1]) {
-      return <VolumeDownRoundedIcon />;
+      return (
+        <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
+      );
     } else {
-      return <VolumeUpRoundedIcon />;
+      return (
+        <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
+      );
     }
   }
 

@@ -40,9 +40,7 @@ const FilterOption = ({
         />
         <label>{text}</label>
       </div>
-      <div>
-        <label>{icon}</label>
-      </div>
+      <label>{icon}</label>
     </div>
   );
 };
