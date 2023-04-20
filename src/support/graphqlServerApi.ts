@@ -50,11 +50,11 @@ export const cafeQuery = gql`
       priceFilter: $priceFilter
     ) {
       id
+      stringId
       name
       street
       city
       province
-      profilePhotoName
       profilePhotoURL
       busyness
       noisiness

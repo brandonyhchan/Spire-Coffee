@@ -19,19 +19,19 @@ model User {
 }
 
 model Cafe {
-  id               Int            @id @default(autoincrement())
-  name             String
-  street           String
-  city             String
-  province         Province
-  postalCode       String
-  phoneNumber      String?
-  website          String?
-  profilePhotoName String?
-  profilePhotoURL  String?
-  busyness         filterOptions?
-  noisiness        filterOptions?
-  price            filterOptions?
+  id              Int            @id @default(autoincrement())
+  stringId        String
+  name            String
+  street          String
+  city            String
+  province        Province
+  postalCode      String
+  phoneNumber     String?
+  website         String?
+  profilePhotoURL String?
+  busyness        filterOptions?
+  noisiness       filterOptions?
+  price           filterOptions?
 }
 
 enum Province {

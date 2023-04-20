@@ -1,5 +1,6 @@
 type Cafe {
   id: ID!
+  stringId: String!
   name: String!
   street: String!
   city: String!
@@ -7,7 +8,6 @@ type Cafe {
   postalCode: String!
   phoneNumber: String
   website: String
-  profilePhotoName: String
   profilePhotoURL: String
   busyness: filterOptions
   noisiness: filterOptions

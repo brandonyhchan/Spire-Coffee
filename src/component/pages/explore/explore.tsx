@@ -167,7 +167,7 @@ const Explore = () => {
                       {cafes.map((cafe: Cafe) => (
                         <Link
                           reloadDocument
-                          to={`/cafes/${cafe.profilePhotoName}`}
+                          to={`/cafes/${cafe.stringId}`}
                           key={cafe.id}
                           className={classNames(styles.link)}
                         >
