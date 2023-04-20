@@ -169,6 +169,7 @@ const Explore = () => {
                           reloadDocument
                           to={`/cafes/${cafe.profilePhotoName}`}
                           key={cafe.id}
+                          className={classNames(styles.link)}
                         >
                           <CafeCard key={cafe.id} {...cafe} />
                         </Link>
