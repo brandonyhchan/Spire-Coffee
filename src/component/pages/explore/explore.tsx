@@ -96,13 +96,6 @@ const Explore = () => {
     console.log("More results clicked");
   };
 
-  const handleCafeClick = (
-    event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  ) => {
-    event.preventDefault();
-    navigate("/cafes/");
-  };
-
   console.log(priceOptions);
 
   return (
@@ -172,11 +165,13 @@ const Explore = () => {
                   ) : (
                     <div className={classNames(styles.cafeCardContainer)}>
                       {cafes.map((cafe: Cafe) => (
-                        <CafeCard
-                          onClick={handleCafeClick}
+                        <Link
+                          reloadDocument
+                          to={`/cafes/${cafe.profilePhotoName}`}
                           key={cafe.id}
-                          {...cafe}
-                        />
+                        >
+                          <CafeCard key={cafe.id} {...cafe} />
+                        </Link>
                       ))}
                     </div>
                   )}
