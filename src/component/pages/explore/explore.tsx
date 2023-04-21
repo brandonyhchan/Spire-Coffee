@@ -36,6 +36,10 @@ const Explore = () => {
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
   const [distance, setDistance] = useState(0);
 
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
+  const [locationStatus, setLocationStatus] = useState("");
+
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
   // refetch could be added in case needed
@@ -52,6 +56,9 @@ const Explore = () => {
       busyFilter: busynessLevel,
       noiseFilter: noiseLevel,
       priceFilter: priceOptions,
+      distanceFilter: distance,
+      userLat: lat,
+      userLong: long,
     },
   });
 
@@ -60,6 +67,10 @@ const Explore = () => {
       navigate("/");
     }
   }, [navigate, token]);
+
+  useEffect(() => {
+    getLocation();
+  }, []);
 
   function showMobileFilters(): void {
     setMobileFilters(!mobileFilters);
@@ -81,6 +92,22 @@ const Explore = () => {
     event.preventDefault();
     // * TO DO: refetch
     console.log("More results clicked");
+  };
+
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+      setLocationStatus("Geolocation is not supported by your browser");
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLat(position.coords.latitude);
+          setLong(position.coords.longitude);
+        },
+        () => {
+          setLocationStatus("Unable to retrieve your location");
+        }
+      );
+    }
   };
 
   return (

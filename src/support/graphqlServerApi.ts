@@ -42,12 +42,18 @@ export const returnAllCafeQuery = gql`
     $busyFilter: filterOptions
     $noiseFilter: filterOptions
     $priceFilter: [filterOptions]
+    $distanceFilter: Int
+    $userLat: Float
+    $userLong: Float
   ) {
     returnAllCafes(
       filterByName: $filterByName
       busyFilter: $busyFilter
       noiseFilter: $noiseFilter
       priceFilter: $priceFilter
+      distanceFilter: $distanceFilter
+      userLat: $userLat
+      userLong: $userLong
     ) {
       id
       stringId

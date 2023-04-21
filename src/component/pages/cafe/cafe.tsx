@@ -35,6 +35,8 @@ const CafePage = () => {
     },
   });
 
+  console.log(cafe);
+
   return (
     <React.Fragment>
       <Helmet title={cafe?.name} />
