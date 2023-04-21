@@ -26,6 +26,8 @@ model Cafe {
   city            String
   province        Province
   postalCode      String
+  latitude        Float?
+  longitude       Float?
   phoneNumber     String?
   website         String?
   profilePhotoURL String?

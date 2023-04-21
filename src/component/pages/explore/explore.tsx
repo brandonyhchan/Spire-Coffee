@@ -34,7 +34,7 @@ const Explore = () => {
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
-  const [distance, setDistance] = useState(0);
+  const [distance, setDistance] = useState(30);
 
   const [lat, setLat] = useState(0);
   const [long, setLong] = useState(0);
@@ -109,6 +109,8 @@ const Explore = () => {
       );
     }
   };
+
+  console.log(`distance: ${distance}`);
 
   return (
     <React.Fragment>
