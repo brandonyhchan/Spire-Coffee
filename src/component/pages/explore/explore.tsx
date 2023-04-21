@@ -36,7 +36,11 @@ const Explore = () => {
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   // const [sortOption, setSortOption] = useState(""); // need to decide what type of data sort options should be
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
-  const [distance, setDistance] = useState(0);
+  const [distance, setDistance] = useState(30);
+
+  const [lat, setLat] = useState(0);
+  const [long, setLong] = useState(0);
+  const [locationStatus, setLocationStatus] = useState("");
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
 
@@ -55,6 +59,9 @@ const Explore = () => {
       noiseFilter: noiseLevel,
       // sortFitler: sortOption,
       priceFilter: priceOptions,
+      distanceFilter: distance,
+      userLat: lat,
+      userLong: long,
     },
   });
 
@@ -63,6 +70,10 @@ const Explore = () => {
       navigate("/");
     }
   }, [navigate, token]);
+
+  useEffect(() => {
+    getLocation();
+  }, []);
 
   function showMobileFilters(): void {
     setMobileFilters(!mobileFilters);
@@ -86,7 +97,23 @@ const Explore = () => {
     console.log("More results clicked");
   };
 
-  console.log(cafes);
+  const getLocation = () => {
+    if (!navigator.geolocation) {
+      setLocationStatus("Geolocation is not supported by your browser");
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          setLat(position.coords.latitude);
+          setLong(position.coords.longitude);
+        },
+        () => {
+          setLocationStatus("Unable to retrieve your location");
+        }
+      );
+    }
+  };
+
+  console.log(`distance: ${distance}`);
 
   return (
     <React.Fragment>

@@ -17,6 +17,9 @@ type Query {
     busyFilter: filterOptions
     noiseFilter: filterOptions
     priceFilter: [filterOptions]
+    distanceFilter: Int
+    userLat: Float
+    userLong: Float
   ): [Cafe]
   getCafeInfo(stringId: String!): Cafe
 }

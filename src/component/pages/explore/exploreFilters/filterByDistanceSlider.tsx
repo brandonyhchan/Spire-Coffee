@@ -30,7 +30,7 @@ const distanceValue = [
   },
   {
     value: 20,
-    label: "20",
+    label: "20+",
   },
 ];
 
