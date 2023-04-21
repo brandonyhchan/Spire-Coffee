@@ -1,14 +1,27 @@
 /* eslint-disable prettier/prettier */
-import React from "react";
+import React, { useState } from "react";
 import classNames from "classnames";
-import styles from "./mobileFilterComponent.module.scss";;
+import styles from "./mobileFilterComponent.module.scss";
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
-function MobileFilterComponent() {
+type closeFilterPropsType = {
+  showMobileFilters: any;
+};
+
+const MobileFilterComponent = ({ showMobileFilters }: closeFilterPropsType) => {
+  const handleClick = () => {
+    showMobileFilters();
+  };
+
   return (
     <div className={classNames(styles.mobileFilterContainer)}>
-        <p>Insert Filters Here :)</p>
+      <CloseRoundedIcon
+        className={classNames(styles.closeFiltersButton)}
+        onClick={handleClick}
+      />
+      <p>Insert Filters Here :)</p>
     </div>
   );
-}
+};
 
 export default MobileFilterComponent;
