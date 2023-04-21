@@ -150,6 +150,9 @@ const Explore = () => {
                   onClick={showMobileFilters}
                 />
               </div>
+              {!mobileFilters ? null : (
+                <MobileFilterComponent showMobileFilters={showMobileFilters} />
+              )}
             </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>
@@ -161,7 +164,6 @@ const Explore = () => {
             )}
             {showExplorePage && (
               <div className={classNames(styles.searchWrapper)}>
-                {!mobileFilters ? null : <MobileFilterComponent />}
                 <div className={classNames(styles.cafeCardWrapper)}>
                   {cafes.length === 0 ? (
                     <span className={classNames(styles.noResultsMessage)}>
