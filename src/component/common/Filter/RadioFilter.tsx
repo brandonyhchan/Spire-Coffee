@@ -14,10 +14,10 @@ type RadioFilterPropsType = {
   options: string[];
   type: string;
   text: string;
-  filterSelection: SelectOptions | undefined;
+  filterSelection: SelectOptions | undefined; // add type for sort filter here
   checked: string;
   handleFilter: (event: ChangeEvent<HTMLInputElement>) => void;
-  renderIcon: (option: string) => JSX.Element;
+  renderIcon: (option: string) => JSX.Element | undefined;
 };
 
 const RadioFilter = ({

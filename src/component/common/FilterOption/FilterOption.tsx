@@ -12,7 +12,7 @@ type FilterOptionPropsType = {
   value?: string;
   name?: string;
   onClick?: (event: React.MouseEvent<HTMLInputElement>) => void;
-  icon?: JSX.Element;
+  icon?: JSX.Element | undefined;
 };
 
 const FilterOption = ({

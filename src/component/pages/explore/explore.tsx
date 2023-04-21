@@ -21,6 +21,7 @@ import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
 import Button from "component/common/Button";
 import LoadingSpinner from "component/common/LoadingSpinner";
+import Logo from "assets/images/placeholder-logo.jpg";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -33,6 +34,7 @@ const Explore = () => {
   const [searchCafeName, setSearchCafeName] = useState("");
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
+  // const [sortOption, setSortOption] = useState(""); // need to decide what type of data sort options should be
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
   const [distance, setDistance] = useState(0);
 
@@ -51,6 +53,7 @@ const Explore = () => {
       filterByName: searchCafeName,
       busyFilter: busynessLevel,
       noiseFilter: noiseLevel,
+      // sortFitler: sortOption,
       priceFilter: priceOptions,
     },
   });
@@ -83,6 +86,8 @@ const Explore = () => {
     console.log("More results clicked");
   };
 
+  console.log(cafes);
+
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
@@ -100,6 +105,8 @@ const Explore = () => {
               setBusynessState={setBusynessLevel}
               noiseState={noiseLevel}
               setNoiseState={setNoiseLevel}
+              // sortState={sortOption}
+              // setSortState={() => setSortOption}
               priceFilter={priceOptions}
               setPriceFilter={setPriceOptions}
               distanceFilter={distance}
@@ -152,7 +159,11 @@ const Explore = () => {
                           key={cafe.id}
                           className={classNames(styles.link)}
                         >
-                          <CafeCard key={cafe.id} {...cafe} />
+                          <CafeCard
+                            key={cafe.id}
+                            {...cafe}
+                            profilePhotoURL={cafe.profilePhotoURL || Logo}
+                          />
                         </Link>
                       ))}
                     </div>

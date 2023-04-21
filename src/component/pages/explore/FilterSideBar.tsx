@@ -24,6 +24,8 @@ type FilterSideBarPropsType = {
   setBusynessState(data: SelectOptions): void;
   noiseState: SelectOptions | undefined;
   setNoiseState(data: SelectOptions): void;
+  // sortState: string | undefined;
+  // setSortState(data: string): void;
   priceFilter: SelectOptions[];
   setPriceFilter(data: SelectOptions[]): void;
   distanceFilter: number;
@@ -36,6 +38,8 @@ const FilterSideBar = ({
   setBusynessState,
   noiseState,
   setNoiseState,
+  // sortState,
+  // setSortState,
   priceFilter,
   setPriceFilter,
   distanceFilter,
@@ -53,8 +57,16 @@ const FilterSideBar = ({
     strings.list.noisiness3,
   ];
 
+  // const sortOptions = [
+  //   strings.list.sort1,
+  //   strings.list.sort2,
+  //   strings.list.sort3,
+  //   strings.list.sort4,
+  // ];
+
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
+  const [sortChecked, setSortChecked] = useState("");
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
@@ -80,6 +92,20 @@ const FilterSideBar = ({
     setNoisinessChecked(option);
   };
 
+  // const handleSortFilter = (event: ChangeEvent<HTMLInputElement>) => {
+  //   const option = event.target.value;
+  //   if (option === strings.list.sort1) {
+  //     setSortState("A-Z");
+  //   } else if (option === strings.list.sort2) {
+  //     setSortState("Z-A");
+  //   } else if (option === strings.list.sort3) {
+  //     setSortState("Low to High");
+  //   } else {
+  //     setSortState("High to Low");
+  //   }
+  //   setSortChecked(option);
+  // };
+
   function renderBusyIcon(option: string) {
     if (option === busyOptions[0]) {
       return (
@@ -93,10 +119,12 @@ const FilterSideBar = ({
           className={classNames(styles.busynessIcon)}
         />
       );
-    } else {
+    } else if (option === busyOptions[2]) {
       return (
         <HourglassFullRoundedIcon className={classNames(styles.busynessIcon)} />
       );
+    } else {
+      return undefined;
     }
   }
 
@@ -109,10 +137,12 @@ const FilterSideBar = ({
       return (
         <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
       );
-    } else {
+    } else if (option === noiseOptions[2]) {
       return (
         <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
       );
+    } else {
+      return undefined;
     }
   }
 
@@ -148,6 +178,15 @@ const FilterSideBar = ({
         filterSelection={priceFilter}
         handleFilter={setPriceFilter}
       />
+      {/* <RadioFilter
+        options={sortOptions}
+        type="radio"
+        text={strings.explore.filter.sortBy}
+        filterSelection={sortState}
+        checked={sortChecked}
+        handleFilter={handleSortFilter}
+        renderIcon={() => undefined}
+      /> */}
       <div className={classNames(styles.filterButtonWrapper)}>
         <Button
           text={strings.explore.filter.clearFilters}
