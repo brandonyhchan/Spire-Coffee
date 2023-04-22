@@ -1,0 +1,54 @@
+.container {
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 20px 0px;
+  font-family: 'Figtree-Regular';
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100vh;
+}
+
+.loadingSpinner {
+  position: fixed;
+  top: 40%;
+}
+
+.cafeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.cafeName {
+  font-weight: 600;
+  padding-bottom: 0;
+}
+
+.cafeHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.cafeImages {
+  width: 100%;
+  height: 800px;
+}
+
+.cafeImages img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+}
+
+.cafeAddress p {
+  font-size: 23px;
+}

@@ -8,7 +8,7 @@ import {
 } from "@mui/material";
 
 type LoadingSpinnerPropsType = {
-  className: string;
+  className?: string;
 };
 
 const LoadingSpinner = ({ className }: LoadingSpinnerPropsType) => {

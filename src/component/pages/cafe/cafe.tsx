@@ -9,6 +9,11 @@ import Navbar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import LoadingSpinner from "component/common/LoadingSpinner";
+import Placeholder from "assets/images/placeholder.jpg";
+
+import classNames from "classnames";
+import styles from "./cafe.module.scss";
+import strings from "config/strings";
 
 const CafePage = () => {
   const navigate = useNavigate();
@@ -16,6 +21,7 @@ const CafePage = () => {
   const token = localStorage.getItem("authToken");
 
   const [cafe, setCafe] = useState<Cafe>();
+  const [showCafeInfo, setShowCafeInfo] = useState<boolean>(false);
 
   useEffect(() => {
     if (!token) {
@@ -29,6 +35,7 @@ const CafePage = () => {
     },
     onCompleted: (data) => {
       setCafe(data?.getCafeInfo);
+      setShowCafeInfo(true);
     },
     variables: {
       stringId: cafeId,
@@ -41,13 +48,31 @@ const CafePage = () => {
     <React.Fragment>
       <Helmet title={cafe?.name} />
       <Navbar />
-      <div>
-        {loading && <LoadingSpinner className="" />}
-        <h1>Hello world this is the cafe page</h1>
+      <div className={classNames(styles.container)}>
+        {loading && (
+          <div className={classNames(styles.wrapper)}>
+            <LoadingSpinner className={classNames(styles.loadingSpinner)} />
+          </div>
+        )}
+        {showCafeInfo ? (
+          <div className={classNames(styles.cafeContainer)}>
+            <h1 className={classNames(styles.cafeName)}>{cafe?.name}</h1>
+            <div className={classNames(styles.cafeHeader)}>
+              <div className={classNames(styles.cafeImages)}>
+                <img src={Placeholder} alt={Placeholder} />
+              </div>
+            </div>
+            <div className={classNames(styles.cafeAddress)}>
+              <p>{cafe?.street}</p>
+              <p>
+                {cafe?.city}, {cafe?.province}
+              </p>
+            </div>
+          </div>
+        ) : null}
       </div>
-
-      {/* <Footer />
-      <MobileFooter /> */}
+      <Footer />
+      <MobileFooter />
     </React.Fragment>
   );
 };
