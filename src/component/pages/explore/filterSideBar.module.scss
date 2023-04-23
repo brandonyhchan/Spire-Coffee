@@ -1,0 +1,13 @@
+.filterBarContainer {
+    @media (max-width: 600px) {
+        height: 100vh;
+        width: 100vw;
+        position: fixed;
+        display: block;
+        z-index: 1000;
+        background-color: white;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        padding-bottom: 100px;
+    }
+}

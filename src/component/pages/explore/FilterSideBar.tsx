@@ -6,6 +6,8 @@ import CheckboxFilter from "component/common/Filter/CheckboxFilter";
 import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
 import Button from "component/common/Button";
 
+import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
+
 import HourglassEmptyRoundedIcon from "@mui/icons-material/HourglassEmptyRounded";
 import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRounded";
 import HourglassFullRoundedIcon from "@mui/icons-material/HourglassFullRounded";
@@ -16,7 +18,8 @@ import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 
 import classNames from "classnames";
 import strings from "config/strings";
-import styles from "./explore.module.scss";
+//import styles from "./explore.module.scss";
+import styles from "./filterSideBar.module.scss";
 
 type FilterSideBarPropsType = {
   handleClick: MouseEventHandler;
@@ -30,6 +33,8 @@ type FilterSideBarPropsType = {
   setPriceFilter(data: SelectOptions[]): void;
   distanceFilter: number;
   setDistanceFilter(data: number): void;
+  showMobileFilters: any;
+  mobileFiltersOpen: boolean;
 };
 
 const FilterSideBar = ({
@@ -44,6 +49,8 @@ const FilterSideBar = ({
   setPriceFilter,
   distanceFilter,
   setDistanceFilter,
+  showMobileFilters,
+  mobileFiltersOpen,
 }: FilterSideBarPropsType) => {
   const busyOptions = [
     strings.list.busyness1,
@@ -146,39 +153,68 @@ const FilterSideBar = ({
     }
   }
 
+  const closeFilterOnClick = () => {
+    showMobileFilters();
+  };
+
   return (
-    <form>
-      <FilterByDistanceSlider
-        filterSelection={distanceFilter}
-        handleFilter={setDistanceFilter}
+    <div className={classNames(styles.filterBarContainer)}>
+      <CloseRoundedIcon
+        className={classNames(styles.closeFiltersButton)}
+        sx={{
+          display: "none",
+          "@media (max-width: 600px)": {
+            display: "inline-block",
+            margin: "25px 0 0 300px",
+            fontSize: "30px",
+          },
+        }}
+        onClick={closeFilterOnClick}
       />
-      <RadioFilter
-        options={busyOptions}
-        type="radio"
-        text={strings.explore.filter.filterByBusyness}
-        filterSelection={busynessState}
-        checked={busynessChecked}
-        handleFilter={handleBusynessFilter}
-        renderIcon={renderBusyIcon}
-      />
-      <RadioFilter
-        options={noiseOptions}
-        type="radio"
-        text={strings.explore.filter.filterByNoiseLevel}
-        filterSelection={noiseState}
-        checked={noisinessChecked}
-        handleFilter={handleNoisinessFilter}
-        renderIcon={renderNoiseIcon}
-      />
-      <CheckboxFilter
-        options={[SelectOptions.LOW, SelectOptions.MEDIUM, SelectOptions.HIGH]}
-        label={[strings.list.price1, strings.list.price2, strings.list.price3]}
-        type="checkbox"
-        text={strings.explore.filter.filterByPrice}
-        filterSelection={priceFilter}
-        handleFilter={setPriceFilter}
-      />
-      {/* <RadioFilter
+      <form>
+        <FilterByDistanceSlider
+          filterSelection={distanceFilter}
+          handleFilter={setDistanceFilter}
+          mobileFiltersOpen={mobileFiltersOpen}
+        />
+        <RadioFilter
+          options={busyOptions}
+          type="radio"
+          text={strings.explore.filter.filterByBusyness}
+          filterSelection={busynessState}
+          checked={busynessChecked}
+          handleFilter={handleBusynessFilter}
+          renderIcon={renderBusyIcon}
+          mobileFiltersOpen={mobileFiltersOpen}
+        />
+        <RadioFilter
+          options={noiseOptions}
+          type="radio"
+          text={strings.explore.filter.filterByNoiseLevel}
+          filterSelection={noiseState}
+          checked={noisinessChecked}
+          handleFilter={handleNoisinessFilter}
+          renderIcon={renderNoiseIcon}
+          mobileFiltersOpen={mobileFiltersOpen}
+        />
+        <CheckboxFilter
+          options={[
+            SelectOptions.LOW,
+            SelectOptions.MEDIUM,
+            SelectOptions.HIGH,
+          ]}
+          label={[
+            strings.list.price1,
+            strings.list.price2,
+            strings.list.price3,
+          ]}
+          type="checkbox"
+          text={strings.explore.filter.filterByPrice}
+          filterSelection={priceFilter}
+          handleFilter={setPriceFilter}
+          mobileFiltersOpen={mobileFiltersOpen}
+        />
+        {/* <RadioFilter
         options={sortOptions}
         type="radio"
         text={strings.explore.filter.sortBy}
@@ -187,15 +223,16 @@ const FilterSideBar = ({
         handleFilter={handleSortFilter}
         renderIcon={() => undefined}
       /> */}
-      <div className={classNames(styles.filterButtonWrapper)}>
-        <Button
-          text={strings.explore.filter.clearFilters}
-          type="filter"
-          buttonType="submit"
-          onClick={handleClick}
-        />
-      </div>
-    </form>
+        <div className={classNames(styles.filterButtonWrapper)}>
+          <Button
+            text={strings.explore.filter.clearFilters}
+            type="filter"
+            buttonType="submit"
+            onClick={handleClick}
+          />
+        </div>
+      </form>
+    </div>
   );
 };
 
