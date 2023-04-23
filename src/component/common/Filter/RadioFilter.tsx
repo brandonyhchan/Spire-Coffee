@@ -18,6 +18,7 @@ type RadioFilterPropsType = {
   checked: string;
   handleFilter: (event: ChangeEvent<HTMLInputElement>) => void;
   renderIcon: (option: string) => JSX.Element | undefined;
+  mobileFiltersOpen: boolean;
 };
 
 const RadioFilter = ({
@@ -27,9 +28,10 @@ const RadioFilter = ({
   checked,
   handleFilter,
   renderIcon,
+  mobileFiltersOpen,
 }: RadioFilterPropsType) => {
   return (
-    <FilterComponent text={text}>
+    <FilterComponent text={text} mobileFiltersOpen={mobileFiltersOpen}>
       {options.map((option, index) => (
         <FilterOption
           key={index}
