@@ -9,4 +9,10 @@ export interface Cafe {
   busyness: string;
   noisiness: string;
   price: string;
+  location: Location;
+}
+
+export interface Location {
+  latitude: number;
+  longitude: number;
 }

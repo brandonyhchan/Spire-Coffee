@@ -43,8 +43,7 @@ export const returnAllCafeQuery = gql`
     $noiseFilter: filterOptions
     $priceFilter: [filterOptions]
     $distanceFilter: Int
-    $userLat: Float
-    $userLong: Float
+    $userLocation: locationInput
   ) {
     returnAllCafes(
       filterByName: $filterByName
@@ -52,8 +51,7 @@ export const returnAllCafeQuery = gql`
       noiseFilter: $noiseFilter
       priceFilter: $priceFilter
       distanceFilter: $distanceFilter
-      userLat: $userLat
-      userLong: $userLong
+      userLocation: $userLocation
     ) {
       id
       stringId
