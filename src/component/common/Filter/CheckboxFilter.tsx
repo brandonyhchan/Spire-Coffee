@@ -12,6 +12,7 @@ type CheckboxFilterPropsType = {
   filterSelection: SelectOptions[];
   handleFilter(data: SelectOptions[]): void;
   label: string[];
+  mobileFiltersOpen: boolean;
 };
 
 const CheckboxFilter = ({
@@ -21,6 +22,7 @@ const CheckboxFilter = ({
   filterSelection,
   handleFilter,
   label,
+  mobileFiltersOpen,
 }: CheckboxFilterPropsType) => {
   const list = [
     { label: label[0], option: options[0] },
@@ -54,7 +56,7 @@ const CheckboxFilter = ({
     });
   }
   return (
-    <FilterComponent text={text}>
+    <FilterComponent text={text} mobileFiltersOpen={mobileFiltersOpen}>
       {list.map((item, index) => (
         <FilterOption
           key={index}

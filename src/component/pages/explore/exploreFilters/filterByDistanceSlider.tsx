@@ -9,6 +9,7 @@ import styles from "./filterComponentSlider.module.scss";
 type DistanceFilterSliderPropsType = {
   filterSelection: number;
   handleFilter(data: number): void;
+  mobileFiltersOpen: boolean;
 };
 
 const distanceValue = [
@@ -37,6 +38,7 @@ const distanceValue = [
 const FilterByDistanceSlider = ({
   filterSelection,
   handleFilter,
+  mobileFiltersOpen,
 }: DistanceFilterSliderPropsType) => {
   function valueText(distanceValue: number) {
     return `${distanceValue}km`;
@@ -57,7 +59,7 @@ const FilterByDistanceSlider = ({
 
   return (
     <div className={classNames(styles.sliderFilterContainer)}>
-      <Filter text={strings.explore.filter.filterByDistance}>
+      <Filter text={strings.explore.filter.filterByDistance} mobileFiltersOpen={mobileFiltersOpen}>
         <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Restricted values"

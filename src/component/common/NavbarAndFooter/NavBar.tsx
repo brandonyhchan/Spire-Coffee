@@ -34,6 +34,11 @@ export const navbar = () => {
               edge="start"
               color="inherit"
               aria-label="logo"
+              sx={{
+                "@media (max-width: 750px)": {
+                  padding: "12px 0",
+                },
+              }}
             >
               <CoffeeIcon />
             </IconButton>
@@ -56,15 +61,6 @@ export const navbar = () => {
               <p className={classNames(styles.link)}>
                 <NavLink
                   style={({ isActive }) => (isActive ? active : {})}
-                  to="/addCafe"
-                  color="inherit"
-                >
-                  {strings.addCafe.helmet}
-                </NavLink>
-              </p>
-              <p className={classNames(styles.link)}>
-                <NavLink
-                  style={({ isActive }) => (isActive ? active : {})}
                   to="/explore"
                   color="inherit"
                 >
@@ -78,6 +74,15 @@ export const navbar = () => {
                   color="inherit"
                 >
                   {strings.favourites.helmet}
+                </NavLink>
+              </p>
+              <p className={classNames(styles.link)}>
+                <NavLink
+                  style={({ isActive }) => (isActive ? active : {})}
+                  to="/addCafe"
+                  color="inherit"
+                >
+                  {strings.addCafe.helmet}
                 </NavLink>
               </p>
               <p className={classNames(styles.link)}>

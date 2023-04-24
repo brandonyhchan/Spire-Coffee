@@ -23,11 +23,17 @@ $_medium_font_size: 18px;
     text-decoration: none;
     color: white;
     padding: 10px;
+
     &:hover {
       background-color: rgba(255, 255, 255, 0.1);
       padding-bottom: 6px;
     }
+
+    @media (max-width: 750px) {
+      padding: 10px 0;
+    }
   }
+
 }
 
 .padding {

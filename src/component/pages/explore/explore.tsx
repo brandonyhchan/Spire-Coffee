@@ -13,7 +13,6 @@ import { SelectOptions } from "component/common/Filter/RadioFilter";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
-import MobileFilterComponent from "./exploreFilters/mobileFilterComponent";
 
 import SearchBar from "component/common/SearchBar/searchBar";
 import CafeCard from "component/common/CafeCard/cafeCard";
@@ -117,7 +116,13 @@ const Explore = () => {
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
       <NavBar />
-      <div className={classNames(styles.container)}>
+      <div
+        className={
+          mobileFilters
+            ? classNames(styles.container, styles.openMobileFilters)
+            : classNames(styles.container)
+        }
+      >
         {showExplorePage && (
           <div className={classNames(styles.filterContainer)}>
             <div>
@@ -137,6 +142,8 @@ const Explore = () => {
               distanceFilter={distance}
               setDistanceFilter={setDistance}
               handleClick={() => refetch}
+              showMobileFilters={null}
+              mobileFiltersOpen={false}
             />
           </div>
         )}
@@ -156,7 +163,21 @@ const Explore = () => {
                 />
               </div>
               {!mobileFilters ? null : (
-                <MobileFilterComponent showMobileFilters={showMobileFilters} />
+                <FilterSideBar
+                  busynessState={busynessLevel}
+                  setBusynessState={setBusynessLevel}
+                  noiseState={noiseLevel}
+                  setNoiseState={setNoiseLevel}
+                  // sortState={sortOption}
+                  // setSortState={() => setSortOption}
+                  priceFilter={priceOptions}
+                  setPriceFilter={setPriceOptions}
+                  distanceFilter={distance}
+                  setDistanceFilter={setDistance}
+                  handleClick={() => refetch}
+                  showMobileFilters={showMobileFilters}
+                  mobileFiltersOpen={true}
+                />
               )}
             </div>
           )}

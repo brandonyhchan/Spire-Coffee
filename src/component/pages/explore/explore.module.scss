@@ -8,6 +8,10 @@ $_card_size: 460px;
   margin-bottom: 50px;
 }
 
+.openMobileFilters {
+  background: rgba(0, 0, 0, 0.5);
+}
+
 .loadingSpinnerContainer {
   top: 25%;
   position: fixed;
@@ -75,6 +79,9 @@ $_card_size: 460px;
   flex-direction: row;
   justify-content: center;
   width: 100%;
+}
+
+.searchBar {
   padding-top: 30px;
 }
 
@@ -130,7 +137,8 @@ $_card_size: 460px;
   display: none;
   
   @media (max-width: 820px) {
-    display: contents;
+    display: inline-block;
+    padding-top: 30px;
   }
 }
 
