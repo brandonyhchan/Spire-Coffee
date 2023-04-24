@@ -12,4 +12,10 @@ export interface Cafe {
   phoneNumber?: string;
   postalCode?: string;
   website?: string;
+  location: Location;
+}
+
+export interface Location {
+  latitude: number;
+  longitude: number;
 }

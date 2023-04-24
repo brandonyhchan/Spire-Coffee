@@ -18,8 +18,7 @@ type Query {
     noiseFilter: filterOptions
     priceFilter: [filterOptions]
     distanceFilter: Int
-    userLat: Float
-    userLong: Float
+    userLocation: locationInput
   ): [Cafe]
   getCafeInfo(stringId: String!): Cafe
 }

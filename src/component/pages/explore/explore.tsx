@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { returnAllCafeQuery } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
-import { Cafe } from "types/api/cafe";
+import { Cafe, Location } from "types/api/cafe";
 
 import classNames from "classnames";
 import styles from "./explore.module.scss";
@@ -38,8 +38,7 @@ const Explore = () => {
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
   const [distance, setDistance] = useState(30);
 
-  const [lat, setLat] = useState(0);
-  const [long, setLong] = useState(0);
+  const [userLocation, setUserLocation] = useState<Location>();
   const [locationStatus, setLocationStatus] = useState("");
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
@@ -59,8 +58,7 @@ const Explore = () => {
       noiseFilter: noiseLevel,
       priceFilter: priceOptions,
       distanceFilter: distance,
-      userLat: lat,
-      userLong: long,
+      userLocation: userLocation,
     },
   });
 
@@ -102,8 +100,10 @@ const Explore = () => {
     } else {
       navigator.geolocation.getCurrentPosition(
         (position) => {
-          setLat(position.coords.latitude);
-          setLong(position.coords.longitude);
+          setUserLocation({
+            latitude: position.coords.latitude,
+            longitude: position.coords.longitude,
+          });
         },
         () => {
           setLocationStatus("Unable to retrieve your location");
@@ -111,8 +111,6 @@ const Explore = () => {
       );
     }
   };
-
-  console.log(`distance: ${distance}`);
 
   return (
     <React.Fragment>
