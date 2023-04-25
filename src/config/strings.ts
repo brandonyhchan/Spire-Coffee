@@ -107,7 +107,7 @@ const strings = new LocalizedStrings({
       sort3: "Price - Low to High",
       sort4: "Price - High to Low",
     },
-    cafeCard: {
+    cafe: {
       busynessLabel: "Busyness",
       noisinessLabel: "Noisiness",
     },

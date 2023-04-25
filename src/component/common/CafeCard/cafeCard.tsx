@@ -152,11 +152,11 @@ const CafeCard = ({
         <div className={classNames(styles.cafeCardIcons)}>
           <div className={classNames(styles.busyness)}>
             {getBusynessIcon(busyness)}
-            <label>{strings.cafeCard.busynessLabel}</label>
+            <label>{strings.cafe.busynessLabel}</label>
           </div>
           <div className={classNames(styles.noisiness)}>
             {getNoisinessIcon(noisiness)}
-            <label>{strings.cafeCard.noisinessLabel}</label>
+            <label>{strings.cafe.noisinessLabel}</label>
           </div>
           <div className={classNames(styles.priceIconGroup)}>
             {getPriceIcon(price)}

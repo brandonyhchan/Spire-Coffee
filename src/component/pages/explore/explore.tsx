@@ -34,7 +34,7 @@ const Explore = () => {
   const [searchCafeName, setSearchCafeName] = useState("");
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
-  // const [sortOption, setSortOption] = useState(""); // need to decide what type of data sort options should be
+
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
   const [distance, setDistance] = useState(30);
 
@@ -57,7 +57,6 @@ const Explore = () => {
       filterByName: searchCafeName,
       busyFilter: busynessLevel,
       noiseFilter: noiseLevel,
-      // sortFitler: sortOption,
       priceFilter: priceOptions,
       distanceFilter: distance,
       userLat: lat,
@@ -132,8 +131,6 @@ const Explore = () => {
               setBusynessState={setBusynessLevel}
               noiseState={noiseLevel}
               setNoiseState={setNoiseLevel}
-              // sortState={sortOption}
-              // setSortState={() => setSortOption}
               priceFilter={priceOptions}
               setPriceFilter={setPriceOptions}
               distanceFilter={distance}
