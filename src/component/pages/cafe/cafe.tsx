@@ -60,26 +60,42 @@ const CafePage = () => {
 
   const handleFavouriteButton = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
-    setFavourite(!favourite);
+    setFavourite(!favourite); // on refresh favourite is false, this bug needs to be fixed
   };
 
   function renderBusynessLevel() {
     if (cafe?.busyness === "LOW") {
-      return <HourglassEmptyRoundedIcon />;
+      return (
+        <HourglassEmptyRoundedIcon
+          className={classNames(styles.busynessIcon)}
+        />
+      );
     } else if (cafe?.busyness === "MEDIUM") {
-      return <HourglassBottomRoundedIcon />;
+      return (
+        <HourglassBottomRoundedIcon
+          className={classNames(styles.busynessIcon)}
+        />
+      );
     } else if (cafe?.busyness === "HIGH") {
-      return <HourglassFullRoundedIcon />;
+      return (
+        <HourglassFullRoundedIcon className={classNames(styles.busynessIcon)} />
+      );
     }
   }
 
   function renderNoisinessLevel() {
     if (cafe?.noisiness === "LOW") {
-      return <VolumeMuteRoundedIcon />;
+      return (
+        <VolumeMuteRoundedIcon className={classNames(styles.noisinessIcon)} />
+      );
     } else if (cafe?.noisiness === "MEDIUM") {
-      return <VolumeDownRoundedIcon />;
+      return (
+        <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
+      );
     } else if (cafe?.noisiness === "HIGH") {
-      return <VolumeUpRoundedIcon />;
+      return (
+        <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
+      );
     }
   }
 
@@ -121,18 +137,39 @@ const CafePage = () => {
         {showCafeInfo ? (
           <div className={classNames(styles.cafeContainer)}>
             <div className={classNames(styles.cafeHeader)}>
-              <div className={classNames(styles.cafeInfo)}>
+              <div className={classNames(styles.cafeTitle)}>
                 <img src={cafe?.profilePhotoURL} alt={cafe?.profilePhotoURL} />
+                <h1 className={classNames(styles.cafeName)}>{cafe?.name}</h1>
+                {/* {renderPrice()} */}
+              </div>
+              <div
+                onClick={handleFavouriteButton}
+                className={classNames(styles.favouriteButton)}
+              >
+                {!favourite ? (
+                  <FavoriteBorderRoundedIcon />
+                ) : (
+                  <FavoriteRoundedIcon />
+                )}
+              </div>
+            </div>
+            <div className={classNames(styles.carouselContainer)}>
+              <div className={classNames(styles.cafeImages)}>
+                <img src={Placeholder} alt={Placeholder} />
+              </div>
+            </div>
+            <div className={classNames(styles.cafeInfoContainer)}>
+              {/* put into strings */}
+              <h3>Cafe Information</h3>
+              <div className={classNames(styles.cafeInfo)}>
                 <div className={classNames(styles.cafeAddress)}>
-                  <div className={classNames(styles.cafeTitle)}>
-                    <h1 className={classNames(styles.cafeName)}>
-                      {cafe?.name}
-                    </h1>
-                    {renderPrice()}
-                  </div>
                   <p>{cafe?.street}</p>
                   <p>
-                    {cafe?.city}, {cafe?.province}
+                    {cafe?.city}
+                    {strings.global.comma}
+                    {strings.global.space}
+                    {cafe?.province}
+                    {/* insert postal code? */}
                   </p>
                   <div className={classNames(styles.cafeStatus)}>
                     <label className={classNames(styles.cafeBusynessLabel)}>
@@ -146,19 +183,6 @@ const CafePage = () => {
                   </div>
                 </div>
               </div>
-              <div
-                onClick={handleFavouriteButton}
-                className={classNames(styles.favouriteButton)}
-              >
-                {favourite ? (
-                  <FavoriteBorderRoundedIcon />
-                ) : (
-                  <FavoriteRoundedIcon />
-                )}
-              </div>
-            </div>
-            <div className={classNames(styles.cafeImages)}>
-              <img src={Placeholder} alt={Placeholder} />
             </div>
           </div>
         ) : null}
