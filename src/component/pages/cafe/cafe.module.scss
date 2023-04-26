@@ -1,4 +1,4 @@
-$_text_size: 23px;
+$_text_size_mobile: 18px;
 
 .container {
   min-height: 100vh;
@@ -27,21 +27,12 @@ $_text_size: 23px;
 .cafeContainer {
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  width: 100%;
 }
 
 /* Cafe name, price, and favourite button */
-.cafeHeader {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding: 25px 50px;
-}
-
 .cafeTitle {
   display: flex;
-  flex-direction: row;
+  justify-content: flex-start;
 }
 
 .cafeTitle h1 {
@@ -65,70 +56,46 @@ $_text_size: 23px;
 
 .cafeName {
   font-weight: 600;
-  padding-bottom: 0;
-  padding-left: 10px;
-  padding-top: 10px;
-  @media (min-width: 600px) {
-    padding-top: 15px;
-  }
-}
-
-.priceIconGroup {
-  margin-left: 10px;
-  margin-top: 2px;
-  padding-top: 10px;
-  @media (min-width: 600px) {
-    margin-top: 8px;
-  }
-}
-
-.priceIcon {
-  transform: scale(1.6);
-  margin: -3px !important;
-  @media (min-width: 600px) {
-    transform: scale(2.0);
-    margin: -1px !important;
-  }
-}
-
-.favouriteButton {
-  margin-left: 10px;
-  margin-top: 2px;
-  transform: scale(1.6);
-  cursor: pointer;
-  color: rgb(221, 71, 71);
-  padding-top: 10px;
-  @media (min-width: 601px) {
-    transform: scale(1.5);
-    margin-top: 10px;
-  }
-  @media (min-width: 1024px) {
-    transform: scale(2.0);
-    margin-top: 13px;
-  }
+  padding: 15px;
 }
 /* END */
 
 /* Cafe information */
-.cafeInfoContainer {
+.favouriteButton {
+  transform: scale(1.2);
+  cursor: pointer;
+  color: rgb(221, 71, 71);
+  padding-right: 10px;
+  height: 0;
+  margin-top: -10px;
+}
+
+.cafeInfoWrapper {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-.cafeInfoContainer h3 {
-  padding: 20px;
+.cafeInfoWrapper h3 {
   font-weight: 600;
+  @media (max-width: 600px) {
+    display: none;
+  }
 }
 
 .cafeInfo {
+  display: flex;
+  justify-content: space-between;
   border-color: grey;
-  border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
-  width: 85%;
-  padding: 20px;
-  @media (max-width: 600px) {
-    width: 80%;
+  border-top: solid 3px var(--light-grey);
+  border-bottom: solid 3px var(--light-grey);
+  width: 95%;
+  padding-top: 15px;
+  margin-top: 15px;
+  padding-bottom: 15px;
+  @media (min-width: 601px) {
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   }
 }
 
@@ -136,44 +103,55 @@ $_text_size: 23px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  padding: 0px 10px;
+  width: 100%;
 }
 
 .cafeAddress p {
-  font-size: $_text_size;
+  font-size: $_text_size_mobile;
 }
 
 .cafeStatus label {
-  font-size: $_text_size;
-}
-
-.cafeNoisinessLabel {
- padding-left: 15px;
+  font-size: $_text_size_mobile;
 }
 
 .busynessIcon {
-  transform: scale(1.2);
+  transform: scale(1.0);
   margin-top: -5px;
-  margin-left: 8px;
+  margin-left: 5px;
 }
 
 .noisinessIcon {
-  transform: scale(1.5);
-  margin-top: -2px;
+  transform: scale(1.15);
+  margin-top: -5px;
+  margin-left: 5px;
+}
+
+.cafePriceLabel {
+  display: flex;
+}
+
+.priceIconGroup {
   margin-left: 13px;
+}
+
+.priceIcon {
+  transform: scale(1.0);
+  margin-top: -5px;
+  margin-left: -12px;
 }
 /* END */
 
 /* Image carousel */
-.carouselContainer {
+.carouselWrapper {
   display: flex;
   justify-content: center;
 }
 
 .cafeImages {
-  width: 85%;
   height: 500px;
+  margin: 0px 15px;
   @media (max-width: 600px) {
-    width: 80%;
     height: 350px;
   }
 }
@@ -184,3 +162,21 @@ $_text_size: 23px;
   height: 100%;
 }
 /* END */
+
+.dropdown {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.cafeDays {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-left: 15px;
+}
+
+.cafeHours {
+  width: 100%;
+}

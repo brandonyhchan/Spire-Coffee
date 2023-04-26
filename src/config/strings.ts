@@ -112,6 +112,7 @@ const strings = new LocalizedStrings({
     cafe: {
       busynessLabel: "Busyness",
       noisinessLabel: "Noisiness",
+      priceLabel: "Price",
     },
   },
 });

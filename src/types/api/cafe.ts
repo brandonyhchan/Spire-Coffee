@@ -9,4 +9,7 @@ export interface Cafe {
   busyness: string;
   noisiness: string;
   price: string;
+  phoneNumber?: string;
+  postalCode?: string;
+  website?: string;
 }

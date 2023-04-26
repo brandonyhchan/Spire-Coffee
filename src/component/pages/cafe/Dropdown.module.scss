@@ -1,0 +1,16 @@
+.expandableItems {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.expandedItemGroup {
+  display: flex;
+  font-family: 'Figtree-Regular';
+}
+
+.expandMoreIcon, .expandLessIcon {
+  transform: scale(1.0);
+  color: var(--dark-grey);
+  cursor: pointer;
+}
