@@ -13,6 +13,9 @@ export interface Cafe {
   postalCode?: string;
   website?: string;
   location: Location;
+  phoneNumber?: string;
+  postalCode?: string;
+  website?: string;
 }
 
 export interface Location {

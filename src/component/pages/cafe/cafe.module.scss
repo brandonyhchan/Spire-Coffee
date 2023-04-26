@@ -110,11 +110,7 @@ $_text_size_mobile: 18px;
 }
 
 .cafeStatus label {
-  font-size: $_text_size;
-}
-
-.cafeNoisinessLabel {
- padding-left: 15px;
+  font-size: $_text_size_mobile;
 }
 
 .cafeInfoWrapper h3 {
