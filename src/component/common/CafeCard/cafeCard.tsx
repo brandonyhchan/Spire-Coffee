@@ -13,7 +13,7 @@ import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
 
 import classNames from "classnames";
 import strings from "config/strings";
-import styles from "./CafeCard.module.scss";
+import styles from "./cafeCard.module.scss";
 
 import useMediaQuery from "@mui/material/useMediaQuery";
 
