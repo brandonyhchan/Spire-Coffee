@@ -45,6 +45,8 @@ export async function login(parent, args, context, info) {
   };
 }
 
+const xprisma = prisma.$extends()
+
 export async function returnAllCafes(parent, args, context, info) {
   return context.prisma.cafe.findMany({
     where: {
