@@ -1,5 +1,6 @@
 import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
+import { prisma } from "../context";
 export async function signUp(parent, args, context, info) {
     try {
         const password = await bcrypt.hash(args.password, 10);
@@ -33,6 +34,7 @@ export async function login(parent, args, context, info) {
         user,
     };
 }
+const xprisma = prisma.$extends();
 export async function returnAllCafes(parent, args, context, info) {
     return context.prisma.cafe.findMany({
         where: {
