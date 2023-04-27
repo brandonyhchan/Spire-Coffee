@@ -1,8 +1,8 @@
 import React, { ChangeEvent } from "react";
-import FilterComponent from "component/common/FilterComponent/FilterComponent";
-import FilterOption from "component/common/FilterOption/FilterOption";
+import FilterComponent from "component/common/Filter/FilterComponent/FilterComponent";
+import FilterOption from "component/common/Filter/FilterOption/FilterOption";
 import classNames from "classnames";
-import styles from "component/common/FilterComponent/FilterComponent.module.scss";
+import styles from "component/common/Filter/FilterComponent/FilterComponent.module.scss";
 
 export enum SelectOptions {
   LOW = "LOW",
