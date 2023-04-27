@@ -1,5 +1,6 @@
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["clientExtensions"]
 }
 
 datasource db {
@@ -26,8 +27,6 @@ model Cafe {
   city            String
   province        Province
   postalCode      String
-  latitude        Float?
-  longitude       Float?
   phoneNumber     String?
   website         String?
   profilePhotoURL String?

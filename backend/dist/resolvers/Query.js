@@ -34,20 +34,39 @@ export async function login(parent, args, context, info) {
     };
 }
 export async function returnAllCafes(parent, args, context, info) {
-    // const lastPostInResults = firstQueryResults[3]; // Remember: zero-based index! :)
-    // const myCursor = lastPostInResults.id; // Example: 29
-    // TODO: see prisma on pagination https://www.prisma.io/docs/concepts/components/prisma-client/pagination
     return context.prisma.cafe.findMany({
         where: {
             name: { contains: args.filterByName, mode: "insensitive" },
             busyness: args.busyFilter,
             noisiness: args.noiseFilter,
             price: { in: args.priceFilter.length ? args.priceFilter : undefined },
+            // distance: { lte: args.distanceFilter },
         },
         orderBy: {
             id: "asc",
         },
     });
+}
+function calculateDistance(cafe, args) {
+    // lat2 = args.location.latitude, lat1 = cafe.latitude
+    // lon2 = args.location.longitude, lon1 = cafe.longitude
+    const R = 6371; // Radius of Earth in km
+    const dLat = degToRad(args.latitude - cafe.latitude);
+    const dLong = degToRad(args.longitude - cafe.longitude);
+    const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+        Math.cos(degToRad(cafe.latitude)) *
+            Math.cos(degToRad(args.latitude)) *
+            Math.sin(dLong / 2) *
+            Math.sin(dLong / 2);
+    const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+    const d = Math.round(R * c);
+    return {
+        ...cafe,
+        distance: d,
+    };
+}
+function degToRad(deg) {
+    return deg * (Math.PI / 180);
 }
 export async function getCafeInfo(parent, args, context, info) {
     return context.prisma.cafe.findUnique({

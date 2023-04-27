@@ -13,6 +13,7 @@ type Cafe {
   noisiness: filterOptions
   price: filterOptions
   location: Location
+  distance: Int
 }
 
 type Location {
