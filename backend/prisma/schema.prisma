@@ -34,6 +34,15 @@ model Cafe {
   busyness        filterOptions?
   noisiness       filterOptions?
   price           filterOptions?
+  Location        Location?
+}
+
+model Location {
+  id        Int   @id @default(autoincrement())
+  latitude  Float @unique
+  longitude Float @unique
+  Cafe      Cafe  @relation(fields: [cafeId], references: [id])
+  cafeId    Int   @unique
 }
 
 enum Province {

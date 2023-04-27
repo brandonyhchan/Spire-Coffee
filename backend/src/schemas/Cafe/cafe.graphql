@@ -12,6 +12,17 @@ type Cafe {
   busyness: filterOptions
   noisiness: filterOptions
   price: filterOptions
+  location: Location
+}
+
+type Location {
+  latitude: Float
+  longitude: Float
+}
+
+input locationInput {
+  latitude: Float
+  longitude: Float
 }
 
 enum Province {
