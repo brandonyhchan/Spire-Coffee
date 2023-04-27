@@ -1,8 +1,8 @@
 import React, { useState, ChangeEvent, MouseEventHandler } from "react";
 import RadioFilter, {
   SelectOptions,
-} from "component/common/Filter/RadioFilter";
-import CheckboxFilter from "component/common/Filter/CheckboxFilter";
+} from "component/common/Filter/FilterType/RadioFilter";
+import CheckboxFilter from "component/common/Filter/FilterType/CheckboxFilter";
 import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
 import Button from "component/common/Button";
 
