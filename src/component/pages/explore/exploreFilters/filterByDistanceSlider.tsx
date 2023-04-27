@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import React from "react";
 import { Box, Slider } from "@mui/material";
-import Filter from "component/common/FilterComponent/FilterComponent";
+import Filter from "component/common/Filter/FilterComponent/FilterComponent";
 import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./filterComponentSlider.module.scss";

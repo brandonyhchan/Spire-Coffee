@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { SelectOptions } from "./RadioFilter";
-import FilterComponent from "component/common/FilterComponent/FilterComponent";
-import FilterOption from "component/common/FilterOption/FilterOption";
+import FilterComponent from "component/common/Filter/FilterComponent/FilterComponent";
+import FilterOption from "component/common/Filter/FilterOption/FilterOption";
 import classNames from "classnames";
-import styles from "component/common/FilterComponent/FilterComponent.module.scss";
+import styles from "component/common/Filter/FilterComponent/FilterComponent.module.scss";
 
 type CheckboxFilterPropsType = {
   options: SelectOptions[];

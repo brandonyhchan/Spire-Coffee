@@ -18,6 +18,10 @@
   justify-content: flex-start;
   align-items: flex-start;
   width: 70%;
+
+  input {
+    cursor: pointer;
+  }
 }
 
 .listWrapper input {
