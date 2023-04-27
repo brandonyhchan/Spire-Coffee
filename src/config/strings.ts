@@ -104,15 +104,12 @@ const strings = new LocalizedStrings({
       amenities1: "Has outlets",
       amenities2: "Has tables",
       amenities3: "Has outdoor seating",
-      sort1: "Alphabetical - (A-Z)",
-      sort2: "Alphabetical - (Z-A)",
-      sort3: "Price - Low to High",
-      sort4: "Price - High to Low",
     },
     cafe: {
       busynessLabel: "Busyness",
       noisinessLabel: "Noisiness",
       priceLabel: "Price",
+      cafeInformation: "Cafe Information",
     },
   },
 });

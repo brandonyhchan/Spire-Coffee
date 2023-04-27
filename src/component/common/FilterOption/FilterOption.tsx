@@ -38,9 +38,9 @@ const FilterOption = ({
           onClick={onClick}
           onFocus={onFocus}
         />
-        <label>{text}</label>
+        <label className={classNames(styles.filterLabel)}>{text}</label>
       </div>
-      <label>{icon}</label>
+      <label className={classNames(styles.filterLabel)}>{icon}</label>
     </div>
   );
 };

@@ -1,0 +1,37 @@
+$_carousel_width_mobile: 905px;
+$_carousel_width_tablet: 500px;
+$_carousel_width_desktop: 700px;
+
+
+.carouselContainer {
+  height: 400px;
+  object-fit: cover;
+  display: flex;
+  justify-content: center;
+  padding: 0px 15px;
+  @media (min-width: 960px) {
+    padding: 0px;
+    padding-right: 20px;
+  }
+}
+
+.carousel {
+  height: 100%;
+  width: $_carousel_width_mobile;
+  @media (min-width: 960px) and (max-width: 1200px){
+    width: $_carousel_width_tablet;
+  }
+  @media (min-width: 1201px) {
+    width: $_carousel_width_desktop;
+  }
+}
+
+.imageContainer {
+  width: $_carousel_width_mobile;
+  @media (min-width: 960px) and (max-width: 1200px){
+    width: $_carousel_width_tablet;
+  }
+  @media (min-width: 1201px) {
+    width: $_carousel_width_desktop;
+  }
+}

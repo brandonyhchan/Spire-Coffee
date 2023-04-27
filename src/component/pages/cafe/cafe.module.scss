@@ -27,6 +27,8 @@ $_text_size_mobile: 18px;
 .cafeContainer {
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Cafe name, price, and favourite button */
@@ -61,6 +63,15 @@ $_text_size_mobile: 18px;
 /* END */
 
 /* Cafe information */
+.infoSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 95vw;
+  @media (min-width: 961px) {
+    flex-direction: row;
+  }
+}
 .favouriteButton {
   transform: scale(1.2);
   cursor: pointer;
@@ -78,7 +89,8 @@ $_text_size_mobile: 18px;
 
 .cafeInfoWrapper h3 {
   font-weight: 600;
-  @media (max-width: 600px) {
+  padding-top: 15px;
+  @media (max-width: 960px) {
     display: none;
   }
 }
@@ -93,7 +105,13 @@ $_text_size_mobile: 18px;
   padding-top: 15px;
   margin-top: 15px;
   padding-bottom: 15px;
-  @media (min-width: 601px) {
+  @media (min-width: 961px) and (max-width: 1200px) {
+    width: 400px;
+    border-radius: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
+  }
+  @media (min-width: 1201px) {
+    width: 500px;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   }
