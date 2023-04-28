@@ -89,7 +89,7 @@ const FilterSideBar = ({
 
   const handleNoisinessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
-    if (option === "Quiet") {
+    if (option === "Not too noisy") {
       setNoiseState(SelectOptions.LOW);
     } else if (option === "A little noisy") {
       setNoiseState(SelectOptions.MEDIUM);
