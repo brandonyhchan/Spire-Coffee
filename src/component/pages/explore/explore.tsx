@@ -15,7 +15,7 @@ import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 
 import SearchBar from "component/common/SearchBar/searchBar";
-import CafeCard from "component/common/CafeCard/cafeCard";
+import CafeCard from "component/common/CafeCard/CafeCard";
 import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
 import Button from "component/common/Button";
