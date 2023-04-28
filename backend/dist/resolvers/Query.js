@@ -33,20 +33,6 @@ export async function login(parent, args, context, info) {
         user,
     };
 }
-// const xprisma = prisma.$extends({
-//   result: {
-//     Location: {},
-//     Cafe: {
-//       distance: {
-//         needs: { Location: true },
-//         compute(Cafe, Location) {
-//           return 1;
-//         },
-//       },
-//     },
-//   },
-// });
-// since prisma returns findmany as an object, we can create the distance, map then return that
 export async function returnAllCafes(parent, args, context, info) {
     const query = await context.prisma.cafe.findMany({
         select: {
