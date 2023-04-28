@@ -14,10 +14,6 @@ type DistanceFilterSliderPropsType = {
 
 const distanceValue = [
   {
-    value: 0,
-    label: "0",
-  },
-  {
     value: 5,
     label: "5",
   },
@@ -31,7 +27,11 @@ const distanceValue = [
   },
   {
     value: 20,
-    label: "20+",
+    label: "20",
+  },
+  {
+    value: 25,
+    label: "25+",
   },
 ];
 
@@ -59,7 +59,10 @@ const FilterByDistanceSlider = ({
 
   return (
     <div className={classNames(styles.sliderFilterContainer)}>
-      <Filter text={strings.explore.filter.filterByDistance} mobileFiltersOpen={mobileFiltersOpen}>
+      <Filter
+        text={strings.explore.filter.filterByDistance}
+        mobileFiltersOpen={mobileFiltersOpen}
+      >
         <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Restricted values"
@@ -67,8 +70,8 @@ const FilterByDistanceSlider = ({
             valueLabelFormat={valueLabelFormat}
             getAriaValueText={valueText}
             marks={distanceValue}
-            min={0}
-            max={20}
+            min={5}
+            max={25}
             value={filterSelection}
             onChangeCommitted={getDistance}
             className={classNames(styles.slider)}

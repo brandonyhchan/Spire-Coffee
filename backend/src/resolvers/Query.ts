@@ -69,7 +69,7 @@ export async function returnAllCafes(parent, args, context, info) {
       id: "asc",
     },
   });
-  if (args.distanceFilter < 20) {
+  if (args.distanceFilter < 25) {
     const cafeDistances: Cafe[] = [];
     query.forEach(function (cafe) {
       cafeDistances.push(calculateDistance(cafe, args.userLocation));
