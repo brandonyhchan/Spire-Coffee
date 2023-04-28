@@ -10,6 +10,7 @@ export interface Cafe {
   noisiness: string;
   price: string;
   location: Location;
+  distance?: number;
 }
 
 export interface Location {

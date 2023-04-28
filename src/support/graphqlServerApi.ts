@@ -63,7 +63,6 @@ export const returnAllCafeQuery = gql`
       busyness
       noisiness
       price
-      distance
     }
   }
 `;

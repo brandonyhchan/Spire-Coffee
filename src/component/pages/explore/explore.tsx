@@ -35,7 +35,7 @@ const Explore = () => {
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   // const [sortOption, setSortOption] = useState(""); // need to decide what type of data sort options should be
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
-  const [distance, setDistance] = useState(30);
+  const [distance, setDistance] = useState(20);
 
   const [userLocation, setUserLocation] = useState<Location>();
   const [locationStatus, setLocationStatus] = useState("");

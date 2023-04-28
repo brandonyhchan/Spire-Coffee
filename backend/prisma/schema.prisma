@@ -33,7 +33,7 @@ model Cafe {
   busyness        filterOptions?
   noisiness       filterOptions?
   price           filterOptions?
-  Location        Location?
+  location        Location?
 }
 
 model Location {

@@ -1,6 +1,5 @@
 import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { prisma } from "../context";
 export async function signUp(parent, args, context, info) {
     try {
         const password = await bcrypt.hash(args.password, 10);
@@ -34,29 +33,65 @@ export async function login(parent, args, context, info) {
         user,
     };
 }
-const xprisma = prisma.$extends();
+// const xprisma = prisma.$extends({
+//   result: {
+//     Location: {},
+//     Cafe: {
+//       distance: {
+//         needs: { Location: true },
+//         compute(Cafe, Location) {
+//           return 1;
+//         },
+//       },
+//     },
+//   },
+// });
+// since prisma returns findmany as an object, we can create the distance, map then return that
 export async function returnAllCafes(parent, args, context, info) {
-    return context.prisma.cafe.findMany({
+    const query = await context.prisma.cafe.findMany({
+        select: {
+            id: true,
+            stringId: true,
+            name: true,
+            street: true,
+            city: true,
+            province: true,
+            profilePhotoURL: true,
+            location: true,
+            busyness: true,
+            noisiness: true,
+            price: true,
+        },
         where: {
             name: { contains: args.filterByName, mode: "insensitive" },
             busyness: args.busyFilter,
             noisiness: args.noiseFilter,
             price: { in: args.priceFilter.length ? args.priceFilter : undefined },
-            // distance: { lte: args.distanceFilter },
         },
         orderBy: {
             id: "asc",
         },
     });
+    if (args.distanceFilter < 20) {
+        const cafeDistances = [];
+        query.forEach(function (cafe) {
+            cafeDistances.push(calculateDistance(cafe, args.userLocation));
+        });
+        const output = cafeDistances.filter((cafe) => cafe.distance < args.distanceFilter);
+        return output;
+    }
+    else {
+        return query;
+    }
 }
 function calculateDistance(cafe, args) {
     // lat2 = args.location.latitude, lat1 = cafe.latitude
     // lon2 = args.location.longitude, lon1 = cafe.longitude
     const R = 6371; // Radius of Earth in km
-    const dLat = degToRad(args.latitude - cafe.latitude);
-    const dLong = degToRad(args.longitude - cafe.longitude);
+    const dLat = degToRad(args.latitude - cafe.location.latitude);
+    const dLong = degToRad(args.longitude - cafe.location.longitude);
     const a = Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-        Math.cos(degToRad(cafe.latitude)) *
+        Math.cos(degToRad(cafe.location.latitude)) *
             Math.cos(degToRad(args.latitude)) *
             Math.sin(dLong / 2) *
             Math.sin(dLong / 2);
