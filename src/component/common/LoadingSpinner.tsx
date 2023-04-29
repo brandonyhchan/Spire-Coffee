@@ -1,5 +1,7 @@
 import React from "react";
 import classNames from "classnames";
+import styles from "./LoadingSpinner.module.scss";
+
 import {
   Box,
   CircularProgress,
@@ -7,11 +9,7 @@ import {
   ThemeProvider,
 } from "@mui/material";
 
-type LoadingSpinnerPropsType = {
-  className: string;
-};
-
-const LoadingSpinner = ({ className }: LoadingSpinnerPropsType) => {
+const LoadingSpinner = () => {
   const theme = createTheme({
     palette: {
       primary: {
@@ -20,7 +18,7 @@ const LoadingSpinner = ({ className }: LoadingSpinnerPropsType) => {
     },
   });
   return (
-    <Box className={classNames(className)}>
+    <Box className={classNames(styles.loadingSpinnerContainer)}>
       <ThemeProvider theme={theme}>
         <CircularProgress color={"primary"} size={"80px"} />
       </ThemeProvider>

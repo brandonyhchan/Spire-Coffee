@@ -42,7 +42,7 @@ const CafePage = () => {
       <Helmet title={cafe?.name} />
       <Navbar />
       <div>
-        {loading && <LoadingSpinner className="" />}
+        {loading && <LoadingSpinner />}
         <h1>Hello world this is the cafe page</h1>
       </div>
 

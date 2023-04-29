@@ -3,6 +3,7 @@ import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import classNames from "classnames";
 import styles from "./SearchBar.module.scss";
+import strings from "config/strings";
 
 interface SearchBarProps {
   showCloseButton: boolean;
@@ -23,7 +24,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
         <SearchRoundedIcon className={classNames(styles.searchBarIcon)} />
         <input
           type="text"
-          placeholder="Search..."
+          placeholder={strings.explore.searchBarText}
           name="search"
           onChange={handleQuery}
           onFocus={handleQuery}

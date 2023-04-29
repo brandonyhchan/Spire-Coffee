@@ -36,6 +36,7 @@ export const MobileFooter = () => {
     <div className={classNames(styles.mobileFooter)}>
       <BottomNavigation
         value={value}
+        // event should have a type that's not any
         onChange={(event: any, newValue: React.SetStateAction<string>) => {
           setValue(newValue);
         }}

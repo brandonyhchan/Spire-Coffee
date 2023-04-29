@@ -33,7 +33,6 @@ const Explore = () => {
   const [searchCafeName, setSearchCafeName] = useState("");
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
-  // const [sortOption, setSortOption] = useState(""); // need to decide what type of data sort options should be
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
   const [distance, setDistance] = useState(25);
 
@@ -55,7 +54,6 @@ const Explore = () => {
       filterByName: searchCafeName,
       busyFilter: busynessLevel,
       noiseFilter: noiseLevel,
-      // sortFitler: sortOption,
       priceFilter: priceOptions,
       distanceFilter: distance,
       userLocation: userLocation,
@@ -135,14 +133,12 @@ const Explore = () => {
               setBusynessState={setBusynessLevel}
               noiseState={noiseLevel}
               setNoiseState={setNoiseLevel}
-              // sortState={sortOption}
-              // setSortState={() => setSortOption}
               priceFilter={priceOptions}
               setPriceFilter={setPriceOptions}
               distanceFilter={distance}
               setDistanceFilter={setDistance}
               handleClick={() => refetch}
-              showMobileFilters={null}
+              showMobileFilters={() => null}
               mobileFiltersOpen={false}
             />
           </div>
@@ -168,8 +164,6 @@ const Explore = () => {
                   setBusynessState={setBusynessLevel}
                   noiseState={noiseLevel}
                   setNoiseState={setNoiseLevel}
-                  // sortState={sortOption}
-                  // setSortState={() => setSortOption}
                   priceFilter={priceOptions}
                   setPriceFilter={setPriceOptions}
                   distanceFilter={distance}
@@ -182,7 +176,7 @@ const Explore = () => {
             </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>
-            {loading && <LoadingSpinner className={styles.LoadingSpinner} />}
+            {loading && <LoadingSpinner />}
             {error && (
               <div>
                 <h2>{strings.explore.errorMessage}</h2>

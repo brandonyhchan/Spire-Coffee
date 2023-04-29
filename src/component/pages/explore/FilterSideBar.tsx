@@ -18,7 +18,6 @@ import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 
 import classNames from "classnames";
 import strings from "config/strings";
-//import styles from "./explore.module.scss";
 import styles from "./filterSideBar.module.scss";
 
 type FilterSideBarPropsType = {
@@ -27,13 +26,11 @@ type FilterSideBarPropsType = {
   setBusynessState(data: SelectOptions): void;
   noiseState: SelectOptions | undefined;
   setNoiseState(data: SelectOptions): void;
-  // sortState: string | undefined;
-  // setSortState(data: string): void;
   priceFilter: SelectOptions[];
   setPriceFilter(data: SelectOptions[]): void;
   distanceFilter: number;
   setDistanceFilter(data: number): void;
-  showMobileFilters: any;
+  showMobileFilters: () => void | null;
   mobileFiltersOpen: boolean;
 };
 
@@ -43,8 +40,6 @@ const FilterSideBar = ({
   setBusynessState,
   noiseState,
   setNoiseState,
-  // sortState,
-  // setSortState,
   priceFilter,
   setPriceFilter,
   distanceFilter,
@@ -64,22 +59,14 @@ const FilterSideBar = ({
     strings.list.noisiness3,
   ];
 
-  // const sortOptions = [
-  //   strings.list.sort1,
-  //   strings.list.sort2,
-  //   strings.list.sort3,
-  //   strings.list.sort4,
-  // ];
-
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
-  const [sortChecked, setSortChecked] = useState("");
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
-    if (option === "Not too busy") {
+    if (option === strings.list.busyness1) {
       setBusynessState(SelectOptions.LOW);
-    } else if (option === "A little busy") {
+    } else if (option === strings.list.busyness2) {
       setBusynessState(SelectOptions.MEDIUM);
     } else {
       setBusynessState(SelectOptions.HIGH);
@@ -89,29 +76,15 @@ const FilterSideBar = ({
 
   const handleNoisinessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
-    if (option === "Not too noisy") {
+    if (option === strings.list.noisiness1) {
       setNoiseState(SelectOptions.LOW);
-    } else if (option === "A little noisy") {
+    } else if (option === strings.list.noisiness2) {
       setNoiseState(SelectOptions.MEDIUM);
     } else {
       setNoiseState(SelectOptions.HIGH);
     }
     setNoisinessChecked(option);
   };
-
-  // const handleSortFilter = (event: ChangeEvent<HTMLInputElement>) => {
-  //   const option = event.target.value;
-  //   if (option === strings.list.sort1) {
-  //     setSortState("A-Z");
-  //   } else if (option === strings.list.sort2) {
-  //     setSortState("Z-A");
-  //   } else if (option === strings.list.sort3) {
-  //     setSortState("Low to High");
-  //   } else {
-  //     setSortState("High to Low");
-  //   }
-  //   setSortChecked(option);
-  // };
 
   function renderBusyIcon(option: string) {
     if (option === busyOptions[0]) {
@@ -224,15 +197,6 @@ const FilterSideBar = ({
           handleFilter={setPriceFilter}
           mobileFiltersOpen={mobileFiltersOpen}
         />
-        {/* <RadioFilter
-        options={sortOptions}
-        type="radio"
-        text={strings.explore.filter.sortBy}
-        filterSelection={sortState}
-        checked={sortChecked}
-        handleFilter={handleSortFilter}
-        renderIcon={() => undefined}
-      /> */}
         <div className={classNames(styles.filterButtonWrapper)}>
           <Button
             text={strings.explore.filter.clearFilters}

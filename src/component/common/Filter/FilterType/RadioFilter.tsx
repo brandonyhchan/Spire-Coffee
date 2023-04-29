@@ -14,7 +14,7 @@ type RadioFilterPropsType = {
   options: string[];
   type: string;
   text: string;
-  filterSelection: SelectOptions | undefined; // add type for sort filter here
+  filterSelection: SelectOptions | undefined;
   checked: string;
   handleFilter: (event: ChangeEvent<HTMLInputElement>) => void;
   renderIcon: (option: string) => JSX.Element | undefined;

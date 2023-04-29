@@ -60,6 +60,7 @@ const strings = new LocalizedStrings({
       seeMoreResults: "More Results",
       addCafe: "Add a cafe.",
       errorMessage: "Oops! There was a loading error, please try again later.",
+      searchBarText: "Search...",
     },
     aboutUs: {
       title: "About us page",
