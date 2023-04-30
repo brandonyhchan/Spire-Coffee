@@ -32,6 +32,7 @@ type FilterSideBarPropsType = {
   setDistanceFilter(data: number): void;
   showMobileFilters: () => void | null;
   mobileFiltersOpen: boolean;
+  distanceFilterError: string;
 };
 
 const FilterSideBar = ({
@@ -46,6 +47,7 @@ const FilterSideBar = ({
   setDistanceFilter,
   showMobileFilters,
   mobileFiltersOpen,
+  distanceFilterError,
 }: FilterSideBarPropsType) => {
   const busyOptions = [
     strings.list.busyness1,
@@ -159,6 +161,7 @@ const FilterSideBar = ({
           filterSelection={distanceFilter}
           handleFilter={setDistanceFilter}
           mobileFiltersOpen={mobileFiltersOpen}
+          errorMessage={distanceFilterError}
         />
         <RadioFilter
           options={busyOptions}

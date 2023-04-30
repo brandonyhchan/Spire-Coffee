@@ -91,7 +91,8 @@ $_card_size: 460px;
 
 .cafeCardWrapper {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  align-items: center;
   justify-content: center !important;
   max-width: 1750px;
 }
@@ -161,6 +162,7 @@ $_card_size: 460px;
   margin-top: 20px;
   width: 450px;
   max-width: 800px;
+  font-family: 'Figtree-Regular';
 }
 
 .noResultsMessage a {
@@ -170,6 +172,12 @@ $_card_size: 460px;
 
 .link {
   text-decoration: none;
+}
+
+.cafeErrorMessage {
+  color: var(--warning);
+  padding-bottom: 30px;
+  font-family: 'Figtree-Regular';
 }
 
 .noisinessIcon {

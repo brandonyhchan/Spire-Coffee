@@ -1,14 +1,19 @@
 .sliderFilterContainer {
-    .slider{
-        color: var(--secondary);
-        &.MuiSlider-mark {
-            background-color: var(--secondary);
-            height: 8;
-            width: 1;
-            &.MuiSlider-markActive {
-              opacity: 1;
-              background-color: #bfbfbf;
-            }
-        }
+  .slider{
+    color: var(--secondary);
+    &.MuiSlider-mark {
+      background-color: var(--secondary);
+      height: 8;
+      width: 1;
+      &.MuiSlider-markActive {
+        opacity: 1;
+        background-color: #bfbfbf;
+      }
     }
+  }
+}
+
+.distanceErrorMessage {
+  color: var(--warning);
+  font-family: 'Figtree-Regular';
 }

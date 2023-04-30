@@ -10,6 +10,7 @@ type DistanceFilterSliderPropsType = {
   filterSelection: number;
   handleFilter(data: number): void;
   mobileFiltersOpen: boolean;
+  errorMessage: string;
 };
 
 const distanceValue = [
@@ -39,6 +40,7 @@ const FilterByDistanceSlider = ({
   filterSelection,
   handleFilter,
   mobileFiltersOpen,
+  errorMessage,
 }: DistanceFilterSliderPropsType) => {
   function valueText(distanceValue: number) {
     return `${distanceValue}km`;
@@ -79,6 +81,7 @@ const FilterByDistanceSlider = ({
               fontFamily: "Figtree-Regular",
             }}
           />
+          <span className={classNames(styles.distanceErrorMessage)}>{errorMessage}</span>
         </Box>
       </Filter>
     </div>

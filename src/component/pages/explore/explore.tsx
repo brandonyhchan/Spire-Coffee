@@ -140,6 +140,7 @@ const Explore = () => {
               handleClick={() => refetch}
               showMobileFilters={() => null}
               mobileFiltersOpen={false}
+              distanceFilterError={locationStatus}
             />
           </div>
         )}
@@ -171,20 +172,21 @@ const Explore = () => {
                   handleClick={() => refetch}
                   showMobileFilters={showMobileFilters}
                   mobileFiltersOpen={true}
+                  distanceFilterError={locationStatus}
                 />
               )}
             </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>
             {loading && <LoadingSpinner />}
-            {error && (
-              <div>
-                <h2>{strings.explore.errorMessage}</h2>
-              </div>
-            )}
             {showExplorePage && (
               <div className={classNames(styles.searchWrapper)}>
                 <div className={classNames(styles.cafeCardWrapper)}>
+                  {error && (
+                    <span className={classNames(styles.cafeErrorMessage)}>
+                      {strings.explore.errorMessage}
+                    </span>
+                  )}
                   {cafes.length === 0 ? (
                     <span className={classNames(styles.noResultsMessage)}>
                       {strings.explore.noResultsMessage}
