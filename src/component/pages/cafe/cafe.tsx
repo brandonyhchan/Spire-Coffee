@@ -10,8 +10,8 @@ import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import LoadingSpinner from "component/common/LoadingSpinner";
 // import Placeholder from "assets/images/placeholder.jpg";
-import Dropdown from "./Dropdown";
-import ImageCarousel from "./ImageCarousel";
+import Dropdown from "component/common/Dropdown/Dropdown";
+import ImageCarousel from "./Carousel/ImageCarousel";
 
 import HourglassEmptyRoundedIcon from "@mui/icons-material/HourglassEmptyRounded";
 import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRounded";

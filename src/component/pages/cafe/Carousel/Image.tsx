@@ -9,7 +9,7 @@ type ItemPropsType = {
   };
 };
 
-const Item = (props: ItemPropsType) => {
+const Image = (props: ItemPropsType) => {
   return (
     <Paper>
       <img
@@ -21,4 +21,4 @@ const Item = (props: ItemPropsType) => {
   );
 };
 
-export default Item;
+export default Image;

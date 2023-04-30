@@ -1,6 +1,6 @@
 import React from "react";
 import Carousel from "react-material-ui-carousel";
-import Item from "./Item";
+import Item from "./Image";
 import Placeholder from "assets/images/placeholder.jpg";
 import Placeholder2 from "assets/images/placeholder2.jpg";
 import styles from "./ImageCarousel.module.scss";
