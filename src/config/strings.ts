@@ -110,6 +110,9 @@ const strings = new LocalizedStrings({
       noisinessLabel: "Noisiness",
       priceLabel: "Price",
       cafeInformation: "Cafe Information",
+      reportText:
+        "Is this cafe currently busy and noisy? Help us report it live!",
+      reportButton: "Report Status",
     },
   },
 });

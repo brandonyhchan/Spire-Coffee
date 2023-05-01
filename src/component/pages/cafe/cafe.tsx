@@ -12,6 +12,7 @@ import LoadingSpinner from "component/common/LoadingSpinner";
 import Dropdown from "component/common/Dropdown/Dropdown";
 import ImageCarousel from "./Carousel/ImageCarousel";
 import Map from "./Map/map";
+import Report from "./Report/Report";
 
 import HourglassEmptyRoundedIcon from "@mui/icons-material/HourglassEmptyRounded";
 import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRounded";
@@ -207,12 +208,13 @@ const CafePage = () => {
                       )}
                     </div>
                   </div>
+                  <Report />
                 </div>
               </div>
             </div>
+            <Map />
           </>
         ) : null}
-        <Map />
       </div>
       <Footer />
       <MobileFooter />

@@ -1,0 +1,13 @@
+.reportContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 20px;
+  font-family: 'Figtree-Regular';
+  font-size: 18px;
+  background-color: azure;
+  & Button {
+    margin-top: 20px;
+  }
+}
