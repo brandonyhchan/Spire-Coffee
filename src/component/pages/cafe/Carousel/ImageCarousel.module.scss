@@ -1,5 +1,5 @@
 $_carousel_width_mobile: 100vw;
-$_carousel_width_tablet: 60vw;
+$_carousel_width_tablet: 61vw;
 $_carousel_width_desktop: 70vw;
 $_carousel_height: 600px;
 
@@ -7,6 +7,7 @@ $_carousel_height: 600px;
   height: $_carousel_height;
   display: flex;
   justify-content: center;
+  padding: 0px 25px;
 }
 
 .carousel {
