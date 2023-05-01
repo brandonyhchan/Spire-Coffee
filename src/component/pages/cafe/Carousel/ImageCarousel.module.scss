@@ -1,9 +1,10 @@
-$_carousel_width_mobile: 100vw;
+$_carousel_width_mobile: 100%;
 $_carousel_width_tablet: 61vw;
 $_carousel_width_desktop: 70vw;
 $_carousel_height: 600px;
 
 .carouselContainer {
+  width: $_carousel_width_mobile;
   height: $_carousel_height;
   display: flex;
   justify-content: center;

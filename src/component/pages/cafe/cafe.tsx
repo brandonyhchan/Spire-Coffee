@@ -212,7 +212,7 @@ const CafePage = () => {
             </div>
           </>
         ) : null}
-        <Map></Map>
+        <Map />
       </div>
       <Footer />
       <MobileFooter />
