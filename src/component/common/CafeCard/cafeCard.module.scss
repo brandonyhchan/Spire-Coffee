@@ -37,19 +37,18 @@ $_card_size: 460px; // if changed, need to change in explore scss too
     align-self: center;
     padding-bottom: 10px;
   }
-}
-
-.logo > img {
-  width: 100%;
-  height: 100%;
-  @media (min-width) and (max-width: 600px) {
-    width: 80px;
-    height: 80px;
-  }
-  @media (max-width: 299px) {
-    width: 60px;
-    height: 60px;
-    padding-bottom: 10px;
+  & img {
+    width: 100%;
+    height: 100%;
+    @media (min-width) and (max-width: 600px) {
+      width: 80px;
+      height: 80px;
+    }
+    @media (max-width: 299px) {
+      width: 60px;
+      height: 60px;
+      padding-bottom: 10px;
+    }
   }
 }
 
@@ -82,18 +81,17 @@ $_card_size: 460px; // if changed, need to change in explore scss too
   @media (max-width: 299px) {
     gap: 1px;
   }
-}
-
-.cafeCardIcons label {
-  font-size: 18px;
-  padding-left: 5px;
-  @media (min-width: 300px) and (max-width: 600px) {
-    font-size: 15px;
-    padding-left: 0;
-  }
-  @media (max-width: 299px) {
-    font-size: 12px;
-    padding-left: 0;
+  & label {
+    font-size: 18px;
+    padding-left: 5px;
+    @media (min-width: 300px) and (max-width: 600px) {
+      font-size: 15px;
+      padding-left: 0;
+    }
+    @media (max-width: 299px) {
+      font-size: 12px;
+      padding-left: 0;
+    }
   }
 }
 
@@ -124,13 +122,12 @@ $_card_size: 460px; // if changed, need to change in explore scss too
     margin-left: 3px;
     margin-bottom: 8px;
   }
-}
-
-.priceIcon {
-  margin: -6px !important;
-  margin-top: -10px !important;
-  @media (max-width: 299px) {
-    margin-top: 0 !important;
+  & .priceIcon {
+    margin: -6px !important;
+    margin-top: -10px !important;
+    @media (max-width: 299px) {
+      margin-top: 0 !important;
+    }
   }
 }
 
