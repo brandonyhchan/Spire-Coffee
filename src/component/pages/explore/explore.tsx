@@ -110,6 +110,25 @@ const Explore = () => {
     }
   };
 
+  function renderFilterSidebar(mobileFilter: boolean) {
+    return (
+      <FilterSideBar
+        busynessState={busynessLevel}
+        setBusynessState={setBusynessLevel}
+        noiseState={noiseLevel}
+        setNoiseState={setNoiseLevel}
+        priceFilter={priceOptions}
+        setPriceFilter={setPriceOptions}
+        distanceFilter={distance}
+        setDistanceFilter={setDistance}
+        handleClick={() => refetch}
+        showMobileFilters={showMobileFilters}
+        mobileFiltersOpen={mobileFilter}
+        distanceFilterError={locationStatus}
+      />
+    );
+  }
+
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
@@ -128,54 +147,28 @@ const Explore = () => {
                 {strings.explore.filter.filterTitle}
               </h2>
             </div>
-            <FilterSideBar
-              busynessState={busynessLevel}
-              setBusynessState={setBusynessLevel}
-              noiseState={noiseLevel}
-              setNoiseState={setNoiseLevel}
-              priceFilter={priceOptions}
-              setPriceFilter={setPriceOptions}
-              distanceFilter={distance}
-              setDistanceFilter={setDistance}
-              handleClick={() => refetch}
-              showMobileFilters={() => null}
-              mobileFiltersOpen={false}
-              distanceFilterError={locationStatus}
-            />
+            {renderFilterSidebar(mobileFilters)}
           </div>
         )}
         <div className={classNames(styles.searchContainer)}>
           {showExplorePage && (
-            <div className={classNames(styles.searchBarContainer)}>
-              <SearchBar
-                showCloseButton={showCloseButton}
-                query={searchCafeName}
-                handleClick={handleClick}
-                handleQuery={handleSearchQuery}
-              />
-              <div className={classNames(styles.mobileFilter)}>
-                <TuneIcon
-                  className={classNames(styles.filterIcon)}
-                  onClick={showMobileFilters}
+            <>
+              <div className={classNames(styles.searchBarContainer)}>
+                <SearchBar
+                  showCloseButton={showCloseButton}
+                  query={searchCafeName}
+                  handleClick={handleClick}
+                  handleQuery={handleSearchQuery}
                 />
+                <div className={classNames(styles.mobileFilter)}>
+                  <TuneIcon
+                    className={classNames(styles.filterIcon)}
+                    onClick={showMobileFilters}
+                  />
+                </div>
               </div>
-              {!mobileFilters ? null : (
-                <FilterSideBar
-                  busynessState={busynessLevel}
-                  setBusynessState={setBusynessLevel}
-                  noiseState={noiseLevel}
-                  setNoiseState={setNoiseLevel}
-                  priceFilter={priceOptions}
-                  setPriceFilter={setPriceOptions}
-                  distanceFilter={distance}
-                  setDistanceFilter={setDistance}
-                  handleClick={() => refetch}
-                  showMobileFilters={showMobileFilters}
-                  mobileFiltersOpen={true}
-                  distanceFilterError={locationStatus}
-                />
-              )}
-            </div>
+              {!mobileFilters ? null : renderFilterSidebar(mobileFilters)}
+            </>
           )}
           <div className={classNames(styles.searchResultContainer)}>
             {loading && <LoadingSpinner />}
