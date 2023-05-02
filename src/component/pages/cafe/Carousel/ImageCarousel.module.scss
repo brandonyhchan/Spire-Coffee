@@ -1,21 +1,23 @@
 $_carousel_width_mobile: 100%;
-$_carousel_height: 500px;
+$_carousel_height_mobile: 250px;
+$_carousel_height_desktop: 500px;
+
+.carouselContainer,
+.carousel,
+.imageContainer {
+  width: $_carousel_width_mobile;
+  height: $_carousel_height_desktop;
+  @media (max-width: 600px) {
+    height: $_carousel_height_mobile;
+  }
+}
 
 .carouselContainer {
-  width: $_carousel_width_mobile;
-  height: $_carousel_height;
   display: flex;
   justify-content: center;
   padding: 0px 20px;
 }
 
-.carousel {
-  height: $_carousel_height;
-  width: $_carousel_width_mobile;
-}
-
 .imageContainer {
   object-fit: cover;
-  height: $_carousel_height;
-  width: $_carousel_width_mobile;
 }

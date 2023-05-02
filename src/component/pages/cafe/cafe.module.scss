@@ -1,22 +1,43 @@
 $_text_size_mobile: 18px;
 
-.container {
+.container,
+.wrapper,
+.cafeContainer,
+.infoSection,
+.cafeDetails,
+.cafeInfoWrapper,
+.cafeDays,
+.cafeHours {
   display: flex;
   flex-direction: column;
+}
+
+.container,
+.infoSection,
+.cafeInfoWrapper,
+.dropdown,
+.cafeHours {
+  width: 100%;
+}
+
+.wrapper, 
+.cafeContainer {
+  justify-content: center;
+  align-items: center;
+}
+
+.cafeName,
+.cafeInfo {
+  padding: 20px;
+}
+
+.container {
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
   min-height: 100vh;
-  width: 100%;
   @media (min-width: 1280px) {
     padding: 0px 20px;
   }
-}
-
-.wrapper {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .loadingSpinner {
@@ -24,38 +45,25 @@ $_text_size_mobile: 18px;
   top: 40%;
 }
 
-.cafeContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
 .cafeTitle {
   display: flex;
   justify-content: flex-start;
-}
-
-.cafeTitle h1 {
-  font-size: 25px;
-  @media (min-width: 600px) {
-    font-size: 30px;
+  & h1 {
+    font-size: 25px;
+    @media (min-width: 600px) {
+      font-size: 30px;
+    }
+    @media (min-width: 1024px) {
+      font-size: 35px;
+    }
   }
-  @media (min-width: 1024px) {
-    font-size: 35px;
+  & .cafeName {
+    font-weight: 600;
   }
-}
-
-.cafeName {
-  font-weight: 600;
-  padding: 15px;
 }
 
 .infoSection {
-  display: flex;
-  flex-direction: column;
   justify-content: space-between;
-  width: 100%;
   @media (min-width: 1280px) {
     flex-direction: row;
   }
@@ -71,17 +79,10 @@ $_text_size_mobile: 18px;
 }
 
 .cafeInfoWrapper {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
   @media (min-width: 1280px) {
     padding-right: 20px;
     width: 50%;
   }
-}
-
-.cafeStatus label {
-  font-size: $_text_size_mobile;
 }
 
 .cafeInfoWrapper h3 {
@@ -100,7 +101,6 @@ $_text_size_mobile: 18px;
   border-bottom: solid 3px var(--light-grey);
   width: 100%;
   height: auto;
-  padding: 20px;
   margin-top: 20px;
   @media (min-width: 1280px) {
     border-radius: 10px;
@@ -108,65 +108,28 @@ $_text_size_mobile: 18px;
   }
 }
 
-.cafeAddress {
-  display: flex;
-  flex-direction: column;
+.cafeDetails {
   align-items: flex-start;
   padding: 0px 10px;
   width: 100%;
-}
-
-.cafeAddress p {
-  font-size: $_text_size_mobile;
-}
-
-.cafeStatus label {
-  font-size: $_text_size_mobile;
-}
-
-.cafePriceLabel {
-  display: flex;
-}
-
-.busynessIcon {
-  transform: scale(1.0);
-  margin-top: -5px;
-  margin-left: 5px;
-}
-
-.noisinessIcon {
-  transform: scale(1.15);
-  margin-top: -5px;
-  margin-left: 5px;
-}
-
-.priceIconGroup {
-  margin-left: 13px;
-}
-
-.priceIcon {
-  transform: scale(1.0);
-  margin-top: -5px;
-  margin-left: -12px;
+  & p {
+    font-size: $_text_size_mobile;
+  }
+  & .cafePriceLabel {
+    display: flex;
+    flex-direction: row;
+  }  
 }
 
 .dropdown {
   display: flex;
   flex-direction: row;
-  width: 100%;
-}
-
-.cafeDays {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding-left: 15px;
-}
-
-.cafeHours {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  width: 100%;
-  padding-left: 50px;
+  & .cafeDays {
+    align-items: flex-start;
+    padding-left: 15px;
+  }
+  & .cafeHours {
+    align-items: flex-start;
+    padding-left: 50px;
+  }
 }

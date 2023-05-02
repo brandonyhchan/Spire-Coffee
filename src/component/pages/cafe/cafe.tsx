@@ -4,6 +4,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getCafeInfo } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
+import {
+  renderBusyIcon,
+  renderNoiseIcon,
+  renderPrice,
+} from "component/common/Icons/Icons";
 
 import Navbar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
@@ -14,15 +19,6 @@ import ImageCarousel from "./Carousel/ImageCarousel";
 import Map from "./Map/map";
 import Report from "./Report/Report";
 
-import HourglassEmptyRoundedIcon from "@mui/icons-material/HourglassEmptyRounded";
-import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRounded";
-import HourglassFullRoundedIcon from "@mui/icons-material/HourglassFullRounded";
-
-import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
-import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
-import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
-
-import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 
@@ -65,67 +61,6 @@ const CafePage = () => {
     setFavourite(!favourite); // on refresh favourite is false, this bug needs to be fixed
   };
 
-  function renderBusynessLevel() {
-    if (cafe?.busyness === "LOW") {
-      return (
-        <HourglassEmptyRoundedIcon
-          className={classNames(styles.busynessIcon)}
-        />
-      );
-    } else if (cafe?.busyness === "MEDIUM") {
-      return (
-        <HourglassBottomRoundedIcon
-          className={classNames(styles.busynessIcon)}
-        />
-      );
-    } else if (cafe?.busyness === "HIGH") {
-      return (
-        <HourglassFullRoundedIcon className={classNames(styles.busynessIcon)} />
-      );
-    }
-  }
-
-  function renderNoisinessLevel() {
-    if (cafe?.noisiness === "LOW") {
-      return (
-        <VolumeMuteRoundedIcon className={classNames(styles.noisinessIcon)} />
-      );
-    } else if (cafe?.noisiness === "MEDIUM") {
-      return (
-        <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
-      );
-    } else if (cafe?.noisiness === "HIGH") {
-      return (
-        <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
-      );
-    }
-  }
-
-  function renderPrice() {
-    if (cafe?.price === "LOW") {
-      return (
-        <div className={classNames(styles.priceIconGroup)}>
-          <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-        </div>
-      );
-    } else if (cafe?.price === "MEDIUM") {
-      return (
-        <div className={classNames(styles.priceIconGroup)}>
-          <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-          <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-        </div>
-      );
-    } else if (cafe?.price === "HIGH") {
-      return (
-        <div className={classNames(styles.priceIconGroup)}>
-          <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-          <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-          <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-        </div>
-      );
-    }
-  }
-
   return (
     <React.Fragment>
       <Helmet title={cafe?.name} />
@@ -145,10 +80,9 @@ const CafePage = () => {
               <div className={classNames(styles.infoSection)}>
                 <ImageCarousel />
                 <div className={classNames(styles.cafeInfoWrapper)}>
-                  {/* put into strings */}
                   <h3>{strings.cafe.cafeInformation}</h3>
                   <div className={classNames(styles.cafeInfo)}>
-                    <div className={classNames(styles.cafeAddress)}>
+                    <div className={classNames(styles.cafeDetails)}>
                       <p>{cafe?.street}</p>
                       <p>
                         {cafe?.city}
@@ -186,15 +120,15 @@ const CafePage = () => {
                       {/* these might be turned into sliders after */}
                       <label className={classNames(styles.cafeBusynessLabel)}>
                         {strings.cafe.busynessLabel}
-                        {renderBusynessLevel()}
+                        {renderBusyIcon(cafe?.busyness)}
                       </label>
                       <label className={classNames(styles.cafeNoisinessLabel)}>
                         {strings.cafe.noisinessLabel}
-                        {renderNoisinessLevel()}
+                        {renderNoiseIcon(cafe?.noisiness)}
                       </label>
                       <label className={classNames(styles.cafePriceLabel)}>
                         {strings.cafe.priceLabel}
-                        {renderPrice()}
+                        {renderPrice(cafe?.price)}
                       </label>
                     </div>
                     <div

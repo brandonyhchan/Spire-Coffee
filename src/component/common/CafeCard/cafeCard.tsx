@@ -1,16 +1,10 @@
 import React from "react";
 import { Grid, Typography } from "@mui/material";
-
-import HourglassEmptyRoundedIcon from "@mui/icons-material/HourglassEmptyRounded";
-import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRounded";
-import HourglassFullRoundedIcon from "@mui/icons-material/HourglassFullRounded";
-
-import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
-import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
-import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
-
-import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
-
+import {
+  renderBusyIcon,
+  renderNoiseIcon,
+  renderPrice,
+} from "component/common/Icons/Icons";
 import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./cafeCard.module.scss";
@@ -39,76 +33,6 @@ const CafeCard = ({
   noisiness,
   price,
 }: CafeCardPropsType) => {
-  const getNoisinessIcon = (icon: string) => {
-    switch (icon) {
-      case "LOW":
-        return (
-          <VolumeMuteRoundedIcon className={classNames(styles.noisinessIcon)} />
-        );
-      case "MEDIUM":
-        return (
-          <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
-        );
-      case "HIGH":
-        return (
-          <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
-        );
-      default:
-        return "LOW";
-    }
-  };
-
-  const getBusynessIcon = (icon: string) => {
-    switch (icon) {
-      case "LOW":
-        return (
-          <HourglassEmptyRoundedIcon
-            className={classNames(styles.busynessIcon)}
-          />
-        );
-      case "MEDIUM":
-        return (
-          <HourglassBottomRoundedIcon
-            className={classNames(styles.busynessIcon)}
-          />
-        );
-      case "HIGH":
-        return (
-          <HourglassFullRoundedIcon
-            className={classNames(styles.busynessIcon)}
-          />
-        );
-      default:
-        return "LOW";
-    }
-  };
-
-  const getPriceIcon = (icon: string) => {
-    switch (icon) {
-      case "LOW":
-        return (
-          <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-        );
-      case "MEDIUM":
-        return (
-          <div>
-            <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-            <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-          </div>
-        );
-      case "HIGH":
-        return (
-          <div>
-            <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-            <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-            <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
-          </div>
-        );
-      default:
-        return "LOW";
-    }
-  };
-
   const mobileSize = useMediaQuery("(min-width) and (max-width:600px)");
   const xsMobileSize = useMediaQuery("(max-width:299px)");
 
@@ -151,15 +75,15 @@ const CafeCard = ({
         </Grid>
         <div className={classNames(styles.cafeCardIcons)}>
           <div className={classNames(styles.busyness)}>
-            {getBusynessIcon(busyness)}
+            {renderBusyIcon(busyness)}
             <label>{strings.cafe.busynessLabel}</label>
           </div>
           <div className={classNames(styles.noisiness)}>
-            {getNoisinessIcon(noisiness)}
+            {renderNoiseIcon(noisiness)}
             <label>{strings.cafe.noisinessLabel}</label>
           </div>
           <div className={classNames(styles.priceIconGroup)}>
-            {getPriceIcon(price)}
+            {renderPrice(price)}
           </div>
         </div>
       </div>

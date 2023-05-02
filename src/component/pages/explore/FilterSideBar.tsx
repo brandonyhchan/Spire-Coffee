@@ -2,23 +2,18 @@ import React, { useState, ChangeEvent, MouseEventHandler } from "react";
 import RadioFilter, {
   SelectOptions,
 } from "component/common/Filter/FilterType/RadioFilter";
-import CheckboxFilter from "component/common/Filter/FilterType/CheckboxFilter";
-import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
+import {
+  busyOptions,
+  noiseOptions,
+  renderBusyIcon,
+  renderNoiseIcon,
+} from "component/common/Icons/Icons";
 import Button from "component/common/Button";
-
+import CheckboxFilter from "component/common/Filter/FilterType/CheckboxFilter";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
-
-import HourglassEmptyRoundedIcon from "@mui/icons-material/HourglassEmptyRounded";
-import HourglassBottomRoundedIcon from "@mui/icons-material/HourglassBottomRounded";
-import HourglassFullRoundedIcon from "@mui/icons-material/HourglassFullRounded";
-
-import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
-import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
-import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
-
+import FilterByDistanceSlider from "./exploreFilters/filterByDistanceSlider";
 import classNames from "classnames";
 import strings from "config/strings";
-//import styles from "./explore.module.scss";
 import styles from "./filterSideBar.module.scss";
 
 type FilterSideBarPropsType = {
@@ -48,18 +43,6 @@ const FilterSideBar = ({
   showMobileFilters,
   mobileFiltersOpen,
 }: FilterSideBarPropsType) => {
-  const busyOptions = [
-    strings.list.busyness1,
-    strings.list.busyness2,
-    strings.list.busyness3,
-  ];
-
-  const noiseOptions = [
-    strings.list.noisiness1,
-    strings.list.noisiness2,
-    strings.list.noisiness3,
-  ];
-
   const [busynessChecked, setBusynessChecked] = useState("");
   const [noisinessChecked, setNoisinessChecked] = useState("");
 
@@ -86,46 +69,6 @@ const FilterSideBar = ({
     }
     setNoisinessChecked(option);
   };
-
-  function renderBusyIcon(option: string) {
-    if (option === busyOptions[0]) {
-      return (
-        <HourglassEmptyRoundedIcon
-          className={classNames(styles.busynessIcon)}
-        />
-      );
-    } else if (option === busyOptions[1]) {
-      return (
-        <HourglassBottomRoundedIcon
-          className={classNames(styles.busynessIcon)}
-        />
-      );
-    } else if (option === busyOptions[2]) {
-      return (
-        <HourglassFullRoundedIcon className={classNames(styles.busynessIcon)} />
-      );
-    } else {
-      return undefined;
-    }
-  }
-
-  function renderNoiseIcon(option: string) {
-    if (option === noiseOptions[0]) {
-      return (
-        <VolumeMuteRoundedIcon className={classNames(styles.noisinessIcon)} />
-      );
-    } else if (option === noiseOptions[1]) {
-      return (
-        <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
-      );
-    } else if (option === noiseOptions[2]) {
-      return (
-        <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
-      );
-    } else {
-      return undefined;
-    }
-  }
 
   const closeFilterOnClick = () => {
     showMobileFilters();
