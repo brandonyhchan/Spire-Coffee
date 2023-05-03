@@ -147,32 +147,31 @@ const Explore = () => {
                 {strings.explore.filter.filterTitle}
               </h2>
             </div>
-            {renderFilterSidebar(mobileFilters)}
+            {mobileFilters ? null : renderFilterSidebar(mobileFilters)}
           </div>
         )}
         <div className={classNames(styles.searchContainer)}>
           {showExplorePage && (
-            <>
-              <div className={classNames(styles.searchBarContainer)}>
-                <SearchBar
-                  showCloseButton={showCloseButton}
-                  query={searchCafeName}
-                  handleClick={handleClick}
-                  handleQuery={handleSearchQuery}
+            <div className={classNames(styles.searchBarContainer)}>
+              <SearchBar
+                showCloseButton={showCloseButton}
+                query={searchCafeName}
+                handleClick={handleClick}
+                handleQuery={handleSearchQuery}
+              />
+              <div className={classNames(styles.mobileFilter)}>
+                <TuneIcon
+                  className={classNames(styles.filterIcon)}
+                  onClick={showMobileFilters}
                 />
-                <div className={classNames(styles.mobileFilter)}>
-                  <TuneIcon
-                    className={classNames(styles.filterIcon)}
-                    onClick={showMobileFilters}
-                  />
-                </div>
               </div>
               {!mobileFilters ? null : renderFilterSidebar(mobileFilters)}
-            </>
+            </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>
-            {loading && <LoadingSpinner />}
-            {showExplorePage && (
+            {loading ? (
+              <LoadingSpinner />
+            ) : (
               <div className={classNames(styles.searchWrapper)}>
                 <div className={classNames(styles.cafeCardWrapper)}>
                   {error && (
