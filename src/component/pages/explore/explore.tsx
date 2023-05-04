@@ -116,6 +116,8 @@ const Explore = () => {
     }
   };
 
+  const result = window.matchMedia("(max-width: 900px)");
+
   function renderFilterSidebar(mobileFilter: boolean) {
     return (
       <FilterSideBar
@@ -173,7 +175,9 @@ const Explore = () => {
                   onClick={showMobileFilters}
                 />
               </div>
-              {!mobileFilters ? null : renderFilterSidebar(mobileFilters)}
+              {!mobileFilters && result.matches
+                ? null
+                : renderFilterSidebar(mobileFilters)}
             </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>

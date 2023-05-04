@@ -146,28 +146,20 @@ const FilterSideBar = ({
 
   return (
     <div className={classNames(styles.filterBarContainer)}>
-      <CloseRoundedIcon
-        className={classNames(styles.closeFiltersButton)}
-        sx={{
-          display: "none",
-          "@media (max-width: 280px)": {
-            display: "inline-block",
-            margin: "25px 0 0 200px",
-            fontSize: "30px",
-          },
-          "@media (min-width: 281px) and (max-width: 500px)": {
-            display: "inline-block",
-            margin: "25px 0 0 300px",
-            fontSize: "30px",
-          },
-          "@media (min-width: 501px) and (max-width: 600px)": {
-            display: "inline-block",
-            margin: "25px 0 0 425px",
-            fontSize: "30px",
-          },
-        }}
-        onClick={closeFilterOnClick}
-      />
+      <div className={classNames(styles.closeButtonContainer)}>
+        <CloseRoundedIcon
+          className={classNames(styles.closeFiltersButton)}
+          sx={{
+            display: "none",
+            "@media (min-width: 280px) and (max-width: 900px)": {
+              display: "inline-block",
+              margin: "25px 25px 0 0",
+              fontSize: "30px",
+            },
+          }}
+          onClick={closeFilterOnClick}
+        />
+      </div>
       <form>
         <FilterByDistanceSlider
           filterSelection={distanceFilter}
