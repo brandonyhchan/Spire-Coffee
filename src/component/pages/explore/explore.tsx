@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { returnAllCafeQuery } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
@@ -30,7 +30,10 @@ const Explore = () => {
   const [showExplorePage, setShowExplorePage] = useState(false);
 
   const [mobileFilters, setMobileFilters] = useState<boolean>(false);
-  const [searchCafeName, setSearchCafeName] = useState("");
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchCafeName, setSearchCafeName] = useState(
+    searchParams.get("search") || ""
+  );
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
@@ -83,6 +86,7 @@ const Explore = () => {
 
   const handleSearchQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchCafeName(event.target.value);
+    setSearchParams({ search: event.target.value });
     setShowCloseButton(true);
   };
 
