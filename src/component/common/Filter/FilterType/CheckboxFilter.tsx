@@ -36,7 +36,6 @@ const CheckboxFilter = ({
     const updatedCheckedState = checked.map((item, index) =>
       index === position ? !item : item
     );
-
     setChecked(updatedCheckedState);
   };
 

@@ -11,6 +11,8 @@ type DistanceFilterSliderPropsType = {
   handleFilter(data: number): void;
   mobileFiltersOpen: boolean;
   errorMessage: string;
+  searchParams: URLSearchParams;
+  setSearchParams(data: URLSearchParams): void;
 };
 
 const distanceValue = [
@@ -41,6 +43,8 @@ const FilterByDistanceSlider = ({
   handleFilter,
   mobileFiltersOpen,
   errorMessage,
+  searchParams,
+  setSearchParams,
 }: DistanceFilterSliderPropsType) => {
   function valueText(distanceValue: number) {
     return `${distanceValue}km`;
@@ -56,6 +60,8 @@ const FilterByDistanceSlider = ({
 
   //Gets the distance value to send to db
   const getDistance = (e: any, value: any) => {
+    searchParams.set("distance", value);
+    setSearchParams(searchParams);
     handleFilter(value);
   };
 
@@ -81,7 +87,9 @@ const FilterByDistanceSlider = ({
               fontFamily: "Figtree-Regular",
             }}
           />
-          <span className={classNames(styles.distanceErrorMessage)}>{errorMessage}</span>
+          <span className={classNames(styles.distanceErrorMessage)}>
+            {errorMessage}
+          </span>
         </Box>
       </Filter>
     </div>

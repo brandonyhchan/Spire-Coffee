@@ -33,6 +33,8 @@ type FilterSideBarPropsType = {
   showMobileFilters: () => void | null;
   mobileFiltersOpen: boolean;
   distanceFilterError: string;
+  searchParams: URLSearchParams;
+  setSearchParams(data: URLSearchParams): void;
 };
 
 const FilterSideBar = ({
@@ -48,6 +50,8 @@ const FilterSideBar = ({
   showMobileFilters,
   mobileFiltersOpen,
   distanceFilterError,
+  searchParams,
+  setSearchParams,
 }: FilterSideBarPropsType) => {
   const busyOptions = [
     strings.list.busyness1,
@@ -68,11 +72,15 @@ const FilterSideBar = ({
     const option = event.target.value;
     if (option === strings.list.busyness1) {
       setBusynessState(SelectOptions.LOW);
+      searchParams.set("busyness", SelectOptions.LOW);
     } else if (option === strings.list.busyness2) {
       setBusynessState(SelectOptions.MEDIUM);
+      searchParams.set("busyness", SelectOptions.MEDIUM);
     } else {
       setBusynessState(SelectOptions.HIGH);
+      searchParams.set("busyness", SelectOptions.HIGH);
     }
+    setSearchParams(searchParams);
     setBusynessChecked(option);
   };
 
@@ -80,11 +88,15 @@ const FilterSideBar = ({
     const option = event.target.value;
     if (option === strings.list.noisiness1) {
       setNoiseState(SelectOptions.LOW);
+      searchParams.set("noisiness", SelectOptions.LOW);
     } else if (option === strings.list.noisiness2) {
       setNoiseState(SelectOptions.MEDIUM);
+      searchParams.set("noisiness", SelectOptions.MEDIUM);
     } else {
       setNoiseState(SelectOptions.HIGH);
+      searchParams.set("noisiness", SelectOptions.HIGH);
     }
+    setSearchParams(searchParams);
     setNoisinessChecked(option);
   };
 
@@ -162,6 +174,8 @@ const FilterSideBar = ({
           handleFilter={setDistanceFilter}
           mobileFiltersOpen={mobileFiltersOpen}
           errorMessage={distanceFilterError}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
         <RadioFilter
           options={busyOptions}

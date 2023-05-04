@@ -28,8 +28,8 @@ const Explore = () => {
 
   const [showCloseButton, setShowCloseButton] = useState(false);
   const [showExplorePage, setShowExplorePage] = useState(false);
-
   const [mobileFilters, setMobileFilters] = useState<boolean>(false);
+
   const [searchParams, setSearchParams] = useSearchParams();
   const [searchCafeName, setSearchCafeName] = useState(
     searchParams.get("search") || ""
@@ -81,6 +81,7 @@ const Explore = () => {
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
     setSearchCafeName("");
+    setSearchParams({});
     setShowCloseButton(false);
   };
 
@@ -129,6 +130,8 @@ const Explore = () => {
         showMobileFilters={showMobileFilters}
         mobileFiltersOpen={mobileFilter}
         distanceFilterError={locationStatus}
+        searchParams={searchParams}
+        setSearchParams={setSearchParams}
       />
     );
   }
