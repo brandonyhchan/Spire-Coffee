@@ -118,27 +118,6 @@ const Explore = () => {
 
   const result = window.matchMedia("(max-width: 900px)");
 
-  function renderFilterSidebar(mobileFilter: boolean) {
-    return (
-      <FilterSideBar
-        busynessState={busynessLevel}
-        setBusynessState={setBusynessLevel}
-        noiseState={noiseLevel}
-        setNoiseState={setNoiseLevel}
-        priceFilter={priceOptions}
-        setPriceFilter={setPriceOptions}
-        distanceFilter={distance}
-        setDistanceFilter={setDistance}
-        handleClick={() => refetch}
-        showMobileFilters={showMobileFilters}
-        mobileFiltersOpen={mobileFilter}
-        distanceFilterError={locationStatus}
-        searchParams={searchParams}
-        setSearchParams={setSearchParams}
-      />
-    );
-  }
-
   return (
     <React.Fragment>
       <Helmet title={strings.explore.helmet} />
@@ -163,7 +142,22 @@ const Explore = () => {
                 {strings.explore.filter.filterTitle}
               </h2>
             </div>
-            {renderFilterSidebar(mobileFilters)}
+            <FilterSideBar
+              busynessState={busynessLevel}
+              setBusynessState={setBusynessLevel}
+              noiseState={noiseLevel}
+              setNoiseState={setNoiseLevel}
+              priceFilter={priceOptions}
+              setPriceFilter={setPriceOptions}
+              distanceFilter={distance}
+              setDistanceFilter={setDistance}
+              handleClick={() => refetch}
+              showMobileFilters={showMobileFilters}
+              mobileFiltersOpen={mobileFilters}
+              distanceFilterError={locationStatus}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
+            />
           </div>
         )}
         <div className={classNames(styles.searchContainer)}>
@@ -181,7 +175,6 @@ const Explore = () => {
                   onClick={showMobileFilters}
                 />
               </div>
-              {/* {!mobileFilters ? null : renderFilterSidebar(mobileFilters)} */}
             </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>
