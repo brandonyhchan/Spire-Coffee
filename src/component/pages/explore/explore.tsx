@@ -37,8 +37,9 @@ const Explore = () => {
   const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
-  const [distance, setDistance] = useState(25);
-
+  const [distance, setDistance] = useState(
+    Number(searchParams.get("distance")) || 25
+  );
   const [userLocation, setUserLocation] = useState<Location>();
   const [locationStatus, setLocationStatus] = useState("");
 
