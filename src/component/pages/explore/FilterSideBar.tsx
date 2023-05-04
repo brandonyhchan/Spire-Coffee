@@ -145,13 +145,13 @@ const FilterSideBar = ({
   };
 
   return (
-    <div className={classNames(styles.filterBarContainer)}>
+    <div>
       <div className={classNames(styles.closeButtonContainer)}>
         <CloseRoundedIcon
           className={classNames(styles.closeFiltersButton)}
           sx={{
             display: "none",
-            "@media (min-width: 280px) and (max-width: 900px)": {
+            "@media (min-width: 280px)": {
               display: "inline-block",
               margin: "25px 25px 0 0",
               fontSize: "30px",

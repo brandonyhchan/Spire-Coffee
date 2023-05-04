@@ -151,13 +151,19 @@ const Explore = () => {
         }
       >
         {showExplorePage && (
-          <div className={classNames(styles.filterContainer)}>
+          <div
+            className={
+              !mobileFilters
+                ? classNames(styles.filterContainer)
+                : classNames(styles.filterMobileContainer)
+            }
+          >
             <div>
               <h2 className={classNames(styles.filterTitle)}>
                 {strings.explore.filter.filterTitle}
               </h2>
             </div>
-            {mobileFilters ? null : renderFilterSidebar(mobileFilters)}
+            {renderFilterSidebar(mobileFilters)}
           </div>
         )}
         <div className={classNames(styles.searchContainer)}>
@@ -175,9 +181,7 @@ const Explore = () => {
                   onClick={showMobileFilters}
                 />
               </div>
-              {!mobileFilters && result.matches
-                ? null
-                : renderFilterSidebar(mobileFilters)}
+              {/* {!mobileFilters ? null : renderFilterSidebar(mobileFilters)} */}
             </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>
