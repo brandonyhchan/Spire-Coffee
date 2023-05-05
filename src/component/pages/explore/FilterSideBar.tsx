@@ -65,25 +65,21 @@ const FilterSideBar = ({
     strings.list.noisiness3,
   ];
 
-  const optionsString = [
-    SelectOptions.LOW,
-    SelectOptions.MEDIUM,
-    SelectOptions.HIGH,
-  ];
+  const options = [SelectOptions.LOW, SelectOptions.MEDIUM, SelectOptions.HIGH];
 
   const [busynessChecked, setBusynessChecked] = useState(
     searchParams?.get("busyness") || ""
   );
-  const [noisinessChecked, setNoisinessChecked] = useState("");
-
-  console.log(busynessChecked);
+  const [noisinessChecked, setNoisinessChecked] = useState(
+    searchParams?.get("noisiness") || ""
+  );
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
-    if (option === strings.list.busyness1) {
+    if (option === options[0]) {
       setBusynessState(SelectOptions.LOW);
       searchParams.set("busyness", SelectOptions.LOW);
-    } else if (option === strings.list.busyness2) {
+    } else if (option === options[1]) {
       setBusynessState(SelectOptions.MEDIUM);
       searchParams.set("busyness", SelectOptions.MEDIUM);
     } else {
@@ -96,10 +92,10 @@ const FilterSideBar = ({
 
   const handleNoisinessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
-    if (option === strings.list.noisiness1) {
+    if (option === options[0]) {
       setNoiseState(SelectOptions.LOW);
       searchParams.set("noisiness", SelectOptions.LOW);
-    } else if (option === strings.list.noisiness2) {
+    } else if (option === options[1]) {
       setNoiseState(SelectOptions.MEDIUM);
       searchParams.set("noisiness", SelectOptions.MEDIUM);
     } else {
@@ -111,19 +107,19 @@ const FilterSideBar = ({
   };
 
   function renderBusyIcon(option: string) {
-    if (option === busyOptions[0]) {
+    if (option === options[0]) {
       return (
         <HourglassEmptyRoundedIcon
           className={classNames(styles.busynessIcon)}
         />
       );
-    } else if (option === busyOptions[1]) {
+    } else if (option === options[1]) {
       return (
         <HourglassBottomRoundedIcon
           className={classNames(styles.busynessIcon)}
         />
       );
-    } else if (option === busyOptions[2]) {
+    } else if (option === options[2]) {
       return (
         <HourglassFullRoundedIcon className={classNames(styles.busynessIcon)} />
       );
@@ -133,15 +129,15 @@ const FilterSideBar = ({
   }
 
   function renderNoiseIcon(option: string) {
-    if (option === noiseOptions[0]) {
+    if (option === options[0]) {
       return (
         <VolumeMuteRoundedIcon className={classNames(styles.noisinessIcon)} />
       );
-    } else if (option === noiseOptions[1]) {
+    } else if (option === options[1]) {
       return (
         <VolumeDownRoundedIcon className={classNames(styles.noisinessIcon)} />
       );
-    } else if (option === noiseOptions[2]) {
+    } else if (option === options[2]) {
       return (
         <VolumeUpRoundedIcon className={classNames(styles.noisinessIcon)} />
       );
@@ -180,7 +176,7 @@ const FilterSideBar = ({
           setSearchParams={setSearchParams}
         />
         <RadioFilter
-          options={optionsString}
+          options={options}
           type="radio"
           text={strings.explore.filter.filterByBusyness}
           filterSelection={busynessState}
@@ -191,7 +187,7 @@ const FilterSideBar = ({
           label={busyOptions}
         />
         <RadioFilter
-          options={optionsString}
+          options={options}
           type="radio"
           text={strings.explore.filter.filterByNoiseLevel}
           filterSelection={noiseState}
@@ -202,7 +198,7 @@ const FilterSideBar = ({
           label={noiseOptions}
         />
         <CheckboxFilter
-          options={optionsString}
+          options={options}
           label={[
             strings.list.price1,
             strings.list.price2,
