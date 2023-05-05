@@ -24,19 +24,13 @@ export const noiseOptions = [
   strings.list.noisiness3,
 ];
 
-export function renderBusyIcon(option?: string) {
+export function renderBusyIcon(option?: string, className?: string) {
   if (option === busyOptions[0] || option === "LOW") {
-    return (
-      <HourglassEmptyRoundedIcon className={classNames(styles.busynessIcon)} />
-    );
+    return <HourglassEmptyRoundedIcon className={className} />;
   } else if (option === busyOptions[1] || option === "MEDIUM") {
-    return (
-      <HourglassBottomRoundedIcon className={classNames(styles.busynessIcon)} />
-    );
+    return <HourglassBottomRoundedIcon className={className} />;
   } else if (option === busyOptions[2] || option === "HIGH") {
-    return (
-      <HourglassFullRoundedIcon className={classNames(styles.busynessIcon)} />
-    );
+    return <HourglassFullRoundedIcon className={className} />;
   } else {
     return undefined;
   }
@@ -80,5 +74,42 @@ export function renderPrice(option?: string) {
         <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
       </div>
     );
+  }
+}
+
+// is there a way to make these less redundant?
+export function renderBusyText(option?: string) {
+  if (option === "LOW") {
+    return strings.list.busyness1;
+  } else if (option === "MEDIUM") {
+    return strings.list.busyness2;
+  } else if (option === "HIGH") {
+    return strings.list.busyness3;
+  } else {
+    return undefined;
+  }
+}
+
+export function renderNoiseText(option?: string) {
+  if (option === "LOW") {
+    return strings.list.noisiness1;
+  } else if (option === "MEDIUM") {
+    return strings.list.noisiness2;
+  } else if (option === "HIGH") {
+    return strings.list.noisiness3;
+  } else {
+    return undefined;
+  }
+}
+
+export function renderPriceText(option?: string) {
+  if (option === "LOW") {
+    return strings.list.priceText1;
+  } else if (option === "MEDIUM") {
+    return strings.list.priceText2;
+  } else if (option === "HIGH") {
+    return strings.list.priceText3;
+  } else {
+    return undefined;
   }
 }

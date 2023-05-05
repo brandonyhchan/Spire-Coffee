@@ -6,6 +6,7 @@ const strings = new LocalizedStrings({
       title: "SpireCoffee",
       space: " ",
       comma: ",",
+      semiColon: ":",
     },
     login: {
       button: "Login",
@@ -101,6 +102,9 @@ const strings = new LocalizedStrings({
       price1: "$",
       price2: "$$",
       price3: "$$$",
+      priceText1: "Not too expensive",
+      priceText2: "A little expensive",
+      priceText3: "Very expensive",
       amenities1: "Has outlets",
       amenities2: "Has tables",
       amenities3: "Has outdoor seating",
@@ -113,6 +117,8 @@ const strings = new LocalizedStrings({
       reportText:
         "Is this cafe currently busy and noisy? Help us report it live!",
       reportButton: "Report Status",
+      businessHours: "Business Hours",
+      noWebsite: "Website unavailable",
     },
   },
 });

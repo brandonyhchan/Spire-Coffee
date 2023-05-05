@@ -2,22 +2,30 @@ $_carousel_width_mobile: 100%;
 $_carousel_height_mobile: 250px;
 $_carousel_height_desktop: 500px;
 
-.carouselContainer,
-.carousel,
-.imageContainer {
-  width: $_carousel_width_mobile;
-  height: $_carousel_height_desktop;
-  @media (max-width: 600px) {
-    height: $_carousel_height_mobile;
-  }
-}
-
 .carouselContainer {
-  display: flex;
-  justify-content: center;
-  padding: 0px 20px;
-}
-
-.imageContainer {
-  object-fit: cover;
+  width: 100%;
+  position: absolute;
+  display: block;
+  height: auto;
+  & img {
+    width: 100%;
+    height: 470px;
+    display: block;
+    object-fit: cover;
+    @media (max-width: 414px) {
+      height: 220px;
+    }
+  }
+  & svg {
+    margin-top: -50%;
+    @media (max-width: 414px) {
+      margin-top: -225%;
+    }
+    @media (min-width: 1281px) {
+      margin-top: 0;
+    }
+  }
+  & span {
+    display: none;
+  }
 }

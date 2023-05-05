@@ -8,6 +8,9 @@ import {
   renderBusyIcon,
   renderNoiseIcon,
   renderPrice,
+  renderBusyText,
+  renderNoiseText,
+  renderPriceText,
 } from "component/common/Icons/Icons";
 
 import Navbar from "component/common/NavbarAndFooter/NavBar";
@@ -21,6 +24,9 @@ import Report from "./Report/Report";
 
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
+import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
+import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
+import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 
 import classNames from "classnames";
 import styles from "./cafe.module.scss";
@@ -61,6 +67,13 @@ const CafePage = () => {
     setFavourite(!favourite); // on refresh favourite is false, this bug needs to be fixed
   };
 
+  function renderLabel() {
+    if (cafe?.website) {
+      return cafe?.website;
+    }
+    return strings.cafe.noWebsite;
+  }
+
   return (
     <React.Fragment>
       <Helmet title={cafe?.name} />
@@ -78,7 +91,9 @@ const CafePage = () => {
             </div>
             <div className={classNames(styles.cafeContainer)}>
               <div className={classNames(styles.infoSection)}>
-                <ImageCarousel />
+                <div className={classNames(styles.imageContainer)}>
+                  <ImageCarousel />
+                </div>
                 <div className={classNames(styles.cafeInfoWrapper)}>
                   <h3>{strings.cafe.cafeInformation}</h3>
                   <div className={classNames(styles.cafeInfo)}>
@@ -92,44 +107,70 @@ const CafePage = () => {
                         {strings.global.space}
                         {cafe?.postalCode}
                       </p>
-                      <Dropdown text={"Hours of Operation"}>
-                        <div className={classNames(styles.dropdown)}>
-                          <div className={classNames(styles.cafeDays)}>
-                            <p>Monday:</p>
-                            <p>Tuesday:</p>
-                            <p>Wednesday:</p>
-                            <p>Thursday:</p>
-                            <p>Friday:</p>
-                            <p>Saturday:</p>
-                            <p>Sunday:</p>
-                          </div>
-                          <div className={classNames(styles.cafeHours)}>
-                            <p>8AM - 5PM</p>
-                            <p>8AM - 5PM</p>
-                            <p>8AM - 5PM</p>
-                            <p>8AM - 5PM</p>
-                            <p>10AM - 6PM</p>
-                            <p>10AM - 4PM</p>
-                            <p>11AM - 3PM</p>
-                          </div>
-                        </div>
-                      </Dropdown>
-                      <p>{cafe?.phoneNumber}</p>
+                      <div className={classNames(styles.labelContainer)}>
+                        <AccessTimeRoundedIcon />
+                        <label>
+                          <Dropdown text={strings.cafe.businessHours}>
+                            <div className={classNames(styles.dropdown)}>
+                              <div className={classNames(styles.cafeDays)}>
+                                <p>Monday:</p>
+                                <p>Tuesday:</p>
+                                <p>Wednesday:</p>
+                                <p>Thursday:</p>
+                                <p>Friday:</p>
+                                <p>Saturday:</p>
+                                <p>Sunday:</p>
+                              </div>
+                              <div className={classNames(styles.cafeHours)}>
+                                <p>8AM - 5PM</p>
+                                <p>8AM - 5PM</p>
+                                <p>8AM - 5PM</p>
+                                <p>8AM - 5PM</p>
+                                <p>10AM - 6PM</p>
+                                <p>10AM - 4PM</p>
+                                <p>11AM - 3PM</p>
+                              </div>
+                            </div>
+                          </Dropdown>
+                        </label>
+                      </div>
+                      <div className={classNames(styles.labelContainer)}>
+                        {<LocalPhoneRoundedIcon />}
+                        <label>{cafe?.phoneNumber}</label>
+                      </div>
                       {/* are we linking this to the external website */}
-                      <p>{cafe?.website}</p>
+                      <div className={classNames(styles.labelContainer)}>
+                        <LanguageRoundedIcon />
+                        <label>{renderLabel()}</label>
+                      </div>
                       {/* these might be turned into sliders after */}
-                      <label className={classNames(styles.cafeBusynessLabel)}>
-                        {strings.cafe.busynessLabel}
+                      <div className={classNames(styles.labelContainer)}>
                         {renderBusyIcon(cafe?.busyness)}
-                      </label>
-                      <label className={classNames(styles.cafeNoisinessLabel)}>
-                        {strings.cafe.noisinessLabel}
+                        <label>
+                          {strings.cafe.busynessLabel}
+                          {strings.global.semiColon}
+                          {strings.global.space}
+                          {renderBusyText(cafe?.busyness)}
+                        </label>
+                      </div>
+                      <div className={classNames(styles.labelContainer)}>
                         {renderNoiseIcon(cafe?.noisiness)}
-                      </label>
-                      <label className={classNames(styles.cafePriceLabel)}>
-                        {strings.cafe.priceLabel}
+                        <label>
+                          {strings.cafe.noisinessLabel}
+                          {strings.global.semiColon}
+                          {strings.global.space}
+                          {renderNoiseText(cafe?.noisiness)}
+                        </label>
+                      </div>
+                      <div className={classNames(styles.labelContainer)}>
                         {renderPrice(cafe?.price)}
-                      </label>
+                        <label>
+                          {strings.cafe.priceLabel}
+                          {strings.global.semiColon}
+                          {strings.global.space}
+                          {renderPriceText(cafe?.price)}
+                        </label>
+                      </div>
                     </div>
                     <div
                       onClick={handleFavouriteButton}

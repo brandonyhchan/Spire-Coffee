@@ -73,8 +73,8 @@ $_card_size: 460px; // if changed, need to change in explore scss too
   display: flex;
   flex-direction: row;
   gap: 10px;
-  margin-left: -8px;
   margin-top: 3px;
+  margin-left: -5px;
   @media (min-width: 300px) and (max-width: 600px) {
     gap: 10px;
   }
@@ -93,41 +93,12 @@ $_card_size: 460px; // if changed, need to change in explore scss too
       padding-left: 0;
     }
   }
-}
-
-.noisinessIcon {
-  transform: scale(1.5);
-  padding-right: 5px;
-  margin-top: -3px;
-  @media (max-width: 299px) {
-    transform: scale(1.20);
-    padding-right: 0;
+  & .iconLabel {
+    display: flex;
+    flex-direction: row;
   }
-}
-
-.busynessIcon {
-  transform: scale(1.2);
-  padding-right: 5px;
-  margin-top: -4px;
-  @media (max-width: 299px) {
-    transform: scale(1);
-    padding-right: 0;
-  }
-}
-
-.priceIconGroup  {
-  transform: scale(1.0);
-  @media (max-width: 299px) {
-    transform: scale(0.8);
-    margin-left: 3px;
-    margin-bottom: 8px;
-  }
-  & .priceIcon {
-    margin: -6px !important;
-    margin-top: -10px !important;
-    @media (max-width: 299px) {
-      margin-top: 0 !important;
-    }
+  .noisinessLabel {
+    padding-right: 10px;
   }
 }
 

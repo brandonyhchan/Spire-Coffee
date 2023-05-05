@@ -74,13 +74,17 @@ const CafeCard = ({
           </Typography>
         </Grid>
         <div className={classNames(styles.cafeCardIcons)}>
-          <div className={classNames(styles.busyness)}>
+          <div className={classNames(styles.iconLabel)}>
             {renderBusyIcon(busyness)}
-            <label>{strings.cafe.busynessLabel}</label>
+            <div>
+              <label>{strings.cafe.busynessLabel}</label>
+            </div>
           </div>
-          <div className={classNames(styles.noisiness)}>
+          <div className={classNames(styles.iconLabel)}>
             {renderNoiseIcon(noisiness)}
-            <label>{strings.cafe.noisinessLabel}</label>
+            <label className={classNames(styles.noisinessLabel)}>
+              {strings.cafe.noisinessLabel}
+            </label>
           </div>
           <div className={classNames(styles.priceIconGroup)}>
             {renderPrice(price)}

@@ -35,8 +35,11 @@ $_text_size_mobile: 18px;
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
   min-height: 100vh;
-  @media (min-width: 1280px) {
-    padding: 0px 20px;
+  @media (min-width: 961px) and (max-width: 1280px) {
+    padding: 0px 100px;
+  }
+  @media (min-width: 1281px) {
+    padding: 0px 150px;
   }
 }
 
@@ -79,9 +82,19 @@ $_text_size_mobile: 18px;
 }
 
 .cafeInfoWrapper {
-  @media (min-width: 1280px) {
+  @media (min-width: 961px) and (max-width: 1280px) {
+    padding-right: 20px;
+    width: 100%;
+  }
+  @media (min-width: 1281px) and (max-width: 1800px) {
     padding-right: 20px;
     width: 50%;
+    padding-left: 80px;
+  }
+  @media (min-width: 1801px) {
+    padding-right: 20px;
+    width: 50%;
+    padding-left: 150px;
   }
 }
 
@@ -112,12 +125,20 @@ $_text_size_mobile: 18px;
   align-items: flex-start;
   padding: 0px 10px;
   width: 100%;
+  gap: 10px;
   & p {
     font-size: $_text_size_mobile;
   }
   & .cafePriceLabel {
     display: flex;
     flex-direction: row;
+  }
+  & .labelContainer {
+    display: flex;
+    flex-direction: row;
+    & label {
+      padding-left: 10px;
+    }
   }  
 }
 
@@ -131,5 +152,16 @@ $_text_size_mobile: 18px;
   & .cafeHours {
     align-items: flex-start;
     padding-left: 50px;
+  }
+}
+
+.imageContainer {
+  padding: 0px 20px;
+  @media (max-width: 414px) {
+    height: 250px;
+  }
+  @media (min-width: 1281px) {
+    width: 50%;
+    height: 100%;
   }
 }

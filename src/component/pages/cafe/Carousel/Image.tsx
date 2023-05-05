@@ -1,9 +1,9 @@
 import React from "react";
-import { Paper } from "@mui/material";
 import classNames from "classnames";
 import styles from "./ImageCarousel.module.scss";
 
 type ItemPropsType = {
+  className: string;
   item: {
     imagePath: string;
   };
@@ -11,13 +11,11 @@ type ItemPropsType = {
 
 const Image = (props: ItemPropsType) => {
   return (
-    <Paper>
-      <img
-        className={classNames(styles.imageContainer)}
-        src={props.item.imagePath}
-        alt={props.item.imagePath}
-      />
-    </Paper>
+    <img
+      className={classNames(styles.imageContainer)}
+      src={props.item.imagePath}
+      alt={props.item.imagePath}
+    />
   );
 };
 
