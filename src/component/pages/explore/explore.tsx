@@ -34,7 +34,9 @@ const Explore = () => {
   const [searchCafeName, setSearchCafeName] = useState(
     searchParams.get("search") || ""
   );
-  const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
+  const [busynessLevel, setBusynessLevel] = useState<SelectOptions | undefined>(
+    stringToEnum(searchParams.get("busyness"))
+  );
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
   const [distance, setDistance] = useState(
@@ -97,6 +99,16 @@ const Explore = () => {
     // * TO DO: refetch
     console.log("More results clicked");
   };
+
+  function stringToEnum(param: string | null): SelectOptions | undefined {
+    let intermediate = "";
+    if (param !== null) {
+      intermediate = param;
+      return Object.values(SelectOptions).find((item) => item === intermediate);
+    } else {
+      return undefined;
+    }
+  }
 
   const getLocation = () => {
     if (!navigator.geolocation) {
