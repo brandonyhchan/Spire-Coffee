@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, Link } from "react-router-dom";
 import { getCafeInfo } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
@@ -67,9 +67,24 @@ const CafePage = () => {
     setFavourite(!favourite); // on refresh favourite is false, this bug needs to be fixed
   };
 
-  function renderLabel() {
+  function renderWebsite() {
     if (cafe?.website) {
-      return cafe?.website;
+      return (
+        <a
+          href={strings.global.http + cafe?.website}
+          target="_blank"
+          rel="noreferrer"
+        >
+          {cafe?.website}
+        </a>
+      );
+    }
+    return <label>{strings.cafe.noWebsite}</label>;
+  }
+
+  function renderPhoneNumber() {
+    if (cafe?.phoneNumber) {
+      return cafe?.phoneNumber;
     }
     return strings.cafe.noWebsite;
   }
@@ -136,12 +151,12 @@ const CafePage = () => {
                       </div>
                       <div className={classNames(styles.labelContainer)}>
                         {<LocalPhoneRoundedIcon />}
-                        <label>{cafe?.phoneNumber}</label>
+                        <label>{renderPhoneNumber()}</label>
                       </div>
                       {/* are we linking this to the external website */}
                       <div className={classNames(styles.labelContainer)}>
                         <LanguageRoundedIcon />
-                        <label>{renderLabel()}</label>
+                        {renderWebsite()}
                       </div>
                       {/* these might be turned into sliders after */}
                       <div className={classNames(styles.labelContainer)}>

@@ -7,6 +7,7 @@ const strings = new LocalizedStrings({
       space: " ",
       comma: ",",
       semiColon: ":",
+      http: "https://",
     },
     login: {
       button: "Login",
@@ -119,6 +120,7 @@ const strings = new LocalizedStrings({
       reportButton: "Report Status",
       businessHours: "Business Hours",
       noWebsite: "Website unavailable",
+      noPhoneNumber: "Phone number unavailable",
     },
   },
 });
