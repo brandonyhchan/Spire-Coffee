@@ -65,8 +65,18 @@ const FilterSideBar = ({
     strings.list.noisiness3,
   ];
 
-  const [busynessChecked, setBusynessChecked] = useState("");
+  const optionsString = [
+    SelectOptions.LOW,
+    SelectOptions.MEDIUM,
+    SelectOptions.HIGH,
+  ];
+
+  const [busynessChecked, setBusynessChecked] = useState(
+    searchParams?.get("busyness") || ""
+  );
   const [noisinessChecked, setNoisinessChecked] = useState("");
+
+  console.log(busynessChecked);
 
   const handleBusynessFilter = (event: ChangeEvent<HTMLInputElement>) => {
     const option = event.target.value;
@@ -170,7 +180,7 @@ const FilterSideBar = ({
           setSearchParams={setSearchParams}
         />
         <RadioFilter
-          options={busyOptions}
+          options={optionsString}
           type="radio"
           text={strings.explore.filter.filterByBusyness}
           filterSelection={busynessState}
@@ -178,9 +188,10 @@ const FilterSideBar = ({
           handleFilter={handleBusynessFilter}
           renderIcon={renderBusyIcon}
           mobileFiltersOpen={mobileFiltersOpen}
+          label={busyOptions}
         />
         <RadioFilter
-          options={noiseOptions}
+          options={optionsString}
           type="radio"
           text={strings.explore.filter.filterByNoiseLevel}
           filterSelection={noiseState}
@@ -188,13 +199,10 @@ const FilterSideBar = ({
           handleFilter={handleNoisinessFilter}
           renderIcon={renderNoiseIcon}
           mobileFiltersOpen={mobileFiltersOpen}
+          label={noiseOptions}
         />
         <CheckboxFilter
-          options={[
-            SelectOptions.LOW,
-            SelectOptions.MEDIUM,
-            SelectOptions.HIGH,
-          ]}
+          options={optionsString}
           label={[
             strings.list.price1,
             strings.list.price2,
