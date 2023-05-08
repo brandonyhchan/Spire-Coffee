@@ -148,11 +148,6 @@ const Explore = () => {
                 : classNames(styles.filterMobileContainer)
             }
           >
-            <div>
-              <h2 className={classNames(styles.filterTitle)}>
-                {strings.explore.filter.filterTitle}
-              </h2>
-            </div>
             <FilterSideBar
               busynessState={busynessLevel}
               setBusynessState={setBusynessLevel}

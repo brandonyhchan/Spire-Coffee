@@ -53,6 +53,7 @@ const strings = new LocalizedStrings({
         filterByAmenities: "Amenities",
         filterTitle: "Filters",
         clearFilters: "Clear Filters",
+        applyFilters: "Apply Filters",
         sortBy: "Sort",
       },
       noResultsMessage:

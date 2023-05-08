@@ -152,20 +152,29 @@ const FilterSideBar = ({
 
   return (
     <div>
-      <div className={classNames(styles.closeButtonContainer)}>
-        <CloseRoundedIcon
-          className={classNames(styles.closeFiltersButton)}
-          sx={{
-            display: "none",
-            "@media (min-width: 280px)": {
-              display: "inline-block",
-              margin: "25px 25px 0 0",
-              fontSize: "30px",
-            },
-          }}
-          onClick={closeFilterOnClick}
-        />
-      </div>
+      {!mobileFiltersOpen && (
+        <div>
+          <h2 className={classNames(styles.filterTitle)}>
+            {strings.explore.filter.filterTitle}
+          </h2>
+        </div>
+      )}
+      {mobileFiltersOpen && (
+        <div className={classNames(styles.closeButtonContainer)}>
+          <CloseRoundedIcon
+            className={classNames(styles.closeFiltersButton)}
+            sx={{
+              display: "none",
+              "@media (min-width: 280px)": {
+                display: "inline-block",
+                margin: "25px 25px 0 0",
+                fontSize: "30px",
+              },
+            }}
+            onClick={closeFilterOnClick}
+          />
+        </div>
+      )}
       <form>
         <FilterByDistanceSlider
           filterSelection={distanceFilter}
@@ -211,6 +220,14 @@ const FilterSideBar = ({
           mobileFiltersOpen={mobileFiltersOpen}
         />
         <div className={classNames(styles.filterButtonWrapper)}>
+          {mobileFiltersOpen && (
+            <Button
+              text={strings.explore.filter.applyFilters}
+              type="filterApply"
+              buttonType="submit"
+              onClick={closeFilterOnClick}
+            />
+          )}
           <Button
             text={strings.explore.filter.clearFilters}
             type="filter"

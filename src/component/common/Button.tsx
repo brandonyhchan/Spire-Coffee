@@ -1,11 +1,11 @@
 import React, { MouseEventHandler } from "react";
 import classNames from "classnames";
-import styles from "./button.module.scss";
+import styles from "./Button.module.scss";
 
 type ButtonPropsType = {
   onClick?: MouseEventHandler;
   text?: string;
-  type?: "primary" | "secondary" | "navbar" | "filter";
+  type?: "primary" | "secondary" | "navbar" | "filter" | "filterApply";
   buttonType?: "button" | "submit" | "reset";
   className?: string;
   disabled?: boolean;
