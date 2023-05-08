@@ -35,6 +35,7 @@ const Report = () => {
               onClick={submitUserReport}
             />
             <Button
+              type="primaryOpposite"
               buttonType="reset"
               text={strings.cafe.cancelReportButton}
               onClick={submitUserReport}

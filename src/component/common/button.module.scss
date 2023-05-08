@@ -21,6 +21,22 @@
   }
 }
 
+.primaryOpposite {
+  background-color: rgba(255, 255, 255, 0.616);
+  color: var(--primary-dark);
+  padding: 10px;
+  width: 150px;
+  font-size: 18px;
+  border: solid 1px;
+
+  &:hover,
+  &:focus { 
+    background-color: var(--primary-dark);
+    cursor: pointer;
+    color: white;
+  }
+}
+
 .secondary {
   background-color: var(--secondary);
   color: white;
