@@ -7,14 +7,23 @@
   padding-top: 20px;
   font-family: 'Figtree-Regular';
   font-size: 18px;
+  padding-bottom: 20px;
+  width: 100%;
+  & Button {
+    margin-top: 20px;
+  }
   @media (min-width: 1280px) {
     font-size: 20px;
     & span {
       width: 325px;
     }
   }
-  padding-bottom: 20px;
-  & Button {
-    margin-top: 20px;
-  }
+}
+
+.showUserReportButtons {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 90%;
 }
