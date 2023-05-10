@@ -220,6 +220,12 @@ const FilterSideBar = ({
           mobileFiltersOpen={mobileFiltersOpen}
         />
         <div className={classNames(styles.filterButtonWrapper)}>
+          <Button
+            text={strings.explore.filter.clearFilters}
+            type="filter"
+            buttonType="submit"
+            onClick={handleClick}
+          />
           {mobileFiltersOpen && (
             <Button
               text={strings.explore.filter.applyFilters}
@@ -228,12 +234,6 @@ const FilterSideBar = ({
               onClick={closeFilterOnClick}
             />
           )}
-          <Button
-            text={strings.explore.filter.clearFilters}
-            type="filter"
-            buttonType="submit"
-            onClick={handleClick}
-          />
         </div>
       </form>
     </div>

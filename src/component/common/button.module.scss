@@ -64,6 +64,7 @@
   font-family:'Figtree-Regular';
   color: var(--dark-grey);
   border: solid 1px;
+  margin-right: 20px;
   background-color: rgba(255, 255, 255, 0.616);
   &:hover { 
     background-color: var(--secondary);
@@ -82,7 +83,6 @@
   color: white;
   border: solid 1px;
   background-color: var(--secondary);
-  margin-right: 20px;
   &:hover { 
     background-color: var(--secondary-dark);
     color: white;
