@@ -28,11 +28,15 @@ const ImageCarousel = () => {
           backgroundColor: "#f5f5f700",
           color: "white",
           borderRadius: 0,
+          width: "5px",
+          marginTop: "-100%",
         },
       }}
     >
       {items.map((item, index) => (
-        <img key={index} src={item.imagePath} alt={item.imagePath} />
+        <div key={index} className={classNames(styles.carouselWrapper)}>
+          <img src={item.imagePath} alt={item.imagePath} />
+        </div>
       ))}
     </Carousel>
   );

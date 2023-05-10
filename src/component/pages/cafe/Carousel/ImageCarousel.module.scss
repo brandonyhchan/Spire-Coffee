@@ -1,30 +1,19 @@
-$_carousel_width_mobile: 100%;
-$_carousel_height_mobile: 250px;
-$_carousel_height_desktop: 500px;
+.carouselWrapper {
+  display: flex;
+  justify-content: center;
+  width: auto;
+  height: 500px;
+  @media (max-width: 414px) {
+    height: 220px;
+  }
+  & img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
 
 .carouselContainer {
-  width: 100%;
-  position: absolute;
-  display: block;
-  height: auto;
-  & img {
-    width: 100%;
-    height: 470px;
-    display: block;
-    object-fit: cover;
-    @media (max-width: 414px) {
-      height: 220px;
-    }
-  }
-  & svg {
-    margin-top: -50%;
-    @media (max-width: 414px) {
-      margin-top: -225%;
-    }
-    @media (min-width: 1281px) {
-      margin-top: 0;
-    }
-  }
   & span {
     display: none;
   }

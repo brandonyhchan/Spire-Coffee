@@ -21,6 +21,7 @@ import Dropdown from "component/common/Dropdown/Dropdown";
 import ImageCarousel from "./Carousel/ImageCarousel";
 import Map from "./Map/map";
 import Report from "./Report/Report";
+import { businessHours } from "./cafeBusinessHours";
 
 import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
 import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
@@ -74,6 +75,7 @@ const CafePage = () => {
           href={strings.global.http + cafe?.website}
           target="_blank"
           rel="noreferrer"
+          className={classNames(styles.websiteLink)}
         >
           {cafe?.website}
         </a>
@@ -108,6 +110,7 @@ const CafePage = () => {
               <div className={classNames(styles.infoSection)}>
                 <div className={classNames(styles.imageContainer)}>
                   <ImageCarousel />
+                  <Map />
                 </div>
                 <div className={classNames(styles.cafeInfoWrapper)}>
                   <h3>{strings.cafe.cafeInformation}</h3>
@@ -126,31 +129,24 @@ const CafePage = () => {
                         <AccessTimeRoundedIcon />
                         <label>
                           <Dropdown text={strings.cafe.businessHours}>
-                            <div className={classNames(styles.dropdown)}>
-                              <div className={classNames(styles.cafeDays)}>
-                                <p>Monday:</p>
-                                <p>Tuesday:</p>
-                                <p>Wednesday:</p>
-                                <p>Thursday:</p>
-                                <p>Friday:</p>
-                                <p>Saturday:</p>
-                                <p>Sunday:</p>
+                            {businessHours.map((hours, index) => (
+                              <div
+                                key={index}
+                                className={classNames(styles.dropdownItem)}
+                              >
+                                <div className={classNames(styles.cafeDays)}>
+                                  <p>{hours.weekday}</p>
+                                </div>
+                                <div className={classNames(styles.cafeHours)}>
+                                  <p>{hours.hours}</p>
+                                </div>
                               </div>
-                              <div className={classNames(styles.cafeHours)}>
-                                <p>8AM - 5PM</p>
-                                <p>8AM - 5PM</p>
-                                <p>8AM - 5PM</p>
-                                <p>8AM - 5PM</p>
-                                <p>10AM - 6PM</p>
-                                <p>10AM - 4PM</p>
-                                <p>11AM - 3PM</p>
-                              </div>
-                            </div>
+                            ))}
                           </Dropdown>
                         </label>
                       </div>
                       <div className={classNames(styles.labelContainer)}>
-                        {<LocalPhoneRoundedIcon />}
+                        <LocalPhoneRoundedIcon />
                         <label>{renderPhoneNumber()}</label>
                       </div>
                       {/* are we linking this to the external website */}
@@ -178,7 +174,7 @@ const CafePage = () => {
                         </label>
                       </div>
                       <div className={classNames(styles.labelContainer)}>
-                        {renderPrice(cafe?.price)}
+                        {renderPrice()}
                         <label>
                           {strings.cafe.priceLabel}
                           {strings.global.semiColon}
@@ -202,7 +198,6 @@ const CafePage = () => {
                 </div>
               </div>
             </div>
-            <Map />
           </>
         ) : null}
       </div>

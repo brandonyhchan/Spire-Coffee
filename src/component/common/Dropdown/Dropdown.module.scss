@@ -13,4 +13,9 @@
   transform: scale(1.0);
   color: var(--dark-grey);
   cursor: pointer;
+  @media (min-width: 1280px) {
+    margin-top: 3px;
+    margin-left: 3px;
+    transform: scale(1.1);
+  }
 }

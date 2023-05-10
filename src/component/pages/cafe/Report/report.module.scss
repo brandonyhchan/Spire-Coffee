@@ -7,7 +7,13 @@
   padding-top: 20px;
   font-family: 'Figtree-Regular';
   font-size: 18px;
-  background-color: azure;
+  @media (min-width: 1280px) {
+    font-size: 20px;
+    & span {
+      width: 325px;
+    }
+  }
+  padding-bottom: 20px;
   & Button {
     margin-top: 20px;
   }

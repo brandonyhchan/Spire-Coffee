@@ -121,6 +121,7 @@ const strings = new LocalizedStrings({
       businessHours: "Business Hours",
       noWebsite: "Website unavailable",
       noPhoneNumber: "Phone number unavailable",
+      getDirections: "Get Directions",
     },
   },
 });

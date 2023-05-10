@@ -74,6 +74,8 @@ export function renderPrice(option?: string) {
         <AttachMoneyRoundedIcon className={classNames(styles.priceIcon)} />
       </div>
     );
+  } else {
+    return <AttachMoneyRoundedIcon />;
   }
 }
 

@@ -1,4 +1,5 @@
 $_text_size_mobile: 18px;
+$_text_size_desktop: 20px;
 
 .container,
 .wrapper,
@@ -29,6 +30,7 @@ $_text_size_mobile: 18px;
 .cafeName,
 .cafeInfo {
   padding: 20px;
+  font-family: 'Figtree-Regular';
 }
 
 .container {
@@ -87,11 +89,17 @@ $_text_size_mobile: 18px;
     width: 100%;
   }
   @media (min-width: 1281px) and (max-width: 1800px) {
+    position: sticky;
+    top: 64px;
+    align-self: flex-start;
     padding-right: 20px;
     width: 50%;
     padding-left: 80px;
   }
   @media (min-width: 1801px) {
+    position: sticky;
+    top: 64px;
+    align-self: flex-start;
     padding-right: 20px;
     width: 50%;
     padding-left: 150px;
@@ -101,8 +109,12 @@ $_text_size_mobile: 18px;
 .cafeInfoWrapper h3 {
   font-weight: 600;
   margin: 0;
+  font-family: 'Figtree-Regular';
   @media (max-width: 1279px) {
     display: none;
+  }
+  @media (min-width: 1280px) {
+    padding-top: 20px;
   }
 }
 
@@ -128,6 +140,9 @@ $_text_size_mobile: 18px;
   gap: 10px;
   & p {
     font-size: $_text_size_mobile;
+    @media (min-width: 1280px) {
+      font-size: $_text_size_desktop;
+    }
   }
   & .cafePriceLabel {
     display: flex;
@@ -138,23 +153,29 @@ $_text_size_mobile: 18px;
     flex-direction: row;
     & label {
       padding-left: 10px;
+      @media (min-width: 1280px) {
+        font-size: $_text_size_desktop;
+      }
     }
     & a {
       padding-left: 10px;
+      @media (min-width: 1280px) {
+        font-size: $_text_size_desktop;
+      }
     }
   }  
 }
 
-.dropdown {
+.dropdownItem {
   display: flex;
   flex-direction: row;
+  gap: 50px;
   & .cafeDays {
     align-items: flex-start;
     padding-left: 15px;
   }
   & .cafeHours {
-    align-items: flex-start;
-    padding-left: 50px;
+    align-items: flex-end;
   }
 }
 
@@ -166,5 +187,13 @@ $_text_size_mobile: 18px;
   @media (min-width: 1281px) {
     width: 50%;
     height: 100%;
+  }
+}
+
+.websiteLink {
+  text-decoration: none;
+  color: var(--dark-grey);
+  & :hover {
+    color: var(--blue);
   }
 }
