@@ -3,8 +3,6 @@ import FilterComponent from "component/common/Filter/FilterComponent/FilterCompo
 import FilterOption from "component/common/Filter/FilterOption/FilterOption";
 import classNames from "classnames";
 import styles from "component/common/Filter/FilterComponent/FilterComponent.module.scss";
-import { checkDEV } from "@apollo/client/utilities/globals";
-import { mergeOptions } from "@apollo/client";
 
 export enum SelectOptions {
   LOW = "LOW",

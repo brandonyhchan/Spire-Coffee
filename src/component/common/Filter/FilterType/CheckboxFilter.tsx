@@ -55,7 +55,7 @@ const CheckboxFilter = ({
           checkSearchParams(options);
         } else {
           handleFilter(filterSelection.filter((a) => a !== options));
-          uncheckSearchParams(options);
+          checkSearchParams(options);
         }
       }
       setSearchParams(searchParams);
@@ -66,22 +66,16 @@ const CheckboxFilter = ({
     const values = searchParams.getAll("price");
     if (!values.includes(options)) {
       searchParams.append("price", options);
-    }
-  }
-
-  function uncheckSearchParams(options: SelectOptions) {
-    const values = searchParams.getAll("price");
-    if (values.includes(options)) {
+    } else {
       values.splice(
         values.findIndex((e) => e === options),
         1
       );
-      console.log(values);
-    }
-    searchParams.delete("price");
-    if (values.length !== 0) {
-      for (let i = 0; i < values.length; i++) {
-        searchParams.append("price", values[i]);
+      searchParams.delete("price");
+      if (values.length !== 0) {
+        for (let i = 0; i < values.length; i++) {
+          searchParams.append("price", values[i]);
+        }
       }
     }
   }
