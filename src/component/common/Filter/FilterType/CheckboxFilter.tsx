@@ -89,7 +89,7 @@ const CheckboxFilter = ({
           text={item.label}
           type={type}
           value={item.option}
-          checked={checked[index]}
+          checked={searchParams.getAll("price")[index] || checked[index]}
           onChange={() => {
             handleOnChange(index);
             handlePriceCheckbox(index, checked, item.option);
