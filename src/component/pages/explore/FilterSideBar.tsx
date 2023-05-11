@@ -218,6 +218,8 @@ const FilterSideBar = ({
           filterSelection={priceFilter}
           handleFilter={setPriceFilter}
           mobileFiltersOpen={mobileFiltersOpen}
+          searchParams={searchParams}
+          setSearchParams={setSearchParams}
         />
         <div className={classNames(styles.filterButtonWrapper)}>
           <Button
