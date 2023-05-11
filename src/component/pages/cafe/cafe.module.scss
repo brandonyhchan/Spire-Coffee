@@ -24,10 +24,13 @@ $_text_size_desktop: 20px;
 .wrapper, 
 .cafeContainer {
   justify-content: center;
-  align-items: center;
 }
 
-.cafeName,
+.cafeName {
+  padding: 20px 0px;
+  font-family: 'Figtree-Regular';
+}
+
 .cafeInfo {
   padding: 20px;
   font-family: 'Figtree-Regular';
@@ -37,11 +40,31 @@ $_text_size_desktop: 20px;
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
   min-height: 100vh;
+  padding: 0px 10px;
+  @media (min-width: 540px) and (max-width: 819px) {
+    padding: 0px 40px;
+  }
+  @media (min-width: 820px) and (max-width: 960px) {
+    padding: 0px 70px;
+  }
   @media (min-width: 961px) and (max-width: 1280px) {
     padding: 0px 100px;
   }
-  @media (min-width: 1281px) {
+  @media (min-width: 1281px) and (max-width: 1860px) {
     padding: 0px 150px;
+  }
+  @media (min-width: 1861px) and (max-width: 2240px) {
+    padding: 0px 250px;
+  }
+  @media (min-width: 2241px) {
+    padding: 0px 300px;
+  }
+}
+
+.cafeContainer {
+  @media (min-width: 1281px) {
+    display: flex;
+    flex-direction: row;
   }
 }
 
@@ -67,13 +90,6 @@ $_text_size_desktop: 20px;
   }
 }
 
-.infoSection {
-  justify-content: space-between;
-  @media (min-width: 1280px) {
-    flex-direction: row;
-  }
-}
-
 .favouriteButton {
   transform: scale(1.2);
   cursor: pointer;
@@ -83,7 +99,7 @@ $_text_size_desktop: 20px;
   margin-top: -10px;
 }
 
-.cafeInfoWrapper {
+.cafeInfoContainer {
   @media (min-width: 961px) and (max-width: 1280px) {
     padding-right: 20px;
     width: 100%;
@@ -95,6 +111,7 @@ $_text_size_desktop: 20px;
     padding-right: 20px;
     width: 50%;
     padding-left: 80px;
+    padding-top: 80px;
   }
   @media (min-width: 1801px) {
     position: sticky;
@@ -103,18 +120,7 @@ $_text_size_desktop: 20px;
     padding-right: 20px;
     width: 50%;
     padding-left: 150px;
-  }
-}
-
-.cafeInfoWrapper h3 {
-  font-weight: 600;
-  margin: 0;
-  font-family: 'Figtree-Regular';
-  @media (max-width: 1279px) {
-    display: none;
-  }
-  @media (min-width: 1280px) {
-    padding-top: 20px;
+    padding-top: 80px;
   }
 }
 
@@ -126,7 +132,6 @@ $_text_size_desktop: 20px;
   border-bottom: solid 3px var(--light-grey);
   width: 100%;
   height: auto;
-  margin-top: 20px;
   @media (min-width: 1280px) {
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
@@ -181,9 +186,7 @@ $_text_size_desktop: 20px;
 
 .imageContainer {
   padding: 0px 20px;
-  @media (max-width: 414px) {
-    height: 250px;
-  }
+  padding-bottom: 10px;
   @media (min-width: 1281px) {
     width: 50%;
     height: 100%;
@@ -195,5 +198,19 @@ $_text_size_desktop: 20px;
   color: var(--dark-grey);
   & :hover {
     color: var(--blue);
+  }
+}
+
+.mobileMap {
+  padding-bottom: 20px;
+  @media (min-width: 1281px) {
+    display: none;
+  }
+}
+
+.desktopMap {
+  padding-bottom: 20px;
+  @media (max-width: 1280px) {
+    display: none;
   }
 }
