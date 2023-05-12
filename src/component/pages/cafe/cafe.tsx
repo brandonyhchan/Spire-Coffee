@@ -144,18 +144,16 @@ const CafePage = () => {
                         </Dropdown>
                       </label>
                     </div>
-                  </div>
-                  <div className={classNames(styles.rightSection)}>
                     <div className={classNames(styles.labelContainer)}>
                       <LocalPhoneRoundedIcon />
                       <label>{renderPhoneNumber()}</label>
                     </div>
-                    {/* are we linking this to the external website */}
                     <div className={classNames(styles.labelContainer)}>
                       <LanguageRoundedIcon />
                       {renderWebsite()}
                     </div>
-                    {/* these might be turned into sliders after */}
+                  </div>
+                  <div className={classNames(styles.rightSection)}>
                     <div className={classNames(styles.labelContainer)}>
                       {renderBusyIcon(cafe?.busyness)}
                       <label>
