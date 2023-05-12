@@ -25,6 +25,6 @@ export const businessHours = [
   },
   {
     weekday: "Sunday: ",
-    hours: "8AM - 5PM",
+    hours: "10AM - 11PM",
   },
 ];

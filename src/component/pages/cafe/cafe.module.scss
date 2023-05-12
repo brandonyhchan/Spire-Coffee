@@ -28,10 +28,10 @@ $_text_size_desktop: 20px;
   grid-template-rows: repeat(4, auto);
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
-  padding: 0px 10px;
+  padding: 0px 20px;
   @media (min-width: 1281px) {
     grid-template-columns: 50% 50%;
-    grid-template-rows: auto auto;
+    grid-template-rows: 635px auto;
   }
   @media (min-width: 540px) and (max-width: 819px) {
     padding: 0px 40px;
@@ -39,28 +39,27 @@ $_text_size_desktop: 20px;
   @media (min-width: 820px) and (max-width: 960px) {
     padding: 0px 70px;
   }
-  @media (min-width: 961px) and (max-width: 1280px) {
-    padding: 0px 100px;
+  @media (min-width: 961px) and (max-width: 1500px) {
+    padding: 0px 90px;
   }
-  @media (min-width: 1281px) and (max-width: 1860px) {
-    padding: 0px 150px;
+  @media (min-width: 1501px) and (max-width: 1860px) {
+    padding: 0px 200px;
   }
   @media (min-width: 1861px) and (max-width: 2240px) {
-    padding: 0px 250px;
+    padding: 0px 300px;
   }
   @media (min-width: 2241px) {
-    padding: 0px 300px;
+    padding: 0px 400px;
   }
 }
 
 .carouselContainer {
   @media (max-width: 1280px) {
-    padding: 0px 20px;
     padding-bottom: 10px;
   }
   @media (min-width: 1281px) {
     width: 100%;
-    height: 100%;
+    height: auto;
   }
   & .cafeTitle {
     display: flex;
@@ -85,11 +84,17 @@ $_text_size_desktop: 20px;
 .cafeInfo {
   display: flex;
   justify-content: space-between;
-  width: 80%;
+  width: 100%;
   height: auto;
-  padding: 20px;
   font-family: 'Figtree-Regular';
+  padding: 20px 0px;
+  border-color: grey;
+  border-top: solid 3px var(--light-grey);
+  border-bottom: solid 3px var(--light-grey);
   @media (min-width: 1281px) {
+    border: none;
+    padding: 50px;
+    width: 80%;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   }
@@ -97,25 +102,23 @@ $_text_size_desktop: 20px;
 
 .infoContainer {
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-color: grey;
-  border-top: solid 3px var(--light-grey);
-  border-bottom: solid 3px var(--light-grey);
+  width: 100%;
   @media (min-width: 1281px) {
     border: none;
-  }
-  @media (min-width: 961px) and (max-width: 1280px) {
+    padding-top: 80px;
   }
   @media (min-width: 1281px) and (max-width: 1800px) {
-    // position: sticky;
-    // top: 64px;
-    // align-self: flex-start;
+    position: sticky;
+    top: 64px;
+    align-self: flex-start;
   }
   @media (min-width: 1801px) {
-    // position: sticky;
-    // top: 64px;
-    // align-self: flex-start;
+    position: sticky;
+    top: 64px;
+    align-self: flex-start;
   }
   & .favouriteButton {
     transform: scale(1.2);
@@ -128,7 +131,10 @@ $_text_size_desktop: 20px;
     align-items: flex-start;
     justify-content: center;
     width: 100%;
-    gap: 10px;
+    @media (min-width: 768px) and (max-width: 1280px) {
+      flex-direction: row-reverse;
+      gap: 100px;
+    }
     & p {
       font-size: $_text_size_mobile;
       @media (min-width: 1280px) {
@@ -154,14 +160,20 @@ $_text_size_desktop: 20px;
           font-size: $_text_size_desktop;
         }
       }
-    }  
+    }
+    & .cafeAddress {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      align-items: flex-start;
+    }
   }
   & .dropdownItem {
     display: flex;
     flex-direction: row;
     gap: 50px;
     @media (max-width: 600px) {
-      gap: 10px;
+      gap: 30px;
     }
     & .cafeDays {
       align-items: flex-start;
@@ -189,5 +201,5 @@ $_text_size_desktop: 20px;
 }
 
 .mapContainer {
-  padding-bottom: 30px;
+  padding-bottom: 80px;
 }
