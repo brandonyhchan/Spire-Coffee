@@ -1,7 +1,7 @@
 .carouselWrapper {
   display: flex;
   justify-content: center;
-  width: auto;
+  width: 100%;
   height: 500px;
   @media (max-width: 414px) {
     height: 220px;

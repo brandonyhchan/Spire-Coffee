@@ -1,21 +1,15 @@
 $_text_size_mobile: 18px;
 $_text_size_desktop: 20px;
 
-.container,
 .wrapper,
 .cafeContainer,
-.infoSection,
 .cafeDetails,
-.cafeInfoWrapper,
 .cafeDays,
 .cafeHours {
   display: flex;
   flex-direction: column;
 }
 
-.container,
-.infoSection,
-.cafeInfoWrapper,
 .dropdown,
 .cafeHours {
   width: 100%;
@@ -26,21 +20,19 @@ $_text_size_desktop: 20px;
   justify-content: center;
 }
 
-.cafeName {
-  padding: 20px 0px;
-  font-family: 'Figtree-Regular';
-}
-
-.cafeInfo {
-  padding: 20px;
-  font-family: 'Figtree-Regular';
-}
-
 .container {
+  display: grid;
+  min-height: 100vh;
+  width: 100vw;
+  grid-template-columns: 100%;
+  grid-template-rows: repeat(4, auto);
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
-  min-height: 100vh;
   padding: 0px 10px;
+  @media (min-width: 1281px) {
+    grid-template-columns: 50% 50%;
+    grid-template-rows: auto auto;
+  }
   @media (min-width: 540px) and (max-width: 819px) {
     padding: 0px 40px;
   }
@@ -61,135 +53,115 @@ $_text_size_desktop: 20px;
   }
 }
 
-.cafeContainer {
+.carouselContainer {
+  padding: 0px 20px;
+  padding-bottom: 10px;
   @media (min-width: 1281px) {
-    display: flex;
-    flex-direction: row;
-  }
-}
-
-.loadingSpinner {
-  position: fixed;
-  top: 40%;
-}
-
-.cafeTitle {
-  display: flex;
-  justify-content: flex-start;
-  & h1 {
-    font-size: 25px;
-    @media (min-width: 600px) {
-      font-size: 30px;
-    }
-    @media (min-width: 1024px) {
-      font-size: 35px;
-    }
-  }
-  & .cafeName {
-    font-weight: 600;
-  }
-}
-
-.favouriteButton {
-  transform: scale(1.2);
-  cursor: pointer;
-  color: rgb(221, 71, 71);
-  padding-right: 10px;
-  height: 0;
-  margin-top: -10px;
-}
-
-.cafeInfoContainer {
-  @media (min-width: 961px) and (max-width: 1280px) {
-    padding-right: 20px;
     width: 100%;
+    height: 100%;
   }
-  @media (min-width: 1281px) and (max-width: 1800px) {
-    position: sticky;
-    top: 64px;
-    align-self: flex-start;
-    padding-right: 20px;
-    width: 50%;
-    padding-left: 80px;
-    padding-top: 80px;
-  }
-  @media (min-width: 1801px) {
-    position: sticky;
-    top: 64px;
-    align-self: flex-start;
-    padding-right: 20px;
-    width: 50%;
-    padding-left: 150px;
-    padding-top: 80px;
+  & .cafeTitle {
+    display: flex;
+    justify-content: flex-start;
+    & h1 {
+      font-size: 25px;
+      @media (min-width: 600px) {
+        font-size: 30px;
+      }
+      @media (min-width: 1024px) {
+        font-size: 35px;
+      }
+    }
+    & .cafeName {
+      padding: 20px 0px;
+      font-family: 'Figtree-Regular';
+      font-weight: 600;
+    }
   }
 }
 
-.cafeInfo {
+.infoContainer {
   display: flex;
   justify-content: space-between;
   border-color: grey;
   border-top: solid 3px var(--light-grey);
   border-bottom: solid 3px var(--light-grey);
   width: 100%;
-  height: auto;
-  @media (min-width: 1280px) {
+  height: 100%;
+  padding: 20px;
+  font-family: 'Figtree-Regular';
+  @media (min-width: 1281px) {
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   }
-}
-
-.cafeDetails {
-  align-items: flex-start;
-  padding: 0px 10px;
-  width: 100%;
-  gap: 10px;
-  & p {
-    font-size: $_text_size_mobile;
-    @media (min-width: 1280px) {
-      font-size: $_text_size_desktop;
-    }
+  @media (min-width: 961px) and (max-width: 1280px) {
+    padding-right: 20px;
   }
-  & .cafePriceLabel {
-    display: flex;
-    flex-direction: row;
+  @media (min-width: 1281px) and (max-width: 1800px) {
+    position: sticky;
+    top: 64px;
+    align-self: flex-start;
+    padding-right: 20px;
   }
-  & .labelContainer {
-    display: flex;
-    flex-direction: row;
-    & label {
-      padding-left: 10px;
-      @media (min-width: 1280px) {
-        font-size: $_text_size_desktop;
-      }
-    }
-    & a {
-      padding-left: 10px;
-      @media (min-width: 1280px) {
-        font-size: $_text_size_desktop;
-      }
-    }
-  }  
-}
-
-.dropdownItem {
-  display: flex;
-  flex-direction: row;
-  gap: 50px;
-  & .cafeDays {
+  @media (min-width: 1801px) {
+    position: sticky;
+    top: 64px;
+    align-self: flex-start;
+    padding-right: 20px;
+  }
+  & .favouriteButton {
+    transform: scale(1.2);
+    cursor: pointer;
+    color: rgb(221, 71, 71);
+    height: 0;
+    margin-top: -10px;
+  }
+  & .cafeDetails {
     align-items: flex-start;
-    padding-left: 15px;
+    justify-content: center;
+    width: 100%;
+    gap: 10px;
+    & p {
+      font-size: $_text_size_mobile;
+      @media (min-width: 1280px) {
+        font-size: $_text_size_desktop;
+      }
+    }
+    & .cafePriceLabel {
+      display: flex;
+      flex-direction: row;
+    }
+    & .labelContainer {
+      display: flex;
+      flex-direction: row;
+      & label {
+        padding-left: 10px;
+        @media (min-width: 1280px) {
+          font-size: $_text_size_desktop;
+        }
+      }
+      & a {
+        padding-left: 10px;
+        @media (min-width: 1280px) {
+          font-size: $_text_size_desktop;
+        }
+      }
+    }  
   }
-  & .cafeHours {
-    align-items: flex-end;
-  }
-}
-
-.imageContainer {
-  padding: 0px 20px;
-  padding-bottom: 10px;
-  @media (min-width: 1281px) {
-    width: 50%;
-    height: 100%;
+  & .dropdownItem {
+    display: flex;
+    flex-direction: row;
+    gap: 50px;
+    @media (max-width: 600px) {
+      gap: 10px;
+    }
+    & .cafeDays {
+      align-items: flex-start;
+      padding-left: 15px;
+    }
+    & .cafeHours {
+      align-items: flex-end;
+    }
   }
 }
 
@@ -201,16 +173,13 @@ $_text_size_desktop: 20px;
   }
 }
 
-.mobileMap {
-  padding-bottom: 20px;
+.reportContainer {
   @media (min-width: 1281px) {
-    display: none;
+    grid-column-start: 2;
+    grid-row-start: 2;
   }
 }
 
-.desktopMap {
-  padding-bottom: 20px;
-  @media (max-width: 1280px) {
-    display: none;
-  }
+.mapContainer {
+  padding-bottom: 30px;
 }
