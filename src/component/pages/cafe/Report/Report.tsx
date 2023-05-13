@@ -23,10 +23,10 @@ const Report = () => {
   }
 
   return (
-    <div className={classNames(styles.reportContainer)}>
+    <div className={classNames(styles.reportWrapper)}>
       <span>{strings.cafe.reportText}</span>
       {showUserReport && (
-        <div className={classNames(styles.reportContainer)}>
+        <div className={classNames(styles.reportWrapper)}>
           <UserReport />
           <div className={classNames(styles.showUserReportButtons)}>
             <Button

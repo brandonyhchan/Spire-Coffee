@@ -11,7 +11,9 @@ $_text_size_desktop: 20px;
 }
 
 .dropdown,
-.cafeHours {
+.cafeHours,
+.leftSection,
+.rightSection {
   width: 100%;
 }
 
@@ -87,7 +89,7 @@ $_text_size_desktop: 20px;
   width: 100%;
   height: auto;
   font-family: 'Figtree-Regular';
-  padding: 20px 0px;
+  padding: 20px;
   border-color: grey;
   border-top: solid 3px var(--light-grey);
   border-bottom: solid 3px var(--light-grey);
@@ -133,7 +135,6 @@ $_text_size_desktop: 20px;
     width: 100%;
     @media (min-width: 768px) and (max-width: 1280px) {
       flex-direction: row;
-      gap: 100px;
     }
     & p {
       font-size: $_text_size_mobile;
@@ -186,10 +187,14 @@ $_text_size_desktop: 20px;
 }
 
 .websiteLink {
+  display: flex;
+  flex-direction: row;
   text-decoration: none;
   color: var(--dark-grey);
-  & :hover {
-    color: var(--blue);
+  font-family: 'Figtree-Regular';
+  & .redirectIcon {
+    padding-left: 5px;
+    margin-top: -1px;
   }
 }
 

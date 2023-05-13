@@ -28,6 +28,7 @@ import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
+import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
 
 import classNames from "classnames";
 import styles from "./cafe.module.scss";
@@ -78,6 +79,9 @@ const CafePage = () => {
           className={classNames(styles.websiteLink)}
         >
           {cafe?.website}
+          <div className={classNames(styles.redirectIcon)}>
+            <LaunchRoundedIcon />
+          </div>
         </a>
       );
     }
@@ -88,7 +92,7 @@ const CafePage = () => {
     if (cafe?.phoneNumber) {
       return cafe?.phoneNumber;
     }
-    return strings.cafe.noWebsite;
+    return strings.cafe.noPhoneNumber;
   }
 
   return (
