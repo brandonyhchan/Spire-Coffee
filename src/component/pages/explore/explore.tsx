@@ -21,6 +21,7 @@ import TuneIcon from "@mui/icons-material/Tune";
 import Button from "component/common/Button";
 import LoadingSpinner from "component/common/LoadingSpinner";
 import Logo from "assets/images/placeholder-logo.jpg";
+import Pagination from "@mui/material/Pagination";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -220,11 +221,18 @@ const Explore = () => {
                 </div>
                 {cafes.length === 0 ? null : (
                   <div className={classNames(styles.seeMoreButtonWrapper)}>
-                    <Button
-                      buttonType="submit"
-                      type="primary"
-                      text={strings.explore.seeMoreResults}
-                      onClick={handleMoreResults}
+                    <Pagination
+                      page={1}
+                      count={10}
+                      // renderItem={(item) => (
+                      // <PaginationItem
+                      //   component={Link}
+                      //   to={`/inbox${
+                      //     item.page === 1 ? "" : `?page=${item.page}`
+                      //   }`}
+                      //   {...item}
+                      // />
+                      // )}
                     />
                   </div>
                 )}
