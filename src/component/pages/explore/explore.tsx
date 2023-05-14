@@ -47,6 +47,7 @@ const Explore = () => {
   const [locationStatus, setLocationStatus] = useState("");
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
+  const [pageNumber, setPageNumber] = useState(1);
 
   // refetch could be added in case needed
   const { loading, error, refetch } = useQuery(returnAllCafeQuery, {
@@ -64,6 +65,7 @@ const Explore = () => {
       priceFilter: priceOptions,
       distanceFilter: distance,
       userLocation: userLocation,
+      currentPage: pageNumber,
     },
   });
 

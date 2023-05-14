@@ -44,6 +44,7 @@ export const returnAllCafeQuery = gql`
     $priceFilter: [filterOptions]
     $distanceFilter: Int
     $userLocation: locationInput
+    $currentPage: Int
   ) {
     returnAllCafes(
       filterByName: $filterByName
@@ -52,6 +53,7 @@ export const returnAllCafeQuery = gql`
       priceFilter: $priceFilter
       distanceFilter: $distanceFilter
       userLocation: $userLocation
+      currentPage: $currentPage
     ) {
       id
       stringId
@@ -64,6 +66,7 @@ export const returnAllCafeQuery = gql`
       noisiness
       price
     }
+    getCafeCount
   }
 `;
 

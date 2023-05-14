@@ -45,7 +45,13 @@ export async function login(parent, args, context, info) {
 }
 
 export async function returnAllCafes(parent, args, context, info) {
+  const PER_PAGE = 12;
+
   const query = await context.prisma.cafe.findMany({
+    // adjust take to change the number initally returned
+    take: PER_PAGE,
+    skip: (args.currentPage - 1) * PER_PAGE,
+
     select: {
       id: true,
       stringId: true,
@@ -106,6 +112,10 @@ function calculateDistance(cafe: Cafe, args: Location): distance<Cafe> {
 
 function degToRad(deg: number): number {
   return deg * (Math.PI / 180);
+}
+
+export async function getCafeCount(parent, args, context, info) {
+  return context.prisma.cafe.count();
 }
 
 export async function getCafeInfo(parent, args, context, info) {

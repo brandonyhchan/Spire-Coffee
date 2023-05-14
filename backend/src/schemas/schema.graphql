@@ -19,6 +19,8 @@ type Query {
     priceFilter: [filterOptions]
     distanceFilter: Int
     userLocation: locationInput
+    currentPage: Int
   ): [Cafe]
+  getCafeCount: Int
   getCafeInfo(stringId: String!): Cafe
 }
