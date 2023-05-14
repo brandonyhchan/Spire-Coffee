@@ -12,7 +12,7 @@ import CafePage from "./component/pages/cafe/cafe";
 import "./App.scss";
 import Body from "./component/Body";
 import Login from "./component/pages/login/login";
-import SignUp from "./component/pages/sign-up/signUp";
+import SignUp from "./component/pages/signUp/signUp";
 
 function App() {
   return (

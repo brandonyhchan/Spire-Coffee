@@ -5,6 +5,7 @@ import { loginQuery } from "support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import Logo from "assets/images/placeholder-logo.jpg";
 import Button from "component/common/Button";
+import FormItem from "component/Form/FormItem";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import classNames from "classnames";
 import strings from "config/strings";
@@ -83,6 +84,10 @@ const Login = () => {
     });
   };
 
+  function renderErrorMessage(errorMessage: string) {
+    return errorMessage && <span>{errorMessage}</span>;
+  }
+
   return (
     <React.Fragment>
       <Helmet title={strings.login.helmet} />
@@ -97,30 +102,24 @@ const Login = () => {
         <div className={classNames(styles.loginContainer)}>
           <div className={classNames(styles.login)}>
             <form className={classNames(styles.loginForm)} noValidate>
-              <div className={classNames(styles.formItem)}>
-                <input
-                  type="text"
-                  placeholder={strings.login.usernameLabel}
-                  name="username"
-                  required
-                  onChange={handleChange}
-                  onBlur={validateLoginInput}
-                />
-                <label>{strings.login.usernameLabel}</label>
-                {errorMessage.username && <span>{errorMessage.username}</span>}
-              </div>
-              <div className={classNames(styles.formItem)}>
-                <input
-                  type="password"
-                  placeholder={strings.login.passwordLabel}
-                  name="password"
-                  required
-                  onChange={handleChange}
-                  onBlur={validateLoginInput}
-                />
-                <label>{strings.login.passwordLabel}</label>
-                {errorMessage.password && <span>{errorMessage.password}</span>}
-              </div>
+              <FormItem
+                className={styles.formItem}
+                type={"text"}
+                text={strings.login.usernameLabel}
+                name={"username"}
+                handleChange={handleChange}
+                validateLoginInput={validateLoginInput}
+                renderErrorMessage={renderErrorMessage(errorMessage.username)}
+              />
+              <FormItem
+                className={styles.formItem}
+                type={"password"}
+                text={strings.login.passwordLabel}
+                name={"password"}
+                handleChange={handleChange}
+                validateLoginInput={validateLoginInput}
+                renderErrorMessage={renderErrorMessage(errorMessage.password)}
+              />
             </form>
             {loginError && (
               <span className={classNames(styles.errorMessage)}>
