@@ -216,16 +216,16 @@ const Explore = () => {
                 </div>
               </div>
             )}
-            {loading ? undefined : (
-              <div className={classNames(styles.paginationWrapper)}>
-                <PaginationComponent
-                  currentPage={pageNumber}
-                  setCurrentPage={setPageNumber}
-                  itemCount={totalCafeCount}
-                />
-              </div>
-            )}
           </div>
+          {loading || cafes.length === 0 ? undefined : (
+            <div className={classNames(styles.paginationWrapper)}>
+              <PaginationComponent
+                currentPage={pageNumber}
+                setCurrentPage={setPageNumber}
+                itemCount={totalCafeCount}
+              />
+            </div>
+          )}
         </div>
       </div>
       <Footer />
