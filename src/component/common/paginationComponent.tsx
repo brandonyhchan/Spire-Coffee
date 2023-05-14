@@ -12,9 +12,10 @@ const paginationComponent = ({
   itemCount,
   setCurrentPage,
 }: PaginationPropsType) => {
-  const numPages = itemCount / 12;
+  const numPages = (itemCount % 12) + 1;
 
   const handleChange = (event: React.ChangeEvent<unknown>, value: number) => {
+    event.preventDefault();
     setCurrentPage(value);
   };
   return (
