@@ -68,7 +68,7 @@ const strings = new LocalizedStrings({
       helmet: "Who we are",
     },
     account: {
-      title: "Account Page",
+      title: "Account Information",
       helmet: "Account",
     },
     addCafe: {
