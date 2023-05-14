@@ -223,6 +223,8 @@ const Explore = () => {
                 currentPage={pageNumber}
                 setCurrentPage={setPageNumber}
                 itemCount={totalCafeCount}
+                searchParams={searchParams}
+                setSearchParams={setSearchParams}
               />
             </div>
           )}
