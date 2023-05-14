@@ -26,6 +26,7 @@ const Account = () => {
         <NavBar />
         <div className={classNames(styles.account)}>
           <p>{strings.account.title}</p>
+          <label>Username</label>
         </div>
         <Footer />
         <MobileFooter />
