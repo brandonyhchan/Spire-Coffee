@@ -18,10 +18,9 @@ import SearchBar from "component/common/SearchBar/searchBar";
 import CafeCard from "component/common/CafeCard/cafeCard";
 import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
-import Button from "component/common/Button";
 import LoadingSpinner from "component/common/LoadingSpinner";
 import Logo from "assets/images/placeholder-logo.jpg";
-import Pagination from "@mui/material/Pagination";
+import Pagination from "component/common/paginationComponent";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -48,6 +47,7 @@ const Explore = () => {
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
   const [pageNumber, setPageNumber] = useState(1);
+  const [totalCafeCount, setTotalCafeCount] = useState(1);
 
   // refetch could be added in case needed
   const { loading, error, refetch } = useQuery(returnAllCafeQuery, {
@@ -56,6 +56,7 @@ const Explore = () => {
     },
     onCompleted: (data) => {
       setCafes(data?.returnAllCafes);
+      setTotalCafeCount(data?.getCafeCount);
       setShowExplorePage(true);
     },
     variables: {
@@ -96,12 +97,6 @@ const Explore = () => {
     setShowCloseButton(true);
   };
 
-  const handleMoreResults = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    // * TO DO: refetch
-    console.log("More results clicked");
-  };
-
   function stringToEnum(param: string | null): SelectOptions | undefined {
     let intermediate = "";
     if (param !== null) {
@@ -129,8 +124,6 @@ const Explore = () => {
       );
     }
   };
-
-  const result = window.matchMedia("(max-width: 900px)");
 
   return (
     <React.Fragment>
@@ -221,20 +214,12 @@ const Explore = () => {
                     </div>
                   )}
                 </div>
-                {cafes.length === 0 ? null : (
+                {loading ? undefined : (
                   <div className={classNames(styles.seeMoreButtonWrapper)}>
                     <Pagination
-                      page={1}
-                      count={10}
-                      // renderItem={(item) => (
-                      // <PaginationItem
-                      //   component={Link}
-                      //   to={`/inbox${
-                      //     item.page === 1 ? "" : `?page=${item.page}`
-                      //   }`}
-                      //   {...item}
-                      // />
-                      // )}
+                      currentPage={pageNumber}
+                      setCurrentPage={setPageNumber}
+                      itemCount={totalCafeCount}
                     />
                   </div>
                 )}
