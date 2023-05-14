@@ -7,7 +7,7 @@ type PaginationPropsType = {
   setCurrentPage(data: number): void;
 };
 
-const paginationComponent = ({
+const PaginationComponent = ({
   currentPage,
   itemCount,
   setCurrentPage,
@@ -19,8 +19,13 @@ const paginationComponent = ({
     setCurrentPage(value);
   };
   return (
-    <Pagination page={currentPage} count={numPages} onChange={handleChange} />
+    <Pagination
+      page={currentPage}
+      count={numPages}
+      onChange={handleChange}
+      size="large"
+    />
   );
 };
 
-export default paginationComponent;
+export default PaginationComponent;

@@ -20,7 +20,7 @@ import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
 import LoadingSpinner from "component/common/LoadingSpinner";
 import Logo from "assets/images/placeholder-logo.jpg";
-import Pagination from "component/common/paginationComponent";
+import PaginationComponent from "component/common/paginationComponent";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -215,8 +215,8 @@ const Explore = () => {
                   )}
                 </div>
                 {loading ? undefined : (
-                  <div className={classNames(styles.seeMoreButtonWrapper)}>
-                    <Pagination
+                  <div className={classNames(styles.paginationWrapper)}>
+                    <PaginationComponent
                       currentPage={pageNumber}
                       setCurrentPage={setPageNumber}
                       itemCount={totalCafeCount}

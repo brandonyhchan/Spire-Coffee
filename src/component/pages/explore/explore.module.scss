@@ -143,10 +143,10 @@ $_card_size: 460px;
   overflow-y: hidden;
 }
 
-.seeMoreButtonWrapper {
-  padding-top: 20px;
-  & button {
-    width: 140px;
+.paginationWrapper {
+  padding-top: 50px;
+  & span {
+    width: 100%;
   }
 }
 
