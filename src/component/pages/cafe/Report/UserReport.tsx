@@ -1,18 +1,35 @@
+//We may be able to refactor this in the future to combine with icons.tsx
 import React, { useState } from "react";
 import classNames from "classnames";
-import styles from "./userReport.module.scss";
+import styles from "./report.module.scss";
 import strings from "config/strings";
-import Button from "component/common/Button";
-import BusynessSlider from "./userReportSliders/BusynessSlider";
 
-const UserReport = () => {
-  const [busyness, setBusyness] = useState(0);
+export const busynessSliderValue = [
+  {
+    value: 0,
+    label: strings.list.busyness1,
+  },
+  {
+    value: 1,
+    label: strings.list.busyness2,
+  },
+  {
+    value: 2,
+    label: strings.list.busyness3,
+  },
+];
 
-  return (
-    <div className={classNames(styles.userReportContainer)}>
-      <BusynessSlider filterSelection={busyness} handleFilter={setBusyness} />
-    </div>
-  );
-};
-
-export default UserReport;
+export const noisinessSliderValue = [
+  {
+    value: 0,
+    label: strings.list.noisiness1,
+  },
+  {
+    value: 1,
+    label: strings.list.noisiness2,
+  },
+  {
+    value: 2,
+    label: strings.list.noisiness3,
+  },
+];

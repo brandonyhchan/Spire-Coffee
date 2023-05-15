@@ -118,7 +118,7 @@ const strings = new LocalizedStrings({
       reportText:
         "Is this cafe currently busy and noisy? Help us report it live!",
       reportButton: "Report Status",
-      submitReportButton: "Submit Report",
+      submitReportButton: "Submit",
       cancelReportButton: "Cancel",
       businessHours: "Business Hours",
       noWebsite: "Website unavailable",

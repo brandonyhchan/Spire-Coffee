@@ -2,41 +2,33 @@ import React from "react";
 import { Slider } from "@mui/material";
 import classNames from "classnames";
 import strings from "config/strings";
-import styles from "./busynessSlider.module.scss";
+import styles from "./statusSlider.module.scss";
+import { Cafe } from "types/api/cafe";
 
-type BusynessSliderPropsType = {
+import { renderBusyIcon, renderBusyText } from "component/common/Icons/Icons";
+
+type StatusSliderPropsType = {
   filterSelection: number;
   handleFilter(data: number): void;
+  cafe: Cafe;
+  icon: JSX.Element | undefined;
+  optionValues: [{ value: number; label: string }];
 };
 
-const busynessValue = [
-  {
-    value: 0,
-    label: "low",
-  },
-  {
-    value: 1,
-    label: "medium",
-  },
-  {
-    value: 2,
-    label: "high",
-  },
-];
-
-const BusynessSlider = ({
+const StatusSlider = ({
   filterSelection,
   handleFilter,
-}: BusynessSliderPropsType) => {
-  function valueText(busynessValue: number) {
-    return `${busynessValue}`;
+  cafe,
+  icon,
+  optionValues,
+}: StatusSliderPropsType) => {
+  function valueText(value: number) {
+    return `${value}`;
   }
 
   function valueLabelFormat(value: number) {
     return (
-      busynessValue.findIndex(
-        (busynessValue) => busynessValue.value === value
-      ) + 1
+      optionValues.findIndex((optionValues) => optionValues.value === value) + 1
     );
   }
 
@@ -48,13 +40,16 @@ const BusynessSlider = ({
 
   return (
     <div className={classNames(styles.busynessSliderContainer)}>
-      <p className={classNames(styles.busynessTitle)}>Busyness</p>
+      <div className={classNames(styles.busynessTitleContainer)}>
+        {renderBusyIcon(cafe?.busyness)}
+        <p className={classNames(styles.busynessTitle)}>Busyness</p>
+      </div>
       <Slider
         aria-label="Restricted values"
         step={1}
         valueLabelFormat={valueLabelFormat}
         getAriaValueText={valueText}
-        marks={busynessValue}
+        marks={optionValues}
         min={0}
         max={2}
         value={filterSelection}
@@ -67,4 +62,4 @@ const BusynessSlider = ({
   );
 };
 
-export default BusynessSlider;
+export default StatusSlider;

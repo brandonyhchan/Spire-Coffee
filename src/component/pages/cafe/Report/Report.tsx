@@ -3,11 +3,18 @@ import classNames from "classnames";
 import styles from "./report.module.scss";
 import strings from "config/strings";
 import Button from "component/common/Button";
+import { Cafe } from "types/api/cafe";
+import StatusSlider from "./userReportSliders/StatusSlider";
+import { renderBusyIcon, renderNoiseIcon } from "component/common/Icons/Icons";
+import { busynessSliderValue, noisinessSliderValue } from "./userReport";
 
-import UserReport from "./UserReport";
+type ReportPropsType = {
+  cafe: Cafe;
+};
 
-const Report = () => {
+const Report = ({ cafe }: ReportPropsType) => {
   const [showUserReport, setShowUserReport] = useState(false);
+  const [busyness, setBusyness] = useState(0);
 
   function openUserReport(): void {
     setShowUserReport(true);
@@ -18,7 +25,7 @@ const Report = () => {
     setShowUserReport(false);
   }
 
-  function cancelReportButton(): void {
+  function cancelUserReport(): void {
     setShowUserReport(false);
   }
 
@@ -27,17 +34,25 @@ const Report = () => {
       <span>{strings.cafe.reportText}</span>
       {showUserReport && (
         <div className={classNames(styles.reportWrapper)}>
-          <UserReport />
-          <div className={classNames(styles.showUserReportButtons)}>
-            <Button
-              buttonType="submit"
-              text={strings.cafe.submitReportButton}
-              onClick={submitUserReport}
+          <div className={classNames(styles.userReportContainer)}>
+            <StatusSlider
+              cafe={cafe}
+              filterSelection={busyness}
+              handleFilter={setBusyness}
+              icon={renderBusyIcon()}
+              optionValues={busynessSliderValue}
             />
+          </div>
+          <div className={classNames(styles.showUserReportButtons)}>
             <Button
               type="primaryOpposite"
               buttonType="reset"
               text={strings.cafe.cancelReportButton}
+              onClick={cancelUserReport}
+            />
+            <Button
+              buttonType="submit"
+              text={strings.cafe.submitReportButton}
               onClick={submitUserReport}
             />
           </div>

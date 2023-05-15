@@ -199,7 +199,7 @@ const CafePage = () => {
                 </div>
               </div>
               <div className={classNames(styles.reportContainer)}>
-                <Report />
+                <Report cafe={cafe} />
               </div>
             </div>
             <div className={classNames(styles.mapContainer)}>
