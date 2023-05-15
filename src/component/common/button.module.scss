@@ -92,12 +92,13 @@
   border: 1px solid #999999;
   background-color: #cccccc;
   color: #666666;
-  cursor: none;
+  cursor: not-allowed;
 
   &:hover,
   &:focus {
     border: 1px solid #999999;
     background-color: #cccccc;
     color: #666666;
+    cursor: not-allowed;
   }
 }
