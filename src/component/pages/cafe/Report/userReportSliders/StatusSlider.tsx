@@ -10,9 +10,13 @@ import { renderBusyIcon, renderBusyText } from "component/common/Icons/Icons";
 type StatusSliderPropsType = {
   filterSelection: number;
   handleFilter(data: number): void;
-  cafe: Cafe;
+  cafe: Cafe | undefined;
   icon: JSX.Element | undefined;
-  optionValues: [{ value: number; label: string }];
+  optionValues: { value: number; label: string }[];
+  maxValue: number;
+  minValue: number;
+  step: number;
+  statusTitle: string;
 };
 
 const StatusSlider = ({
@@ -21,6 +25,10 @@ const StatusSlider = ({
   cafe,
   icon,
   optionValues,
+  maxValue,
+  minValue,
+  step,
+  statusTitle,
 }: StatusSliderPropsType) => {
   function valueText(value: number) {
     return `${value}`;
@@ -39,19 +47,19 @@ const StatusSlider = ({
   };
 
   return (
-    <div className={classNames(styles.busynessSliderContainer)}>
-      <div className={classNames(styles.busynessTitleContainer)}>
-        {renderBusyIcon(cafe?.busyness)}
-        <p className={classNames(styles.busynessTitle)}>Busyness</p>
+    <div className={classNames(styles.sliderContainer)}>
+      <div className={classNames(styles.titleContainer)}>
+        {icon}
+        <p className={classNames(styles.sliderTitle)}>{statusTitle}</p>
       </div>
       <Slider
         aria-label="Restricted values"
-        step={1}
+        step={step}
         valueLabelFormat={valueLabelFormat}
         getAriaValueText={valueText}
         marks={optionValues}
-        min={0}
-        max={2}
+        min={minValue}
+        max={maxValue}
         value={filterSelection}
         onChangeCommitted={getBusyness}
         sx={{

@@ -124,6 +124,9 @@ const strings = new LocalizedStrings({
       noWebsite: "Website unavailable",
       noPhoneNumber: "Phone number unavailable",
       getDirections: "Get Directions",
+      reportBusynessTitle: "Busyness",
+      reportNoisinessTitle: "Noisiness",
+      reportSubmitMessage: "Thank you! Your report has been submitted",
     },
   },
 });

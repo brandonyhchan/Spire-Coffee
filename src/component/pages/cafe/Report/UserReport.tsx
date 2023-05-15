@@ -33,3 +33,9 @@ export const noisinessSliderValue = [
     label: strings.list.noisiness3,
   },
 ];
+
+export const minValue = 0;
+
+export const maxValue = 2;
+
+export const step = 1;

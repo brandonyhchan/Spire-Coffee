@@ -6,23 +6,41 @@ import Button from "component/common/Button";
 import { Cafe } from "types/api/cafe";
 import StatusSlider from "./userReportSliders/StatusSlider";
 import { renderBusyIcon, renderNoiseIcon } from "component/common/Icons/Icons";
-import { busynessSliderValue, noisinessSliderValue } from "./userReport";
+import {
+  busynessSliderValue,
+  noisinessSliderValue,
+  maxValue,
+  minValue,
+  step,
+} from "./UserReport";
 
 type ReportPropsType = {
-  cafe: Cafe;
+  cafe: Cafe | undefined;
 };
 
 const Report = ({ cafe }: ReportPropsType) => {
   const [showUserReport, setShowUserReport] = useState(false);
   const [busyness, setBusyness] = useState(0);
+  const [noisiness, setNoisiness] = useState(0);
+  const [showSubmitMessage, setShowSubmitMessage] = useState(false);
+  const [disableReportButton, setDisableReportButton] = useState(false);
 
   function openUserReport(): void {
     setShowUserReport(true);
     console.log("Show the User Report");
   }
 
+  function removeSubmitMessage(): void {
+    setTimeout(() => {
+      setShowSubmitMessage(false);
+    }, 3000);
+  }
+
   function submitUserReport(): void {
     setShowUserReport(false);
+    setShowSubmitMessage(true);
+    // removeSubmitMessage();
+    setDisableReportButton(true);
   }
 
   function cancelUserReport(): void {
@@ -39,8 +57,23 @@ const Report = ({ cafe }: ReportPropsType) => {
               cafe={cafe}
               filterSelection={busyness}
               handleFilter={setBusyness}
-              icon={renderBusyIcon()}
+              icon={renderBusyIcon(cafe?.busyness)}
               optionValues={busynessSliderValue}
+              maxValue={maxValue}
+              minValue={minValue}
+              step={step}
+              statusTitle={strings.cafe.reportBusynessTitle}
+            />
+            <StatusSlider
+              cafe={cafe}
+              filterSelection={noisiness}
+              handleFilter={setNoisiness}
+              icon={renderNoiseIcon(cafe?.noisiness)}
+              optionValues={noisinessSliderValue}
+              maxValue={maxValue}
+              minValue={minValue}
+              step={step}
+              statusTitle={strings.cafe.reportNoisinessTitle}
             />
           </div>
           <div className={classNames(styles.showUserReportButtons)}>
@@ -53,22 +86,29 @@ const Report = ({ cafe }: ReportPropsType) => {
             <Button
               buttonType="submit"
               text={strings.cafe.submitReportButton}
-              onClick={cancelUserReport}
-            />
-            <Button
-              buttonType="submit"
-              text={strings.cafe.submitReportButton}
               onClick={submitUserReport}
             />
           </div>
         </div>
       )}
       {!showUserReport && (
-        <Button
-          buttonType="submit"
-          text={strings.cafe.reportButton}
-          onClick={openUserReport}
-        />
+        <div
+        // className={
+        //   disableReportButton ? classNames(styles.hideReportButton) : ""
+        // }
+        >
+          <Button
+            buttonType="submit"
+            text={strings.cafe.reportButton}
+            onClick={openUserReport}
+            disabled={disableReportButton}
+          />
+        </div>
+      )}
+      {showSubmitMessage && (
+        <div className={classNames(styles.reportSubmitMessage)}>
+          <p>{strings.cafe.reportSubmitMessage}</p>
+        </div>
       )}
     </div>
   );
