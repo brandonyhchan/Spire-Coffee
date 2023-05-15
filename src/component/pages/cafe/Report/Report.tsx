@@ -53,6 +53,11 @@ const Report = ({ cafe }: ReportPropsType) => {
             <Button
               buttonType="submit"
               text={strings.cafe.submitReportButton}
+              onClick={cancelUserReport}
+            />
+            <Button
+              buttonType="submit"
+              text={strings.cafe.submitReportButton}
               onClick={submitUserReport}
             />
           </div>
