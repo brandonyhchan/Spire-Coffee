@@ -4,6 +4,12 @@ const strings = new LocalizedStrings({
   en: {
     global: {
       title: "SpireCoffee",
+      usernameLabel: "Username",
+      firstNameLabel: "First Name",
+      lastNameLabel: "Last Name",
+      emailLabel: "Email Address",
+      passwordLabel: "Password",
+      verifyPasswordLabel: "Confirm Password",
     },
     login: {
       button: "Login",
@@ -12,8 +18,6 @@ const strings = new LocalizedStrings({
       text: `Don't have an account? `,
       link: "Sign up",
       helmet: "Login",
-      usernameLabel: "Username",
-      passwordLabel: "Password",
       errorMessage: {
         invalid: "Username or password is incorrect",
         username: "Username is required",
@@ -24,12 +28,6 @@ const strings = new LocalizedStrings({
       title: "Create an account",
       helmet: "Sign Up",
       buttonText: "Create account",
-      usernameLabel: "Username",
-      firstNameLabel: "First Name",
-      lastNameLabel: "Last Name",
-      emailLabel: "Email Address",
-      passwordLabel: "Password",
-      verifyPasswordLabel: "Confirm Password",
       errorMessage: {
         username: "Length must be 5-15 characters, letters and '_' allowed",
         firstName: "First name is required",

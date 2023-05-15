@@ -105,20 +105,22 @@ const Login = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                text={strings.login.usernameLabel}
+                placeholder={strings.global.usernameLabel}
+                text={strings.global.usernameLabel}
                 name={"username"}
                 handleChange={handleChange}
                 validateLoginInput={validateLoginInput}
-                renderErrorMessage={renderErrorMessage(errorMessage.username)}
+                errorMessage={renderErrorMessage(errorMessage.username)}
               />
               <FormItem
                 className={styles.formItem}
                 type={"password"}
-                text={strings.login.passwordLabel}
+                placeholder={strings.global.passwordLabel}
+                text={strings.global.passwordLabel}
                 name={"password"}
                 handleChange={handleChange}
                 validateLoginInput={validateLoginInput}
-                renderErrorMessage={renderErrorMessage(errorMessage.password)}
+                errorMessage={renderErrorMessage(errorMessage.password)}
               />
             </form>
             {loginError && (

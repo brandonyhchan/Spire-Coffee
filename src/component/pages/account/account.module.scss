@@ -8,18 +8,6 @@ $_large_font_size: 18px;
   color: var(--dark-grey);
 }
 
-.accountContainer {
-  flex: 1;
-  & .account,
-  .accountForm,
-  .formItem {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-}
-
 .title {
   display: flex;
   align-items: flex-start;
@@ -32,34 +20,70 @@ $_large_font_size: 18px;
   width: 100%;
 }
 
-// https://codepen.io/kod101/pen/gdjPaW
+.accountContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 40px;
+  padding: 40px;
+  & .account {
+    width: 600px;
+    @media (max-width: 600px) {
+      width: 400px;
+    }
+  }  
+}
+
+.logo {
+  width: 200px;
+}
+
+.logo > img {
+  width: 100%;
+  height: 100%;
+  clip-path: circle(100px);
+}
+
+.accountForm {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: row;
+  border: solid 2px #ccc;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.inputWrapper:focus-within {
+  border-color: var(--dark-grey);
+}
+
 .formItem {
   position: relative;
+  width: 100%;
   & input {
-    width: auto;
+    width: 100%;
     background: transparent;
-    border: solid 2px #ccc;
-    transition: all .3s ease;
     padding: 10px;
-    border-radius: 10px;
     font-family: 'Figtree-Regular';
     border-width: 2px;
     font-size: $_large_font_size;
-  }
-  & input:focus {
-    border-color: var(--dark-grey);
-  }
-  & label {
-    display: none;
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    height: 100%;
   }
   & input:focus::placeholder {
     color: transparent;
   }
-  & input:focus + label {
-    color: var(--dark-grey);
-  }
-  & input:focus + label,
-  input:valid + label {
+  & label {
     display: block;
     position: absolute;
     font-size: $_large_font_size;

@@ -124,7 +124,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                text={strings.login.usernameLabel}
+                placeholder={strings.global.usernameLabel}
+                text={strings.global.usernameLabel}
                 name={"username"}
                 value={userInfo.username}
                 handleChange={handleChange}
@@ -133,7 +134,7 @@ const SignUp = () => {
                     !regexValidator.validUsername.test(userInfo.username)
                   )
                 }
-                renderErrorMessage={renderErrorMessage(
+                errorMessage={renderErrorMessage(
                   !usernameIsValid,
                   strings.signUp.errorMessage.username
                 )}
@@ -141,7 +142,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                text={strings.signUp.firstNameLabel}
+                placeholder={strings.global.firstNameLabel}
+                text={strings.global.firstNameLabel}
                 name={"firstName"}
                 handleChange={handleChange}
                 validateLoginInput={() =>
@@ -149,7 +151,7 @@ const SignUp = () => {
                     !regexValidator.validFirstName.test(userInfo.firstName)
                   )
                 }
-                renderErrorMessage={renderErrorMessage(
+                errorMessage={renderErrorMessage(
                   !firstNameIsValid,
                   strings.signUp.errorMessage.firstName
                 )}
@@ -158,7 +160,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                text={strings.signUp.lastNameLabel}
+                placeholder={strings.global.lastNameLabel}
+                text={strings.global.lastNameLabel}
                 name={"lastName"}
                 handleChange={handleChange}
                 validateLoginInput={() =>
@@ -166,7 +169,7 @@ const SignUp = () => {
                     !regexValidator.validLastName.test(userInfo.lastName)
                   )
                 }
-                renderErrorMessage={renderErrorMessage(
+                errorMessage={renderErrorMessage(
                   !lastNameIsValid,
                   strings.signUp.errorMessage.lastName
                 )}
@@ -175,7 +178,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                text={strings.signUp.emailLabel}
+                placeholder={strings.global.emailLabel}
+                text={strings.global.emailLabel}
                 name={"email"}
                 handleChange={handleChange}
                 validateLoginInput={() =>
@@ -183,7 +187,7 @@ const SignUp = () => {
                     !regexValidator.validEmail.test(userInfo.email)
                   )
                 }
-                renderErrorMessage={renderErrorMessage(
+                errorMessage={renderErrorMessage(
                   !emailIsValid,
                   strings.signUp.errorMessage.email
                 )}
@@ -191,7 +195,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"password"}
-                text={strings.signUp.passwordLabel}
+                placeholder={strings.global.emailLabel}
+                text={strings.global.passwordLabel}
                 name={"password"}
                 handleChange={handleChange}
                 validateLoginInput={() =>
@@ -199,7 +204,7 @@ const SignUp = () => {
                     !regexValidator.validPassword.test(userInfo.password)
                   )
                 }
-                renderErrorMessage={renderErrorMessage(
+                errorMessage={renderErrorMessage(
                   !passwordIsValid,
                   strings.signUp.errorMessage.password,
                   strings.signUp.errorMessage.passwordChar
@@ -208,15 +213,16 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"password"}
-                text={strings.signUp.verifyPasswordLabel}
+                placeholder={strings.global.verifyPasswordLabel}
+                text={strings.global.verifyPasswordLabel}
                 name={"confPassword"}
                 handleChange={handleChange}
                 validateLoginInput={handlePassword}
-                renderErrorMessage={renderErrorMessage(
+                errorMessage={renderErrorMessage(
                   !passwordRequired,
                   strings.signUp.errorMessage.confPassword
                 )}
-                renderSecondErrorMessage={renderErrorMessage(
+                secondErrorMessage={renderErrorMessage(
                   !passwordMatch,
                   strings.signUp.errorMessage.passwordMatch
                 )}
