@@ -30,16 +30,9 @@ const Report = ({ cafe }: ReportPropsType) => {
     console.log("Show the User Report");
   }
 
-  function removeSubmitMessage(): void {
-    setTimeout(() => {
-      setShowSubmitMessage(false);
-    }, 3000);
-  }
-
   function submitUserReport(): void {
     setShowUserReport(false);
     setShowSubmitMessage(true);
-    // removeSubmitMessage();
     setDisableReportButton(true);
   }
 
@@ -54,7 +47,6 @@ const Report = ({ cafe }: ReportPropsType) => {
         <div className={classNames(styles.reportWrapper)}>
           <div className={classNames(styles.userReportContainer)}>
             <StatusSlider
-              cafe={cafe}
               filterSelection={busyness}
               handleFilter={setBusyness}
               icon={renderBusyIcon(cafe?.busyness)}
@@ -65,7 +57,6 @@ const Report = ({ cafe }: ReportPropsType) => {
               statusTitle={strings.cafe.reportBusynessTitle}
             />
             <StatusSlider
-              cafe={cafe}
               filterSelection={noisiness}
               handleFilter={setNoisiness}
               icon={renderNoiseIcon(cafe?.noisiness)}

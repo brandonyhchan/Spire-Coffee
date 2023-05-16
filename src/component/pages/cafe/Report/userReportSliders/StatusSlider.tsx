@@ -5,12 +5,9 @@ import strings from "config/strings";
 import styles from "./statusSlider.module.scss";
 import { Cafe } from "types/api/cafe";
 
-import { renderBusyIcon, renderBusyText } from "component/common/Icons/Icons";
-
 type StatusSliderPropsType = {
   filterSelection: number;
   handleFilter(data: number): void;
-  cafe: Cafe | undefined;
   icon: JSX.Element | undefined;
   optionValues: { value: number; label: string }[];
   maxValue: number;
@@ -22,7 +19,6 @@ type StatusSliderPropsType = {
 const StatusSlider = ({
   filterSelection,
   handleFilter,
-  cafe,
   icon,
   optionValues,
   maxValue,
