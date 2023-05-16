@@ -27,13 +27,13 @@ $_text_size_desktop: 20px;
   min-height: 100vh;
   width: 100%;
   grid-template-columns: 100%;
-  grid-template-rows: repeat(4, auto);
+  grid-template-rows: 80px repeat(4, auto);
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
   padding: 0px 20px;
   @media (min-width: 1281px) {
     grid-template-columns: 50% 50%;
-    grid-template-rows: 635px auto;
+    grid-template-rows: 80px auto auto;
   }
   @media (min-width: 540px) and (max-width: 819px) {
     padding: 0px 40px;
@@ -55,6 +55,30 @@ $_text_size_desktop: 20px;
   }
 }
 
+.cafeTitle {
+  display: flex;
+  justify-content: flex-start;
+  @media (min-width: 1281px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  & h1 {
+    font-size: 25px;
+    padding: 0;
+    @media (min-width: 600px) {
+      font-size: 30px;
+    }
+    @media (min-width: 1024px) {
+      font-size: 35px;
+    }
+  }
+  & .cafeName {
+    padding-top: 20px;
+    font-family: 'Figtree-Regular';
+    font-weight: 600;
+  }
+}
+
 .carouselContainer {
   @media (max-width: 1280px) {
     padding-bottom: 10px;
@@ -62,24 +86,6 @@ $_text_size_desktop: 20px;
   @media (min-width: 1281px) {
     width: 100%;
     height: auto;
-  }
-  & .cafeTitle {
-    display: flex;
-    justify-content: flex-start;
-    & h1 {
-      font-size: 25px;
-      @media (min-width: 600px) {
-        font-size: 30px;
-      }
-      @media (min-width: 1024px) {
-        font-size: 35px;
-      }
-    }
-    & .cafeName {
-      padding: 20px 0px;
-      font-family: 'Figtree-Regular';
-      font-weight: 600;
-    }
   }
 }
 
@@ -97,6 +103,7 @@ $_text_size_desktop: 20px;
     border: none;
     padding: 50px;
     width: 80%;
+    height: auto;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   }
@@ -108,20 +115,7 @@ $_text_size_desktop: 20px;
   align-items: center;
   justify-content: center;
   width: 100%;
-  @media (min-width: 1281px) {
-    border: none;
-    padding-top: 80px;
-  }
-  @media (min-width: 1281px) and (max-width: 1800px) {
-    position: sticky;
-    top: 64px;
-    align-self: flex-start;
-  }
-  @media (min-width: 1801px) {
-    position: sticky;
-    top: 64px;
-    align-self: flex-start;
-  }
+  height: 100%;
   & .favouriteButton {
     transform: scale(1.2);
     cursor: pointer;
@@ -199,12 +193,14 @@ $_text_size_desktop: 20px;
 }
 
 .reportContainer {
+  padding: 20px 0px;
   @media (min-width: 1281px) {
     grid-column-start: 2;
-    grid-row-start: 2;
+    grid-row-start: 3;
   }
 }
 
 .mapContainer {
+  padding-top: 20px;
   padding-bottom: 80px;
 }
