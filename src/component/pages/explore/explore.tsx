@@ -46,7 +46,9 @@ const Explore = () => {
   const [locationStatus, setLocationStatus] = useState("");
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
-  const [pageNumber, setPageNumber] = useState(1);
+  const [pageNumber, setPageNumber] = useState<number>(
+    Number(searchParams.get("page")) || 1
+  );
   const [totalCafeCount, setTotalCafeCount] = useState(1);
 
   // refetch could be added in case needed
@@ -106,6 +108,8 @@ const Explore = () => {
       return undefined;
     }
   }
+
+  console.log(totalCafeCount);
 
   const getLocation = () => {
     if (!navigator.geolocation) {
