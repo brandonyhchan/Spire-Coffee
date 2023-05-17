@@ -1,7 +1,5 @@
 //We may be able to refactor this in the future to combine with icons.tsx
-import React, { useState } from "react";
-import classNames from "classnames";
-import styles from "./report.module.scss";
+import React, { useState, ChangeEvent } from "react";
 import strings from "config/strings";
 
 export const busynessSliderValue = [

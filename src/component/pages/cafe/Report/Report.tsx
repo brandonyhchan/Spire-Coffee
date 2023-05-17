@@ -4,7 +4,7 @@ import styles from "./report.module.scss";
 import strings from "config/strings";
 import Button from "component/common/Button";
 import { Cafe } from "types/api/cafe";
-import StatusSlider from "./userReportSliders/StatusSlider";
+import StatusSlider from "component/common/StatusSlider/StatusSlider";
 import { renderBusyIcon, renderNoiseIcon } from "component/common/Icons/Icons";
 import {
   busynessSliderValue,
@@ -13,6 +13,7 @@ import {
   minValue,
   step,
 } from "./UserReport";
+import { SelectOptions } from "component/common/Filter/FilterType/RadioFilter";
 
 type ReportPropsType = {
   cafe: Cafe | undefined;
@@ -20,8 +21,8 @@ type ReportPropsType = {
 
 const Report = ({ cafe }: ReportPropsType) => {
   const [showUserReport, setShowUserReport] = useState(false);
-  const [busyness, setBusyness] = useState(0);
-  const [noisiness, setNoisiness] = useState(0);
+  const [busyness, setBusyness] = useState<SelectOptions>();
+  const [noisiness, setNoisiness] = useState<SelectOptions>();
   const [showSubmitMessage, setShowSubmitMessage] = useState(false);
   const [disableReportButton, setDisableReportButton] = useState(false);
 

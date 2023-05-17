@@ -4,10 +4,11 @@ import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./statusSlider.module.scss";
 import { Cafe } from "types/api/cafe";
+import { SelectOptions } from "../Filter/FilterType/RadioFilter";
 
 type StatusSliderPropsType = {
-  filterSelection: number;
-  handleFilter(data: number): void;
+  filterSelection: SelectOptions | undefined;
+  handleFilter(data: SelectOptions): void;
   icon: JSX.Element | undefined;
   optionValues: { value: number; label: string }[];
   maxValue: number;
@@ -42,6 +43,18 @@ const StatusSlider = ({
     console.log(value);
   };
 
+  function changeValueToNumber(filterSelection: SelectOptions | undefined) {
+    if (filterSelection === SelectOptions.LOW) {
+      return 0;
+    } else if (filterSelection === SelectOptions.MEDIUM) {
+      return 1;
+    } else if (filterSelection === SelectOptions.HIGH) {
+      return 2;
+    } else {
+      return undefined;
+    }
+  }
+
   return (
     <div className={classNames(styles.sliderContainer)}>
       <div className={classNames(styles.titleContainer)}>
@@ -56,7 +69,7 @@ const StatusSlider = ({
         marks={optionValues}
         min={minValue}
         max={maxValue}
-        value={filterSelection}
+        value={changeValueToNumber(filterSelection)}
         onChangeCommitted={getBusyness}
         sx={{
           fontFamily: "Figtree-Regular",

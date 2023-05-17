@@ -59,7 +59,10 @@ const FilterByDistanceSlider = ({
 
   return (
     <div className={classNames(styles.sliderFilterContainer)}>
-      <Filter text={strings.explore.filter.filterByDistance} mobileFiltersOpen={mobileFiltersOpen}>
+      <Filter
+        text={strings.explore.filter.filterByDistance}
+        mobileFiltersOpen={mobileFiltersOpen}
+      >
         <Box sx={{ width: 200 }}>
           <Slider
             aria-label="Restricted values"
