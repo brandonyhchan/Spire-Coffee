@@ -90,8 +90,8 @@ export const getCafeInfo = gql`
 `;
 
 export const getUserInfo = gql`
-  query getUserInfo($userName: String!) {
-    getUserInfo(userName: $userName) {
+  query getUserInfo($userId: String!) {
+    getUserInfo(userName: $userId) {
       userName
       email
       firstName
