@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { getUserInfo } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
+import { User } from "types/api/user";
 import classNames from "classnames";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
@@ -26,28 +27,21 @@ const Account = () => {
     }
   }, [navigate, token]);
 
-  const [userInfo, setUserInfo] = useState({
-    userName: userName,
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    confPassword: "",
-  });
+  const [user, setUser] = useState<User>();
 
   const { loading, error, refetch } = useQuery(getUserInfo, {
     onError: (error) => {
       throw error;
     },
     onCompleted: (data) => {
-      setUserInfo(data?.getUserInfo);
+      setUser(data?.getUserInfo);
     },
     variables: {
-      userName: userInfo.userName,
+      userName: userName,
     },
   });
 
-  console.log(userInfo.userName);
+  console.log(user);
 
   const [edit, setEdit] = useState<boolean>(false);
 
@@ -73,10 +67,10 @@ const Account = () => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
     const value = event.currentTarget.value;
-    setUserInfo({
-      ...userInfo,
-      [name]: value,
-    });
+    // setUserInfo({
+    //   ...userInfo,
+    //   [name]: value,
+    // });
   };
 
   const handleEditButton = () => {
@@ -86,8 +80,6 @@ const Account = () => {
   const handleSubmit = () => {
     console.log("Submit edit changes.");
   };
-
-  console.log(userInfo);
 
   return (
     <React.Fragment>
@@ -123,7 +115,7 @@ const Account = () => {
                 <FormItem
                   className={styles.formItem}
                   type={"text"}
-                  placeholder={userInfo.userName}
+                  placeholder={user?.userName}
                   text={strings.global.label.username}
                   name={"username"}
                   handleChange={handleChange}
@@ -145,7 +137,7 @@ const Account = () => {
                 <FormItem
                   className={styles.formItem}
                   type={"text"}
-                  placeholder={userInfo.email}
+                  placeholder={user?.email}
                   text={strings.global.label.email}
                   name={"email"}
                   handleChange={handleChange}
@@ -156,7 +148,7 @@ const Account = () => {
                 <FormItem
                   className={styles.formItem}
                   type={"text"}
-                  placeholder={userInfo.firstName}
+                  placeholder={user?.firstName}
                   text={strings.global.label.firstName}
                   name={"firstName"}
                   handleChange={handleChange}
@@ -167,7 +159,7 @@ const Account = () => {
                 <FormItem
                   className={styles.formItem}
                   type={"text"}
-                  placeholder={userInfo.lastName}
+                  placeholder={user?.lastName}
                   text={strings.global.label.lastName}
                   name={"lastName"}
                   handleChange={handleChange}
