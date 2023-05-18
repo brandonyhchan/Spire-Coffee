@@ -23,5 +23,5 @@ type Query {
   ): [Cafe]
   getCafeCount: Int
   getCafeInfo(stringId: String!): Cafe
-  getUserInfo(userId: String!): User
+  getUserInfo(userName: String!): User
 }

@@ -105,6 +105,6 @@ export async function getCafeInfo(parent, args, context, info) {
 }
 export async function getUserInfo(parent, args, context, info) {
     return context.prisma.user.findUnique({
-        where: { userId: args.userId },
+        where: { userName: args.userName },
     });
 }

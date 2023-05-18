@@ -33,6 +33,7 @@ const Login = () => {
     },
     onCompleted: (data) => {
       localStorage.setItem("authToken", data.login.token);
+      localStorage.setItem("userId", data.login.user.id);
       localStorage.setItem("userName", data.login.user.userName);
       setLoginError(false); // need to verify if error message is hidden if user exists in DB
       console.log("User authenticated, logging in ");
