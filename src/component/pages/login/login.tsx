@@ -33,8 +33,11 @@ const Login = () => {
     },
     onCompleted: (data) => {
       localStorage.setItem("authToken", data.login.token);
+      localStorage.setItem("userId", data.login.user.id);
+      localStorage.setItem("userName", data.login.user.userName);
       setLoginError(false); // need to verify if error message is hidden if user exists in DB
       console.log("User authenticated, logging in ");
+      console.log(localStorage);
       navigate("/explore");
     },
   });
@@ -105,8 +108,8 @@ const Login = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                placeholder={strings.global.usernameLabel}
-                text={strings.global.usernameLabel}
+                placeholder={strings.global.label.username}
+                text={strings.global.label.username}
                 name={"username"}
                 handleChange={handleChange}
                 validateLoginInput={validateLoginInput}
@@ -115,8 +118,8 @@ const Login = () => {
               <FormItem
                 className={styles.formItem}
                 type={"password"}
-                placeholder={strings.global.passwordLabel}
-                text={strings.global.passwordLabel}
+                placeholder={strings.global.label.password}
+                text={strings.global.label.password}
                 name={"password"}
                 handleChange={handleChange}
                 validateLoginInput={validateLoginInput}

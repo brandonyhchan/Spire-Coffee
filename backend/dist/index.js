@@ -1,6 +1,6 @@
 import { ApolloServer } from "apollo-server";
 import { context } from "./context.js";
-import { signUp, login, returnAllCafes, getCafeInfo, getCafeCount, } from "./resolvers/Query.js";
+import { signUp, login, returnAllCafes, getCafeInfo, getCafeCount, getUserInfo, } from "./resolvers/Query.js";
 import { loadFile } from "graphql-import-files";
 const resolvers = {
     Query: {
@@ -9,6 +9,7 @@ const resolvers = {
         returnAllCafes,
         getCafeInfo,
         getCafeCount,
+        getUserInfo,
     },
 };
 const server = new ApolloServer({

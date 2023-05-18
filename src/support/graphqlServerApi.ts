@@ -88,3 +88,16 @@ export const getCafeInfo = gql`
     }
   }
 `;
+
+export const getUserInfo = gql`
+  query getUserInfo($userName: String!) {
+    getUserInfo(userName: $userName) {
+      userName
+      email
+      firstName
+      lastName
+      photoName
+      photoURL
+    }
+  }
+`;

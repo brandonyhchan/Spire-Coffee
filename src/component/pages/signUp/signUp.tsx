@@ -124,8 +124,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                placeholder={strings.global.usernameLabel}
-                text={strings.global.usernameLabel}
+                placeholder={strings.global.label.username}
+                text={strings.global.label.username}
                 name={"username"}
                 value={userInfo.username}
                 handleChange={handleChange}
@@ -142,8 +142,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                placeholder={strings.global.firstNameLabel}
-                text={strings.global.firstNameLabel}
+                placeholder={strings.global.label.firstName}
+                text={strings.global.label.firstName}
                 name={"firstName"}
                 handleChange={handleChange}
                 validateLoginInput={() =>
@@ -160,8 +160,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                placeholder={strings.global.lastNameLabel}
-                text={strings.global.lastNameLabel}
+                placeholder={strings.global.label.lastName}
+                text={strings.global.label.lastName}
                 name={"lastName"}
                 handleChange={handleChange}
                 validateLoginInput={() =>
@@ -178,8 +178,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"text"}
-                placeholder={strings.global.emailLabel}
-                text={strings.global.emailLabel}
+                placeholder={strings.global.label.email}
+                text={strings.global.label.email}
                 name={"email"}
                 handleChange={handleChange}
                 validateLoginInput={() =>
@@ -195,8 +195,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"password"}
-                placeholder={strings.global.emailLabel}
-                text={strings.global.passwordLabel}
+                placeholder={strings.global.label.password}
+                text={strings.global.label.password}
                 name={"password"}
                 handleChange={handleChange}
                 validateLoginInput={() =>
@@ -213,8 +213,8 @@ const SignUp = () => {
               <FormItem
                 className={styles.formItem}
                 type={"password"}
-                placeholder={strings.global.verifyPasswordLabel}
-                text={strings.global.verifyPasswordLabel}
+                placeholder={strings.global.label.verifyPassword}
+                text={strings.global.label.verifyPassword}
                 name={"confPassword"}
                 handleChange={handleChange}
                 validateLoginInput={handlePassword}

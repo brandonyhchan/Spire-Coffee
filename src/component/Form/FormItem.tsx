@@ -8,12 +8,13 @@ type FormItemPropsType = {
   text: string;
   name: string;
   value?: string;
-  placeholder: string;
+  placeholder: string | null;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   validateLoginInput?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage?: ReactNode;
   secondErrorMessage?: ReactNode;
   maxLength?: number;
+  disabled?: boolean;
 };
 
 const FormItem = ({
@@ -28,6 +29,7 @@ const FormItem = ({
   errorMessage,
   secondErrorMessage,
   maxLength,
+  disabled,
 }: FormItemPropsType) => {
   return (
     <div className={classNames(className)}>
@@ -39,6 +41,7 @@ const FormItem = ({
         onChange={handleChange}
         onBlur={validateLoginInput}
         maxLength={maxLength}
+        disabled={disabled}
       />
       <label>{text}</label>
       {errorMessage}

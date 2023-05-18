@@ -4,12 +4,22 @@ const strings = new LocalizedStrings({
   en: {
     global: {
       title: "SpireCoffee",
-      usernameLabel: "Username",
-      firstNameLabel: "First Name",
-      lastNameLabel: "Last Name",
-      emailLabel: "Email Address",
-      passwordLabel: "Password",
-      verifyPasswordLabel: "Confirm Password",
+      label: {
+        username: "Username",
+        firstName: "First Name",
+        lastName: "Last Name",
+        email: "Email Address",
+        password: "Password",
+        verifyPassword: "Confirm Password",
+      },
+      name: {
+        username: "username",
+        firstName: "firstName",
+        lastName: "lastName",
+        email: "email",
+        password: "password",
+        verifyPassword: "confPassword",
+      },
     },
     login: {
       button: "Login",
@@ -68,6 +78,7 @@ const strings = new LocalizedStrings({
     account: {
       title: "Account Information",
       helmet: "Account",
+      saveChanges: "Save Changes",
     },
     addCafe: {
       title: "Add Cafe Page",

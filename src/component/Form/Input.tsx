@@ -2,12 +2,13 @@ import React from "react";
 
 type InputPropsType = {
   type: string;
-  placeholder: string;
+  placeholder: string | null;
   name: string;
   value?: string;
   onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   onBlur?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   maxLength?: number;
+  disabled?: boolean;
 };
 
 const Input = ({
@@ -18,17 +19,19 @@ const Input = ({
   onChange,
   onBlur,
   maxLength,
+  disabled,
 }: InputPropsType) => {
   return (
     <input
       type={type}
-      placeholder={placeholder}
+      placeholder={placeholder || undefined}
       name={name}
       value={value}
       onChange={onChange}
       onBlur={onBlur}
       maxLength={maxLength}
       required
+      disabled={disabled}
     />
   );
 };
