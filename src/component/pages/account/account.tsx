@@ -83,34 +83,41 @@ const Account = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.account.helmet} />
+      <NavBar />
       <div className={classNames(styles.container)}>
-        <NavBar />
-        <div className={classNames(styles.wrapper)}>
+        <div className={classNames(styles.headerContainer)}>
           <div className={classNames(styles.title)}>
             <h2>{strings.account.title}</h2>
           </div>
-          <div
-            className={classNames(styles.editButton)}
-            onClick={() => handleEditButton()}
-          >
+
+          <div className={classNames(styles.editButton)}>
             {!edit ? (
               <ModeEditOutlineOutlinedIcon
                 className={classNames(styles.editIcon)}
+                onClick={() => handleEditButton()}
               />
             ) : null}
           </div>
         </div>
-        <div className={classNames(styles.accountContainer)}>
-          <div className={classNames(styles.logo)}>
+        <div className={classNames(styles.profilePhotoContainer)}>
+          <div className={classNames(styles.profilePhoto)}>
             <img src={Logo} alt={Logo} />
           </div>
+        </div>
+        <div className={classNames(styles.accountContainer)}>
           <div className={classNames(styles.account)}>
             <form
               noValidate
               onSubmit={handleEditAccount}
               className={classNames(styles.accountForm)}
             >
-              <div className={classNames(styles.inputWrapper)}>
+              <div
+                className={
+                  !edit
+                    ? classNames(styles.inputWrapper)
+                    : classNames(styles.editInputWrapper)
+                }
+              >
                 <FormItem
                   className={styles.formItem}
                   type={"text"}
@@ -121,7 +128,13 @@ const Account = () => {
                   disabled={!edit ? true : false}
                 />
               </div>
-              <div className={classNames(styles.inputWrapper)}>
+              <div
+                className={
+                  !edit
+                    ? classNames(styles.inputWrapper)
+                    : classNames(styles.editInputWrapper)
+                }
+              >
                 <FormItem
                   className={styles.formItem}
                   type={"password"}
@@ -132,7 +145,13 @@ const Account = () => {
                   disabled={!edit ? true : false}
                 />
               </div>
-              <div className={classNames(styles.inputWrapper)}>
+              <div
+                className={
+                  !edit
+                    ? classNames(styles.inputWrapper)
+                    : classNames(styles.editInputWrapper)
+                }
+              >
                 <FormItem
                   className={styles.formItem}
                   type={"text"}
@@ -143,7 +162,13 @@ const Account = () => {
                   disabled={!edit ? true : false}
                 />
               </div>
-              <div className={classNames(styles.inputWrapper)}>
+              <div
+                className={
+                  !edit
+                    ? classNames(styles.inputWrapper)
+                    : classNames(styles.editInputWrapper)
+                }
+              >
                 <FormItem
                   className={styles.formItem}
                   type={"text"}
@@ -154,7 +179,13 @@ const Account = () => {
                   disabled={!edit ? true : false}
                 />
               </div>
-              <div className={classNames(styles.inputWrapper)}>
+              <div
+                className={
+                  !edit
+                    ? classNames(styles.inputWrapper)
+                    : classNames(styles.editInputWrapper)
+                }
+              >
                 <FormItem
                   className={styles.formItem}
                   type={"text"}

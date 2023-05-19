@@ -1,140 +1,159 @@
 $_large_font_size: 20px;
 
 .container {
-  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 50% 50%;
+  grid-template-rows: 70px auto;
+  min-height: calc(100vh - 65px);
   width: 100%;
-  display: flex;
-  flex-direction: column;
   color: var(--dark-grey);
-}
-
-.title {
-  display: flex;
-  align-items: flex-start;
-  padding: 20px 20px 0px 20px;
-  & h2 {
-    font-family: 'Figtree-SemiBold';
-    font-size: 25px;
-  }
   @media (max-width: 600px) {
-    display: none;
+    grid-template-columns: 50% 50%;
+    grid-template-rows: 200px auto;
   }
 }
 
-.wrapper {
-  display: flex;
-  flex-direction: row;
-  @media (max-width: 600px) {
-    justify-content: flex-end;
-    align-items: flex-end;
-  }
+.headerContainer {
+  display: grid;
+  grid-template-columns: 120px;
+  border-bottom: solid 3px var(--light-grey);
   @media (min-width: 601px) {
-    border-bottom: solid 3px var(--light-grey);
+    grid-template-columns: 270px 60px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+  }
+  & .title {
+    display: flex;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    padding: 20px 0px 0px 20px;
+    @media (max-width: 600px) {
+      display: none;
+    }
+    & h2 {
+      font-family: "Figtree-SemiBold";
+      font-size: 25px;
+    }
   }
   & .editButton {
-    padding: 20px;
-    cursor: pointer;
-    height: 15px;
-    margin-top: -5px;
-    margin-left: -15px;
+    width: 100%;
+    grid-column-start: 2;
+    grid-column-end: 3;
+    @media (min-width: 601px) {
+      width: 100%;
+    }
     & .editIcon {
-      transform: scale(1.35);
       color: var(--dark-grey);
+      cursor: pointer;
+      transform: scale(1.3);
+      @media (min-width: 601px) {
+        margin-top: 20px;
+      }
+      @media (max-width: 600px) {
+        margin-top: 30px;
+      }
+    }
+  }
+}
+
+.profilePhotoContainer {
+  padding: 20px 0;
+  padding-left: 40px;
+  @media (max-width: 600px) {
+    grid-row-start: 1;
+    grid-row-end: 2;
+    border-bottom: solid 3px var(--light-grey);
+  }
+  .profilePhoto {
+    width: 200px;
+    @media (max-width: 600px) {
+      width: 150px;
+    }
+    & img {
+      width: 100%;
+      height: 100%;
+      clip-path: circle(100px);
+      @media (max-width: 600px) {
+        clip-path: circle(75px);
+      }
     }
   }
 }
 
 .accountContainer {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   padding: 40px;
   gap: 40px;
+  width: 100%;
   @media (max-width: 600px) {
-    padding: 0px 40px;
-    padding-bottom: 80px;
+    grid-column-start: 1;
+    grid-column-end: 3;
     gap: 15px;
   }
-  & .account {
-    width: 500px;
-    @media (max-width: 600px) {
-      width: 350px;
+  // & .account {
+  //   @media (max-width: 600px) {
+  //     width: 350px;
+  //   }
+  // }
+  & .accountForm {
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    gap: 20px;
+  }
+  & .inputWrapper {
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    border: solid 2px #ffffff;
+    width: 100%;
+  }
+  & .editInputWrapper {
+    display: flex;
+    flex-direction: row;
+    border-radius: 10px;
+    width: 100%;
+    border: solid 2px #ccc;
+  }
+  & .editInputWrapper:focus-within {
+    border-color: var(--dark-grey);
+  }
+  & .formItem {
+    position: relative;
+    width: 100%;
+    & input {
+      width: 100%;
+      background: transparent;
+      padding: 15px;
+      font-family: "Figtree-Regular";
+      border-width: 2px;
+      font-size: $_large_font_size;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+      height: 100%;
     }
-  }  
+    & input:focus::placeholder {
+      color: transparent;
+    }
+    & label {
+      display: block;
+      position: absolute;
+      font-size: $_large_font_size;
+      font-weight: bold;
+      top: -25px;
+      left: 10px;
+      font-family: "Figtree-Regular";
+      background: #fff;
+      color: var(--dark-grey);
+    }
+  }
 }
 
 .editButtonGroup {
   display: flex;
   justify-content: center;
   gap: 15px;
-  padding-top: 25px;
-  @media (max-width: 600px) {
-    padding-top: 15px;
-  }
-}
-
-.logo {
-  width: 200px;
-  @media (max-width: 600px) {
-    width: 190px;
-  }
-  & img {
-    width: 100%;
-    height: 100%;
-    clip-path: circle(100px);
-    @media (max-width: 600px) {
-      clip-path: circle(80px);
-    }
-  }
-}
-
-.accountForm {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-
-.inputWrapper {
-  display: flex;
-  flex-direction: row;
-  border: solid 2px #ccc;
-  border-radius: 10px;
-  width: 100%;
-}
-
-.inputWrapper:focus-within {
-  border-color: var(--dark-grey);
-}
-
-.formItem {
-  position: relative;
-  width: 100%;
-  & input {
-    width: 100%;
-    background: transparent;
-    padding: 10px;
-    font-family: 'Figtree-Regular';
-    border-width: 2px;
-    font-size: $_large_font_size;
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 0px;
-    border-bottom-right-radius: 0px;
-    height: 100%;
-  }
-  & input:focus::placeholder {
-    color: transparent;
-  }
-  & label {
-    display: block;
-    position: absolute;
-    font-size: $_large_font_size;
-    font-weight: bold;
-    top: -25px;
-    left: 10px;
-    font-family: 'Figtree-Regular';
-    background: #fff;
-    color: var(--dark-grey);
-  }
+  padding-top: 5px;
+  padding-bottom: 40px;
 }
