@@ -28,6 +28,14 @@ const Account = () => {
   }, [navigate, token]);
 
   const [user, setUser] = useState<User>();
+  const [userInfo, setUserInfo] = useState({
+    username: "",
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+  });
+
   const [edit, setEdit] = useState<boolean>(false);
 
   const { loading, error, refetch } = useQuery(getUserInfo, {
@@ -50,35 +58,41 @@ const Account = () => {
     }
   }, [navigate, token]);
 
-  const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    // editAccount({
-    //   variables: {
-    //     userName: userInfo.username,
-    //     password: userInfo.password,
-    //     email: userInfo.email,
-    //     firstName: userInfo.firstName,
-    //     lastName: userInfo.lastName,
-    //   },
-    // });
-  };
-
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
     const value = event.currentTarget.value;
-    // setUserInfo({
-    //   ...userInfo,
-    //   [name]: value,
-    // });
+    setUserInfo({
+      ...userInfo,
+      [name]: value,
+    });
   };
 
   const handleEditButton = () => {
     setEdit(!edit);
   };
 
-  const handleSubmit = () => {
-    console.log("Submit edit changes.");
+  const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    // editAccount({
+    //   variables: {
+    //     userName: userInfo.username,
+    //     firstName: userInfo.firstName,
+    //     lastName: userInfo.lastName,
+    //     email: userInfo.email,
+    //     password: userInfo.password,
+    //   },
+    // });
   };
+
+  const checkForm = () => {
+    console.log("Validation here.");
+  };
+
+  const handleProfilePhoto = () => {
+    console.log("Change profile photo.");
+  };
+
+  console.log(userInfo);
 
   return (
     <React.Fragment>
@@ -100,7 +114,10 @@ const Account = () => {
           </div>
         </div>
         <div className={classNames(styles.profilePhotoContainer)}>
-          <div className={classNames(styles.profilePhoto)}>
+          <div
+            className={classNames(styles.profilePhoto)}
+            onClick={handleProfilePhoto}
+          >
             <img src={Logo} alt={Logo} />
           </div>
         </div>
@@ -207,7 +224,7 @@ const Account = () => {
                   <Button
                     text={"Save"}
                     name={strings.global.name.username}
-                    onClick={handleSubmit}
+                    onClick={checkForm}
                   />
                 </div>
               ) : null}

@@ -66,6 +66,7 @@ $_large_font_size: 20px;
   }
   .profilePhoto {
     width: 200px;
+    cursor: pointer;
     @media (max-width: 600px) {
       width: 150px;
     }
