@@ -11,13 +11,11 @@ $_large_font_size: 20px;
 .title {
   display: flex;
   align-items: flex-start;
-  border-bottom: solid 3px var(--light-grey);
+  padding: 20px 20px 0px 20px;
   & h2 {
     font-family: 'Figtree-SemiBold';
     font-size: 25px;
   }
-  padding: 20px 20px 0px 20px;
-  width: 100%;
   @media (max-width: 600px) {
     display: none;
   }
@@ -25,18 +23,20 @@ $_large_font_size: 20px;
 
 .wrapper {
   display: flex;
-  flex-direction: column;
-  height: 15px;
+  flex-direction: row;
   @media (max-width: 600px) {
+    justify-content: flex-end;
     align-items: flex-end;
+  }
+  @media (min-width: 601px) {
+    border-bottom: solid 3px var(--light-grey);
   }
   & .editButton {
     padding: 20px;
-    height: 40px;
     cursor: pointer;
-    @media (min-width: 601px) {
-      display: none;
-    }
+    height: 15px;
+    margin-top: -5px;
+    margin-left: -15px;
     & .editIcon {
       transform: scale(1.35);
       color: var(--dark-grey);

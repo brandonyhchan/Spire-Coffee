@@ -28,6 +28,7 @@ const Account = () => {
   }, [navigate, token]);
 
   const [user, setUser] = useState<User>();
+  const [edit, setEdit] = useState<boolean>(false);
 
   const { loading, error, refetch } = useQuery(getUserInfo, {
     onError: (error) => {
@@ -42,8 +43,6 @@ const Account = () => {
   });
 
   console.log(user);
-
-  const [edit, setEdit] = useState<boolean>(false);
 
   useEffect(() => {
     if (!token) {
@@ -86,10 +85,10 @@ const Account = () => {
       <Helmet title={strings.account.helmet} />
       <div className={classNames(styles.container)}>
         <NavBar />
-        <div className={classNames(styles.title)}>
-          <h2>{strings.account.title}</h2>
-        </div>
         <div className={classNames(styles.wrapper)}>
+          <div className={classNames(styles.title)}>
+            <h2>{strings.account.title}</h2>
+          </div>
           <div
             className={classNames(styles.editButton)}
             onClick={() => handleEditButton()}
@@ -166,7 +165,7 @@ const Account = () => {
                   disabled={!edit ? true : false}
                 />
               </div>
-              {edit && (
+              {edit ? (
                 <div className={classNames(styles.editButtonGroup)}>
                   {/* need to change to use reset button izzy made on branch 17 */}
                   <Button
@@ -180,7 +179,7 @@ const Account = () => {
                     onClick={handleSubmit}
                   />
                 </div>
-              )}
+              ) : null}
             </form>
           </div>
         </div>
