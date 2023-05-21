@@ -62,6 +62,7 @@ const StatusSlider = ({
         <p className={classNames(styles.sliderTitle)}>{statusTitle}</p>
       </div>
       <Slider
+        className={classNames(styles.slider)}
         aria-label="Restricted values"
         step={step}
         valueLabelFormat={valueLabelFormat}

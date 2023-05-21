@@ -14,6 +14,7 @@ import {
   step,
 } from "./UserReport";
 import { SelectOptions } from "component/common/Filter/FilterType/RadioFilter";
+import moment from "moment";
 
 type ReportPropsType = {
   cafe: Cafe | undefined;
@@ -26,6 +27,9 @@ const Report = ({ cafe }: ReportPropsType) => {
   const [showSubmitMessage, setShowSubmitMessage] = useState(false);
   const [disableReportButton, setDisableReportButton] = useState(false);
 
+  let dateToSendToDb;
+  const [userReportTime, setUserReportTime] = useState("");
+
   function openUserReport(): void {
     setShowUserReport(true);
     console.log("Show the User Report");
@@ -35,6 +39,10 @@ const Report = ({ cafe }: ReportPropsType) => {
     setShowUserReport(false);
     setShowSubmitMessage(true);
     setDisableReportButton(true);
+
+    dateToSendToDb = moment().format();
+    setUserReportTime(dateToSendToDb);
+    console.log(dateToSendToDb);
   }
 
   function cancelUserReport(): void {

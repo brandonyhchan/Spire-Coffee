@@ -1,5 +1,17 @@
 .sliderContainer {
     width: 200px;
+    .slider{
+        color: var(--secondary);
+        &.MuiSlider-mark {
+            background-color: var(--secondary);
+            height: 8;
+            width: 1;
+            &.MuiSlider-markActive {
+              opacity: 1;
+              background-color: #bfbfbf;
+            }
+        }
+    }
 }
 
 .sliderTitle {
