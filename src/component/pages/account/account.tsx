@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { getUserInfo } from "support/graphqlServerApi";
-import { useQuery } from "@apollo/client";
+import { getUserInfo, userMutation } from "support/graphqlServerApi";
+import { useQuery, useMutation } from "@apollo/client";
 import { User } from "types/api/user";
 import classNames from "classnames";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
@@ -38,7 +38,7 @@ const Account = () => {
 
   const [edit, setEdit] = useState<boolean>(false);
 
-  const { loading, error, refetch } = useQuery(getUserInfo, {
+  const { refetch } = useQuery(getUserInfo, {
     onError: (error) => {
       throw error;
     },
@@ -47,16 +47,11 @@ const Account = () => {
     },
     variables: {
       userName: userName,
+      firstName: userInfo.firstName,
     },
   });
 
-  console.log(user);
-
-  useEffect(() => {
-    if (!token) {
-      navigate("/");
-    }
-  }, [navigate, token]);
+  const [updateUser] = useMutation(userMutation);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -73,26 +68,17 @@ const Account = () => {
 
   const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    // editAccount({
-    //   variables: {
-    //     userName: userInfo.username,
-    //     firstName: userInfo.firstName,
-    //     lastName: userInfo.lastName,
-    //     email: userInfo.email,
-    //     password: userInfo.password,
-    //   },
-    // });
-  };
-
-  const checkForm = () => {
-    console.log("Validation here.");
+    updateUser({
+      variables: {
+        userName: userName,
+        firstName: userInfo.firstName,
+      },
+    });
   };
 
   const handleProfilePhoto = () => {
     console.log("Change profile photo.");
   };
-
-  console.log(userInfo);
 
   return (
     <React.Fragment>
@@ -223,8 +209,8 @@ const Account = () => {
                   />
                   <Button
                     text={"Save"}
+                    buttonType="submit"
                     name={strings.global.name.username}
-                    onClick={checkForm}
                   />
                 </div>
               ) : null}

@@ -25,3 +25,7 @@ type Query {
   getCafeInfo(stringId: String!): Cafe
   getUserInfo(userName: String!): User
 }
+
+type Mutation {
+  updateUserInfo(userName: String!): User
+}

@@ -8,6 +8,7 @@ import {
   getCafeCount,
   getUserInfo,
 } from "./resolvers/Query.js";
+import { updateUserInfo } from "./resolvers/Mutation.js";
 import { loadFile } from "graphql-import-files";
 
 const resolvers = {
@@ -18,6 +19,9 @@ const resolvers = {
     getCafeInfo,
     getCafeCount,
     getUserInfo,
+  },
+  Mutation: {
+    updateUserInfo,
   },
 };
 

@@ -101,3 +101,11 @@ export const getUserInfo = gql`
     }
   }
 `;
+
+export const userMutation = gql`
+  mutation updateUserInfo($userName: String!) {
+    updateUserInfo(userName: $userName) {
+      firstName
+    }
+  }
+`;
