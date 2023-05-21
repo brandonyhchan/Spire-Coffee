@@ -1,6 +1,6 @@
 export async function updateUserInfo(parent, args, context, info) {
   return context.prisma.user.update({
     where: { userName: args.userName },
-    data: { firstName: args.firstName },
+    data: { firstName: args.firstName, lastName: args.lastName, email: args.email },
   });
 }

@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 import { signUpMutation } from "support/graphqlServerApi";
 import RegexValidator from "./regexValidator";
 import Button from "component/common/Button";
-import FormItem from "component/Form/FormItem";
+import FormItem from "component/common/Form/FormItem";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import classNames from "classnames";
 import strings from "config/strings";

@@ -4,15 +4,16 @@ import { Helmet } from "react-helmet-async";
 import { getUserInfo, userMutation } from "support/graphqlServerApi";
 import { useQuery, useMutation } from "@apollo/client";
 import { User } from "types/api/user";
-import classNames from "classnames";
+import RegexValidator from "component/pages/signUp/regexValidator";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
-import FormItem from "component/Form/FormItem";
+import FormItem from "component/common/Form/FormItem";
 import Button from "component/common/Button";
 import Logo from "assets/images/placeholder-logo.jpg";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 
+import classNames from "classnames";
 import styles from "./account.module.scss";
 import strings from "config/strings";
 
@@ -20,6 +21,7 @@ const Account = () => {
   const navigate = useNavigate();
   const token = localStorage.getItem("authToken");
   const userName = localStorage.getItem("userName");
+  const regexValidator: RegexValidator = new RegexValidator();
 
   useEffect(() => {
     if (!token) {
@@ -29,14 +31,18 @@ const Account = () => {
 
   const [user, setUser] = useState<User>();
   const [userInfo, setUserInfo] = useState({
-    username: "",
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
+    username: user?.userName,
+    firstName: user?.firstName || "",
+    lastName: user?.lastName,
+    email: user?.email,
+    password: "", // need to change to password from db and the password that comes back is encrypted
   });
-
   const [edit, setEdit] = useState<boolean>(false);
+  const [firstNameIsValid, setFirstNameIsValid] = useState(false);
+  const [lastNameIsValid, setLastNameIsValid] = useState(false);
+  const [emailIsValid, setEmailIsValid] = useState(false);
+  const [editAccountError, setEditAccountError] = useState(false);
+  const [editAccountErrorMessage, setEditAccountErrorMessage] = useState(false);
 
   const { refetch } = useQuery(getUserInfo, {
     onError: (error) => {
@@ -50,7 +56,13 @@ const Account = () => {
     },
   });
 
-  const [updateUser] = useMutation(userMutation);
+  const [updateUser] = useMutation(userMutation, {
+    onError: (error) => {
+      setEditAccountError(true);
+      alert(error);
+      console.log("Error updating user info."); // change this to require config/strings.ts later
+    },
+  });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
@@ -67,17 +79,49 @@ const Account = () => {
 
   const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    updateUser({
-      variables: {
-        userName: userName,
-        firstName: userInfo.firstName,
-      },
-    });
+    if (editAccountError === false) {
+      updateUser({
+        variables: {
+          userName: userName, // right now username is not editable, to make it update,
+          //we need to change the fetch of user from username to id
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email,
+        },
+      });
+    }
+  };
+
+  const checkForm = () => {
+    if (
+      userInfo.firstName.trim() === "" ||
+      userInfo.lastName === "" ||
+      userInfo.email === ""
+    ) {
+      setEditAccountError(true);
+      setEditAccountErrorMessage(true);
+    } else {
+      setEditAccountError(false);
+      setEditAccountErrorMessage(false);
+    }
   };
 
   const handleProfilePhoto = () => {
     console.log("Change profile photo.");
   };
+
+  function renderErrorMessage(
+    isValid: boolean,
+    errorMessage: string,
+    secondErrorMessage?: string
+  ) {
+    return isValid ? null : (
+      <>
+        <span>{errorMessage}</span>
+        <span>{secondErrorMessage}</span>
+      </>
+    );
+  }
 
   return (
     <React.Fragment>
@@ -179,6 +223,16 @@ const Account = () => {
                   name={"firstName"}
                   handleChange={handleChange}
                   disabled={!edit ? true : false}
+                  validateLoginInput={() =>
+                    setFirstNameIsValid(
+                      !regexValidator.validFirstName.test(userInfo.firstName)
+                    )
+                  }
+                  errorMessage={renderErrorMessage(
+                    !firstNameIsValid,
+                    strings.account.errorMessage.firstName
+                  )}
+                  maxLength={40}
                 />
               </div>
               <div
@@ -210,6 +264,7 @@ const Account = () => {
                     text={"Save"}
                     buttonType="submit"
                     name={strings.global.name.username}
+                    onClick={checkForm}
                   />
                 </div>
               ) : null}

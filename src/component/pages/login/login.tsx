@@ -5,7 +5,7 @@ import { loginQuery } from "support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import Logo from "assets/images/placeholder-logo.jpg";
 import Button from "component/common/Button";
-import FormItem from "component/Form/FormItem";
+import FormItem from "component/common/Form/FormItem";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import classNames from "classnames";
 import strings from "config/strings";

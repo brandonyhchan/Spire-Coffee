@@ -105,7 +105,6 @@ $_large_font_size: 20px;
     display: flex;
     flex-direction: row;
     border-radius: 10px;
-    border: solid 2px #ffffff;
     width: 100%;
   }
   & .editInputWrapper {
@@ -113,13 +112,20 @@ $_large_font_size: 20px;
     flex-direction: row;
     border-radius: 10px;
     width: 100%;
-    border: solid 2px #ccc;
+    & input {
+      border: solid 2px #ccc;
+    }
   }
   & .editInputWrapper:focus-within {
-    border-color: var(--dark-grey);
+    & input {
+      border-color: var(--dark-grey);
+    }
   }
   & .formItem {
+    display: flex;
+    flex-direction: column;
     position: relative;
+    height: 100%;
     width: 100%;
     & input {
       width: 100%;
@@ -147,6 +153,14 @@ $_large_font_size: 20px;
       font-family: "Figtree-Regular";
       background: #fff;
       color: var(--dark-grey);
+    }
+    & span {
+      color: var(--warning);
+      font-family: 'Figtree-Regular';
+      font-size: $_large_font_size;
+      margin-left: 5px;
+      padding-top: 5px;
+      text-align: start;
     }
   }
 }

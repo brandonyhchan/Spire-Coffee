@@ -79,6 +79,9 @@ const strings = new LocalizedStrings({
       title: "Account Information",
       helmet: "Account",
       saveChanges: "Save Changes",
+      errorMessage: {
+        firstName: "First name must not be blank or contain spaces",
+      },
     },
     addCafe: {
       title: "Add Cafe Page",
