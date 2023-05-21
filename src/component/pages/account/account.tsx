@@ -47,7 +47,6 @@ const Account = () => {
     },
     variables: {
       userName: userName,
-      firstName: userInfo.firstName,
     },
   });
 

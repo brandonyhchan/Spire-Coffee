@@ -103,8 +103,9 @@ export const getUserInfo = gql`
 `;
 
 export const userMutation = gql`
-  mutation updateUserInfo($userName: String!) {
-    updateUserInfo(userName: $userName) {
+  mutation updateUserInfo($userName: String!, $firstName: String) {
+    updateUserInfo(userName: $userName, firstName: $firstName) {
+      userName
       firstName
     }
   }

@@ -27,5 +27,5 @@ type Query {
 }
 
 type Mutation {
-  updateUserInfo(userName: String!): User
+  updateUserInfo(userName: String!, firstName: String): User
 }
