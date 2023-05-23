@@ -12,6 +12,7 @@ import FormItem from "component/common/Form/FormItem";
 import Button from "component/common/Button";
 import Logo from "assets/images/placeholder-logo.jpg";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import LoadingSpinner from "component/common/LoadingSpinner";
 
 import classNames from "classnames";
 import styles from "./account.module.scss";
@@ -33,7 +34,7 @@ const Account = () => {
   const [userInfo, setUserInfo] = useState({
     username: user?.userName,
     firstName: user?.firstName || "",
-    lastName: user?.lastName,
+    lastName: user?.lastName || "",
     email: user?.email,
     password: "", // need to change to password from db and the password that comes back is encrypted
   });
@@ -41,10 +42,9 @@ const Account = () => {
   const [firstNameIsValid, setFirstNameIsValid] = useState(false);
   const [lastNameIsValid, setLastNameIsValid] = useState(false);
   const [emailIsValid, setEmailIsValid] = useState(false);
-  const [editAccountError, setEditAccountError] = useState(false);
-  const [editAccountErrorMessage, setEditAccountErrorMessage] = useState(false);
+  const [refresh, setRefresh] = useState(false);
 
-  const { refetch } = useQuery(getUserInfo, {
+  const { loading, refetch } = useQuery(getUserInfo, {
     onError: (error) => {
       throw error;
     },
@@ -58,7 +58,6 @@ const Account = () => {
 
   const [updateUser] = useMutation(userMutation, {
     onError: (error) => {
-      setEditAccountError(true);
       alert(error);
       console.log("Error updating user info."); // change this to require config/strings.ts later
     },
@@ -75,34 +74,31 @@ const Account = () => {
 
   const handleEditButton = () => {
     setEdit(!edit);
+    setRefresh(!refresh);
+    if (refresh) {
+      window.location.reload();
+    }
   };
 
   const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (editAccountError === false) {
+    if (userInfo.firstName.trim() !== "") {
       updateUser({
         variables: {
           userName: userName, // right now username is not editable, to make it update,
           //we need to change the fetch of user from username to id
           firstName: userInfo.firstName,
-          lastName: userInfo.lastName,
-          email: userInfo.email,
         },
       });
     }
-  };
-
-  const checkForm = () => {
-    if (
-      userInfo.firstName.trim() === "" ||
-      userInfo.lastName === "" ||
-      userInfo.email === ""
-    ) {
-      setEditAccountError(true);
-      setEditAccountErrorMessage(true);
-    } else {
-      setEditAccountError(false);
-      setEditAccountErrorMessage(false);
+    if (userInfo.lastName.trim() !== "") {
+      updateUser({
+        variables: {
+          userName: userName, // right now username is not editable, to make it update,
+          //we need to change the fetch of user from username to id
+          lastName: userInfo.lastName,
+        },
+      });
     }
   };
 
@@ -128,149 +124,165 @@ const Account = () => {
       <Helmet title={strings.account.helmet} />
       <NavBar />
       <div className={classNames(styles.container)}>
-        <div className={classNames(styles.headerContainer)}>
-          <div className={classNames(styles.title)}>
-            <h2>{strings.account.title}</h2>
-          </div>
-
-          <div className={classNames(styles.editButton)}>
-            {!edit ? (
-              <ModeEditOutlineOutlinedIcon
-                className={classNames(styles.editIcon)}
-                onClick={() => handleEditButton()}
-              />
-            ) : null}
-          </div>
-        </div>
-        <div className={classNames(styles.profilePhotoContainer)}>
-          <div
-            className={classNames(styles.profilePhoto)}
-            onClick={handleProfilePhoto}
-          >
-            <img src={Logo} alt={Logo} />
-          </div>
-        </div>
-        <div className={classNames(styles.accountContainer)}>
-          <div className={classNames(styles.account)}>
-            <form
-              noValidate
-              onSubmit={handleEditAccount}
-              className={classNames(styles.accountForm)}
-            >
-              <div
-                className={
-                  !edit
-                    ? classNames(styles.inputWrapper)
-                    : classNames(styles.editInputWrapper)
-                }
-              >
-                <FormItem
-                  className={styles.formItem}
-                  type={"text"}
-                  placeholder={user?.userName}
-                  text={strings.global.label.username}
-                  name={"username"}
-                  handleChange={handleChange}
-                  disabled={!edit ? true : false}
-                />
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <React.Fragment>
+            <div className={classNames(styles.headerContainer)}>
+              <div className={classNames(styles.title)}>
+                <h2>{strings.account.title}</h2>
               </div>
-              <div
-                className={
-                  !edit
-                    ? classNames(styles.inputWrapper)
-                    : classNames(styles.editInputWrapper)
-                }
-              >
-                <FormItem
-                  className={styles.formItem}
-                  type={"password"}
-                  placeholder={"********"}
-                  text={strings.global.label.password}
-                  name={"password"}
-                  handleChange={handleChange}
-                  disabled={!edit ? true : false}
-                />
-              </div>
-              <div
-                className={
-                  !edit
-                    ? classNames(styles.inputWrapper)
-                    : classNames(styles.editInputWrapper)
-                }
-              >
-                <FormItem
-                  className={styles.formItem}
-                  type={"text"}
-                  placeholder={user?.email}
-                  text={strings.global.label.email}
-                  name={"email"}
-                  handleChange={handleChange}
-                  disabled={!edit ? true : false}
-                />
-              </div>
-              <div
-                className={
-                  !edit
-                    ? classNames(styles.inputWrapper)
-                    : classNames(styles.editInputWrapper)
-                }
-              >
-                <FormItem
-                  className={styles.formItem}
-                  type={"text"}
-                  placeholder={user?.firstName}
-                  text={strings.global.label.firstName}
-                  name={"firstName"}
-                  handleChange={handleChange}
-                  disabled={!edit ? true : false}
-                  validateLoginInput={() =>
-                    setFirstNameIsValid(
-                      !regexValidator.validFirstName.test(userInfo.firstName)
-                    )
-                  }
-                  errorMessage={renderErrorMessage(
-                    !firstNameIsValid,
-                    strings.account.errorMessage.firstName
-                  )}
-                  maxLength={40}
-                />
-              </div>
-              <div
-                className={
-                  !edit
-                    ? classNames(styles.inputWrapper)
-                    : classNames(styles.editInputWrapper)
-                }
-              >
-                <FormItem
-                  className={styles.formItem}
-                  type={"text"}
-                  placeholder={user?.lastName}
-                  text={strings.global.label.lastName}
-                  name={"lastName"}
-                  handleChange={handleChange}
-                  disabled={!edit ? true : false}
-                />
-              </div>
-              {edit ? (
-                <div className={classNames(styles.editButtonGroup)}>
-                  {/* need to change to use reset button izzy made on branch 17 */}
-                  <Button
-                    buttonType="reset"
-                    text={"Cancel"}
-                    onClick={handleEditButton}
+              <div className={classNames(styles.editButton)}>
+                {!edit ? (
+                  <ModeEditOutlineOutlinedIcon
+                    className={classNames(styles.editIcon)}
+                    onClick={() => handleEditButton()}
                   />
-                  <Button
-                    text={"Save"}
-                    buttonType="submit"
-                    name={strings.global.name.username}
-                    onClick={checkForm}
-                  />
-                </div>
-              ) : null}
-            </form>
-          </div>
-        </div>
+                ) : null}
+              </div>
+            </div>
+            <div className={classNames(styles.profilePhotoContainer)}>
+              <div
+                className={classNames(styles.profilePhoto)}
+                onClick={handleProfilePhoto}
+              >
+                <img src={Logo} alt={Logo} />
+              </div>
+            </div>
+            <div className={classNames(styles.accountContainer)}>
+              <div className={classNames(styles.account)}>
+                <form
+                  noValidate
+                  onSubmit={handleEditAccount}
+                  className={classNames(styles.accountForm)}
+                >
+                  <div
+                    className={
+                      !edit
+                        ? classNames(styles.inputWrapper)
+                        : classNames(styles.editInputWrapper)
+                    }
+                  >
+                    <FormItem
+                      className={styles.formItem}
+                      type={"text"}
+                      placeholder={user?.userName}
+                      text={strings.global.label.username}
+                      name={"username"}
+                      handleChange={handleChange}
+                      disabled={!edit ? true : false}
+                    />
+                  </div>
+                  <div
+                    className={
+                      !edit
+                        ? classNames(styles.inputWrapper)
+                        : classNames(styles.editInputWrapper)
+                    }
+                  >
+                    <FormItem
+                      className={styles.formItem}
+                      type={"password"}
+                      placeholder={"********"}
+                      text={strings.global.label.password}
+                      name={"password"}
+                      handleChange={handleChange}
+                      disabled={!edit ? true : false}
+                    />
+                  </div>
+                  <div
+                    className={
+                      !edit
+                        ? classNames(styles.inputWrapper)
+                        : classNames(styles.editInputWrapper)
+                    }
+                  >
+                    <FormItem
+                      className={styles.formItem}
+                      type={"text"}
+                      placeholder={user?.email}
+                      text={strings.global.label.email}
+                      name={"email"}
+                      handleChange={handleChange}
+                      disabled={!edit ? true : false}
+                    />
+                  </div>
+                  <div
+                    className={
+                      !edit
+                        ? classNames(styles.inputWrapper)
+                        : classNames(styles.editInputWrapper)
+                    }
+                  >
+                    <FormItem
+                      className={styles.formItem}
+                      type={"text"}
+                      placeholder={user?.firstName}
+                      text={strings.global.label.firstName}
+                      name={"firstName"}
+                      handleChange={handleChange}
+                      disabled={!edit ? true : false}
+                      validateLoginInput={() =>
+                        setFirstNameIsValid(
+                          !regexValidator.validFirstName.test(
+                            userInfo.firstName
+                          )
+                        )
+                      }
+                      errorMessage={renderErrorMessage(
+                        !firstNameIsValid,
+                        strings.account.errorMessage.firstName
+                      )}
+                      maxLength={40}
+                    />
+                  </div>
+                  <div
+                    className={
+                      !edit
+                        ? classNames(styles.inputWrapper)
+                        : classNames(styles.editInputWrapper)
+                    }
+                  >
+                    <FormItem
+                      className={styles.formItem}
+                      type={"text"}
+                      placeholder={user?.lastName}
+                      text={strings.global.label.lastName}
+                      name={"lastName"}
+                      handleChange={handleChange}
+                      disabled={!edit ? true : false}
+                      validateLoginInput={() =>
+                        setLastNameIsValid(
+                          !regexValidator.validLastName.test(userInfo.lastName)
+                        )
+                      }
+                      errorMessage={renderErrorMessage(
+                        !lastNameIsValid,
+                        strings.account.errorMessage.lastName
+                      )}
+                      maxLength={40}
+                    />
+                  </div>
+                  {edit ? (
+                    <div className={classNames(styles.editButtonGroup)}>
+                      {/* need to change to use reset button izzy made on branch 17 */}
+                      <Button
+                        buttonType="reset"
+                        text={"Cancel"}
+                        onClick={handleEditButton}
+                      />
+                      <Button
+                        text={"Save"}
+                        buttonType="submit"
+                        name={strings.global.name.username}
+                      />
+                    </div>
+                  ) : null}
+                </form>
+              </div>
+            </div>
+          </React.Fragment>
+        )}
       </div>
       <Footer />
       <MobileFooter />

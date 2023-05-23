@@ -81,6 +81,7 @@ const strings = new LocalizedStrings({
       saveChanges: "Save Changes",
       errorMessage: {
         firstName: "First name must not be blank or contain spaces",
+        lastName: "Last name must not be blank or contain spaces",
       },
     },
     addCafe: {
