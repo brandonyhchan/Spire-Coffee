@@ -7,25 +7,36 @@ $_large_font_size: 20px;
   min-height: calc(100vh - 65px);
   width: 100%;
   color: var(--dark-grey);
-  @media (max-width: 600px) {
-    grid-template-columns: 50% 50%;
-    grid-template-rows: 200px auto;
+  @media (min-width: 601px) and (max-width: 1024px) {
+    grid-template-columns: 1fr 80% 1fr;
   }
+  @media (min-width: 1025px) {
+    grid-template-columns: 1fr 800px 1fr;
+  }
+  @media (max-width: 600px) {
+    grid-template-columns: calc(100vw - 60px) 1fr;
+    grid-template-rows: 250px auto;
+  }
+}
+
+.nameContainer {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
 }
 
 .headerContainer {
   display: grid;
-  grid-template-columns: 120px;
   border-bottom: solid 3px var(--light-grey);
   @media (min-width: 601px) {
     grid-template-columns: 270px 60px;
     grid-column-start: 1;
-    grid-column-end: 3;
+    grid-column-end: 4;
   }
   & .title {
     display: flex;
     grid-column-start: 1;
-    grid-column-end: 2;
+    grid-column-end: 4;
     padding: 20px 0px 0px 20px;
     @media (max-width: 600px) {
       display: none;
@@ -37,8 +48,6 @@ $_large_font_size: 20px;
   }
   & .editButton {
     width: 100%;
-    grid-column-start: 2;
-    grid-column-end: 3;
     @media (min-width: 601px) {
       width: 100%;
     }
@@ -46,25 +55,36 @@ $_large_font_size: 20px;
       color: var(--dark-grey);
       cursor: pointer;
       transform: scale(1.3);
-      @media (min-width: 601px) {
-        margin-top: 20px;
-      }
-      @media (max-width: 600px) {
-        margin-top: 30px;
-      }
+      margin-top: 30px;
+      margin-right: 30px;
     }
   }
 }
 
-.profilePhotoContainer {
-  padding: 20px 0;
-  padding-left: 40px;
+.profileContainer {
+  background-color: azure;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  @media (min-width: 601px) {
+    grid-column-start: 1;
+    grid-column-end: 4;
+  }
   @media (max-width: 600px) {
     grid-row-start: 1;
     grid-row-end: 2;
     border-bottom: solid 3px var(--light-grey);
+    padding-left: 50px;
+    margin-top: 30px;
   }
-  .profilePhoto {
+  & h2 {
+    font-family: 'Figtree-Semibold';
+    padding-top: 15px;
+    padding-bottom: 30px;
+    margin: 0;
+  }
+  & .profilePhoto {
     width: 200px;
     cursor: pointer;
     @media (max-width: 600px) {
@@ -85,16 +105,13 @@ $_large_font_size: 20px;
   padding: 40px;
   gap: 40px;
   width: 100%;
+  grid-column-start: 2;
+  grid-column-end: 3;
   @media (max-width: 600px) {
     grid-column-start: 1;
     grid-column-end: 3;
     gap: 15px;
   }
-  // & .account {
-  //   @media (max-width: 600px) {
-  //     width: 350px;
-  //   }
-  // }
   & .accountForm {
     display: flex;
     width: 100%;
@@ -136,9 +153,9 @@ $_large_font_size: 20px;
       font-size: $_large_font_size;
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
-      border-top-right-radius: 0px;
-      border-bottom-right-radius: 0px;
-      height: 100%;
+      border-top-right-radius: 10px;
+      border-bottom-right-radius: 10px;
+      height: 55px;
     }
     & input:focus::placeholder {
       color: transparent;
@@ -161,6 +178,7 @@ $_large_font_size: 20px;
       margin-left: 5px;
       padding-top: 5px;
       text-align: start;
+      width: 100%;
     }
   }
 }

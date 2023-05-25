@@ -8,6 +8,7 @@ const strings = new LocalizedStrings({
         username: "Username",
         firstName: "First Name",
         lastName: "Last Name",
+        name: "Name",
         email: "Email Address",
         password: "Password",
         verifyPassword: "Confirm Password",
@@ -80,8 +81,8 @@ const strings = new LocalizedStrings({
       helmet: "Account",
       saveChanges: "Save Changes",
       errorMessage: {
-        firstName: "First name must not be blank or contain spaces",
-        lastName: "Last name must not be blank or contain spaces",
+        firstName: "First name must not be empty",
+        lastName: "Last name must not be empty",
       },
     },
     addCafe: {

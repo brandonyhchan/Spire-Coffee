@@ -5,7 +5,7 @@ import classNames from "classnames";
 type FormItemPropsType = {
   className?: string;
   type: string;
-  text: string;
+  text?: string;
   name: string;
   value?: string;
   placeholder: string | undefined;

@@ -141,12 +141,15 @@ const Account = () => {
                 ) : null}
               </div>
             </div>
-            <div className={classNames(styles.profilePhotoContainer)}>
+            <div className={classNames(styles.profileContainer)}>
               <div
                 className={classNames(styles.profilePhoto)}
                 onClick={handleProfilePhoto}
               >
                 <img src={Logo} alt={Logo} />
+              </div>
+              <div>
+                <h2>{userName}</h2>
               </div>
             </div>
             <div className={classNames(styles.accountContainer)}>
@@ -156,40 +159,66 @@ const Account = () => {
                   onSubmit={handleEditAccount}
                   className={classNames(styles.accountForm)}
                 >
-                  <div
-                    className={
-                      !edit
-                        ? classNames(styles.inputWrapper)
-                        : classNames(styles.editInputWrapper)
-                    }
-                  >
-                    <FormItem
-                      className={styles.formItem}
-                      type={"text"}
-                      placeholder={user?.userName}
-                      text={strings.global.label.username}
-                      name={"username"}
-                      handleChange={handleChange}
-                      disabled={!edit ? true : false}
-                    />
+                  <div className={classNames(styles.nameContainer)}>
+                    <div
+                      className={
+                        !edit
+                          ? classNames(styles.inputWrapper)
+                          : classNames(styles.editInputWrapper)
+                      }
+                    >
+                      <FormItem
+                        className={styles.formItem}
+                        type={"text"}
+                        placeholder={user?.firstName}
+                        text={strings.global.label.name}
+                        name={"firstName"}
+                        handleChange={handleChange}
+                        disabled={!edit ? true : false}
+                        validateLoginInput={() =>
+                          setFirstNameIsValid(
+                            !regexValidator.validFirstName.test(
+                              userInfo.firstName
+                            )
+                          )
+                        }
+                        errorMessage={renderErrorMessage(
+                          !firstNameIsValid,
+                          strings.account.errorMessage.firstName
+                        )}
+                        maxLength={40}
+                      />
+                    </div>
+                    <div
+                      className={
+                        !edit
+                          ? classNames(styles.inputWrapper)
+                          : classNames(styles.editInputWrapper)
+                      }
+                    >
+                      <FormItem
+                        className={styles.formItem}
+                        type={"text"}
+                        placeholder={user?.lastName}
+                        name={"lastName"}
+                        handleChange={handleChange}
+                        disabled={!edit ? true : false}
+                        validateLoginInput={() =>
+                          setLastNameIsValid(
+                            !regexValidator.validLastName.test(
+                              userInfo.lastName
+                            )
+                          )
+                        }
+                        errorMessage={renderErrorMessage(
+                          !lastNameIsValid,
+                          strings.account.errorMessage.lastName
+                        )}
+                        maxLength={40}
+                      />
+                    </div>
                   </div>
-                  <div
-                    className={
-                      !edit
-                        ? classNames(styles.inputWrapper)
-                        : classNames(styles.editInputWrapper)
-                    }
-                  >
-                    <FormItem
-                      className={styles.formItem}
-                      type={"password"}
-                      placeholder={"********"}
-                      text={strings.global.label.password}
-                      name={"password"}
-                      handleChange={handleChange}
-                      disabled={!edit ? true : false}
-                    />
-                  </div>
+
                   <div
                     className={
                       !edit
@@ -216,53 +245,33 @@ const Account = () => {
                   >
                     <FormItem
                       className={styles.formItem}
-                      type={"text"}
-                      placeholder={user?.firstName}
-                      text={strings.global.label.firstName}
-                      name={"firstName"}
+                      type={"password"}
+                      placeholder={"********"}
+                      text={strings.global.label.password}
+                      name={"password"}
                       handleChange={handleChange}
                       disabled={!edit ? true : false}
-                      validateLoginInput={() =>
-                        setFirstNameIsValid(
-                          !regexValidator.validFirstName.test(
-                            userInfo.firstName
-                          )
-                        )
-                      }
-                      errorMessage={renderErrorMessage(
-                        !firstNameIsValid,
-                        strings.account.errorMessage.firstName
-                      )}
-                      maxLength={40}
                     />
                   </div>
-                  <div
-                    className={
-                      !edit
-                        ? classNames(styles.inputWrapper)
-                        : classNames(styles.editInputWrapper)
-                    }
-                  >
-                    <FormItem
-                      className={styles.formItem}
-                      type={"text"}
-                      placeholder={user?.lastName}
-                      text={strings.global.label.lastName}
-                      name={"lastName"}
-                      handleChange={handleChange}
-                      disabled={!edit ? true : false}
-                      validateLoginInput={() =>
-                        setLastNameIsValid(
-                          !regexValidator.validLastName.test(userInfo.lastName)
-                        )
+                  {edit ? (
+                    <div
+                      className={
+                        !edit
+                          ? classNames(styles.inputWrapper)
+                          : classNames(styles.editInputWrapper)
                       }
-                      errorMessage={renderErrorMessage(
-                        !lastNameIsValid,
-                        strings.account.errorMessage.lastName
-                      )}
-                      maxLength={40}
-                    />
-                  </div>
+                    >
+                      <FormItem
+                        className={styles.formItem}
+                        type={"password"}
+                        placeholder={"********"}
+                        text={strings.global.label.verifyPassword}
+                        name={"password"}
+                        handleChange={handleChange}
+                        disabled={!edit ? true : false}
+                      />
+                    </div>
+                  ) : null}
                   {edit ? (
                     <div className={classNames(styles.editButtonGroup)}>
                       {/* need to change to use reset button izzy made on branch 17 */}
