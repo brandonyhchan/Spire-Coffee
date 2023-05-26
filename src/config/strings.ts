@@ -83,6 +83,7 @@ const strings = new LocalizedStrings({
       errorMessage: {
         firstName: "First name must not be empty",
         lastName: "Last name must not be empty",
+        fieldError: "No fields have been filled out!",
       },
     },
     addCafe: {

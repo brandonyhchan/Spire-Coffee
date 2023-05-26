@@ -62,7 +62,6 @@ $_large_font_size: 20px;
 }
 
 .profileContainer {
-  background-color: azure;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -188,5 +187,12 @@ $_large_font_size: 20px;
   justify-content: center;
   gap: 15px;
   padding-top: 5px;
+  padding-bottom: 20px;
+}
+
+.errorMessage {
+  color: var(--warning);
+  font-family: 'Figtree-Regular';
+  font-size: $_large_font_size;
   padding-bottom: 40px;
 }

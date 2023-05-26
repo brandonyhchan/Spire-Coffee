@@ -35,14 +35,18 @@ const Account = () => {
     username: user?.userName,
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
-    email: user?.email,
+    email: user?.email || "",
     password: "", // need to change to password from db and the password that comes back is encrypted
+    confPassword: "",
   });
   const [edit, setEdit] = useState<boolean>(false);
   const [firstNameIsValid, setFirstNameIsValid] = useState(false);
   const [lastNameIsValid, setLastNameIsValid] = useState(false);
   const [emailIsValid, setEmailIsValid] = useState(false);
-  const [refresh, setRefresh] = useState(false);
+  const [passwordIsValid, setPasswordIsValid] = useState(false);
+  const [passwordRequired, setPasswordRequired] = useState(false);
+  const [passwordMatch, setPasswordMatch] = useState(false);
+  const [editInfoError, setEditInfoError] = useState(false);
 
   const { loading, refetch } = useQuery(getUserInfo, {
     onError: (error) => {
@@ -61,6 +65,9 @@ const Account = () => {
       alert(error);
       console.log("Error updating user info."); // change this to require config/strings.ts later
     },
+    onCompleted: () => {
+      window.location.reload();
+    },
   });
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -74,9 +81,20 @@ const Account = () => {
 
   const handleEditButton = () => {
     setEdit(!edit);
-    setRefresh(!refresh);
-    if (refresh) {
+    if (edit) {
       window.location.reload();
+    }
+  };
+
+  const handleUserInfo = () => {
+    if (
+      userInfo.firstName === "" &&
+      userInfo.lastName === "" &&
+      userInfo.email === ""
+    ) {
+      setEditInfoError(true);
+    } else {
+      setEditInfoError(false);
     }
   };
 
@@ -85,8 +103,7 @@ const Account = () => {
     if (userInfo.firstName.trim() !== "") {
       updateUser({
         variables: {
-          userName: userName, // right now username is not editable, to make it update,
-          //we need to change the fetch of user from username to id
+          userName: userName,
           firstName: userInfo.firstName,
         },
       });
@@ -94,12 +111,37 @@ const Account = () => {
     if (userInfo.lastName.trim() !== "") {
       updateUser({
         variables: {
-          userName: userName, // right now username is not editable, to make it update,
-          //we need to change the fetch of user from username to id
+          userName: userName,
           lastName: userInfo.lastName,
         },
       });
     }
+    if (userInfo.email.trim() !== "") {
+      updateUser({
+        variables: {
+          userName: userName,
+          email: userInfo.email,
+        },
+      });
+    }
+    //need to encrypt new password and check if it's the same as old password
+
+    // if (passwordMatch === true && userInfo.password !== "") {
+    //   updateUser({
+    //     variables: {
+    //       userName: userName,
+    //       password: userInfo.password,
+    //     },
+    //   });
+    // }
+  };
+
+  const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const value = event.currentTarget.value;
+    setPasswordRequired(!value);
+    setPasswordMatch(userInfo.password !== userInfo.confPassword);
+    console.log("password: " + userInfo.password);
+    console.log("confpass: " + userInfo.confPassword);
   };
 
   const handleProfilePhoto = () => {
@@ -234,6 +276,15 @@ const Account = () => {
                       name={"email"}
                       handleChange={handleChange}
                       disabled={!edit ? true : false}
+                      validateLoginInput={() =>
+                        setEmailIsValid(
+                          !regexValidator.validEmail.test(userInfo.email)
+                        )
+                      }
+                      errorMessage={renderErrorMessage(
+                        !emailIsValid,
+                        strings.signUp.errorMessage.email
+                      )}
                     />
                   </div>
                   <div
@@ -251,6 +302,16 @@ const Account = () => {
                       name={"password"}
                       handleChange={handleChange}
                       disabled={!edit ? true : false}
+                      validateLoginInput={() =>
+                        setPasswordIsValid(
+                          !regexValidator.validPassword.test(userInfo.password)
+                        )
+                      }
+                      errorMessage={renderErrorMessage(
+                        !passwordIsValid,
+                        strings.signUp.errorMessage.password,
+                        strings.signUp.errorMessage.passwordChar
+                      )}
                     />
                   </div>
                   {edit ? (
@@ -266,9 +327,18 @@ const Account = () => {
                         type={"password"}
                         placeholder={"********"}
                         text={strings.global.label.verifyPassword}
-                        name={"password"}
+                        name={"confPassword"}
                         handleChange={handleChange}
                         disabled={!edit ? true : false}
+                        validateLoginInput={handlePassword}
+                        errorMessage={renderErrorMessage(
+                          !passwordRequired,
+                          strings.signUp.errorMessage.confPassword
+                        )}
+                        secondErrorMessage={renderErrorMessage(
+                          !passwordMatch,
+                          strings.signUp.errorMessage.passwordMatch
+                        )}
                       />
                     </div>
                   ) : null}
@@ -284,10 +354,16 @@ const Account = () => {
                         text={"Save"}
                         buttonType="submit"
                         name={strings.global.name.username}
+                        onClick={handleUserInfo}
                       />
                     </div>
                   ) : null}
                 </form>
+                {editInfoError && (
+                  <span className={classNames(styles.errorMessage)}>
+                    {strings.account.errorMessage.fieldError}
+                  </span>
+                )}
               </div>
             </div>
           </React.Fragment>
