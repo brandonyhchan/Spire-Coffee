@@ -6,6 +6,9 @@ import {
   returnAllCafes,
   getCafeInfo,
 } from "./resolvers/Query.js";
+import {
+  updateCafeInfo,
+} from "./resolvers/Mutation.js";
 import { loadFile } from "graphql-import-files";
 
 const resolvers = {
@@ -15,6 +18,9 @@ const resolvers = {
     returnAllCafes,
     getCafeInfo,
   },
+  Mutation: {
+    updateCafeInfo,
+  }
 };
 
 const server = new ApolloServer({

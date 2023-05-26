@@ -55,6 +55,8 @@ const StatusSlider = ({
     }
   }
 
+  console.log(filterSelection);
+
   return (
     <div className={classNames(styles.sliderContainer)}>
       <div className={classNames(styles.titleContainer)}>

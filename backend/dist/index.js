@@ -1,6 +1,7 @@
 import { ApolloServer } from "apollo-server";
 import { context } from "./context.js";
 import { signUp, login, returnAllCafes, getCafeInfo, } from "./resolvers/Query.js";
+import { updateCafeInfo, } from "./resolvers/Mutation.js";
 import { loadFile } from "graphql-import-files";
 const resolvers = {
     Query: {
@@ -9,6 +10,9 @@ const resolvers = {
         returnAllCafes,
         getCafeInfo,
     },
+    Mutation: {
+        updateCafeInfo,
+    }
 };
 const server = new ApolloServer({
     typeDefs: loadFile("./src/schemas/schema.graphql"),

@@ -4,6 +4,9 @@ import styles from "./report.module.scss";
 import strings from "config/strings";
 import Button from "component/common/Button";
 import { Cafe } from "types/api/cafe";
+import { useParams } from "react-router-dom";
+import { cafeMutation } from "support/graphqlServerApi";
+import { useMutation } from "@apollo/client";
 import StatusSlider from "component/common/StatusSlider/StatusSlider";
 import { renderBusyIcon, renderNoiseIcon } from "component/common/Icons/Icons";
 import {
@@ -21,11 +24,20 @@ type ReportPropsType = {
 };
 
 const Report = ({ cafe }: ReportPropsType) => {
+  const { cafeId } = useParams();
+
   const [showUserReport, setShowUserReport] = useState(false);
   const [busyness, setBusyness] = useState<SelectOptions>();
   const [noisiness, setNoisiness] = useState<SelectOptions>();
   const [showSubmitMessage, setShowSubmitMessage] = useState(false);
   const [disableReportButton, setDisableReportButton] = useState(false);
+
+  const [updateCafe] = useMutation(cafeMutation, {
+    onError: (error) => {
+      alert(error);
+      console.log("Error updating cafe info."); // change this to require config/strings.ts later
+    },
+  });
 
   let dateToSendToDb;
   const [userReportTime, setUserReportTime] = useState("");
@@ -43,7 +55,18 @@ const Report = ({ cafe }: ReportPropsType) => {
     dateToSendToDb = moment().format();
     setUserReportTime(dateToSendToDb);
     console.log(dateToSendToDb);
+
+    updateCafe({
+      variables: {
+        stringId: cafeId,
+        // there's a problem with busyness and noisiness, they are being saved as numbers and not SelectOptions
+        busyness: SelectOptions.HIGH,
+        noisiness: SelectOptions.HIGH,
+      },
+    });
   }
+
+  console.log(cafe);
 
   function cancelUserReport(): void {
     setShowUserReport(false);

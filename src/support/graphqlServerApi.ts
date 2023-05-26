@@ -86,3 +86,21 @@ export const getCafeInfo = gql`
     }
   }
 `;
+
+export const cafeMutation = gql`
+  mutation updateCafeInfo(
+    $stringId: String!
+    $busyness: filterOptions
+    $noisiness: filterOptions
+  ) {
+    updateCafeInfo(
+      stringId: $stringId
+      busyness: $busyness
+      noisiness: $noisiness
+    ) {
+      id
+      busyness
+      noisiness
+    }
+  }
+`;

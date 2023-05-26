@@ -22,3 +22,11 @@ type Query {
   ): [Cafe]
   getCafeInfo(stringId: String!): Cafe
 }
+
+type Mutation {
+  updateCafeInfo(
+    stringId: String!
+    busyness: filterOptions
+    noisiness: filterOptions
+  ): Cafe
+}
