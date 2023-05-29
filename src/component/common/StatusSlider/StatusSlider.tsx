@@ -1,10 +1,8 @@
 import React from "react";
 import { Slider } from "@mui/material";
-import classNames from "classnames";
-import strings from "config/strings";
-import styles from "./statusSlider.module.scss";
-import { Cafe } from "types/api/cafe";
 import { SelectOptions } from "../Filter/FilterType/RadioFilter";
+import classNames from "classnames";
+import styles from "./statusSlider.module.scss";
 
 type StatusSliderPropsType = {
   filterSelection: SelectOptions | undefined;
@@ -37,10 +35,14 @@ const StatusSlider = ({
     );
   }
 
-  //Gets the distance value to send to db
   const getBusyness = (e: any, value: any) => {
-    handleFilter(value);
-    console.log(value);
+    if (value === 0) {
+      handleFilter(SelectOptions.LOW);
+    } else if (value === 1) {
+      handleFilter(SelectOptions.MEDIUM);
+    } else {
+      handleFilter(SelectOptions.HIGH);
+    }
   };
 
   function changeValueToNumber(filterSelection: SelectOptions | undefined) {
@@ -48,14 +50,10 @@ const StatusSlider = ({
       return 0;
     } else if (filterSelection === SelectOptions.MEDIUM) {
       return 1;
-    } else if (filterSelection === SelectOptions.HIGH) {
-      return 2;
     } else {
-      return undefined;
+      return 2;
     }
   }
-
-  console.log(filterSelection);
 
   return (
     <div className={classNames(styles.sliderContainer)}>

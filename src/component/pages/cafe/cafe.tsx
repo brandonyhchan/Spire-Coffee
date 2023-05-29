@@ -62,8 +62,6 @@ const CafePage = () => {
     },
   });
 
-  console.log(cafe);
-
   const handleFavouriteButton = (event: React.MouseEvent<HTMLDivElement>) => {
     event.preventDefault();
     setFavourite(!favourite); // on refresh favourite is false, this bug needs to be fixed

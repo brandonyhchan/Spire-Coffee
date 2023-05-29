@@ -1,8 +1,4 @@
 import React, { useState } from "react";
-import classNames from "classnames";
-import styles from "./report.module.scss";
-import strings from "config/strings";
-import Button from "component/common/Button";
 import { Cafe } from "types/api/cafe";
 import { useParams } from "react-router-dom";
 import { cafeMutation } from "support/graphqlServerApi";
@@ -18,19 +14,25 @@ import {
 } from "./UserReport";
 import { SelectOptions } from "component/common/Filter/FilterType/RadioFilter";
 import moment from "moment";
+import Button from "component/common/Button";
+import classNames from "classnames";
+import styles from "./report.module.scss";
+import strings from "config/strings";
 
 type ReportPropsType = {
   cafe: Cafe | undefined;
 };
 
 const Report = ({ cafe }: ReportPropsType) => {
+  let dateToSendToDb;
   const { cafeId } = useParams();
 
   const [showUserReport, setShowUserReport] = useState(false);
-  const [busyness, setBusyness] = useState<SelectOptions>();
-  const [noisiness, setNoisiness] = useState<SelectOptions>();
+  const [busyness, setBusyness] = useState<SelectOptions>(SelectOptions.LOW);
+  const [noisiness, setNoisiness] = useState<SelectOptions>(SelectOptions.LOW);
   const [showSubmitMessage, setShowSubmitMessage] = useState(false);
   const [disableReportButton, setDisableReportButton] = useState(false);
+  const [userReportTime, setUserReportTime] = useState("");
 
   const [updateCafe] = useMutation(cafeMutation, {
     onError: (error) => {
@@ -39,12 +41,8 @@ const Report = ({ cafe }: ReportPropsType) => {
     },
   });
 
-  let dateToSendToDb;
-  const [userReportTime, setUserReportTime] = useState("");
-
   function openUserReport(): void {
     setShowUserReport(true);
-    console.log("Show the User Report");
   }
 
   function submitUserReport(): void {
@@ -59,14 +57,11 @@ const Report = ({ cafe }: ReportPropsType) => {
     updateCafe({
       variables: {
         stringId: cafeId,
-        // there's a problem with busyness and noisiness, they are being saved as numbers and not SelectOptions
-        busyness: SelectOptions.HIGH,
-        noisiness: SelectOptions.HIGH,
+        busyness: busyness,
+        noisiness: noisiness,
       },
     });
   }
-
-  console.log(cafe);
 
   function cancelUserReport(): void {
     setShowUserReport(false);
