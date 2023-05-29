@@ -90,13 +90,13 @@ export const getCafeInfo = gql`
 export const cafeMutation = gql`
   mutation updateCafeInfo(
     $stringId: String!
-    $busyFilter: filterOptions
-    $noisyFilter: filterOptions
+    $busyness: filterOptions
+    $noisiness: filterOptions
   ) {
     updateCafeInfo(
       stringId: $stringId
-      busyness: $busyFilter
-      noisiness: $noisyFilter
+      busyness: $busyness
+      noisiness: $noisiness
     ) {
       id
       busyness
