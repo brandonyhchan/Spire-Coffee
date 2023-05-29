@@ -57,8 +57,8 @@ const Report = ({ cafe }: ReportPropsType) => {
     updateCafe({
       variables: {
         stringId: cafeId,
-        busyness: busyness,
-        noisiness: noisiness,
+        busyFilter: busyness,
+        noiseFilter: noisiness,
       },
     });
   }
