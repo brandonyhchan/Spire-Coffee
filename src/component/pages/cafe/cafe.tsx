@@ -102,111 +102,109 @@ const CafePage = () => {
           <LoadingSpinner />
         </div>
       )}
-      <div className={classNames(styles.main)}>
-        <div className={classNames(styles.container)}>
-          {showCafeInfo ? (
-            <React.Fragment>
-              <div className={classNames(styles.cafeTitle)}>
-                <h1 className={classNames(styles.cafeName)}>{cafe?.name}</h1>
-              </div>
-              <div className={classNames(styles.carouselContainer)}>
-                <ImageCarousel />
-              </div>
-              <div className={classNames(styles.infoContainer)}>
-                <div className={classNames(styles.cafeInfo)}>
-                  <div className={classNames(styles.cafeDetails)}>
-                    <div className={classNames(styles.leftSection)}>
-                      <div className={classNames(styles.cafeAddress)}>
-                        <p>{cafe?.street}</p>
-                        <p>
-                          {cafe?.city}
-                          {strings.global.comma}
-                          {strings.global.space}
-                          {cafe?.province}
-                          {strings.global.space}
-                          {cafe?.postalCode}
-                        </p>
-                      </div>
-                      <div className={classNames(styles.labelContainer)}>
-                        <AccessTimeRoundedIcon />
-                        <label>
-                          <Dropdown text={strings.cafe.businessHours}>
-                            {businessHours.map((hours, index) => (
-                              <div
-                                key={index}
-                                className={classNames(styles.dropdownItem)}
-                              >
-                                <div className={classNames(styles.cafeDays)}>
-                                  <p>{hours.weekday}</p>
-                                </div>
-                                <div className={classNames(styles.cafeHours)}>
-                                  <p>{hours.hours}</p>
-                                </div>
-                              </div>
-                            ))}
-                          </Dropdown>
-                        </label>
-                      </div>
-                      <div className={classNames(styles.labelContainer)}>
-                        <LocalPhoneRoundedIcon />
-                        <label>{renderPhoneNumber()}</label>
-                      </div>
-                      <div className={classNames(styles.labelContainer)}>
-                        <LanguageRoundedIcon />
-                        {renderWebsite()}
-                      </div>
+      <div className={classNames(styles.container)}>
+        {showCafeInfo ? (
+          <React.Fragment>
+            <div className={classNames(styles.cafeTitle)}>
+              <h1 className={classNames(styles.cafeName)}>{cafe?.name}</h1>
+            </div>
+            <div className={classNames(styles.carouselContainer)}>
+              <ImageCarousel />
+            </div>
+            <div className={classNames(styles.infoContainer)}>
+              <div className={classNames(styles.cafeInfo)}>
+                <div className={classNames(styles.cafeDetails)}>
+                  <div className={classNames(styles.leftSection)}>
+                    <div className={classNames(styles.cafeAddress)}>
+                      <p>{cafe?.street}</p>
+                      <p>
+                        {cafe?.city}
+                        {strings.global.comma}
+                        {strings.global.space}
+                        {cafe?.province}
+                        {strings.global.space}
+                        {cafe?.postalCode}
+                      </p>
                     </div>
-                    <div className={classNames(styles.rightSection)}>
-                      <div className={classNames(styles.labelContainer)}>
-                        {renderBusyIcon(cafe?.busyness)}
-                        <label>
-                          {strings.cafe.busynessLabel}
-                          {strings.global.semiColon}
-                          {strings.global.space}
-                          {renderBusyText(cafe?.busyness)}
-                        </label>
-                      </div>
-                      <div className={classNames(styles.labelContainer)}>
-                        {renderNoiseIcon(cafe?.noisiness)}
-                        <label>
-                          {strings.cafe.noisinessLabel}
-                          {strings.global.semiColon}
-                          {strings.global.space}
-                          {renderNoiseText(cafe?.noisiness)}
-                        </label>
-                      </div>
-                      <div className={classNames(styles.labelContainer)}>
-                        {renderPrice()}
-                        <label>
-                          {strings.cafe.priceLabel}
-                          {strings.global.semiColon}
-                          {strings.global.space}
-                          {renderPriceText(cafe?.price)}
-                        </label>
-                      </div>
+                    <div className={classNames(styles.labelContainer)}>
+                      <AccessTimeRoundedIcon />
+                      <label>
+                        <Dropdown text={strings.cafe.businessHours}>
+                          {businessHours.map((hours, index) => (
+                            <div
+                              key={index}
+                              className={classNames(styles.dropdownItem)}
+                            >
+                              <div className={classNames(styles.cafeDays)}>
+                                <p>{hours.weekday}</p>
+                              </div>
+                              <div className={classNames(styles.cafeHours)}>
+                                <p>{hours.hours}</p>
+                              </div>
+                            </div>
+                          ))}
+                        </Dropdown>
+                      </label>
+                    </div>
+                    <div className={classNames(styles.labelContainer)}>
+                      <LocalPhoneRoundedIcon />
+                      <label>{renderPhoneNumber()}</label>
+                    </div>
+                    <div className={classNames(styles.labelContainer)}>
+                      <LanguageRoundedIcon />
+                      {renderWebsite()}
                     </div>
                   </div>
-                  <div
-                    onClick={handleFavouriteButton}
-                    className={classNames(styles.favouriteButton)}
-                  >
-                    {!favourite ? (
-                      <FavoriteBorderRoundedIcon />
-                    ) : (
-                      <FavoriteRoundedIcon />
-                    )}
+                  <div className={classNames(styles.rightSection)}>
+                    <div className={classNames(styles.labelContainer)}>
+                      {renderBusyIcon(cafe?.busyness)}
+                      <label>
+                        {strings.cafe.busynessLabel}
+                        {strings.global.semiColon}
+                        {strings.global.space}
+                        {renderBusyText(cafe?.busyness)}
+                      </label>
+                    </div>
+                    <div className={classNames(styles.labelContainer)}>
+                      {renderNoiseIcon(cafe?.noisiness)}
+                      <label>
+                        {strings.cafe.noisinessLabel}
+                        {strings.global.semiColon}
+                        {strings.global.space}
+                        {renderNoiseText(cafe?.noisiness)}
+                      </label>
+                    </div>
+                    <div className={classNames(styles.labelContainer)}>
+                      {renderPrice()}
+                      <label>
+                        {strings.cafe.priceLabel}
+                        {strings.global.semiColon}
+                        {strings.global.space}
+                        {renderPriceText(cafe?.price)}
+                      </label>
+                    </div>
                   </div>
                 </div>
+                <div
+                  onClick={handleFavouriteButton}
+                  className={classNames(styles.favouriteButton)}
+                >
+                  {!favourite ? (
+                    <FavoriteBorderRoundedIcon />
+                  ) : (
+                    <FavoriteRoundedIcon />
+                  )}
+                </div>
               </div>
-              <div className={classNames(styles.reportContainer)}>
-                <Report cafe={cafe} />
-              </div>
-              <div className={classNames(styles.mapContainer)}>
-                <Map />
-              </div>
-            </React.Fragment>
-          ) : null}
-        </div>
+            </div>
+            <div className={classNames(styles.reportContainer)}>
+              <Report cafe={cafe} />
+            </div>
+            {/* <div className={classNames(styles.mapContainer)}>
+              <Map />
+            </div> */}
+          </React.Fragment>
+        ) : null}
       </div>
       <Footer />
       <MobileFooter />

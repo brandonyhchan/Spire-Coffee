@@ -24,16 +24,16 @@ $_text_size_desktop: 20px;
 
 .container {
   display: grid;
-  min-height: 100vh;
+  min-height: calc(100vh - 65px);
   width: 100%;
   grid-template-columns: 100%;
   grid-template-rows: 80px repeat(4, auto);
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
-  padding: 0px 20px;
+  padding: 10px 20px;
   @media (min-width: 1281px) {
     grid-template-columns: 50% 50%;
-    grid-template-rows: 80px auto auto;
+    grid-template-rows: 80px;
   }
   @media (min-width: 540px) and (max-width: 819px) {
     padding: 0px 40px;
@@ -80,6 +80,9 @@ $_text_size_desktop: 20px;
 }
 
 .carouselContainer {
+  grid-row-start: 2;
+  grid-row-end: 4;
+  padding-bottom: 20px;
   @media (max-width: 1280px) {
     padding-bottom: 10px;
   }
@@ -91,9 +94,7 @@ $_text_size_desktop: 20px;
 
 .cafeInfo {
   display: flex;
-  justify-content: space-between;
   width: 100%;
-  height: auto;
   font-family: 'Figtree-Regular';
   padding: 20px;
   border-color: grey;
@@ -101,8 +102,7 @@ $_text_size_desktop: 20px;
   border-bottom: solid 3px var(--light-grey);
   @media (min-width: 1281px) {
     border: none;
-    padding: 50px;
-    width: 80%;
+    padding: 40px;
     height: auto;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
@@ -110,11 +110,7 @@ $_text_size_desktop: 20px;
 }
 
 .infoContainer {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 100%;
+  padding-left: 40px;
   height: 100%;
   & .favouriteButton {
     transform: scale(1.2);
@@ -194,13 +190,9 @@ $_text_size_desktop: 20px;
 
 .reportContainer {
   padding: 20px 0px;
+  padding-left: 40px;
   @media (min-width: 1281px) {
     grid-column-start: 2;
     grid-row-start: 3;
   }
-}
-
-.mapContainer {
-  padding-top: 20px;
-  padding-bottom: 80px;
 }
