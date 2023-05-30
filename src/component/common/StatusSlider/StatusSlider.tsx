@@ -35,7 +35,7 @@ const StatusSlider = ({
     );
   }
 
-  const getBusyness = (e: any, value: any) => {
+  const getStatusLevel = (e: any, value: any) => {
     if (value === 0) {
       handleFilter(SelectOptions.LOW);
     } else if (value === 1) {
@@ -71,7 +71,7 @@ const StatusSlider = ({
         min={minValue}
         max={maxValue}
         value={changeValueToNumber(filterSelection)}
-        onChangeCommitted={getBusyness}
+        onChangeCommitted={getStatusLevel}
         sx={{
           fontFamily: "Figtree-Regular",
         }}
