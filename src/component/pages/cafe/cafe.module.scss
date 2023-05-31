@@ -24,16 +24,19 @@ $_text_size_desktop: 20px;
 
 .container {
   display: grid;
-  min-height: calc(100vh - 65px);
   width: 100%;
+  min-height: calc(100vh - 65px);
   grid-template-columns: 100%;
-  grid-template-rows: 80px repeat(4, auto);
+  grid-template-rows: 80px repeat(3, max-content);
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
   padding: 10px 20px;
+  @media (max-width: 600px) {
+    padding-bottom: 56px;
+  }
   @media (min-width: 1281px) {
     grid-template-columns: 50% 50%;
-    grid-template-rows: 80px;
+    grid-template-rows: 80px max-content max-content;
   }
   @media (min-width: 540px) and (max-width: 819px) {
     padding: 0px 40px;
@@ -110,8 +113,10 @@ $_text_size_desktop: 20px;
 }
 
 .infoContainer {
-  padding-left: 40px;
   height: 100%;
+  @media (min-width: 1281px) {
+    padding-left: 40px;
+  }
   & .favouriteButton {
     transform: scale(1.2);
     cursor: pointer;
@@ -190,9 +195,12 @@ $_text_size_desktop: 20px;
 
 .reportContainer {
   padding: 20px 0px;
-  padding-left: 40px;
+  @media (max-width: 600px) {
+    height: 100%;
+  }
   @media (min-width: 1281px) {
     grid-column-start: 2;
     grid-row-start: 3;
+    padding-left: 40px;
   }
 }
