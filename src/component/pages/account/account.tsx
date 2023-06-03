@@ -366,6 +366,18 @@ const Account = () => {
                 )}
               </div>
             </div>
+            {!edit ? (
+              <div className={classNames(styles.editText)}>
+                <label>
+                  <a
+                    className={classNames(styles.editLink)}
+                    onClick={() => handleEditButton()}
+                  >
+                    EDIT
+                  </a>
+                </label>
+              </div>
+            ) : null}
           </React.Fragment>
         )}
       </div>
