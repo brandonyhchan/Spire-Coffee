@@ -122,3 +122,17 @@ export const userMutation = gql`
     }
   }
 `;
+
+export const passwordMutation = gql`
+  mutation updatePassword(
+    $userName: String!
+    $password: String
+  ) {
+    updatePassword(
+      userName: $userName
+      password: $password
+    ) {
+      userName
+    }
+  }
+`;

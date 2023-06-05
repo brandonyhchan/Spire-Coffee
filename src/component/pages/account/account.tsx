@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { getUserInfo, userMutation } from "support/graphqlServerApi";
+import { getUserInfo, userMutation, passwordMutation } from "support/graphqlServerApi";
 import { useQuery, useMutation } from "@apollo/client";
 import { User } from "types/api/user";
 import RegexValidator from "component/pages/signUp/regexValidator";
@@ -70,6 +70,16 @@ const Account = () => {
     },
   });
 
+  const [updatePassword] = useMutation(passwordMutation, {
+    onError: (error) => {
+      alert(error);
+      console.log("Error updating user password."); // change this to require config/strings.ts later
+    },
+    onCompleted: () => {
+      window.location.reload();
+    },
+  });
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
     const value = event.currentTarget.value;
@@ -90,7 +100,9 @@ const Account = () => {
     if (
       userInfo.firstName === "" &&
       userInfo.lastName === "" &&
-      userInfo.email === ""
+      userInfo.email === "" &&
+      userInfo.password === "" &&
+      userInfo.confPassword === ""
     ) {
       setEditInfoError(true);
     } else {
@@ -125,15 +137,15 @@ const Account = () => {
       });
     }
     //need to encrypt new password and check if it's the same as old password
-
-    // if (passwordMatch === true && userInfo.password !== "") {
-    //   updateUser({
-    //     variables: {
-    //       userName: userName,
-    //       password: userInfo.password,
-    //     },
-    //   });
-    // }
+    updatePassword({
+      variables: {
+        userName: userName,
+        password: userInfo.password,
+      },
+      onCompleted: () => {
+        console.log("Password changed.");
+      },
+    });
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
