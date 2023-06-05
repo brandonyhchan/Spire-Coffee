@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { getUserInfo, userMutation, passwordMutation } from "support/graphqlServerApi";
+import { getUserInfo, userMutation } from "support/graphqlServerApi";
 import { useQuery, useMutation } from "@apollo/client";
 import { User } from "types/api/user";
 import RegexValidator from "component/pages/signUp/regexValidator";
@@ -36,7 +36,7 @@ const Account = () => {
     firstName: user?.firstName || "",
     lastName: user?.lastName || "",
     email: user?.email || "",
-    password: "", // need to change to password from db and the password that comes back is encrypted
+    password: "",
     confPassword: "",
   });
   const [edit, setEdit] = useState<boolean>(false);
@@ -64,16 +64,6 @@ const Account = () => {
     onError: (error) => {
       alert(error);
       console.log("Error updating user info."); // change this to require config/strings.ts later
-    },
-    onCompleted: () => {
-      window.location.reload();
-    },
-  });
-
-  const [updatePassword] = useMutation(passwordMutation, {
-    onError: (error) => {
-      alert(error);
-      console.log("Error updating user password."); // change this to require config/strings.ts later
     },
     onCompleted: () => {
       window.location.reload();
@@ -136,14 +126,12 @@ const Account = () => {
         },
       });
     }
-    //need to encrypt new password and check if it's the same as old password
-    updatePassword({
+    // add check for password before updating, checking old password is correct might be difficult because it's hashed
+    // could have security question instead?
+    updateUser({
       variables: {
         userName: userName,
         password: userInfo.password,
-      },
-      onCompleted: () => {
-        console.log("Password changed.");
       },
     });
   };
@@ -152,8 +140,6 @@ const Account = () => {
     const value = event.currentTarget.value;
     setPasswordRequired(!value);
     setPasswordMatch(userInfo.password !== userInfo.confPassword);
-    console.log("password: " + userInfo.password);
-    console.log("confpass: " + userInfo.confPassword);
   };
 
   const handleProfilePhoto = () => {
@@ -356,7 +342,6 @@ const Account = () => {
                   ) : null}
                   {edit ? (
                     <div className={classNames(styles.editButtonGroup)}>
-                      {/* need to change to use reset button izzy made on branch 17 */}
                       <Button
                         buttonType="reset"
                         text={"Cancel"}
@@ -385,7 +370,7 @@ const Account = () => {
                     className={classNames(styles.editLink)}
                     onClick={() => handleEditButton()}
                   >
-                    EDIT
+                    EDIT {/* change to strings */}
                   </a>
                 </label>
               </div>
