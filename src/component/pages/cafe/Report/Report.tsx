@@ -96,12 +96,13 @@ const Report = ({ cafe }: ReportPropsType) => {
           </div>
           <div className={classNames(styles.showUserReportButtons)}>
             <Button
-              type="primaryOpposite"
+              type="mobileSizePrimaryOpposite"
               buttonType="reset"
               text={strings.cafe.cancelReportButton}
               onClick={cancelUserReport}
             />
             <Button
+              type="mobileSizePrimary"
               buttonType="submit"
               text={strings.cafe.submitReportButton}
               onClick={submitUserReport}

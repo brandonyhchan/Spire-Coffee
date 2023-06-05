@@ -31,6 +31,7 @@ $_text_size_desktop: 20px;
   font-family: 'Figtree-Regular';
   color: var(--dark-grey);
   padding: 10px 20px;
+  overflow-x: hidden;
   @media (max-width: 600px) {
     padding-bottom: 56px;
   }
@@ -92,6 +93,12 @@ $_text_size_desktop: 20px;
   @media (min-width: 1281px) {
     width: 100%;
     height: auto;
+  }
+}
+
+@media (max-width: 415px) {
+  .css-1f8sh1y {
+    height: 220px;
   }
 }
 

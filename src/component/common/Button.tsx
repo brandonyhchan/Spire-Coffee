@@ -5,7 +5,14 @@ import styles from "./button.module.scss";
 type ButtonPropsType = {
   onClick?: MouseEventHandler;
   text?: string;
-  type?: "primary" | "primaryOpposite" | "secondary" | "navbar" | "filter";
+  type?:
+    | "primary"
+    | "primaryOpposite"
+    | "secondary"
+    | "navbar"
+    | "filter"
+    | "mobileSizePrimary"
+    | "mobileSizePrimaryOpposite";
   buttonType?: "button" | "submit" | "reset";
   className?: string;
   disabled?: boolean;

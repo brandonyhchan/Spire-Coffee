@@ -11,7 +11,6 @@
   background-color: var(--primary);
   color: white;
   padding: 10px;
-  width: 150px;
   font-size: 18px;
 
   &:hover,
@@ -23,15 +22,14 @@
 
 .primaryOpposite {
   background-color: rgba(255, 255, 255, 0.616);
-  color: var(--primary-dark);
+  color: var(--dark-grey);
   padding: 10px;
-  width: 150px;
   font-size: 18px;
   border: solid 1px;
 
   &:hover,
   &:focus { 
-    background-color: var(--primary-dark);
+    background-color: var(--dark-grey);
     cursor: pointer;
     color: white;
   }
@@ -41,7 +39,6 @@
   background-color: var(--secondary);
   color: white;
   padding: 10px;
-  width: 150px;
   font-size: 18px;
 
   &:hover,
@@ -100,5 +97,39 @@
     background-color: #cccccc;
     color: #666666;
     cursor: default;
+  }
+}
+
+.mobileSizePrimary {
+  background-color: var(--primary);
+  color: white;
+  padding: 10px;
+  font-size: 18px;
+
+  &:hover,
+  &:focus { 
+    background-color: var(--primary-dark);
+    cursor: pointer;
+  }
+  @media (max-width: 400px) {
+    width: 125px;
+  }
+}
+
+.mobileSizePrimaryOpposite {
+  background-color: rgba(255, 255, 255, 0.616);
+  color: var(--dark-grey);
+  padding: 10px;
+  font-size: 18px;
+  border: solid 1px;
+
+  &:hover,
+  &:focus { 
+    background-color: var(--dark-grey);
+    cursor: pointer;
+    color: white;
+  }
+  @media (max-width: 400px) {
+    width: 125px;
   }
 }
