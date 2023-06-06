@@ -108,31 +108,19 @@ export const userMutation = gql`
     $firstName: String
     $lastName: String
     $email: String
+    $password: String
   ) {
     updateUserInfo(
       userName: $userName
       firstName: $firstName
       lastName: $lastName
       email: $email
+      password: $password
     ) {
       userName
       firstName
       lastName
       email
-    }
-  }
-`;
-
-export const passwordMutation = gql`
-  mutation updatePassword(
-    $userName: String!
-    $password: String
-  ) {
-    updatePassword(
-      userName: $userName
-      password: $password
-    ) {
-      userName
     }
   }
 `;
