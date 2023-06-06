@@ -136,7 +136,7 @@ const SignUp = () => {
                 }
                 errorMessage={renderErrorMessage(
                   !usernameIsValid,
-                  strings.signUp.errorMessage.username
+                  strings.global.errorMessage.username
                 )}
               />
               <FormItem
@@ -153,7 +153,7 @@ const SignUp = () => {
                 }
                 errorMessage={renderErrorMessage(
                   !firstNameIsValid,
-                  strings.signUp.errorMessage.firstName
+                  strings.global.errorMessage.firstName
                 )}
                 maxLength={40}
               />
@@ -171,7 +171,7 @@ const SignUp = () => {
                 }
                 errorMessage={renderErrorMessage(
                   !lastNameIsValid,
-                  strings.signUp.errorMessage.lastName
+                  strings.global.errorMessage.lastName
                 )}
                 maxLength={40}
               />
@@ -189,7 +189,7 @@ const SignUp = () => {
                 }
                 errorMessage={renderErrorMessage(
                   !emailIsValid,
-                  strings.signUp.errorMessage.email
+                  strings.global.errorMessage.email
                 )}
               />
               <FormItem
@@ -206,8 +206,8 @@ const SignUp = () => {
                 }
                 errorMessage={renderErrorMessage(
                   !passwordIsValid,
-                  strings.signUp.errorMessage.password,
-                  strings.signUp.errorMessage.passwordChar
+                  strings.global.errorMessage.password,
+                  strings.global.errorMessage.passwordChar
                 )}
               />
               <FormItem
@@ -220,16 +220,16 @@ const SignUp = () => {
                 validateLoginInput={handlePassword}
                 errorMessage={renderErrorMessage(
                   !passwordRequired,
-                  strings.signUp.errorMessage.confPassword
+                  strings.global.errorMessage.confPassword
                 )}
                 secondErrorMessage={renderErrorMessage(
                   !passwordMatch,
-                  strings.signUp.errorMessage.passwordMatch
+                  strings.global.errorMessage.passwordMatch
                 )}
               />
               {signUpErrorMessage && (
                 <span className={classNames(styles.errorMessage)}>
-                  {strings.signUp.errorMessage.message}
+                  {strings.global.errorMessage.message}
                 </span>
               )}
               <Button

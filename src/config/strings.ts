@@ -8,10 +8,11 @@ const strings = new LocalizedStrings({
         username: "Username",
         firstName: "First Name",
         lastName: "Last Name",
-        name: "Name",
         email: "Email Address",
         password: "Password",
+        newPassword: "New Password",
         verifyPassword: "Confirm Password",
+        verifyNewPassword: "Confirm New Password",
       },
       name: {
         username: "username",
@@ -20,6 +21,17 @@ const strings = new LocalizedStrings({
         email: "email",
         password: "password",
         verifyPassword: "confPassword",
+      },
+      errorMessage: {
+        username: "Length must be 5-15 characters, letters and '_' allowed",
+        firstName: "First name is required",
+        lastName: "Last name is required",
+        email: "Please enter a valid email address",
+        password: "Length must be 8-20 characters",
+        passwordChar: "Include 1 uppercase, 1 number, 1 special character",
+        confPassword: "Please re-enter your password",
+        passwordMatch: "Passwords do not match",
+        message: "Please fill in all required fields",
       },
     },
     login: {
@@ -39,17 +51,6 @@ const strings = new LocalizedStrings({
       title: "Create an account",
       helmet: "Sign Up",
       buttonText: "Create account",
-      errorMessage: {
-        username: "Length must be 5-15 characters, letters and '_' allowed",
-        firstName: "First name is required",
-        lastName: "Last name is required",
-        email: "Please enter a valid email address",
-        password: "Length must be 8-20 characters",
-        passwordChar: "Include 1 uppercase, 1 number, 1 special character",
-        confPassword: "Please re-enter your password",
-        passwordMatch: "Passwords do not match",
-        message: "Please fill in all required fields",
-      },
     },
     explore: {
       title: "Explore",
@@ -81,10 +82,10 @@ const strings = new LocalizedStrings({
       helmet: "Account",
       saveChanges: "Save Changes",
       errorMessage: {
-        firstName: "First name must not be empty",
-        lastName: "Last name must not be empty",
-        fieldError: "No fields have been filled out!",
+        fieldError:
+          "No changes have been made, click cancel to return or fill in the fields",
       },
+      edit: "EDIT",
     },
     addCafe: {
       title: "Add Cafe Page",

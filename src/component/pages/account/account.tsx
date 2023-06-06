@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { getUserInfo, userMutation } from "support/graphqlServerApi";
 import { useQuery, useMutation } from "@apollo/client";
-import { User } from "types/api/user";
 import RegexValidator from "component/pages/signUp/regexValidator";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
@@ -30,13 +29,11 @@ const Account = () => {
     }
   }, [navigate, token]);
 
-  const [user, setUser] = useState<User>();
   const [userInfo, setUserInfo] = useState({
-    username: user?.userName,
-    firstName: user?.firstName || "",
-    lastName: user?.lastName || "",
-    email: user?.email || "",
-    password: "", // need to change to password from db and the password that comes back is encrypted
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
     confPassword: "",
   });
   const [edit, setEdit] = useState<boolean>(false);
@@ -53,7 +50,7 @@ const Account = () => {
       throw error;
     },
     onCompleted: (data) => {
-      setUser(data?.getUserInfo);
+      setUserInfo(data?.getUserInfo);
     },
     variables: {
       userName: userName,
@@ -62,8 +59,7 @@ const Account = () => {
 
   const [updateUser] = useMutation(userMutation, {
     onError: (error) => {
-      alert(error);
-      console.log("Error updating user info."); // change this to require config/strings.ts later
+      setEditInfoError(true);
     },
     onCompleted: () => {
       window.location.reload();
@@ -102,45 +98,28 @@ const Account = () => {
 
   const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (userInfo.firstName.trim() !== "") {
+    if (
+      userInfo.firstName !== "" ||
+      userInfo.lastName !== "" ||
+      userInfo.email !== "" ||
+      (userInfo.password !== "" && passwordMatch === true)
+    ) {
       updateUser({
         variables: {
           userName: userName,
           firstName: userInfo.firstName,
-        },
-      });
-    }
-    if (userInfo.lastName.trim() !== "") {
-      updateUser({
-        variables: {
-          userName: userName,
           lastName: userInfo.lastName,
-        },
-      });
-    }
-    if (userInfo.email.trim() !== "") {
-      updateUser({
-        variables: {
-          userName: userName,
           email: userInfo.email,
+          password: userInfo.password,
         },
       });
     }
-    //need to encrypt new password and check if it's the same as old password
-    updateUser({
-      variables: {
-        userName: userName,
-        password: userInfo.password,
-      },
-    });
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setPasswordRequired(!value);
     setPasswordMatch(userInfo.password !== userInfo.confPassword);
-    console.log("password: " + userInfo.password);
-    console.log("confpass: " + userInfo.confPassword);
   };
 
   const handleProfilePhoto = () => {
@@ -169,19 +148,22 @@ const Account = () => {
           <LoadingSpinner />
         ) : (
           <React.Fragment>
-            <div className={classNames(styles.headerContainer)}>
-              <div className={classNames(styles.title)}>
-                <h2>{strings.account.title}</h2>
-              </div>
-              <div className={classNames(styles.editButton)}>
-                {!edit ? (
-                  <ModeEditOutlineOutlinedIcon
-                    className={classNames(styles.editIcon)}
+            {!edit ? (
+              <div className={classNames(styles.editContainer)}>
+                <label className={classNames(styles.editLink)}>
+                  <a
+                    className={classNames(styles.editLink)}
                     onClick={() => handleEditButton()}
-                  />
-                ) : null}
+                  >
+                    {strings.account.edit}
+                  </a>
+                </label>
+                <ModeEditOutlineOutlinedIcon
+                  className={classNames(styles.editIcon)}
+                  onClick={() => handleEditButton()}
+                />
               </div>
-            </div>
+            ) : null}
             <div className={classNames(styles.profileContainer)}>
               <div
                 className={classNames(styles.profilePhoto)}
@@ -211,8 +193,8 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"text"}
-                        placeholder={user?.firstName}
-                        text={strings.global.label.name}
+                        value={userInfo.firstName}
+                        text={strings.global.label.firstName}
                         name={"firstName"}
                         handleChange={handleChange}
                         disabled={!edit ? true : false}
@@ -225,7 +207,7 @@ const Account = () => {
                         }
                         errorMessage={renderErrorMessage(
                           !firstNameIsValid,
-                          strings.account.errorMessage.firstName
+                          strings.global.errorMessage.firstName
                         )}
                         maxLength={40}
                       />
@@ -240,7 +222,8 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"text"}
-                        placeholder={user?.lastName}
+                        value={userInfo.lastName}
+                        text={strings.global.label.lastName}
                         name={"lastName"}
                         handleChange={handleChange}
                         disabled={!edit ? true : false}
@@ -253,7 +236,7 @@ const Account = () => {
                         }
                         errorMessage={renderErrorMessage(
                           !lastNameIsValid,
-                          strings.account.errorMessage.lastName
+                          strings.global.errorMessage.lastName
                         )}
                         maxLength={40}
                       />
@@ -270,7 +253,7 @@ const Account = () => {
                     <FormItem
                       className={styles.formItem}
                       type={"text"}
-                      placeholder={user?.email}
+                      value={userInfo.email}
                       text={strings.global.label.email}
                       name={"email"}
                       handleChange={handleChange}
@@ -282,7 +265,7 @@ const Account = () => {
                       }
                       errorMessage={renderErrorMessage(
                         !emailIsValid,
-                        strings.signUp.errorMessage.email
+                        strings.global.errorMessage.email
                       )}
                     />
                   </div>
@@ -296,8 +279,12 @@ const Account = () => {
                     <FormItem
                       className={styles.formItem}
                       type={"password"}
-                      placeholder={"********"}
-                      text={strings.global.label.password}
+                      placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+                      text={
+                        !edit
+                          ? strings.global.label.password
+                          : strings.global.label.newPassword
+                      }
                       name={"password"}
                       handleChange={handleChange}
                       disabled={!edit ? true : false}
@@ -308,8 +295,8 @@ const Account = () => {
                       }
                       errorMessage={renderErrorMessage(
                         !passwordIsValid,
-                        strings.signUp.errorMessage.password,
-                        strings.signUp.errorMessage.passwordChar
+                        strings.global.errorMessage.password,
+                        strings.global.errorMessage.passwordChar
                       )}
                     />
                   </div>
@@ -324,19 +311,18 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"password"}
-                        placeholder={"********"}
-                        text={strings.global.label.verifyPassword}
+                        text={strings.global.label.verifyNewPassword}
                         name={"confPassword"}
                         handleChange={handleChange}
                         disabled={!edit ? true : false}
                         validateLoginInput={handlePassword}
                         errorMessage={renderErrorMessage(
                           !passwordRequired,
-                          strings.signUp.errorMessage.confPassword
+                          strings.global.errorMessage.confPassword
                         )}
                         secondErrorMessage={renderErrorMessage(
                           !passwordMatch,
-                          strings.signUp.errorMessage.passwordMatch
+                          strings.global.errorMessage.passwordMatch
                         )}
                       />
                     </div>
@@ -365,18 +351,6 @@ const Account = () => {
                 )}
               </div>
             </div>
-            {!edit ? (
-              <div className={classNames(styles.editText)}>
-                <label>
-                  <a
-                    className={classNames(styles.editLink)}
-                    onClick={() => handleEditButton()}
-                  >
-                    EDIT
-                  </a>
-                </label>
-              </div>
-            ) : null}
           </React.Fragment>
         )}
       </div>
