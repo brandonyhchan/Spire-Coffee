@@ -8,7 +8,7 @@ type FormItemPropsType = {
   text?: string;
   name: string;
   value?: string;
-  placeholder: string | undefined;
+  placeholder?: string | undefined;
   handleChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   validateLoginInput?: (event: React.ChangeEvent<HTMLInputElement>) => void;
   errorMessage?: ReactNode;

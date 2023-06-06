@@ -10,7 +10,9 @@ const strings = new LocalizedStrings({
         lastName: "Last Name",
         email: "Email Address",
         password: "Password",
+        newPassword: "New Password",
         verifyPassword: "Confirm Password",
+        verifyNewPassword: "Confirm New Password",
       },
       name: {
         username: "username",

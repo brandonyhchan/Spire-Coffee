@@ -21,44 +21,35 @@ $username_font_size: 35px;
 }
 
 .editContainer {
+  display: flex;
+  flex-direction: row;
+  background-color: azure;
+  cursor: pointer;
   @media (min-width: 601px) {
     grid-column-start: 3;
     grid-row-start: 2;
+    width: 100px;
+    height: 50px;
   }
   @media (max-width: 600px) {
     border-bottom: solid 3px var(--light-grey);
+    margin-top: 20px;
   }
-  & .editButton {
-    display: flex;
-    flex-direction: row;
-    @media (min-width: 601px) {
-      margin-left: -100px;
-      margin-top: 14px;
-    }
-    @media (max-width: 600px) {
-      margin-top: 20px;
-    }
-    & .editIcon {
-      color: var(--dark-grey);
-      cursor: pointer;
-      transform: scale(1.3);
-      margin-top: -10px;
-      margin-left: 10px;
-    }
-  }
-  & .editText {
-    & label {
-      cursor: pointer;
-      @media (max-width: 600px) {
-        display: none;
-      }
-    }
+  & .editIcon {
+    color: var(--dark-grey);
+    transform: scale(1.3);
+    margin-top: 10px;
+    margin-left: 10px;
   }
   & .editLink {
+    cursor: pointer;
     text-decoration: none;
     color: var(--dark-grey);
-    font-family: 'Figtree-semibold';
+    font-family: "Figtree-semibold";
     font-size: $_large_font_size;
+    @media (max-width: 600px) {
+      display: none;
+    }
   }
 }
 
@@ -84,7 +75,7 @@ $username_font_size: 35px;
     margin-top: 30px;
   }
   & h2 {
-    font-family: 'Figtree-Semibold';
+    font-family: "Figtree-Semibold";
     padding-top: 15px;
     padding-bottom: 30px;
     margin: 0;
@@ -183,7 +174,7 @@ $username_font_size: 35px;
     }
     & span {
       color: var(--warning);
-      font-family: 'Figtree-Regular';
+      font-family: "Figtree-Regular";
       font-size: $_large_font_size;
       margin-left: 5px;
       padding-top: 5px;
@@ -208,7 +199,7 @@ $username_font_size: 35px;
 
 .errorMessage {
   color: var(--warning);
-  font-family: 'Figtree-Regular';
+  font-family: "Figtree-Regular";
   font-size: $_large_font_size;
   padding-bottom: 40px;
 }

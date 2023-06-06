@@ -170,26 +170,22 @@ const Account = () => {
           <LoadingSpinner />
         ) : (
           <React.Fragment>
-            <div className={classNames(styles.editContainer)}>
-              <div className={classNames(styles.editButton)}>
-                {!edit ? (
-                  <div className={classNames(styles.editText)}>
-                    <label>
-                      <a
-                        className={classNames(styles.editLink)}
-                        onClick={() => handleEditButton()}
-                      >
-                        EDIT {/* change to strings */}
-                      </a>
-                    </label>
-                    <ModeEditOutlineOutlinedIcon
-                      className={classNames(styles.editIcon)}
-                      onClick={() => handleEditButton()}
-                    />
-                  </div>
-                ) : null}
+            {!edit ? (
+              <div className={classNames(styles.editContainer)}>
+                <label className={classNames(styles.editLink)}>
+                  <a
+                    className={classNames(styles.editLink)}
+                    onClick={() => handleEditButton()}
+                  >
+                    EDIT {/* change to strings */}
+                  </a>
+                </label>
+                <ModeEditOutlineOutlinedIcon
+                  className={classNames(styles.editIcon)}
+                  onClick={() => handleEditButton()}
+                />
               </div>
-            </div>
+            ) : null}
             <div className={classNames(styles.profileContainer)}>
               <div
                 className={classNames(styles.profilePhoto)}
@@ -219,7 +215,7 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"text"}
-                        placeholder={user?.firstName}
+                        value={user?.firstName}
                         text={strings.global.label.firstName}
                         name={"firstName"}
                         handleChange={handleChange}
@@ -248,7 +244,7 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"text"}
-                        placeholder={user?.lastName}
+                        value={user?.lastName}
                         text={strings.global.label.lastName}
                         name={"lastName"}
                         handleChange={handleChange}
@@ -279,7 +275,7 @@ const Account = () => {
                     <FormItem
                       className={styles.formItem}
                       type={"text"}
-                      placeholder={user?.email}
+                      value={user?.email}
                       text={strings.global.label.email}
                       name={"email"}
                       handleChange={handleChange}
@@ -305,8 +301,8 @@ const Account = () => {
                     <FormItem
                       className={styles.formItem}
                       type={"password"}
-                      placeholder={"********"}
-                      text={strings.global.label.password}
+                      placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+                      text={strings.global.label.newPassword}
                       name={"password"}
                       handleChange={handleChange}
                       disabled={!edit ? true : false}
@@ -333,8 +329,7 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"password"}
-                        placeholder={"********"}
-                        text={strings.global.label.verifyPassword}
+                        text={strings.global.label.verifyNewPassword}
                         name={"confPassword"}
                         handleChange={handleChange}
                         disabled={!edit ? true : false}
