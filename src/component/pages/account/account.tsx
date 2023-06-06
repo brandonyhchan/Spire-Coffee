@@ -128,12 +128,14 @@ const Account = () => {
     }
     // add check for password before updating, checking old password is correct might be difficult because it's hashed
     // could have security question instead?
-    updateUser({
-      variables: {
-        userName: userName,
-        password: userInfo.password,
-      },
-    });
+    if (userInfo.password === "" || passwordMatch !== true) {
+      updateUser({
+        variables: {
+          userName: userName,
+          password: userInfo.password,
+        },
+      });
+    }
   };
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {

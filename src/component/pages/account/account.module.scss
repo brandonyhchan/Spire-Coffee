@@ -3,7 +3,7 @@ $_large_font_size: 20px;
 .container {
   display: grid;
   grid-template-columns: 50% 50%;
-  grid-template-rows: 70px 350px 350px;
+  grid-template-rows: 70px 350px 1fr;
   min-height: calc(100vh - 65px);
   width: 100%;
   color: var(--dark-grey);
@@ -79,7 +79,7 @@ $_large_font_size: 20px;
     margin: 0;
   }
   & .profilePhoto {
-    width: 200px;
+    width: 400px;
     cursor: pointer;
     @media (max-width: 600px) {
       width: 150px;
@@ -176,9 +176,9 @@ $_large_font_size: 20px;
       border-bottom-right-radius: 10px;
       height: 55px;
     }
-    & input:focus::placeholder {
-      color: transparent;
-    }
+    // & input:focus::placeholder {
+    //   color: transparent;
+    // }
     & label {
       display: block;
       position: absolute;

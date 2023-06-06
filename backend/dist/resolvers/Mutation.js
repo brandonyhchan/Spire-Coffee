@@ -1,5 +1,4 @@
 import * as bcrypt from "bcrypt";
-
 export async function updateUserInfo(parent, args, context, info) {
     try {
         const password = await bcrypt.hash(args.password, 10);
