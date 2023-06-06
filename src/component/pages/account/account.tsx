@@ -170,16 +170,23 @@ const Account = () => {
           <LoadingSpinner />
         ) : (
           <React.Fragment>
-            <div className={classNames(styles.headerContainer)}>
-              <div className={classNames(styles.title)}>
-                <h2>{strings.account.title}</h2>
-              </div>
+            <div className={classNames(styles.editContainer)}>
               <div className={classNames(styles.editButton)}>
                 {!edit ? (
-                  <ModeEditOutlineOutlinedIcon
-                    className={classNames(styles.editIcon)}
-                    onClick={() => handleEditButton()}
-                  />
+                  <div className={classNames(styles.editText)}>
+                    <label>
+                      <a
+                        className={classNames(styles.editLink)}
+                        onClick={() => handleEditButton()}
+                      >
+                        EDIT {/* change to strings */}
+                      </a>
+                    </label>
+                    <ModeEditOutlineOutlinedIcon
+                      className={classNames(styles.editIcon)}
+                      onClick={() => handleEditButton()}
+                    />
+                  </div>
                 ) : null}
               </div>
             </div>
@@ -213,7 +220,7 @@ const Account = () => {
                         className={styles.formItem}
                         type={"text"}
                         placeholder={user?.firstName}
-                        text={strings.global.label.name}
+                        text={strings.global.label.firstName}
                         name={"firstName"}
                         handleChange={handleChange}
                         disabled={!edit ? true : false}
@@ -226,7 +233,7 @@ const Account = () => {
                         }
                         errorMessage={renderErrorMessage(
                           !firstNameIsValid,
-                          strings.account.errorMessage.firstName
+                          strings.global.errorMessage.firstName
                         )}
                         maxLength={40}
                       />
@@ -242,6 +249,7 @@ const Account = () => {
                         className={styles.formItem}
                         type={"text"}
                         placeholder={user?.lastName}
+                        text={strings.global.label.lastName}
                         name={"lastName"}
                         handleChange={handleChange}
                         disabled={!edit ? true : false}
@@ -254,7 +262,7 @@ const Account = () => {
                         }
                         errorMessage={renderErrorMessage(
                           !lastNameIsValid,
-                          strings.account.errorMessage.lastName
+                          strings.global.errorMessage.lastName
                         )}
                         maxLength={40}
                       />
@@ -283,7 +291,7 @@ const Account = () => {
                       }
                       errorMessage={renderErrorMessage(
                         !emailIsValid,
-                        strings.signUp.errorMessage.email
+                        strings.global.errorMessage.email
                       )}
                     />
                   </div>
@@ -309,8 +317,8 @@ const Account = () => {
                       }
                       errorMessage={renderErrorMessage(
                         !passwordIsValid,
-                        strings.signUp.errorMessage.password,
-                        strings.signUp.errorMessage.passwordChar
+                        strings.global.errorMessage.password,
+                        strings.global.errorMessage.passwordChar
                       )}
                     />
                   </div>
@@ -333,11 +341,11 @@ const Account = () => {
                         validateLoginInput={handlePassword}
                         errorMessage={renderErrorMessage(
                           !passwordRequired,
-                          strings.signUp.errorMessage.confPassword
+                          strings.global.errorMessage.confPassword
                         )}
                         secondErrorMessage={renderErrorMessage(
                           !passwordMatch,
-                          strings.signUp.errorMessage.passwordMatch
+                          strings.global.errorMessage.passwordMatch
                         )}
                       />
                     </div>
@@ -365,18 +373,6 @@ const Account = () => {
                 )}
               </div>
             </div>
-            {!edit ? (
-              <div className={classNames(styles.editText)}>
-                <label>
-                  <a
-                    className={classNames(styles.editLink)}
-                    onClick={() => handleEditButton()}
-                  >
-                    EDIT {/* change to strings */}
-                  </a>
-                </label>
-              </div>
-            ) : null}
           </React.Fragment>
         )}
       </div>
