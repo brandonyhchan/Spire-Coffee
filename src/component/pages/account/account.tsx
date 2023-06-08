@@ -82,28 +82,15 @@ const Account = () => {
     }
   };
 
-  const handleUserInfo = () => {
-    if (
-      userInfo.firstName === "" &&
-      userInfo.lastName === "" &&
-      userInfo.email === "" &&
-      userInfo.password === "" &&
-      userInfo.confPassword === ""
-    ) {
-      setEditInfoError(true);
-    } else {
-      setEditInfoError(false);
-    }
-  };
-
   const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (
       userInfo.firstName !== "" ||
       userInfo.lastName !== "" ||
       userInfo.email !== "" ||
-      (userInfo.password !== "" && passwordMatch === true)
+      passwordMatch === true
     ) {
+      //to update userinfo all fields must be filled in
       updateUser({
         variables: {
           userName: userName,
@@ -338,14 +325,13 @@ const Account = () => {
                         text={"Save"}
                         buttonType="submit"
                         name={strings.global.name.username}
-                        onClick={handleUserInfo}
                       />
                     </div>
                   ) : null}
                 </form>
                 {editInfoError && (
                   <span className={classNames(styles.errorMessage)}>
-                    {strings.account.errorMessage.fieldError}
+                    {strings.global.errorMessage.message}
                   </span>
                 )}
               </div>
