@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { getUserInfo, userMutation } from "support/graphqlServerApi";
 import { useQuery, useMutation } from "@apollo/client";
-import { User } from "types/api/user";
 import RegexValidator from "component/pages/signUp/regexValidator";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
@@ -30,12 +29,10 @@ const Account = () => {
     }
   }, [navigate, token]);
 
-  const [user, setUser] = useState<User>();
   const [userInfo, setUserInfo] = useState({
-    username: user?.userName,
-    firstName: user?.firstName || "",
-    lastName: user?.lastName || "",
-    email: user?.email || "",
+    firstName: "",
+    lastName: "",
+    email: "",
     password: "",
     confPassword: "",
   });
@@ -53,7 +50,7 @@ const Account = () => {
       throw error;
     },
     onCompleted: (data) => {
-      setUser(data?.getUserInfo);
+      setUserInfo(data?.getUserInfo);
     },
     variables: {
       userName: userName,
@@ -62,8 +59,7 @@ const Account = () => {
 
   const [updateUser] = useMutation(userMutation, {
     onError: (error) => {
-      alert(error);
-      console.log("Error updating user info."); // change this to require config/strings.ts later
+      setEditInfoError(true);
     },
     onCompleted: () => {
       window.location.reload();
@@ -102,36 +98,18 @@ const Account = () => {
 
   const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (userInfo.firstName.trim() !== "") {
+    if (
+      userInfo.firstName !== "" ||
+      userInfo.lastName !== "" ||
+      userInfo.email !== "" ||
+      (userInfo.password !== "" && passwordMatch === true)
+    ) {
       updateUser({
         variables: {
           userName: userName,
           firstName: userInfo.firstName,
-        },
-      });
-    }
-    if (userInfo.lastName.trim() !== "") {
-      updateUser({
-        variables: {
-          userName: userName,
           lastName: userInfo.lastName,
-        },
-      });
-    }
-    if (userInfo.email.trim() !== "") {
-      updateUser({
-        variables: {
-          userName: userName,
           email: userInfo.email,
-        },
-      });
-    }
-    // add check for password before updating, checking old password is correct might be difficult because it's hashed
-    // could have security question instead?
-    if (userInfo.password === "" || passwordMatch !== true) {
-      updateUser({
-        variables: {
-          userName: userName,
           password: userInfo.password,
         },
       });
@@ -177,7 +155,7 @@ const Account = () => {
                     className={classNames(styles.editLink)}
                     onClick={() => handleEditButton()}
                   >
-                    EDIT {/* change to strings */}
+                    {strings.account.edit}
                   </a>
                 </label>
                 <ModeEditOutlineOutlinedIcon
@@ -215,7 +193,7 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"text"}
-                        value={user?.firstName}
+                        value={userInfo.firstName}
                         text={strings.global.label.firstName}
                         name={"firstName"}
                         handleChange={handleChange}
@@ -244,7 +222,7 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"text"}
-                        value={user?.lastName}
+                        value={userInfo.lastName}
                         text={strings.global.label.lastName}
                         name={"lastName"}
                         handleChange={handleChange}
@@ -275,7 +253,7 @@ const Account = () => {
                     <FormItem
                       className={styles.formItem}
                       type={"text"}
-                      value={user?.email}
+                      value={userInfo.email}
                       text={strings.global.label.email}
                       name={"email"}
                       handleChange={handleChange}
@@ -302,7 +280,11 @@ const Account = () => {
                       className={styles.formItem}
                       type={"password"}
                       placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
-                      text={strings.global.label.newPassword}
+                      text={
+                        !edit
+                          ? strings.global.label.password
+                          : strings.global.label.newPassword
+                      }
                       name={"password"}
                       handleChange={handleChange}
                       disabled={!edit ? true : false}

@@ -82,8 +82,10 @@ const strings = new LocalizedStrings({
       helmet: "Account",
       saveChanges: "Save Changes",
       errorMessage: {
-        fieldError: "No fields have been filled out!",
+        fieldError:
+          "No changes have been made, click cancel to return or fill in the fields",
       },
+      edit: "EDIT",
     },
     addCafe: {
       title: "Add Cafe Page",
