@@ -130,40 +130,40 @@ const Account = () => {
     <React.Fragment>
       <Helmet title={strings.account.helmet} />
       <NavBar />
-      <div className={classNames(styles.container)}>
-        {loading ? (
-          <LoadingSpinner />
-        ) : (
-          <React.Fragment>
-            {!edit ? (
-              <div className={classNames(styles.editContainer)}>
-                <label className={classNames(styles.editLink)}>
-                  <a
-                    className={classNames(styles.editLink)}
+      <div className={classNames(styles.wrapper)}>
+        <div className={classNames(styles.container)}>
+          {loading ? (
+            <LoadingSpinner />
+          ) : (
+            <React.Fragment>
+              {!edit ? (
+                <div className={classNames(styles.editContainer)}>
+                  <label className={classNames(styles.editLink)}>
+                    <a
+                      className={classNames(styles.editLink)}
+                      onClick={() => handleEditButton()}
+                    >
+                      {strings.account.edit}
+                    </a>
+                  </label>
+                  <ModeEditOutlineOutlinedIcon
+                    className={classNames(styles.editIcon)}
                     onClick={() => handleEditButton()}
-                  >
-                    {strings.account.edit}
-                  </a>
-                </label>
-                <ModeEditOutlineOutlinedIcon
-                  className={classNames(styles.editIcon)}
-                  onClick={() => handleEditButton()}
-                />
+                  />
+                </div>
+              ) : null}
+              <div className={classNames(styles.profileContainer)}>
+                <div
+                  className={classNames(styles.profilePhoto)}
+                  onClick={handleProfilePhoto}
+                >
+                  <img src={Logo} alt={Logo} />
+                </div>
+                <div>
+                  <h2>{userName}</h2>
+                </div>
               </div>
-            ) : null}
-            <div className={classNames(styles.profileContainer)}>
-              <div
-                className={classNames(styles.profilePhoto)}
-                onClick={handleProfilePhoto}
-              >
-                <img src={Logo} alt={Logo} />
-              </div>
-              <div>
-                <h2>{userName}</h2>
-              </div>
-            </div>
-            <div className={classNames(styles.accountContainer)}>
-              <div className={classNames(styles.account)}>
+              <div className={classNames(styles.accountContainer)}>
                 <form
                   noValidate
                   onSubmit={handleEditAccount}
@@ -335,9 +335,9 @@ const Account = () => {
                   </span>
                 )}
               </div>
-            </div>
-          </React.Fragment>
-        )}
+            </React.Fragment>
+          )}
+        </div>
       </div>
       <Footer />
       <MobileFooter />

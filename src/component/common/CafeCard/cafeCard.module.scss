@@ -1,6 +1,11 @@
 $_logo_size: 140px;
 $_card_size: 460px;
 
+$_desktop_font_size: 18px;
+$_tablet_font_size: 15px;
+$_mobile_font_size: 12px;
+$_desktop_title_font_size: 40px;
+
 .cafeCard {
   border-color: grey;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
@@ -93,16 +98,16 @@ $_card_size: 460px;
 }
 
 .cafeCardIcons label {
-  font-size: 18px;
+  font-size: $_desktop_font_size;
   padding-left: 5px;
 
   @media (min-width: 300px) and (max-width: 600px) {
-    font-size: 15px;
+    font-size: $_tablet_font_size;
     padding-left: 0;
   }
 
   @media (max-width: 299px) {
-    font-size: 12px;
+    font-size: $_mobile_font_size;
     padding-left: 0;
   }
 }
@@ -149,8 +154,8 @@ $_card_size: 460px;
 }
 
 .mobileFont {
-  font-size: 40px;
+  font-size: $_desktop_title_font_size;
   @media (max-width: 600px) {
-    font-size: 15px;
+    font-size: $_tablet_font_size;
   }
 }
