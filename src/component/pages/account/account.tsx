@@ -153,13 +153,22 @@ const Account = () => {
                 </div>
               ) : null}
               <div className={classNames(styles.profileContainer)}>
-                <div
-                  className={classNames(styles.profilePhoto)}
-                  onClick={handleProfilePhoto}
-                >
-                  <img src={Logo} alt={Logo} />
+                <div className={classNames(styles.profileWrapper)}>
+                  <div className={classNames(styles.profilePhoto)}>
+                    <img src={Logo} alt={Logo} />
+                  </div>
+                  <div
+                    className={classNames(styles.profilePhotoButton)}
+                    onClick={handleProfilePhoto}
+                  >
+                    <label>
+                      <ModeEditOutlineOutlinedIcon
+                        className={classNames(styles.editIcon)}
+                      />
+                    </label>
+                  </div>
                 </div>
-                <div>
+                <div className={classNames(styles.username)}>
                   <h2>{userName}</h2>
                 </div>
               </div>
