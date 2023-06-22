@@ -96,6 +96,7 @@ $_large_font_size: 20px;
     position: relative;
     width: 50%;
     width: 300px;
+    clip-path: circle(50%);
     @media (max-width: 600px) {
       width: 170px;
     }
@@ -142,21 +143,25 @@ $_large_font_size: 20px;
   }
 }
 
-.profilePhotoButton:hover,
-.profilePhotoButton:focus {
-  background-color: var(--secondary);
-  cursor: pointer;
-  & .editIcon {
-    cursor: pointer;
-  }
-  & label {
-    cursor: pointer;
-  }
-}
+// .profilePhotoButton:hover,
+// .profilePhotoButton:focus {
+//   background-color: var(--secondary);
+//   cursor: pointer;
+//   & .editIcon {
+//     cursor: pointer;
+//   }
+//   & label {
+//     cursor: pointer;
+//   }
+// }
 
 .overlay:hover,
 .overlay:focus {
   cursor: pointer;
+}
+
+.profilePhoto:hover + .profilePhotoButton {
+  background-color: var(--secondary);
 }
 
 .overlay {
