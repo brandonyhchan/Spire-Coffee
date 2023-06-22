@@ -51,8 +51,9 @@ $_large_font_size: 20px;
   & .editLink {
     cursor: pointer;
     text-decoration: none;
+    text-transform: uppercase;
     color: var(--dark-grey);
-    font-family: "Figtree-semibold";
+    font-family: 'Figtree-Semibold';
     font-size: $_large_font_size;
     @media (max-width: 600px) {
       display: none;
@@ -92,6 +93,8 @@ $_large_font_size: 20px;
     margin-top: 30px;
   }
   & .profilePhoto {
+    position: relative;
+    width: 50%;
     width: 300px;
     @media (max-width: 600px) {
       width: 170px;
@@ -120,6 +123,9 @@ $_large_font_size: 20px;
   margin-top: 5px;
   & .editIcon {
     color: white;
+    margin-top: -5px;
+    margin-right: -3px;
+    transform: scale(1.3);
   }
   & label {
     margin: 0;
@@ -146,6 +152,43 @@ $_large_font_size: 20px;
   & label {
     cursor: pointer;
   }
+}
+
+.overlay:hover,
+.overlay:focus {
+  cursor: pointer;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: #0000009f;
+  clip-path: circle(50%);
+}
+
+.profilePhoto:hover .overlay {
+  opacity: 1;
+}
+
+.editProfilePhotoText {
+  color: white;
+  text-transform: uppercase;
+  font-family: 'Figtree-Semibold';
+  font-size: $_large_font_size;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
 }
 
 .username {

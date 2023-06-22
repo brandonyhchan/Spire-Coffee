@@ -81,7 +81,8 @@ const strings = new LocalizedStrings({
       title: "Account Information",
       helmet: "Account",
       saveChanges: "Save Changes",
-      edit: "EDIT",
+      edit: "Edit",
+      editProfilePictureText: "Change Picture",
     },
     addCafe: {
       title: "Add Cafe Page",

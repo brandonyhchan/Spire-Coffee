@@ -11,6 +11,7 @@ import FormItem from "component/common/Form/FormItem";
 import Button from "component/common/Button";
 import Logo from "assets/images/placeholder-logo.jpg";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
+import AddPhotoAlternateRoundedIcon from "@mui/icons-material/AddPhotoAlternateRounded";
 import LoadingSpinner from "component/common/LoadingSpinner";
 
 import classNames from "classnames";
@@ -155,14 +156,26 @@ const Account = () => {
               <div className={classNames(styles.profileContainer)}>
                 <div className={classNames(styles.profileWrapper)}>
                   <div className={classNames(styles.profilePhoto)}>
-                    <img src={Logo} alt={Logo} />
+                    <img
+                      src={Logo}
+                      alt={Logo}
+                      className={classNames(styles.profilePhotoImage)}
+                    />
+                    <div
+                      className={classNames(styles.overlay)}
+                      onClick={handleProfilePhoto}
+                    >
+                      <div className={classNames(styles.editProfilePhotoText)}>
+                        {strings.account.editProfilePictureText}
+                      </div>
+                    </div>
                   </div>
                   <div
                     className={classNames(styles.profilePhotoButton)}
                     onClick={handleProfilePhoto}
                   >
                     <label>
-                      <ModeEditOutlineOutlinedIcon
+                      <AddPhotoAlternateRoundedIcon
                         className={classNames(styles.editIcon)}
                       />
                     </label>
