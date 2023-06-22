@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
@@ -185,13 +186,14 @@ const Account = () => {
                   <h2>{userName}</h2>
                 </div>
               </div>
-              <div className={classNames(styles.accountContainer)}>
+
+              <div className={classNames(styles.accountInfoContainer)}>
                 <form
                   noValidate
                   onSubmit={handleEditAccount}
                   className={classNames(styles.accountForm)}
                 >
-                  <div className={classNames(styles.nameContainer)}>
+                  <div className={classNames(styles.formSectionContainer)}>
                     <div
                       className={
                         !edit
@@ -253,63 +255,34 @@ const Account = () => {
                   </div>
 
                   <div
-                    className={
-                      !edit
-                        ? classNames(styles.inputWrapper)
-                        : classNames(styles.editInputWrapper)
-                    }
+                    className={classNames(styles.formSectionContainer)}
                   >
-                    <FormItem
-                      className={styles.formItem}
-                      type={"text"}
-                      value={userInfo.email}
-                      text={strings.global.label.email}
-                      name={"email"}
-                      handleChange={handleChange}
-                      disabled={!edit ? true : false}
-                      validateLoginInput={() =>
-                        setEmailIsValid(
-                          !regexValidator.validEmail.test(userInfo.email)
-                        )
-                      }
-                      errorMessage={renderErrorMessage(
-                        !emailIsValid,
-                        strings.global.errorMessage.email
-                      )}
-                    />
-                  </div>
-                  <div
-                    className={
-                      !edit
-                        ? classNames(styles.inputWrapper)
-                        : classNames(styles.editInputWrapper)
-                    }
-                  >
-                    <FormItem
-                      className={styles.formItem}
-                      type={"password"}
-                      placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
-                      text={
+                    <div
+                      className={
                         !edit
-                          ? strings.global.label.password
-                          : strings.global.label.newPassword
+                          ? classNames(styles.inputWrapper)
+                          : classNames(styles.editInputWrapper)
                       }
-                      name={"password"}
-                      handleChange={handleChange}
-                      disabled={!edit ? true : false}
-                      validateLoginInput={() =>
-                        setPasswordIsValid(
-                          !regexValidator.validPassword.test(userInfo.password)
-                        )
-                      }
-                      errorMessage={renderErrorMessage(
-                        !passwordIsValid,
-                        strings.global.errorMessage.password,
-                        strings.global.errorMessage.passwordChar
-                      )}
-                    />
-                  </div>
-                  {edit ? (
+                    >
+                      <FormItem
+                        className={styles.formItem}
+                        type={"text"}
+                        value={userInfo.email}
+                        text={strings.global.label.email}
+                        name={"email"}
+                        handleChange={handleChange}
+                        disabled={!edit ? true : false}
+                        validateLoginInput={() =>
+                          setEmailIsValid(
+                            !regexValidator.validEmail.test(userInfo.email)
+                          )
+                        }
+                        errorMessage={renderErrorMessage(
+                          !emailIsValid,
+                          strings.global.errorMessage.email
+                        )}
+                      />
+                    </div>
                     <div
                       className={
                         !edit
@@ -320,23 +293,59 @@ const Account = () => {
                       <FormItem
                         className={styles.formItem}
                         type={"password"}
-                        text={strings.global.label.verifyNewPassword}
-                        name={"confPassword"}
+                        placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+                        text={
+                          !edit
+                            ? strings.global.label.password
+                            : strings.global.label.newPassword
+                        }
+                        name={"password"}
                         handleChange={handleChange}
                         disabled={!edit ? true : false}
-                        validateLoginInput={handlePassword}
+                        validateLoginInput={() =>
+                          setPasswordIsValid(
+                            !regexValidator.validPassword.test(
+                              userInfo.password
+                            )
+                          )
+                        }
                         errorMessage={renderErrorMessage(
-                          !passwordRequired,
-                          strings.global.errorMessage.confPassword
-                        )}
-                        secondErrorMessage={renderErrorMessage(
-                          !passwordMatch,
-                          strings.global.errorMessage.passwordMatch
+                          !passwordIsValid,
+                          strings.global.errorMessage.password,
+                          strings.global.errorMessage.passwordChar
                         )}
                       />
                     </div>
-                  ) : null}
-                  {edit ? (
+                    {edit ? (
+                      <div
+                        className={
+                          !edit
+                            ? classNames(styles.inputWrapper)
+                            : classNames(styles.editInputWrapper)
+                        }
+                      >
+                        <FormItem
+                          className={styles.formItem}
+                          type={"password"}
+                          text={strings.global.label.verifyNewPassword}
+                          name={"confPassword"}
+                          handleChange={handleChange}
+                          disabled={!edit ? true : false}
+                          validateLoginInput={handlePassword}
+                          errorMessage={renderErrorMessage(
+                            !passwordRequired,
+                            strings.global.errorMessage.confPassword
+                          )}
+                          secondErrorMessage={renderErrorMessage(
+                            !passwordMatch,
+                            strings.global.errorMessage.passwordMatch
+                          )}
+                        />
+                      </div>
+                    ) : null}
+                  </div>
+                </form>
+                {edit ? (
                     <div className={classNames(styles.editButtonGroup)}>
                       <Button
                         buttonType="reset"
@@ -350,7 +359,6 @@ const Account = () => {
                       />
                     </div>
                   ) : null}
-                </form>
                 {editInfoError && (
                   <span className={classNames(styles.errorMessage)}>
                     {strings.global.errorMessage.message}
