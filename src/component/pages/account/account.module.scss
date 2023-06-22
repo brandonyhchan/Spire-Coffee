@@ -94,7 +94,6 @@ $_large_font_size: 20px;
   }
   & .profilePhoto {
     position: relative;
-    width: 50%;
     width: 300px;
     clip-path: circle(50%);
     @media (max-width: 600px) {
@@ -224,8 +223,8 @@ $_large_font_size: 20px;
     flex-direction: row;
     padding-top: 10px;
     justify-content: space-evenly;
-
-    @media (max-width: 600px) {
+    gap: 10px;
+    @media (max-width: 700px) {
       flex-direction: column;
     }
   }
@@ -241,9 +240,11 @@ $_large_font_size: 20px;
     display: flex;
     flex-direction: row;
     border-radius: 10px;
-    width: 100%;
     padding-bottom: 10px;
     padding-top: 15px;
+    @media (min-width: 1024px) {
+      width: 350px;
+    }
     & input {
       border: solid 2px #ccc;
     }
