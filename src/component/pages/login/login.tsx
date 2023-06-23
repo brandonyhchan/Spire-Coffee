@@ -52,12 +52,33 @@ const Login = () => {
 
   const handleLogin = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
-    login({
-      variables: {
-        userName: loginInfo.username,
-        password: loginInfo.password,
-      },
-    });
+    if (loginInfo.username !== "" && loginInfo.password !== "") {
+      login({
+        variables: {
+          userName: loginInfo.username,
+          password: loginInfo.password,
+        },
+      });
+    } else {
+      setLoginError(true);
+    }
+  };
+
+  const handleKeyEvent = (event: React.KeyboardEvent<HTMLFormElement>) => {
+    if (
+      event.code === "Enter" &&
+      loginInfo.username !== "" &&
+      loginInfo.password !== ""
+    ) {
+      login({
+        variables: {
+          userName: loginInfo.username,
+          password: loginInfo.password,
+        },
+      });
+    } else {
+      setLoginError(true);
+    }
   };
 
   const validateLoginInput = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -103,7 +124,11 @@ const Login = () => {
         </div>
         <div className={classNames(styles.loginContainer)}>
           <div className={classNames(styles.login)}>
-            <form className={classNames(styles.loginForm)} noValidate>
+            <form
+              className={classNames(styles.loginForm)}
+              onKeyDown={handleKeyEvent}
+              noValidate
+            >
               <FormItem
                 className={styles.formItem}
                 type={"text"}

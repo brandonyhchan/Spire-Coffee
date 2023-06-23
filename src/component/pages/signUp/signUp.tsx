@@ -72,6 +72,20 @@ const SignUp = () => {
     }
   };
 
+  const handleKeyEvent = (event: React.KeyboardEvent<HTMLFormElement>) => {
+    if (event.code === "Enter" && signUpError === false) {
+      signUp({
+        variables: {
+          userName: userInfo.username,
+          firstName: userInfo.firstName,
+          lastName: userInfo.lastName,
+          email: userInfo.email,
+          password: userInfo.password,
+        },
+      });
+    }
+  };
+
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
     setPasswordRequired(!value);
@@ -120,6 +134,7 @@ const SignUp = () => {
               className={classNames(styles.signUpForm)}
               noValidate
               onSubmit={handleSignUp}
+              onKeyDown={handleKeyEvent}
             >
               <FormItem
                 className={styles.formItem}
