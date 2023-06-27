@@ -108,14 +108,12 @@ export const userMutation = gql`
     $firstName: String
     $lastName: String
     $email: String
-    $password: String
   ) {
     updateUserInfo(
       userName: $userName
       firstName: $firstName
       lastName: $lastName
       email: $email
-      password: $password
     ) {
       userName
       firstName

@@ -19,8 +19,8 @@ $_large_font_size: 20px;
   @media (min-width: 601px) and (max-width: 1024px) {
     grid-template-columns: 1fr 95% 1fr;
   }
-  @media (min-width: 1025px) {
-    grid-template-columns: 1fr 900px 1fr;
+  @media (min-width: 2000px) {
+    grid-template-columns: 1fr 1600px 1fr;
   }
   @media (max-width: 600px) {
     grid-template-columns: calc(100vw - 60px) 1fr;
@@ -142,18 +142,6 @@ $_large_font_size: 20px;
   }
 }
 
-// .profilePhotoButton:hover,
-// .profilePhotoButton:focus {
-//   background-color: var(--secondary);
-//   cursor: pointer;
-//   & .editIcon {
-//     cursor: pointer;
-//   }
-//   & label {
-//     cursor: pointer;
-//   }
-// }
-
 .overlay:hover,
 .overlay:focus {
   cursor: pointer;
@@ -201,10 +189,9 @@ $_large_font_size: 20px;
 
 .accountInfoContainer {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   justify-content: center;
   padding: 40px;
-  gap: 40px;
   width: 100%;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -217,15 +204,18 @@ $_large_font_size: 20px;
     border: none;
     border-top: solid 3px var(--light-grey);
   }
+  @media (max-width: 912px) {
+    flex-direction: column;
+  }
   & .accountForm {
     display: flex;
     width: 100%;
-    flex-direction: row;
-    padding-top: 10px;
-    justify-content: space-evenly;
-    gap: 10px;
-    @media (max-width: 700px) {
-      flex-direction: column;
+    flex-direction: column;
+    padding: 0 40px;
+    justify-content: space-between;
+    height: 100%;
+    @media (min-width: 913px) {
+      padding-left: 40px;
     }
   }
   & .inputWrapper {
@@ -296,15 +286,50 @@ $_large_font_size: 20px;
   }
 }
 
+.userInfoContainer {
+  width: 100%;
+}
+
+.editPasswordContainer {
+  width: 100%;
+  @media (max-width: 912px) {
+    padding-top: 10px;
+  }
+}
+
+.passwordForm  {
+  padding: 0 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  & .editInputWrapper {
+    width: 100%;
+  }
+}
+
 .formSectionContainer {
   display: flex;
   flex-direction: column;
+  & .editInputWrapper {
+    width: 100%;
+  }
 }
 
 .editButtonGroup {
   display: flex;
   justify-content: center;
   gap: 15px;
+  padding: 15px 0;
+}
+
+.passwordButton {
+  display: flex;
+  justify-content: flex-end;
+  padding: 15px 0;
+  @media (max-width: 912px) {
+    justify-content: center;
+  }
 }
 
 .errorMessage {
