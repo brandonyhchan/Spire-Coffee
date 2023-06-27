@@ -65,19 +65,13 @@ const Login = () => {
   };
 
   const handleKeyEvent = (event: React.KeyboardEvent<HTMLFormElement>) => {
-    if (
-      event.code === "Enter" &&
-      loginInfo.username !== "" &&
-      loginInfo.password !== ""
-    ) {
+    if (event.code === "Enter") {
       login({
         variables: {
           userName: loginInfo.username,
           password: loginInfo.password,
         },
       });
-    } else {
-      setLoginError(true);
     }
   };
 

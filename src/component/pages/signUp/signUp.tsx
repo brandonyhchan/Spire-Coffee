@@ -73,7 +73,7 @@ const SignUp = () => {
   };
 
   const handleKeyEvent = (event: React.KeyboardEvent<HTMLFormElement>) => {
-    if (event.code === "Enter" && signUpError === false) {
+    if (event.code === "Enter") {
       signUp({
         variables: {
           userName: userInfo.username,
