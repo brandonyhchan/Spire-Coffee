@@ -94,13 +94,13 @@ $_large_font_size: 20px;
   }
   & .profilePhoto {
     position: relative;
-    width: 300px;
+    width: 250px;
     clip-path: circle(50%);
     @media (max-width: 600px) {
       width: 170px;
     }
-    @media (min-width: 601px) and (max-width: 820px) {
-      width: 230px;
+    @media (min-width: 601px) and (max-width: 1024px) {
+      width: 200px;
     }
     & img {
       width: 100%;
@@ -130,12 +130,12 @@ $_large_font_size: 20px;
   & label {
     margin: 0;
   }
-  @media (min-width: 601px) and (max-width: 820px) {
+  @media (min-width: 601px) and (max-width: 1024px) {
     width: 60px;
     height: 60px;
     margin-left: -60px;
   }
-  @media (min-width: 821px) {
+  @media (min-width: 1025px) {
     width: 70px;
     height: 70px;
     margin-left: -80px;
