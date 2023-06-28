@@ -1,6 +1,4 @@
 import React, { useState } from "react";
-import Button from "component/common/Button";
-
 import classNames from "classnames";
 import styles from "./account.module.scss";
 import strings from "config/strings";
@@ -10,8 +8,6 @@ type FormPropsType = {
   edit: boolean;
   children: JSX.Element[];
   editInfoError: boolean;
-  editPassword: boolean;
-  setEditPassword: () => void;
   className?: string;
   buttonGroup?: JSX.Element;
 };
@@ -21,8 +17,6 @@ const Form = ({
   edit,
   children,
   editInfoError,
-  editPassword,
-  setEditPassword,
   className,
   buttonGroup,
 }: FormPropsType) => {
@@ -47,9 +41,6 @@ const Form = ({
           <span className={classNames(styles.errorMessage)}>
             {strings.global.errorMessage.message}
           </span>
-        )}
-        {edit && !editPassword && (
-          <label onClick={setEditPassword}>Change Password</label>
         )}
       </form>
     </React.Fragment>

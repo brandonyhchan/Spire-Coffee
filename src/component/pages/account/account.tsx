@@ -81,8 +81,14 @@ const Account = () => {
 
   const handleEditButton = () => {
     setEdit(!edit);
-    setEditPassword(false);
     if (edit) {
+      window.location.reload();
+    }
+  };
+
+  const handleEditPasswordButton = () => {
+    setEditPassword(false);
+    if (editPassword) {
       window.location.reload();
     }
   };
@@ -149,67 +155,12 @@ const Account = () => {
   const renderPasswordButton = () => {
     return (
       <div>
-      {edit ? (
-        <div className={classNames(styles.passwordButton)}>
-          <Button text={"Save Password"} buttonType="submit" />
-        </div>
-      ) : null}
-    </div>
-    );
-  };
-
-  const renderPassword = () => {
-    return (
-      <Form
-        className={classNames(styles.passwordForm)}
-        handleEditAccount={handleEditAccount}
-        edit={edit}
-        editInfoError={editInfoError}
-        editPassword={editPassword}
-        setEditPassword={() => setEditPassword(true)}
-        buttonGroup={renderPasswordButton()}
-      >
-        <FormItem
-          className={styles.formItem}
-          type={"password"}
-          placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
-          text={
-            !edit
-              ? strings.global.label.password
-              : strings.global.label.newPassword
-          }
-          name={"password"}
-          handleChange={handleChange}
-          disabled={!edit ? true : false}
-          validateLoginInput={() =>
-            setPasswordIsValid(
-              !regexValidator.validPassword.test(userInfo.password)
-            )
-          }
-          errorMessage={renderErrorMessage(
-            !passwordIsValid,
-            strings.global.errorMessage.password,
-            strings.global.errorMessage.passwordChar
-          )}
-        />
-        <FormItem
-          className={styles.formItem}
-          type={"password"}
-          text={strings.global.label.verifyNewPassword}
-          name={"confPassword"}
-          handleChange={handleChange}
-          disabled={!edit ? true : false}
-          validateLoginInput={handlePassword}
-          errorMessage={renderErrorMessage(
-            !passwordRequired,
-            strings.global.errorMessage.confPassword
-          )}
-          secondErrorMessage={renderErrorMessage(
-            !passwordMatch,
-            strings.global.errorMessage.passwordMatch
-          )}
-        />
-      </Form>
+        {editPassword ? (
+          <div className={classNames(styles.passwordButton)}>
+            <Button text={"Save Password"} buttonType="submit" />
+          </div>
+        ) : null}
+      </div>
     );
   };
 
@@ -223,22 +174,6 @@ const Account = () => {
             <LoadingSpinner />
           ) : (
             <React.Fragment>
-              {!edit ? (
-                <div className={classNames(styles.editContainer)}>
-                  <label className={classNames(styles.editLink)}>
-                    <a
-                      className={classNames(styles.editLink)}
-                      onClick={() => handleEditButton()}
-                    >
-                      {strings.account.edit}
-                    </a>
-                  </label>
-                  <ModeEditOutlineOutlinedIcon
-                    className={classNames(styles.editIcon)}
-                    onClick={() => handleEditButton()}
-                  />
-                </div>
-              ) : null}
               <div className={classNames(styles.profileContainer)}>
                 <div className={classNames(styles.profileWrapper)}>
                   <div className={classNames(styles.profilePhoto)}>
@@ -273,83 +208,170 @@ const Account = () => {
               </div>
               <div className={classNames(styles.accountInfoContainer)}>
                 <div className={classNames(styles.userInfoContainer)}>
-                  <Form
-                    className={classNames(styles.accountForm)}
-                    handleEditAccount={handleEditAccount}
-                    edit={edit}
-                    editInfoError={editInfoError}
-                    editPassword={editPassword}
-                    setEditPassword={() => setEditPassword(true)}
-                    buttonGroup={renderButtonGroup()}
-                  >
-                    <FormItem
-                      className={styles.formItem}
-                      type={"text"}
-                      value={userInfo.firstName}
-                      text={strings.global.label.firstName}
-                      name={"firstName"}
-                      handleChange={handleChange}
-                      disabled={!edit ? true : false}
-                      validateLoginInput={() =>
-                        setFirstNameIsValid(
-                          !regexValidator.validFirstName.test(
-                            userInfo.firstName
+                  <div className={classNames(styles.editWrapper)}>
+                    {!edit ? (
+                      <div className={classNames(styles.editContainer)}>
+                        <label className={classNames(styles.editLink)}>
+                          <a
+                            className={classNames(styles.editLink)}
+                            onClick={() => handleEditButton()}
+                          >
+                            {strings.account.edit}
+                          </a>
+                        </label>
+                        <ModeEditOutlineOutlinedIcon
+                          className={classNames(styles.editIcon)}
+                          onClick={() => handleEditButton()}
+                        />
+                      </div>
+                    ) : null}
+                    <Form
+                      className={classNames(styles.accountForm)}
+                      handleEditAccount={handleEditAccount}
+                      edit={edit}
+                      editInfoError={editInfoError}
+                      buttonGroup={renderButtonGroup()}
+                    >
+                      <FormItem
+                        className={styles.formItem}
+                        type={"text"}
+                        value={userInfo.firstName}
+                        text={strings.global.label.firstName}
+                        name={"firstName"}
+                        handleChange={handleChange}
+                        disabled={!edit ? true : false}
+                        validateLoginInput={() =>
+                          setFirstNameIsValid(
+                            !regexValidator.validFirstName.test(
+                              userInfo.firstName
+                            )
                           )
-                        )
-                      }
-                      errorMessage={renderErrorMessage(
-                        !firstNameIsValid,
-                        strings.global.errorMessage.firstName
-                      )}
-                      maxLength={40}
-                    />
-                    <FormItem
-                      className={styles.formItem}
-                      type={"text"}
-                      value={userInfo.lastName}
-                      text={strings.global.label.lastName}
-                      name={"lastName"}
-                      handleChange={handleChange}
-                      disabled={!edit ? true : false}
-                      validateLoginInput={() =>
-                        setLastNameIsValid(
-                          !regexValidator.validLastName.test(userInfo.lastName)
-                        )
-                      }
-                      errorMessage={renderErrorMessage(
-                        !lastNameIsValid,
-                        strings.global.errorMessage.lastName
-                      )}
-                      maxLength={40}
-                    />
-                    <FormItem
-                      className={styles.formItem}
-                      type={"text"}
-                      value={userInfo.email}
-                      text={strings.global.label.email}
-                      name={"email"}
-                      handleChange={handleChange}
-                      disabled={!edit ? true : false}
-                      validateLoginInput={() =>
-                        setEmailIsValid(
-                          !regexValidator.validEmail.test(userInfo.email)
-                        )
-                      }
-                      errorMessage={renderErrorMessage(
-                        !emailIsValid,
-                        strings.global.errorMessage.email
-                      )}
-                    />
-                  </Form>
+                        }
+                        errorMessage={renderErrorMessage(
+                          !firstNameIsValid,
+                          strings.global.errorMessage.firstName
+                        )}
+                        maxLength={40}
+                      />
+                      <FormItem
+                        className={styles.formItem}
+                        type={"text"}
+                        value={userInfo.lastName}
+                        text={strings.global.label.lastName}
+                        name={"lastName"}
+                        handleChange={handleChange}
+                        disabled={!edit ? true : false}
+                        validateLoginInput={() =>
+                          setLastNameIsValid(
+                            !regexValidator.validLastName.test(
+                              userInfo.lastName
+                            )
+                          )
+                        }
+                        errorMessage={renderErrorMessage(
+                          !lastNameIsValid,
+                          strings.global.errorMessage.lastName
+                        )}
+                        maxLength={40}
+                      />
+                      <FormItem
+                        className={styles.formItem}
+                        type={"text"}
+                        value={userInfo.email}
+                        text={strings.global.label.email}
+                        name={"email"}
+                        handleChange={handleChange}
+                        disabled={!edit ? true : false}
+                        validateLoginInput={() =>
+                          setEmailIsValid(
+                            !regexValidator.validEmail.test(userInfo.email)
+                          )
+                        }
+                        errorMessage={renderErrorMessage(
+                          !emailIsValid,
+                          strings.global.errorMessage.email
+                        )}
+                      />
+                    </Form>
+                  </div>
                 </div>
-                <div
-                  className={
-                    !editPassword
-                      ? classNames(styles.passwordContainer)
-                      : classNames(styles.editPasswordContainer)
-                  }
-                >
-                  {editPassword && renderPassword()}
+                <div className={classNames(styles.passwordContainer)}>
+                  <div className={classNames(styles.editWrapper)}>
+                    {!editPassword ? (
+                      <div className={classNames(styles.editContainer)}>
+                        <label
+                          className={classNames(styles.editLink)}
+                          onClick={() => setEditPassword(true)}
+                        >
+                          <a
+                            className={classNames(styles.editLink)}
+                            onClick={() => handleEditPasswordButton()}
+                          >
+                            {strings.account.edit}
+                          </a>
+                        </label>
+                        <ModeEditOutlineOutlinedIcon
+                          className={classNames(styles.editIcon)}
+                          onClick={() => handleEditPasswordButton()}
+                        />
+                      </div>
+                    ) : null}
+
+                    <Form
+                      className={classNames(styles.passwordForm)}
+                      handleEditAccount={handleEditAccount}
+                      edit={editPassword}
+                      editInfoError={editInfoError}
+                      buttonGroup={renderPasswordButton()}
+                    >
+                      <FormItem
+                        className={styles.formItem}
+                        type={"password"}
+                        placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+                        text={
+                          !editPassword
+                            ? strings.global.label.password
+                            : strings.global.label.newPassword
+                        }
+                        name={"password"}
+                        handleChange={handleChange}
+                        disabled={!edit ? true : false}
+                        validateLoginInput={() =>
+                          setPasswordIsValid(
+                            !regexValidator.validPassword.test(
+                              userInfo.password
+                            )
+                          )
+                        }
+                        errorMessage={renderErrorMessage(
+                          !passwordIsValid,
+                          strings.global.errorMessage.password,
+                          strings.global.errorMessage.passwordChar
+                        )}
+                      />
+                      {editPassword ? (
+                        <FormItem
+                          className={styles.formItem}
+                          type={"password"}
+                          text={strings.global.label.verifyNewPassword}
+                          name={"confPassword"}
+                          handleChange={handleChange}
+                          disabled={!edit ? true : false}
+                          validateLoginInput={handlePassword}
+                          errorMessage={renderErrorMessage(
+                            !passwordRequired,
+                            strings.global.errorMessage.confPassword
+                          )}
+                          secondErrorMessage={renderErrorMessage(
+                            !passwordMatch,
+                            strings.global.errorMessage.passwordMatch
+                          )}
+                        />
+                      ) : (
+                        <React.Fragment />
+                      )}
+                    </Form>
+                  </div>
                 </div>
               </div>
             </React.Fragment>
