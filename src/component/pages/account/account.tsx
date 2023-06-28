@@ -129,18 +129,77 @@ const Account = () => {
     );
   };
 
-
-  renderErrorMessage(
-    !passwordRequired,
-    strings.global.errorMessage.confPassword
-  )
-
-  renderErrorMessage(
-    !passwordMatch,
-    strings.global.errorMessage.passwordMatch
-  )
-
-
+  const renderPassword = () => {
+    return (
+      <form className={classNames(styles.passwordForm)}>
+        <div>
+          <div
+            className={
+              !edit
+                ? classNames(styles.inputWrapper)
+                : classNames(styles.editInputWrapper)
+            }
+          >
+            <FormItem
+              className={styles.formItem}
+              type={"password"}
+              placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+              text={
+                !edit
+                  ? strings.global.label.password
+                  : strings.global.label.newPassword
+              }
+              name={"password"}
+              handleChange={handleChange}
+              disabled={!edit ? true : false}
+              validateLoginInput={() =>
+                setPasswordIsValid(
+                  !regexValidator.validPassword.test(userInfo.password)
+                )
+              }
+              errorMessage={renderErrorMessage(
+                !passwordIsValid,
+                strings.global.errorMessage.password,
+                strings.global.errorMessage.passwordChar
+              )}
+            />
+          </div>
+          {edit ? (
+            <div
+              className={
+                !edit
+                  ? classNames(styles.inputWrapper)
+                  : classNames(styles.editInputWrapper)
+              }
+            >
+              <FormItem
+                className={styles.formItem}
+                type={"password"}
+                text={strings.global.label.verifyNewPassword}
+                name={"confPassword"}
+                handleChange={handleChange}
+                disabled={!edit ? true : false}
+                validateLoginInput={handlePassword}
+                errorMessage={renderErrorMessage(
+                  !passwordRequired,
+                  strings.global.errorMessage.confPassword
+                )}
+                secondErrorMessage={renderErrorMessage(
+                  !passwordMatch,
+                  strings.global.errorMessage.passwordMatch
+                )}
+              />
+            </div>
+          ) : null}
+        </div>
+        {edit ? (
+          <div className={classNames(styles.passwordButton)}>
+            <Button text={"Save Password"} buttonType="submit" />
+          </div>
+        ) : null}
+      </form>
+    );
+  };
 
   return (
     <React.Fragment>
@@ -241,9 +300,7 @@ const Account = () => {
                       disabled={!edit ? true : false}
                       validateLoginInput={() =>
                         setLastNameIsValid(
-                          !regexValidator.validLastName.test(
-                            userInfo.lastName
-                          )
+                          !regexValidator.validLastName.test(userInfo.lastName)
                         )
                       }
                       errorMessage={renderErrorMessage(
@@ -279,7 +336,7 @@ const Account = () => {
                       : classNames(styles.editPasswordContainer)
                   }
                 >
-
+                  {editPassword && renderPassword()}
                 </div>
               </div>
             </React.Fragment>
