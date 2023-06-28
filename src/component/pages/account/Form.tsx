@@ -9,28 +9,26 @@ type FormPropsType = {
   handleEditAccount: (event: React.FormEvent<HTMLFormElement>) => void;
   edit: boolean;
   children: JSX.Element[];
-  handleEditButton: () => void;
   editInfoError: boolean;
   editPassword: boolean;
   setEditPassword: () => void;
+  className?: string;
+  buttonGroup?: JSX.Element;
 };
 
 const Form = ({
   handleEditAccount,
   edit,
   children,
-  handleEditButton,
   editInfoError,
   editPassword,
   setEditPassword,
+  className,
+  buttonGroup,
 }: FormPropsType) => {
   return (
     <React.Fragment>
-      <form
-        noValidate
-        onSubmit={handleEditAccount}
-        className={classNames(styles.accountForm)}
-      >
+      <form noValidate onSubmit={handleEditAccount} className={className}>
         {children.map((child, index) => (
           <div key={index} className={classNames(styles.formSectionContainer)}>
             <div
@@ -44,16 +42,7 @@ const Form = ({
             </div>
           </div>
         ))}
-        {edit ? (
-          <div className={classNames(styles.editButtonGroup)}>
-            <Button
-              buttonType="reset"
-              text={"Cancel"}
-              onClick={handleEditButton}
-            />
-            <Button text={"Save"} buttonType="submit" />
-          </div>
-        ) : null}
+        {buttonGroup}
         {editInfoError && (
           <span className={classNames(styles.errorMessage)}>
             {strings.global.errorMessage.message}

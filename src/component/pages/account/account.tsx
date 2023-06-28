@@ -129,75 +129,87 @@ const Account = () => {
     );
   };
 
-  const renderPassword = () => {
+  const renderButtonGroup = () => {
     return (
-      <form className={classNames(styles.passwordForm)}>
-        <div>
-          <div
-            className={
-              !edit
-                ? classNames(styles.inputWrapper)
-                : classNames(styles.editInputWrapper)
-            }
-          >
-            <FormItem
-              className={styles.formItem}
-              type={"password"}
-              placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
-              text={
-                !edit
-                  ? strings.global.label.password
-                  : strings.global.label.newPassword
-              }
-              name={"password"}
-              handleChange={handleChange}
-              disabled={!edit ? true : false}
-              validateLoginInput={() =>
-                setPasswordIsValid(
-                  !regexValidator.validPassword.test(userInfo.password)
-                )
-              }
-              errorMessage={renderErrorMessage(
-                !passwordIsValid,
-                strings.global.errorMessage.password,
-                strings.global.errorMessage.passwordChar
-              )}
-            />
-          </div>
-          {edit ? (
-            <div
-              className={
-                !edit
-                  ? classNames(styles.inputWrapper)
-                  : classNames(styles.editInputWrapper)
-              }
-            >
-              <FormItem
-                className={styles.formItem}
-                type={"password"}
-                text={strings.global.label.verifyNewPassword}
-                name={"confPassword"}
-                handleChange={handleChange}
-                disabled={!edit ? true : false}
-                validateLoginInput={handlePassword}
-                errorMessage={renderErrorMessage(
-                  !passwordRequired,
-                  strings.global.errorMessage.confPassword
-                )}
-                secondErrorMessage={renderErrorMessage(
-                  !passwordMatch,
-                  strings.global.errorMessage.passwordMatch
-                )}
-              />
-            </div>
-          ) : null}
-        </div>
+      <div>
         {edit ? (
-          <div className={classNames(styles.passwordButton)}>
-            <Button text={"Save Password"} buttonType="submit" />
+          <div className={classNames(styles.editButtonGroup)}>
+            <Button
+              buttonType="reset"
+              text={"Cancel"}
+              onClick={handleEditButton}
+            />
+            <Button text={"Save"} buttonType="submit" />
           </div>
         ) : null}
-      </form>
+      </div>
+    );
+  };
+
+  const renderPasswordButton = () => {
+    return (
+      <div>
+      {edit ? (
+        <div className={classNames(styles.passwordButton)}>
+          <Button text={"Save Password"} buttonType="submit" />
+        </div>
+      ) : null}
+    </div>
+    );
+  };
+
+  const renderPassword = () => {
+    return (
+      <Form
+        className={classNames(styles.passwordForm)}
+        handleEditAccount={handleEditAccount}
+        edit={edit}
+        editInfoError={editInfoError}
+        editPassword={editPassword}
+        setEditPassword={() => setEditPassword(true)}
+        buttonGroup={renderPasswordButton()}
+      >
+        <FormItem
+          className={styles.formItem}
+          type={"password"}
+          placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+          text={
+            !edit
+              ? strings.global.label.password
+              : strings.global.label.newPassword
+          }
+          name={"password"}
+          handleChange={handleChange}
+          disabled={!edit ? true : false}
+          validateLoginInput={() =>
+            setPasswordIsValid(
+              !regexValidator.validPassword.test(userInfo.password)
+            )
+          }
+          errorMessage={renderErrorMessage(
+            !passwordIsValid,
+            strings.global.errorMessage.password,
+            strings.global.errorMessage.passwordChar
+          )}
+        />
+        <FormItem
+          className={styles.formItem}
+          type={"password"}
+          text={strings.global.label.verifyNewPassword}
+          name={"confPassword"}
+          handleChange={handleChange}
+          disabled={!edit ? true : false}
+          validateLoginInput={handlePassword}
+          errorMessage={renderErrorMessage(
+            !passwordRequired,
+            strings.global.errorMessage.confPassword
+          )}
+          secondErrorMessage={renderErrorMessage(
+            !passwordMatch,
+            strings.global.errorMessage.passwordMatch
+          )}
+        />
+      </Form>
     );
   };
 
@@ -262,12 +274,13 @@ const Account = () => {
               <div className={classNames(styles.accountInfoContainer)}>
                 <div className={classNames(styles.userInfoContainer)}>
                   <Form
+                    className={classNames(styles.accountForm)}
                     handleEditAccount={handleEditAccount}
                     edit={edit}
-                    handleEditButton={handleEditButton}
                     editInfoError={editInfoError}
                     editPassword={editPassword}
                     setEditPassword={() => setEditPassword(true)}
+                    buttonGroup={renderButtonGroup()}
                   >
                     <FormItem
                       className={styles.formItem}
