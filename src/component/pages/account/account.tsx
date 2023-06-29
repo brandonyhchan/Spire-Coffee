@@ -87,7 +87,7 @@ const Account = () => {
   };
 
   const handleEditPasswordButton = () => {
-    setEditPassword(false);
+    setEditPassword(!editPassword);
     if (editPassword) {
       window.location.reload();
     }
@@ -135,248 +135,243 @@ const Account = () => {
     );
   };
 
-  const renderButtonGroup = () => {
-    return (
-      <div>
-        {edit ? (
-          <div className={classNames(styles.editButtonGroup)}>
-            <Button
-              buttonType="reset"
-              text={"Cancel"}
-              onClick={handleEditButton}
-            />
-            <Button text={"Save"} buttonType="submit" />
-          </div>
-        ) : null}
-      </div>
-    );
-  };
-
-  const renderPasswordButton = () => {
-    return (
-      <div>
-        {editPassword ? (
-          <div className={classNames(styles.passwordButton)}>
-            <Button text={"Save Password"} buttonType="submit" />
-          </div>
-        ) : null}
-      </div>
-    );
+  const renderButtonGroup = (editButton: boolean) => {
+    if (editButton === edit) {
+      return (
+        <div>
+          {edit ? (
+            <div className={classNames(styles.editButtonGroup)}>
+              <Button
+                buttonType="reset"
+                text={"Cancel"}
+                onClick={handleEditButton}
+              />
+              <Button text={"Save"} buttonType="submit" />
+            </div>
+          ) : null}
+        </div>
+      );
+    } else if (editButton === editPassword) {
+      return (
+        <div>
+          {editPassword ? (
+            <div className={classNames(styles.editButtonGroup)}>
+              <Button
+                buttonType="reset"
+                text={"Cancel"}
+                onClick={handleEditPasswordButton}
+              />
+              <Button text={"Save"} buttonType="submit" />
+            </div>
+          ) : null}
+        </div>
+      );
+    }
   };
 
   return (
     <React.Fragment>
       <Helmet title={strings.account.helmet} />
       <NavBar />
-      <div className={classNames(styles.wrapper)}>
-        <div className={classNames(styles.container)}>
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            <React.Fragment>
-              <div className={classNames(styles.profileContainer)}>
-                <div className={classNames(styles.profileWrapper)}>
-                  <div className={classNames(styles.profilePhoto)}>
-                    <img
-                      src={Logo}
-                      alt={Logo}
-                      className={classNames(styles.profilePhotoImage)}
-                    />
-                    <div
-                      className={classNames(styles.overlay)}
-                      onClick={handleProfilePhoto}
-                    >
-                      <div className={classNames(styles.editProfilePhotoText)}>
-                        {strings.account.editProfilePictureText}
-                      </div>
-                    </div>
-                  </div>
+      <div className={classNames(styles.container)}>
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <React.Fragment>
+            <div className={classNames(styles.profileContainer)}>
+              <div className={classNames(styles.profileWrapper)}>
+                <div className={classNames(styles.profilePhoto)}>
+                  <img
+                    src={Logo}
+                    alt={Logo}
+                    className={classNames(styles.profilePhotoImage)}
+                  />
                   <div
-                    className={classNames(styles.profilePhotoButton)}
+                    className={classNames(styles.overlay)}
                     onClick={handleProfilePhoto}
                   >
-                    <label>
-                      <AddPhotoAlternateRoundedIcon
-                        className={classNames(styles.editIcon)}
-                      />
-                    </label>
+                    <div className={classNames(styles.editProfilePhotoText)}>
+                      {strings.account.editProfilePictureText}
+                    </div>
                   </div>
                 </div>
-                <div className={classNames(styles.username)}>
-                  <h2>{userName}</h2>
+                <div
+                  className={classNames(styles.profilePhotoButton)}
+                  onClick={handleProfilePhoto}
+                >
+                  <label>
+                    <AddPhotoAlternateRoundedIcon
+                      className={classNames(styles.editIcon)}
+                    />
+                  </label>
                 </div>
               </div>
-              <div className={classNames(styles.accountInfoContainer)}>
-                <div className={classNames(styles.userInfoContainer)}>
-                  <div className={classNames(styles.editWrapper)}>
-                    {!edit ? (
-                      <div className={classNames(styles.editContainer)}>
-                        <label className={classNames(styles.editLink)}>
-                          <a
-                            className={classNames(styles.editLink)}
-                            onClick={() => handleEditButton()}
-                          >
-                            {strings.account.edit}
-                          </a>
-                        </label>
-                        <ModeEditOutlineOutlinedIcon
-                          className={classNames(styles.editIcon)}
-                          onClick={() => handleEditButton()}
-                        />
-                      </div>
-                    ) : null}
-                    <Form
-                      className={classNames(styles.accountForm)}
-                      handleEditAccount={handleEditAccount}
-                      edit={edit}
-                      editInfoError={editInfoError}
-                      buttonGroup={renderButtonGroup()}
-                    >
-                      <FormItem
-                        className={styles.formItem}
-                        type={"text"}
-                        value={userInfo.firstName}
-                        text={strings.global.label.firstName}
-                        name={"firstName"}
-                        handleChange={handleChange}
-                        disabled={!edit ? true : false}
-                        validateLoginInput={() =>
-                          setFirstNameIsValid(
-                            !regexValidator.validFirstName.test(
-                              userInfo.firstName
-                            )
-                          )
-                        }
-                        errorMessage={renderErrorMessage(
-                          !firstNameIsValid,
-                          strings.global.errorMessage.firstName
-                        )}
-                        maxLength={40}
-                      />
-                      <FormItem
-                        className={styles.formItem}
-                        type={"text"}
-                        value={userInfo.lastName}
-                        text={strings.global.label.lastName}
-                        name={"lastName"}
-                        handleChange={handleChange}
-                        disabled={!edit ? true : false}
-                        validateLoginInput={() =>
-                          setLastNameIsValid(
-                            !regexValidator.validLastName.test(
-                              userInfo.lastName
-                            )
-                          )
-                        }
-                        errorMessage={renderErrorMessage(
-                          !lastNameIsValid,
-                          strings.global.errorMessage.lastName
-                        )}
-                        maxLength={40}
-                      />
-                      <FormItem
-                        className={styles.formItem}
-                        type={"text"}
-                        value={userInfo.email}
-                        text={strings.global.label.email}
-                        name={"email"}
-                        handleChange={handleChange}
-                        disabled={!edit ? true : false}
-                        validateLoginInput={() =>
-                          setEmailIsValid(
-                            !regexValidator.validEmail.test(userInfo.email)
-                          )
-                        }
-                        errorMessage={renderErrorMessage(
-                          !emailIsValid,
-                          strings.global.errorMessage.email
-                        )}
-                      />
-                    </Form>
-                  </div>
-                </div>
-                <div className={classNames(styles.passwordContainer)}>
-                  <div className={classNames(styles.editWrapper)}>
-                    {!editPassword ? (
-                      <div className={classNames(styles.editContainer)}>
-                        <label
+              <div className={classNames(styles.username)}>
+                <h2>{userName}</h2>
+              </div>
+            </div>
+            <div className={classNames(styles.accountInfoContainer)}>
+              <div className={classNames(styles.userInfoContainer)}>
+                <div className={classNames(styles.editWrapper)}>
+                  {!edit ? (
+                    <div className={classNames(styles.editContainer)}>
+                      <label className={classNames(styles.editLink)}>
+                        <a
                           className={classNames(styles.editLink)}
-                          onClick={() => setEditPassword(true)}
+                          onClick={() => handleEditButton()}
                         >
-                          <a
-                            className={classNames(styles.editLink)}
-                            onClick={() => handleEditPasswordButton()}
-                          >
-                            {strings.account.edit}
-                          </a>
-                        </label>
-                        <ModeEditOutlineOutlinedIcon
-                          className={classNames(styles.editIcon)}
+                          {strings.account.edit}
+                        </a>
+                      </label>
+                      <ModeEditOutlineOutlinedIcon
+                        className={classNames(styles.editIcon)}
+                        onClick={() => handleEditButton()}
+                      />
+                    </div>
+                  ) : null}
+                  <Form
+                    className={classNames(styles.accountForm)}
+                    handleEditAccount={handleEditAccount}
+                    edit={edit}
+                    editInfoError={editInfoError}
+                    buttonGroup={renderButtonGroup(edit)}
+                  >
+                    <FormItem
+                      className={styles.formItem}
+                      type={"text"}
+                      value={userInfo.firstName}
+                      text={strings.global.label.firstName}
+                      name={"firstName"}
+                      handleChange={handleChange}
+                      disabled={!edit ? true : false}
+                      validateLoginInput={() =>
+                        setFirstNameIsValid(
+                          !regexValidator.validFirstName.test(
+                            userInfo.firstName
+                          )
+                        )
+                      }
+                      errorMessage={renderErrorMessage(
+                        !firstNameIsValid,
+                        strings.global.errorMessage.firstName
+                      )}
+                      maxLength={40}
+                    />
+                    <FormItem
+                      className={styles.formItem}
+                      type={"text"}
+                      value={userInfo.lastName}
+                      text={strings.global.label.lastName}
+                      name={"lastName"}
+                      handleChange={handleChange}
+                      disabled={!edit ? true : false}
+                      validateLoginInput={() =>
+                        setLastNameIsValid(
+                          !regexValidator.validLastName.test(userInfo.lastName)
+                        )
+                      }
+                      errorMessage={renderErrorMessage(
+                        !lastNameIsValid,
+                        strings.global.errorMessage.lastName
+                      )}
+                      maxLength={40}
+                    />
+                    <FormItem
+                      className={styles.formItem}
+                      type={"text"}
+                      value={userInfo.email}
+                      text={strings.global.label.email}
+                      name={"email"}
+                      handleChange={handleChange}
+                      disabled={!edit ? true : false}
+                      validateLoginInput={() =>
+                        setEmailIsValid(
+                          !regexValidator.validEmail.test(userInfo.email)
+                        )
+                      }
+                      errorMessage={renderErrorMessage(
+                        !emailIsValid,
+                        strings.global.errorMessage.email
+                      )}
+                    />
+                  </Form>
+                </div>
+              </div>
+              <div className={classNames(styles.passwordContainer)}>
+                <div className={classNames(styles.editWrapper)}>
+                  {!editPassword ? (
+                    <div className={classNames(styles.editContainer)}>
+                      <label className={classNames(styles.editLink)}>
+                        <a
+                          className={classNames(styles.editLink)}
                           onClick={() => handleEditPasswordButton()}
-                        />
-                      </div>
-                    ) : null}
-
-                    <Form
-                      className={classNames(styles.passwordForm)}
-                      handleEditAccount={handleEditAccount}
-                      edit={editPassword}
-                      editInfoError={editInfoError}
-                      buttonGroup={renderPasswordButton()}
-                    >
+                        >
+                          {strings.account.edit}
+                        </a>
+                      </label>
+                      <ModeEditOutlineOutlinedIcon
+                        className={classNames(styles.editIcon)}
+                        onClick={() => handleEditPasswordButton()}
+                      />
+                    </div>
+                  ) : null}
+                  <Form
+                    className={classNames(styles.passwordForm)}
+                    handleEditAccount={handleEditAccount}
+                    edit={editPassword}
+                    editInfoError={editInfoError}
+                    buttonGroup={renderButtonGroup(editPassword)}
+                  >
+                    <FormItem
+                      className={styles.formItem}
+                      type={"password"}
+                      placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
+                      text={
+                        !editPassword
+                          ? strings.global.label.password
+                          : strings.global.label.newPassword
+                      }
+                      name={"password"}
+                      handleChange={handleChange}
+                      disabled={!editPassword ? true : false}
+                      validateLoginInput={() =>
+                        setPasswordIsValid(
+                          !regexValidator.validPassword.test(userInfo.password)
+                        )
+                      }
+                      errorMessage={renderErrorMessage(
+                        !passwordIsValid,
+                        strings.global.errorMessage.password,
+                        strings.global.errorMessage.passwordChar
+                      )}
+                    />
+                    {editPassword ? (
                       <FormItem
                         className={styles.formItem}
                         type={"password"}
-                        placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
-                        text={
-                          !editPassword
-                            ? strings.global.label.password
-                            : strings.global.label.newPassword
-                        }
-                        name={"password"}
+                        text={strings.global.label.verifyNewPassword}
+                        name={"confPassword"}
                         handleChange={handleChange}
-                        disabled={!edit ? true : false}
-                        validateLoginInput={() =>
-                          setPasswordIsValid(
-                            !regexValidator.validPassword.test(
-                              userInfo.password
-                            )
-                          )
-                        }
+                        disabled={!editPassword ? true : false}
+                        validateLoginInput={handlePassword}
                         errorMessage={renderErrorMessage(
-                          !passwordIsValid,
-                          strings.global.errorMessage.password,
-                          strings.global.errorMessage.passwordChar
+                          !passwordRequired,
+                          strings.global.errorMessage.confPassword
+                        )}
+                        secondErrorMessage={renderErrorMessage(
+                          !passwordMatch,
+                          strings.global.errorMessage.passwordMatch
                         )}
                       />
-                      {editPassword ? (
-                        <FormItem
-                          className={styles.formItem}
-                          type={"password"}
-                          text={strings.global.label.verifyNewPassword}
-                          name={"confPassword"}
-                          handleChange={handleChange}
-                          disabled={!edit ? true : false}
-                          validateLoginInput={handlePassword}
-                          errorMessage={renderErrorMessage(
-                            !passwordRequired,
-                            strings.global.errorMessage.confPassword
-                          )}
-                          secondErrorMessage={renderErrorMessage(
-                            !passwordMatch,
-                            strings.global.errorMessage.passwordMatch
-                          )}
-                        />
-                      ) : (
-                        <React.Fragment />
-                      )}
-                    </Form>
-                  </div>
+                    ) : (
+                      <React.Fragment />
+                    )}
+                  </Form>
                 </div>
               </div>
-            </React.Fragment>
-          )}
-        </div>
+            </div>
+          </React.Fragment>
+        )}
       </div>
       <Footer />
       <MobileFooter />

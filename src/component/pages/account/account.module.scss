@@ -1,13 +1,13 @@
 $_large_font_size: 20px;
 
-.wrapper {
-  @media (min-width: 601px) {
-    display: flex;
-    padding: 0px 50px;
-    width: 100%;
-    justify-content: center;
-  }
-}
+// .wrapper {
+//   @media (min-width: 601px) {
+//     display: flex;
+//     padding: 0px 50px;
+//     width: 100%;
+//     justify-content: center;
+//   }
+// }
 
 .container {
   display: grid;
@@ -85,7 +85,9 @@ $_large_font_size: 20px;
   @media (max-width: 600px) {
     grid-row-start: 1;
     grid-row-end: 2;
-    padding-left: 50px;
+    grid-column-start: 1;
+    grid-column-end: 3;
+    // padding-left: 50px;
     margin-top: 30px;
   }
   & .profilePhoto {
@@ -187,7 +189,7 @@ $_large_font_size: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  padding: 40px;
+  // padding: 40px;
   width: 100%;
   grid-column-start: 2;
   grid-column-end: 3;
@@ -283,35 +285,46 @@ $_large_font_size: 20px;
 }
 
 .userInfoContainer {
-  padding: 20px;
   width: 100%;
-  border: solid 3px var(--light-grey);
+  @media (max-width: 600px) {
+    padding: 20px 20px 0px 20px;
+  }
+  @media (min-width: 601px) {
+    padding: 20px;
+    border: solid 3px var(--light-grey);
+  }
 }
 
 .passwordContainer {
-  padding: 20px;
   width: 100%;
-  border: solid 3px var(--light-grey);
+  @media (max-width: 600px) {
+    padding: 0 20px;
+  }
+  @media (min-width: 601px) {
+    padding: 20px;
+    border: solid 3px var(--light-grey);
+  }
 }
 
 .editPasswordContainer {
   width: 100%;
-  border: solid 3px var(--light-grey);
+  @media (min-width: 601px) {
+    border: solid 3px var(--light-grey);
+  }
   @media (max-width: 912px) {
     padding-top: 10px;
   }
 }
 
 .passwordForm {
-  padding: 0 40px;
   display: flex;
   flex-direction: column;
   height: 100%;
+  width: 100%;
   & .editInputWrapper {
     width: 100%;
   }
 }
-
 
 .editButtonGroup {
   display: flex;
