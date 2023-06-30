@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { getUserInfo, userMutation } from "support/graphqlServerApi";
+import { getUserInfo, userMutation, passwordMutation } from "support/graphqlServerApi";
 import { useQuery, useMutation } from "@apollo/client";
 import RegexValidator from "component/pages/signUp/regexValidator";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
@@ -70,6 +70,15 @@ const Account = () => {
     },
   });
 
+  const [updatePassword] = useMutation(passwordMutation, {
+    onError: (error) => {
+      setEditInfoError(true);
+    },
+    onCompleted: () => {
+      window.location.reload();
+    },
+  });
+
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const name = event.target.name;
     const value = event.currentTarget.value;
@@ -100,7 +109,6 @@ const Account = () => {
       userInfo.lastName !== "" ||
       userInfo.email !== ""
     ) {
-      //to update userinfo all fields must be filled in
       updateUser({
         variables: {
           userName: userName,
@@ -111,6 +119,19 @@ const Account = () => {
       });
     }
   };
+
+  const handleEditPassword = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    if (userInfo.password !== "" && (userInfo.password === userInfo.confPassword)) {
+      updatePassword({
+        variables: {
+          userName: userName,
+          password: userInfo.password,
+        }
+      })
+    }
+  };
+
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
@@ -161,7 +182,7 @@ const Account = () => {
                 text={"Cancel"}
                 onClick={handleEditPasswordButton}
               />
-              <Button text={"Save"} buttonType="submit" />
+              <Button text={"Save Password"} buttonType="submit" />
             </div>
           ) : null}
         </div>
@@ -317,7 +338,7 @@ const Account = () => {
                   ) : null}
                   <Form
                     className={classNames(styles.passwordForm)}
-                    handleEditAccount={handleEditAccount}
+                    handleEditAccount={handleEditPassword}
                     edit={editPassword}
                     editInfoError={editInfoError}
                     buttonGroup={renderButtonGroup(editPassword)}

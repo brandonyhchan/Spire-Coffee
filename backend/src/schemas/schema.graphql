@@ -33,4 +33,8 @@ type Mutation {
     lastName: String
     email: String
   ): User
+  updatePassword(
+    userName: String!
+    password: String
+  ): User
 }

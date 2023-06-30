@@ -16,3 +16,15 @@ export async function updateUserInfo(parent, args, context, info) {
     throw new Error("Error updating user info.");
   }
 }
+
+export async function updatePassword(parent, args, context, info) {
+  try {
+    const password = await bcrypt.hash(args.password, 10);
+    return await context.prisma.user.update({
+      where: { userName: args.userName },
+      data: { password: password },
+    });
+  } catch {
+    throw new Error("Error updating user password.");
+  }
+}
