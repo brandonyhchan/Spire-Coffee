@@ -182,7 +182,7 @@ const Account = () => {
                 text={"Cancel"}
                 onClick={handleEditPasswordButton}
               />
-              <Button text={"Save Password"} buttonType="submit" />
+              <Button text={"Save"} buttonType="submit" />
             </div>
           ) : null}
         </div>
@@ -194,6 +194,7 @@ const Account = () => {
     <React.Fragment>
       <Helmet title={strings.account.helmet} />
       <NavBar />
+      <div className={classNames(styles.wrapper)}>
       <div className={classNames(styles.container)}>
         {loading ? (
           <LoadingSpinner />
@@ -393,6 +394,7 @@ const Account = () => {
             </div>
           </React.Fragment>
         )}
+      </div>
       </div>
       <Footer />
       <MobileFooter />

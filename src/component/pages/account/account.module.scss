@@ -1,31 +1,37 @@
 $_large_font_size: 20px;
 
-// .wrapper {
-//   @media (min-width: 601px) {
-//     display: flex;
-//     padding: 0px 50px;
-//     width: 100%;
-//     justify-content: center;
-//   }
-// }
+.wrapper {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+  @media (min-width: 540px) and (max-width: 819px) {
+    padding: 0px 40px;
+  }
+  @media (min-width: 820px) and (max-width: 960px) {
+    padding: 0px 70px;
+  }
+  @media (min-width: 961px) and (max-width: 1500px) {
+    padding: 0px 90px;
+  }
+  @media (min-width: 1501px) and (max-width: 1860px) {
+    padding: 0px 200px;
+  }
+  @media (min-width: 1861px) and (max-width: 2240px) {
+    padding: 0px 300px;
+  }
+  @media (min-width: 2241px) {
+    padding: 0px 400px;
+  }
+}
 
 .container {
   display: grid;
   grid-template-rows: max-content;
+  grid-template-columns: 0px 1fr 0px;
   min-height: calc(100vh - 65px);
   color: var(--dark-grey);
   padding-bottom: 50px;
   width: 100%;
-  @media (min-width: 601px) and (max-width: 1024px) {
-    grid-template-columns: 1fr 95% 1fr;
-  }
-  @media (min-width: 2000px) {
-    grid-template-columns: 1fr 1250px 1fr;
-  }
-  @media (max-width: 600px) {
-    grid-template-columns: calc(100vw - 60px) 1fr;
-    grid-template-rows: 250px auto;
-  }
 }
 
 .editWrapper {
@@ -87,7 +93,6 @@ $_large_font_size: 20px;
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 3;
-    // padding-left: 50px;
     margin-top: 30px;
   }
   & .profilePhoto {
@@ -149,6 +154,17 @@ $_large_font_size: 20px;
   background-color: var(--secondary);
 }
 
+.profilePhotoButton:hover {
+  background-color: var(--secondary);
+}
+
+.profilePhotoButton {
+  cursor: pointer;
+  & label {
+    cursor: pointer;
+  }
+}
+
 .overlay {
   position: absolute;
   top: 0;
@@ -189,13 +205,13 @@ $_large_font_size: 20px;
   display: flex;
   flex-direction: row;
   justify-content: center;
-  // padding: 40px;
   width: 100%;
   grid-column-start: 2;
   grid-column-end: 3;
   height: fit-content;
   gap: 20px;
-  @media (max-width: 600px) {
+  width: 100%;
+  @media (max-width: 539px) {
     grid-column-start: 1;
     grid-column-end: 3;
     gap: 15px;
@@ -209,9 +225,11 @@ $_large_font_size: 20px;
     display: flex;
     width: 100%;
     flex-direction: column;
-    // padding: 0 40px;
     justify-content: space-between;
     height: 100%;
+    & .editInputWrapper {
+      width: 100%;
+    }
     @media (min-width: 913px) {
       padding-left: 40px;
     }
@@ -289,7 +307,7 @@ $_large_font_size: 20px;
   @media (max-width: 600px) {
     padding: 20px 20px 0px 20px;
   }
-  @media (min-width: 601px) {
+  @media (min-width: 540px) {
     padding: 20px;
     border: solid 3px var(--light-grey);
   }
@@ -300,7 +318,7 @@ $_large_font_size: 20px;
   @media (max-width: 600px) {
     padding: 0 20px;
   }
-  @media (min-width: 601px) {
+  @media (min-width: 540px) {
     padding: 20px;
     border: solid 3px var(--light-grey);
   }
@@ -308,7 +326,7 @@ $_large_font_size: 20px;
 
 .editPasswordContainer {
   width: 100%;
-  @media (min-width: 601px) {
+  @media (min-width: 540px) {
     border: solid 3px var(--light-grey);
   }
   @media (max-width: 912px) {
