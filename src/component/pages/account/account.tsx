@@ -51,6 +51,7 @@ const Account = () => {
   const [passwordRequired, setPasswordRequired] = useState<boolean>(false);
   const [passwordMatch, setPasswordMatch] = useState<boolean>(false);
   const [editInfoError, setEditInfoError] = useState<boolean>(false);
+  const [editPasswordError, setEditPasswordError] = useState<boolean>(false);
   const [editPassword, setEditPassword] = useState<boolean>(false);
 
   const { loading, refetch } = useQuery(getUserInfo, {
@@ -76,7 +77,7 @@ const Account = () => {
 
   const [updatePassword] = useMutation(passwordMutation, {
     onError: (error) => {
-      setEditInfoError(true);
+      setEditPasswordError(true);
     },
     onCompleted: () => {
       window.location.reload();
@@ -109,9 +110,9 @@ const Account = () => {
   const handleEditAccount = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (
-      userInfo.firstName !== "" ||
-      userInfo.lastName !== "" ||
-      userInfo.email !== ""
+      userInfo.firstName !== "" &&
+      userInfo.lastName !== "" &&
+      (userInfo.email !== "" && !emailIsValid)
     ) {
       updateUser({
         variables: {
@@ -260,7 +261,7 @@ const Account = () => {
                     className={classNames(styles.accountForm)}
                     handleEditAccount={handleEditAccount}
                     edit={edit}
-                    editInfoError={editInfoError}
+                    editError={editInfoError}
                     buttonGroup={renderButtonGroup(edit)}
                   >
                     <FormItem
@@ -346,7 +347,7 @@ const Account = () => {
                     className={classNames(styles.passwordForm)}
                     handleEditAccount={handleEditPassword}
                     edit={editPassword}
-                    editInfoError={editInfoError}
+                    editError={editPasswordError}
                     buttonGroup={renderButtonGroup(editPassword)}
                   >
                     <FormItem

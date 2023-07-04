@@ -7,7 +7,7 @@ type FormPropsType = {
   handleEditAccount: (event: React.FormEvent<HTMLFormElement>) => void;
   edit: boolean;
   children: JSX.Element[];
-  editInfoError: boolean;
+  editError: boolean;
   className?: string;
   buttonGroup?: JSX.Element;
 };
@@ -16,7 +16,7 @@ const Form = ({
   handleEditAccount,
   edit,
   children,
-  editInfoError,
+  editError,
   className,
   buttonGroup,
 }: FormPropsType) => {
@@ -37,7 +37,7 @@ const Form = ({
           </div>
         ))}
         {buttonGroup}
-        {editInfoError && (
+        {editError && edit && (
           <span className={classNames(styles.errorMessage)}>
             {strings.global.errorMessage.message}
           </span>
