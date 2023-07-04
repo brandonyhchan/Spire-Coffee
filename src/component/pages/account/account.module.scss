@@ -4,23 +4,25 @@ $_large_font_size: 20px;
   display: flex;
   width: 100%;
   justify-content: center;
+  min-height: calc(100vh - 65px);
+  padding: 30px 0px 65px 0px;
   @media (min-width: 540px) and (max-width: 819px) {
-    padding: 0px 40px;
+    padding: 50px 40px;
   }
   @media (min-width: 820px) and (max-width: 960px) {
-    padding: 0px 70px;
+    padding: 50px 70px;
   }
   @media (min-width: 961px) and (max-width: 1500px) {
-    padding: 0px 90px;
+    padding: 50px 90px;
   }
   @media (min-width: 1501px) and (max-width: 1860px) {
-    padding: 0px 200px;
+    padding: 50px 200px;
   }
   @media (min-width: 1861px) and (max-width: 2240px) {
-    padding: 0px 300px;
+    padding: 50px 300px;
   }
   @media (min-width: 2241px) {
-    padding: 0px 400px;
+    padding: 50px 400px;
   }
 }
 
@@ -28,9 +30,7 @@ $_large_font_size: 20px;
   display: grid;
   grid-template-rows: max-content;
   grid-template-columns: 0px 1fr 0px;
-  min-height: calc(100vh - 65px);
   color: var(--dark-grey);
-  padding-bottom: 50px;
   width: 100%;
 }
 
@@ -86,14 +86,12 @@ $_large_font_size: 20px;
   @media (min-width: 601px) {
     grid-column-start: 1;
     grid-column-end: 4;
-    padding-top: 50px;
   }
   @media (max-width: 600px) {
     grid-row-start: 1;
     grid-row-end: 2;
     grid-column-start: 1;
     grid-column-end: 3;
-    margin-top: 30px;
   }
   & .profilePhoto {
     position: relative;

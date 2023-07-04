@@ -2,7 +2,11 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
-import { getUserInfo, userMutation, passwordMutation } from "support/graphqlServerApi";
+import {
+  getUserInfo,
+  userMutation,
+  passwordMutation,
+} from "support/graphqlServerApi";
 import { useQuery, useMutation } from "@apollo/client";
 import RegexValidator from "component/pages/signUp/regexValidator";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
@@ -122,16 +126,18 @@ const Account = () => {
 
   const handleEditPassword = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
-    if (userInfo.password !== "" && (userInfo.password === userInfo.confPassword)) {
+    if (
+      userInfo.password !== "" &&
+      userInfo.password === userInfo.confPassword
+    ) {
       updatePassword({
         variables: {
           userName: userName,
           password: userInfo.password,
-        }
-      })
+        },
+      });
     }
   };
-
 
   const handlePassword = (event: React.ChangeEvent<HTMLInputElement>) => {
     const value = event.currentTarget.value;
@@ -195,11 +201,10 @@ const Account = () => {
       <Helmet title={strings.account.helmet} />
       <NavBar />
       <div className={classNames(styles.wrapper)}>
-      <div className={classNames(styles.container)}>
         {loading ? (
           <LoadingSpinner />
         ) : (
-          <React.Fragment>
+          <div className={classNames(styles.container)}>
             <div className={classNames(styles.profileContainer)}>
               <div className={classNames(styles.profileWrapper)}>
                 <div className={classNames(styles.profilePhoto)}>
@@ -392,9 +397,8 @@ const Account = () => {
                 </div>
               </div>
             </div>
-          </React.Fragment>
+          </div>
         )}
-      </div>
       </div>
       <Footer />
       <MobileFooter />
