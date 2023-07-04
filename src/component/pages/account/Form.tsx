@@ -36,12 +36,12 @@ const Form = ({
             </div>
           </div>
         ))}
-        {buttonGroup}
         {editError && edit && (
           <span className={classNames(styles.errorMessage)}>
             {strings.global.errorMessage.message}
           </span>
         )}
+        {buttonGroup}
       </form>
     </React.Fragment>
   );
