@@ -1,28 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 import classNames from "classnames";
-import styles from "./account.module.scss";
-import strings from "config/strings";
+import styles from "./Form.module.scss";
 
 type FormPropsType = {
-  handleEditAccount: (event: React.FormEvent<HTMLFormElement>) => void;
-  edit: boolean;
+  handleForm: (event: React.FormEvent<HTMLFormElement>) => void;
+  handleKeyEvent?: (event: React.KeyboardEvent<HTMLFormElement>) => void;
+  edit?: boolean;
   children: JSX.Element[];
-  editError: boolean;
   className?: string;
   buttonGroup?: JSX.Element;
 };
 
 const Form = ({
-  handleEditAccount,
+  handleForm,
+  handleKeyEvent,
   edit,
   children,
-  editError,
   className,
   buttonGroup,
 }: FormPropsType) => {
   return (
     <React.Fragment>
-      <form noValidate onSubmit={handleEditAccount} className={className}>
+      <form
+        noValidate
+        onSubmit={handleForm}
+        className={className}
+        onKeyDown={handleKeyEvent}
+      >
         {children.map((child, index) => (
           <div key={index} className={classNames(styles.formSectionContainer)}>
             <div
@@ -36,12 +40,7 @@ const Form = ({
             </div>
           </div>
         ))}
-        {editError && edit && (
-          <span className={classNames(styles.errorMessage)}>
-            {strings.global.errorMessage.message}
-          </span>
-        )}
-        {buttonGroup}
+        <div className={classNames(styles.buttonContainer)}>{buttonGroup}</div>
       </form>
     </React.Fragment>
   );

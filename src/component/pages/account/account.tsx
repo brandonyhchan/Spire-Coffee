@@ -18,7 +18,7 @@ import Logo from "assets/images/placeholder-logo.jpg";
 import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutlined";
 import AddPhotoAlternateRoundedIcon from "@mui/icons-material/AddPhotoAlternateRounded";
 import LoadingSpinner from "component/common/LoadingSpinner";
-import Form from "./Form";
+import Form from "../../common/Form/Form";
 
 import classNames from "classnames";
 import styles from "./account.module.scss";
@@ -112,7 +112,8 @@ const Account = () => {
     if (
       userInfo.firstName !== "" &&
       userInfo.lastName !== "" &&
-      (userInfo.email !== "" && !emailIsValid)
+      userInfo.email !== "" &&
+      !emailIsValid
     ) {
       updateUser({
         variables: {
@@ -234,8 +235,8 @@ const Account = () => {
                   </label>
                 </div>
               </div>
-              <div className={classNames(styles.username)}>
-                <h2>{userName}</h2>
+              <div className={classNames(styles.usernameContainer)}>
+                <h1 className={classNames(styles.username)}>{userName}</h1>
               </div>
             </div>
             <div className={classNames(styles.accountInfoContainer)}>
@@ -259,9 +260,8 @@ const Account = () => {
                   ) : null}
                   <Form
                     className={classNames(styles.accountForm)}
-                    handleEditAccount={handleEditAccount}
+                    handleForm={handleEditAccount}
                     edit={edit}
-                    editError={editInfoError}
                     buttonGroup={renderButtonGroup(edit)}
                   >
                     <FormItem
@@ -324,6 +324,11 @@ const Account = () => {
                     />
                   </Form>
                 </div>
+                {editInfoError && (
+                  <span className={classNames(styles.errorMessage)}>
+                    {strings.global.errorMessage.message}
+                  </span>
+                )}
               </div>
               <div className={classNames(styles.passwordContainer)}>
                 <div className={classNames(styles.editWrapper)}>
@@ -345,9 +350,8 @@ const Account = () => {
                   ) : null}
                   <Form
                     className={classNames(styles.passwordForm)}
-                    handleEditAccount={handleEditPassword}
+                    handleForm={handleEditPassword}
                     edit={editPassword}
-                    editError={editPasswordError}
                     buttonGroup={renderButtonGroup(editPassword)}
                   >
                     <FormItem
@@ -396,6 +400,11 @@ const Account = () => {
                     )}
                   </Form>
                 </div>
+                {editPasswordError && (
+                  <span className={classNames(styles.errorMessage)}>
+                    {strings.global.errorMessage.message}
+                  </span>
+                )}
               </div>
             </div>
           </div>

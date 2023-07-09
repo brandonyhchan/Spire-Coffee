@@ -6,6 +6,7 @@ import { signUpMutation } from "support/graphqlServerApi";
 import RegexValidator from "./regexValidator";
 import Button from "component/common/Button";
 import FormItem from "component/common/Form/FormItem";
+import Form from "component/common/Form/Form";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import classNames from "classnames";
 import strings from "config/strings";
@@ -123,6 +124,18 @@ const SignUp = () => {
     );
   }
 
+  function renderButton() {
+    return (
+      <div className={classNames(styles.editButtonGroup)}>
+        <Button
+          buttonType="submit"
+          text={strings.signUp.buttonText}
+          onClick={checkForm}
+        />
+      </div>
+    );
+  }
+
   return (
     <React.Fragment>
       <Helmet title={strings.signUp.helmet} />
@@ -130,11 +143,11 @@ const SignUp = () => {
         <div className={classNames(styles.signUpContainer)}>
           <h3 className={classNames(styles.heading)}>{strings.signUp.title}</h3>
           <div className={classNames(styles.signUp)}>
-            <form
+            <Form
               className={classNames(styles.signUpForm)}
-              noValidate
-              onSubmit={handleSignUp}
-              onKeyDown={handleKeyEvent}
+              handleForm={handleSignUp}
+              buttonGroup={renderButton()}
+              handleKeyEvent={handleKeyEvent}
             >
               <FormItem
                 className={styles.formItem}
@@ -242,18 +255,12 @@ const SignUp = () => {
                   strings.global.errorMessage.passwordMatch
                 )}
               />
-              {signUpErrorMessage && (
-                <span className={classNames(styles.errorMessage)}>
-                  {strings.global.errorMessage.message}
-                </span>
-              )}
-              <Button
-                buttonType="submit"
-                className={classNames(styles.signUpButton)}
-                text={strings.signUp.buttonText}
-                onClick={checkForm}
-              />
-            </form>
+            </Form>
+            {signUpErrorMessage && (
+              <span className={classNames(styles.errorMessage)}>
+                {strings.global.errorMessage.message}
+              </span>
+            )}
           </div>
         </div>
       </div>

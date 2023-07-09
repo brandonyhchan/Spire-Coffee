@@ -1,6 +1,7 @@
 import React, { ReactNode } from "react";
 import Input from "./Input";
 import classNames from "classnames";
+import styles from "./FormItem.module.scss";
 
 type FormItemPropsType = {
   className?: string;

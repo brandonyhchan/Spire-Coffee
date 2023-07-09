@@ -5,6 +5,7 @@ import { loginQuery } from "support/graphqlServerApi";
 import { useLazyQuery } from "@apollo/client";
 import Logo from "assets/images/placeholder-logo.jpg";
 import Button from "component/common/Button";
+import Form from "component/common/Form/Form";
 import FormItem from "component/common/Form/FormItem";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import classNames from "classnames";
@@ -50,7 +51,7 @@ const Login = () => {
     }));
   };
 
-  const handleLogin = (event: React.MouseEvent<Element, MouseEvent>) => {
+  const handleLogin = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     if (loginInfo.username !== "" && loginInfo.password !== "") {
       login({
@@ -105,6 +106,17 @@ const Login = () => {
     return errorMessage && <span>{errorMessage}</span>;
   }
 
+  function renderButton() {
+    return (
+      <Button
+        type="secondary"
+        buttonType="submit"
+        className={styles.secondary}
+        text={strings.login.button}
+      />
+    );
+  }
+
   return (
     <React.Fragment>
       <Helmet title={strings.login.helmet} />
@@ -118,10 +130,11 @@ const Login = () => {
         </div>
         <div className={classNames(styles.loginContainer)}>
           <div className={classNames(styles.login)}>
-            <form
+            <Form
               className={classNames(styles.loginForm)}
-              onKeyDown={handleKeyEvent}
-              noValidate
+              handleForm={handleLogin}
+              handleKeyEvent={handleKeyEvent}
+              buttonGroup={renderButton()}
             >
               <FormItem
                 className={styles.formItem}
@@ -143,19 +156,12 @@ const Login = () => {
                 validateLoginInput={validateLoginInput}
                 errorMessage={renderErrorMessage(errorMessage.password)}
               />
-            </form>
+            </Form>
             {loginError && (
               <span className={classNames(styles.errorMessage)}>
                 {strings.login.errorMessage.invalid}
               </span>
             )}
-            <Button
-              type="secondary"
-              buttonType="submit"
-              className={styles.secondary}
-              text={strings.login.button}
-              onClick={handleLogin}
-            />
             <p>
               {strings.login.text}
               <Link to="/signUp">{strings.login.link}</Link>

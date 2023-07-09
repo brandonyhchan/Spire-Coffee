@@ -3,7 +3,7 @@
   width: 100%;
   justify-content: center;
   min-height: calc(100vh - 65px);
-  padding: 30px 0px 65px 0px;
+  padding: 30px 20px 65px 20px;
   @media (min-width: 540px) and (max-width: 819px) {
     padding: 50px 40px;
   }
@@ -54,7 +54,7 @@
     text-transform: uppercase;
     color: var(--dark-grey);
     font-family: "Figtree-Semibold";
-    font-size: var(--large);
+    font-size: var(--large-font);
     @media (max-width: 600px) {
       display: none;
     }
@@ -183,7 +183,7 @@
   color: white;
   text-transform: uppercase;
   font-family: "Figtree-Semibold";
-  font-size: var(--large);
+  font-size: var(--large-font);
   position: absolute;
   top: 50%;
   left: 50%;
@@ -193,8 +193,16 @@
   text-align: center;
 }
 
+.usernameContainer {
+  padding: 20px;
+  & h1 {
+    padding: 0;
+  }
+}
+
 .username {
-  padding: 25px;
+  font-family: 'Figtree-Semibold';
+  font-size: 25px;
 }
 
 .accountInfoContainer {
@@ -223,35 +231,6 @@
     flex-direction: column;
     justify-content: space-between;
     height: 100%;
-    & .editInputWrapper {
-      width: 100%;
-    }
-  }
-  & .inputWrapper {
-    display: flex;
-    flex-direction: row;
-    border-radius: 10px;
-    width: 100%;
-    padding-bottom: 10px;
-    padding-top: 15px;
-  }
-  & .editInputWrapper {
-    display: flex;
-    flex-direction: column;
-    border-radius: 10px;
-    padding-bottom: 10px;
-    padding-top: 15px;
-    @media (min-width: 1024px) {
-      width: 350px;
-    }
-    & input {
-      border: solid 2px #ccc;
-    }
-  }
-  & .editInputWrapper:focus-within {
-    & input {
-      border-color: var(--dark-grey);
-    }
   }
   & .formItem {
     display: flex;
@@ -266,7 +245,7 @@
       font-family: "Figtree-Regular";
       border-width: 2px;
 
-      font-size: var(--large);
+      font-size: var(--large-font);
       border-top-left-radius: 10px;
       border-bottom-left-radius: 10px;
       border-top-right-radius: 10px;
@@ -276,7 +255,7 @@
     & label {
       display: block;
       position: absolute;
-      font-size: var(--large);
+      font-size: var(--large-font);
       font-weight: bold;
       top: -25px;
       left: 10px;
@@ -287,7 +266,7 @@
     & span {
       color: var(--warning);
       font-family: "Figtree-Regular";
-      font-size: var(--large);
+      font-size: var(--large-font);
       margin-left: 5px;
       padding-top: 5px;
       text-align: start;
@@ -298,23 +277,26 @@
 
 .userInfoContainer {
   width: 100%;
-  @media (max-width: 600px) {
-    padding: 20px 20px 0px 20px;
-  }
+  padding: 25px;
   @media (min-width: 540px) {
-    padding: 20px;
     border: solid 3px var(--light-grey);
+  }
+  @media (min-width: 1024px) {
+    padding: 50px;
   }
 }
 
 .passwordContainer {
   width: 100%;
   @media (max-width: 600px) {
-    padding: 0 20px;
+    padding: 0 25px;
   }
   @media (min-width: 540px) {
-    padding: 20px;
+    padding: 25px;
     border: solid 3px var(--light-grey);
+  }
+  @media (min-width: 1024px) {
+    padding: 50px;
   }
 }
 
@@ -357,6 +339,6 @@
 .errorMessage {
   color: var(--warning);
   font-family: "Figtree-Regular";
-  font-size: var(--large);
+  font-size: var(--large-font);
   width: 100%;
 }

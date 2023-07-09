@@ -1,0 +1,37 @@
+.inputWrapper {
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.editInputWrapper {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  width: 100%;
+  @media (min-width: 1024px) {
+    width: 350px;
+  }
+  & input {
+    border: solid 2px #ccc;
+  }
+}
+
+.editInputWrapper:focus-within {
+  & input {
+    border-color: var(--dark-grey);
+  }
+}
+
+.formSectionContainer {
+  padding-top: 15px;
+  & .editInputWrapper {
+    width: 100%;
+    padding-top: 15px;
+  }
+}
+
+.buttonContainer {
+  padding: 15px 0;
+}

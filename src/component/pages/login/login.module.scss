@@ -1,8 +1,6 @@
-$_medium_font_size: 18px;
-
 *,
-*:focus{
-  outline: none
+*:focus {
+  outline: none;
 }
 
 .container {
@@ -12,6 +10,16 @@ $_medium_font_size: 18px;
   overflow-y: hidden;
   width: 100%;
   min-height: 100vh;
+  font-family: "Figtree-Regular";
+  font-size: var(--medium-font);
+  gap: 25px;
+  padding: 25px 0;
+  @media (min-width: 1024px) {
+    font-size: var(--large-font);
+    flex-direction: row;
+    justify-content: center;
+    background-color: var(--primary-light);
+  }
 }
 
 .header,
@@ -26,225 +34,134 @@ $_medium_font_size: 18px;
   flex-direction: column;
 }
 
-.logo {
-  width: 140px;
+.loginForm,
+.login,
+.formItem span {
+  width: 100%;
 }
 
-.logo > img {
-  width: 100%;
-  height: 100%;
-  clip-path: circle(70px);
+.header {
+  gap: 10px;
+  @media (min-width: 1201px) {
+    padding-right: 150px;
+  }
+  & .logo {
+    width: 200px;
+    @media (max-width: 414px) {
+      width: 150px;
+    }
+    & img {
+      width: 100%;
+      height: 100%;
+      clip-path: circle(50%);
+    }
+  }
+  & h1 {
+    margin: 0 !important;
+    font-weight: 600;
+    color: var(--blue);
+    @media (min-width: 1024px) {
+      color: var(--primary-dark);
+    }
+  }
+  & p {
+    color: var(--blue);
+    margin: 0;
+    @media (min-width: 1024px) {
+      color: white;
+    }
+    @media (max-width: 414px) {
+      width: 350px;
+    }
+    @media (min-width: 415px) {
+      width: 500px;
+    }
+  }
 }
 
 .login {
   border-color: grey;
   border-radius: 10px;
   box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
-  width: 500px;
-  min-width: 300px;
   background-color: white;
-  gap: 10px;
-}
-
-h1 {
-  margin: 0 !important;
-  padding-bottom: 10px;
-}
-
-h4 {
-  color: var(--secondary);
-}
-
-.loginForm {
-  gap: 10px;
-  padding: 40px 20px;
-  width: 100%;
-}
-
-.login, .formItem span {
-  width: 100%;
+  @media (max-width: 768px) {
+    box-shadow: none;
+  }
+  @media (min-width: 769px) {
+    padding: 25px;
+  }
+  @media (min-width: 1024px) {
+    padding: 50px;
+  }
+  & p {
+    padding: 10px;
+    margin-bottom: 0px !important;
+    padding: 0px;
+    color: var(--blue);
+    & a {
+      text-decoration: none;
+      color: var(--blue);
+      font-weight: 600;
+    }
+    & a:focus,
+    a:hover {
+      color: var(--secondary);
+    }
+  }
 }
 
 .formItem {
   position: relative;
+  & input {
+    width: auto;
+    background: transparent;
+    border: solid 2px #ccc;
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 10px;
+    border-width: 2px;
+    height: 55px;
+    @media (max-width: 414px) {
+      width: 300px;
+    }
+    @media (min-width: 415px) {
+      width: 370px;
+    }
+  }
+  & label {
+    display: none;
+  }
+  & span {
+    color: var(--warning);
+    margin-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+  }
 }
 
-.formItem input {
-  width: auto;
-  background: transparent;
-  border: solid 2px #ccc;
-  transition: all .3s ease;
-  padding: 10px;
-  border-radius: 10px;
-  font-family: 'Figtree-Regular';
-  border-width: 2px;
-  font-size: $_medium_font_size;
-}
-
-.formItem input:focus {
-  border-color: var(--secondary);
-}
-
-.formItem label {
-  display: none;
-}
-
-.formItem span {
-  color: var(--warning);
-  font-family: 'Figtree-Regular';
-  font-size: $_medium_font_size;
-  margin-left: 5px;
-  padding-top: 5px;
-  text-align: start;
+// https://codepen.io/kod101/pen/gdjPaW
+.formItem {
+  & input:focus {
+    border-color: var(--secondary);
+  }
+  & input:focus + label {
+    color: var(--secondary);
+  }
+  & input:focus + label,
+  input:valid + label {
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    top: -18px;
+    left: 10px;
+    background: #fff;
+  }
+  & input:focus::placeholder {
+    color: transparent;
+  }
 }
 
 .errorMessage {
   text-align: center;
-  font-size: $_medium_font_size;
   color: var(--warning);
-  font-family: 'Figtree-Regular';
-}
-
-// https://codepen.io/kod101/pen/gdjPaW
-.formItem input:focus + label,
-.formItem input:valid + label {
-  display: block;
-  position: absolute;
-  font-weight: bold;
-  top: -18px;
-  left: 10px;
-  font-family: 'Figtree-Regular';
-  background: #fff;
-}
-
-.formItem input:focus::placeholder {
-  color: transparent;
-}
-
-.formItem input:focus + label {
-  color: var(--secondary);
-  font-size: $_medium_font_size;
-}
-
-p {
-  font-size: $_medium_font_size;
-  padding: 10px;
-  margin-bottom: 0px !important;
-  padding: 0px;
-}
-
-p > a {
-  text-decoration: none;
-  color: var(--secondary);
-}
-
-a:focus,
-a:hover {
-  color: var(--primary);
-}
-
-/* Mobile view */
-@media only screen and (max-width: 414px) {
-  .header {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .logo {
-    padding-bottom: 10px;
-    width: 100px;
-  }
-
-  .logo > img {
-    width: 100%;
-    height: 100%;
-    clip-path: circle(50px);
-  }
-
-  .login {
-    box-shadow: none;
-    gap: 10px;
-  }
-
-  .loginForm {
-    padding: 0px;
-  }
-
-  .formItem input {
-    width: 300px;
-  }
-
-  .header > p {
-    padding: 0px 20px;
-  }
-}
-
-@media only screen and (min-width: 415px) {
-  .header {
-    padding-top: 25px;
-  }
-
-  h1 {
-    padding-bottom: 15px;
-  }
-  
-  .logo {
-    padding-bottom: 15px;
-  }
-
-  .login {
-    padding: 20px;
-    gap: 15px;
-  }
-
-  .loginForm {
-    padding: 0px;
-    gap: 15px;
-  }
- 
-  .formItem input {
-    width: 370px;
-  }
-
-  .header > p {
-    padding-bottom: 25px;
-    width: 400px;
-  }
-
-  @media (max-width: 768px) {
-    .header {
-      padding-top: 25px;
-    }
-    .login {
-      box-shadow: none;
-      padding: 0px;
-    }
-
-    .header > p {
-      padding-bottom: 15px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    .container {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      background-color: var(--primary-light);
-    }
-
-    .login {
-      padding: 50px;
-    }
-
-    .header > p {
-      padding: 15px;
-    }
-  }
-
-  @media (min-width: 1201px) {
-    .header {
-      padding-right: 150px;
-    }
-  }
 }
