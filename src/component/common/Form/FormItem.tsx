@@ -1,10 +1,9 @@
 import React, { ReactNode } from "react";
 import Input from "./Input";
 import classNames from "classnames";
-import styles from "./FormItem.module.scss";
+import styles from "./Form.module.scss";
 
 type FormItemPropsType = {
-  className?: string;
   type: string;
   text?: string;
   name: string;
@@ -19,7 +18,6 @@ type FormItemPropsType = {
 };
 
 const FormItem = ({
-  className,
   type,
   text,
   name,
@@ -33,7 +31,7 @@ const FormItem = ({
   disabled,
 }: FormItemPropsType) => {
   return (
-    <div className={classNames(className)}>
+    <div className={classNames(styles.formContainer)}>
       <Input
         type={type}
         placeholder={placeholder}

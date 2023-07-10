@@ -232,47 +232,6 @@
     justify-content: space-between;
     height: 100%;
   }
-  & .formItem {
-    display: flex;
-    flex-direction: column;
-    position: relative;
-    height: 100%;
-    width: 100%;
-    & input {
-      width: 100%;
-      background: transparent;
-      padding: 15px;
-      font-family: "Figtree-Regular";
-      border-width: 2px;
-
-      font-size: var(--large-font);
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-      height: 55px;
-    }
-    & label {
-      display: block;
-      position: absolute;
-      font-size: var(--large-font);
-      font-weight: bold;
-      top: -25px;
-      left: 10px;
-      font-family: "Figtree-Regular";
-      background: #fff;
-      color: var(--dark-grey);
-    }
-    & span {
-      color: var(--warning);
-      font-family: "Figtree-Regular";
-      font-size: var(--large-font);
-      margin-left: 5px;
-      padding-top: 5px;
-      text-align: start;
-      width: 100%;
-    }
-  }
 }
 
 .userInfoContainer {

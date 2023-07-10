@@ -137,7 +137,6 @@ const Login = () => {
               buttonGroup={renderButton()}
             >
               <FormItem
-                className={styles.formItem}
                 type={"text"}
                 placeholder={strings.global.label.username}
                 text={strings.global.label.username}
@@ -147,7 +146,6 @@ const Login = () => {
                 errorMessage={renderErrorMessage(errorMessage.username)}
               />
               <FormItem
-                className={styles.formItem}
                 type={"password"}
                 placeholder={strings.global.label.password}
                 text={strings.global.label.password}

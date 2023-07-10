@@ -9,6 +9,7 @@ type FormPropsType = {
   children: JSX.Element[];
   className?: string;
   buttonGroup?: JSX.Element;
+  formType?: "login" | "signup" | "account";
 };
 
 const Form = ({
@@ -18,6 +19,7 @@ const Form = ({
   children,
   className,
   buttonGroup,
+  formType = "login",
 }: FormPropsType) => {
   return (
     <React.Fragment>
@@ -28,7 +30,13 @@ const Form = ({
         onKeyDown={handleKeyEvent}
       >
         {children.map((child, index) => (
-          <div key={index} className={classNames(styles.formSectionContainer)}>
+          <div
+            key={index}
+            className={classNames(
+              styles.formSectionContainer,
+              styles[formType]
+            )}
+          >
             <div
               className={
                 !edit

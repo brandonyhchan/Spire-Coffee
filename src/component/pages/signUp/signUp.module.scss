@@ -41,63 +41,11 @@ $_desktop_padding: 60px;
   position: relative;
 }
 
-.formItem input {
-  width: auto;
-  background: transparent;
-  border: solid 2px #ccc;
-  transition: all .3s ease;
-  padding: 15px;
-  border-radius: 10px;
-  font-family: 'Figtree-Regular';
-  border-width: 2px;
-  font-size: var(--medium);
-  height: 55px;
-}
-
-.formItem input:focus {
-  border-color: var(--primary);
-}
-
-.formItem label {
-  display: none;
-}
-
-.formItem span {
-  color: var(--warning);
-  font-family: 'Figtree-Regular';
-  font-size: var(--medium);
-  margin-left: 5px;
-  padding-top: 5px;
-  text-align: start;
-}
-
 .errorMessage {
   text-align: center;
   font-size: var(--medium);
   color: var(--warning);
   font-family: 'Figtree-Regular';
-}
-
-// https://codepen.io/kod101/pen/gdjPaW
-.formItem input:focus + label,
-.formItem input:valid + label {
-  display: block;
-  position: absolute;
-  font-size: var(--medium);
-  font-weight: bold;
-  top: -18px;
-  left: 10px;
-  font-family: 'Figtree-Regular';
-  background: #fff;
-  color: var(--primary);
-}
-
-.formItem input:focus::placeholder {
-  color: transparent;
-}
-
-.formItem input:focus + label {
-  color: var(--primary);
 }
 
 .editButtonGroup {

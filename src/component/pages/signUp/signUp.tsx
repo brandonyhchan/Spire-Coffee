@@ -148,9 +148,9 @@ const SignUp = () => {
               handleForm={handleSignUp}
               buttonGroup={renderButton()}
               handleKeyEvent={handleKeyEvent}
+              formType={"signup"}
             >
               <FormItem
-                className={styles.formItem}
                 type={"text"}
                 placeholder={strings.global.label.username}
                 text={strings.global.label.username}
@@ -168,7 +168,6 @@ const SignUp = () => {
                 )}
               />
               <FormItem
-                className={styles.formItem}
                 type={"text"}
                 placeholder={strings.global.label.firstName}
                 text={strings.global.label.firstName}
@@ -186,7 +185,6 @@ const SignUp = () => {
                 maxLength={40}
               />
               <FormItem
-                className={styles.formItem}
                 type={"text"}
                 placeholder={strings.global.label.lastName}
                 text={strings.global.label.lastName}
@@ -204,7 +202,6 @@ const SignUp = () => {
                 maxLength={40}
               />
               <FormItem
-                className={styles.formItem}
                 type={"text"}
                 placeholder={strings.global.label.email}
                 text={strings.global.label.email}
@@ -221,7 +218,6 @@ const SignUp = () => {
                 )}
               />
               <FormItem
-                className={styles.formItem}
                 type={"password"}
                 placeholder={strings.global.label.password}
                 text={strings.global.label.password}
@@ -239,7 +235,6 @@ const SignUp = () => {
                 )}
               />
               <FormItem
-                className={styles.formItem}
                 type={"password"}
                 placeholder={strings.global.label.verifyPassword}
                 text={strings.global.label.verifyPassword}

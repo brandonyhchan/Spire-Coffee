@@ -1,3 +1,8 @@
+.formContainer {
+  display: flex;
+  flex-direction: column;
+}
+
 .inputWrapper {
   display: flex;
   flex-direction: row;
@@ -24,6 +29,10 @@
   }
 }
 
+.buttonContainer {
+  padding: 15px 0;
+}
+
 .formSectionContainer {
   padding-top: 15px;
   & .editInputWrapper {
@@ -32,6 +41,138 @@
   }
 }
 
-.buttonContainer {
-  padding: 15px 0;
+.formSectionContainer {
+  & span {
+    color: var(--warning);
+    font-family: "Figtree-Regular";
+    font-size: var(--large-font);
+    margin-left: 5px;
+    padding-top: 5px;
+    text-align: start;
+    width: 100%;
+  }
+}
+
+.login {
+  position: relative;
+  & input {
+    width: auto;
+    background: transparent;
+    border: solid 2px #ccc;
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 10px;
+    border-width: 2px;
+    height: 55px;
+    @media (max-width: 414px) {
+      width: 300px;
+    }
+    @media (min-width: 415px) {
+      width: 370px;
+    }
+  }
+  & label {
+    display: none;
+  }
+  // https://codepen.io/kod101/pen/gdjPaW
+  & input:focus {
+    border-color: var(--secondary);
+  }
+  & input:focus + label {
+    color: var(--secondary);
+  }
+  & input:focus + label,
+  input:valid + label {
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    top: -8px;
+    left: 10px;
+    background: #fff;
+  }
+  & input:focus::placeholder {
+    color: transparent;
+  }
+}
+
+.account {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  & input {
+    width: 100%;
+    background: transparent;
+    padding: 15px;
+    font-family: "Figtree-Regular";
+    border-width: 2px;
+    font-size: var(--large-font);
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    height: 55px;
+  }
+  & label {
+    display: block;
+    position: absolute;
+    font-size: var(--large-font);
+    font-weight: bold;
+    top: -15px;
+    left: 10px;
+    font-family: "Figtree-Regular";
+    background: #fff;
+    color: var(--dark-grey);
+  }
+  & .editInputWrapper label {
+    top: 5px;
+  }
+  & .editInputWrapper span {
+    width: 100%;
+    text-align: start;
+  }
+}
+
+.signup {
+  & input {
+    width: 500px; //media query
+    background: transparent;
+    border: solid 2px #ccc;
+    transition: all 0.3s ease;
+    padding: 15px;
+    border-radius: 10px;
+    font-family: "Figtree-Regular";
+    border-width: 2px;
+    font-size: var(--medium);
+    height: 55px;
+  }
+  & label {
+    display: none;
+  }
+}
+
+.signup {
+  & input:focus {
+    border-color: var(--primary);
+  }
+  // https://codepen.io/kod101/pen/gdjPaW
+  & input:focus + label,
+  input:valid + label {
+    display: block;
+    position: absolute;
+    font-size: var(--medium);
+    font-weight: bold;
+    top: -18px;
+    left: 10px;
+    font-family: "Figtree-Regular";
+    background: #fff;
+    color: var(--primary);
+  }
+  & input:focus::placeholder {
+    color: transparent;
+  }
+  & input:focus + label {
+    color: var(--primary);
+  }  
 }

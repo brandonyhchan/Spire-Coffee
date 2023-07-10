@@ -110,57 +110,6 @@
   }
 }
 
-.formItem {
-  position: relative;
-  & input {
-    width: auto;
-    background: transparent;
-    border: solid 2px #ccc;
-    transition: all 0.3s ease;
-    padding: 15px;
-    border-radius: 10px;
-    border-width: 2px;
-    height: 55px;
-    @media (max-width: 414px) {
-      width: 300px;
-    }
-    @media (min-width: 415px) {
-      width: 370px;
-    }
-  }
-  & label {
-    display: none;
-  }
-  & span {
-    color: var(--warning);
-    margin-left: 5px;
-    padding-top: 5px;
-    text-align: start;
-  }
-}
-
-// https://codepen.io/kod101/pen/gdjPaW
-.formItem {
-  & input:focus {
-    border-color: var(--secondary);
-  }
-  & input:focus + label {
-    color: var(--secondary);
-  }
-  & input:focus + label,
-  input:valid + label {
-    display: block;
-    position: absolute;
-    font-weight: bold;
-    top: -18px;
-    left: 10px;
-    background: #fff;
-  }
-  & input:focus::placeholder {
-    color: transparent;
-  }
-}
-
 .errorMessage {
   text-align: center;
   color: var(--warning);

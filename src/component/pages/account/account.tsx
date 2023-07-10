@@ -263,9 +263,9 @@ const Account = () => {
                     handleForm={handleEditAccount}
                     edit={edit}
                     buttonGroup={renderButtonGroup(edit)}
+                    formType={"account"}
                   >
                     <FormItem
-                      className={styles.formItem}
                       type={"text"}
                       value={userInfo.firstName}
                       text={strings.global.label.firstName}
@@ -286,7 +286,6 @@ const Account = () => {
                       maxLength={40}
                     />
                     <FormItem
-                      className={styles.formItem}
                       type={"text"}
                       value={userInfo.lastName}
                       text={strings.global.label.lastName}
@@ -305,7 +304,6 @@ const Account = () => {
                       maxLength={40}
                     />
                     <FormItem
-                      className={styles.formItem}
                       type={"text"}
                       value={userInfo.email}
                       text={strings.global.label.email}
@@ -353,9 +351,9 @@ const Account = () => {
                     handleForm={handleEditPassword}
                     edit={editPassword}
                     buttonGroup={renderButtonGroup(editPassword)}
+                    formType={"account"}
                   >
                     <FormItem
-                      className={styles.formItem}
                       type={"password"}
                       placeholder="&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;&#8226;"
                       text={
@@ -379,7 +377,6 @@ const Account = () => {
                     />
                     {editPassword ? (
                       <FormItem
-                        className={styles.formItem}
                         type={"password"}
                         text={strings.global.label.verifyNewPassword}
                         name={"confPassword"}
