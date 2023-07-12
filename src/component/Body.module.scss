@@ -1,4 +1,14 @@
-.body {
+.containerWrap {
+    display: flex;
+    flex-direction: column;
     min-height: 100vh;
+}
+
+.body {
+    position: relative;
     width: 100%;
 }
+  
+  .footer {
+    margin-top: auto;
+  }

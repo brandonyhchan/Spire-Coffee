@@ -3,8 +3,6 @@ import React from "react";
 import { Helmet } from "react-helmet-async";
 import classNames from "classnames";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
-import Footer from "component/common/NavbarAndFooter/WebFooter";
-import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 
 import styles from "./aboutUs.module.scss";
 import strings from "config/strings";
@@ -18,8 +16,6 @@ const aboutUs = () => {
         <div className={classNames(styles.aboutUs)}>
           <p>{strings.aboutUs.title}</p>
         </div>
-        <Footer />
-        <MobileFooter />
       </div>
     </React.Fragment>
   );

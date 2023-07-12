@@ -6,8 +6,6 @@ import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
 
 import Navbar from "component/common/NavbarAndFooter/NavBar";
-import Footer from "component/common/NavbarAndFooter/WebFooter";
-import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import LoadingSpinner from "component/common/LoadingSpinner";
 
 const CafePage = () => {
@@ -45,9 +43,6 @@ const CafePage = () => {
         {loading && <LoadingSpinner />}
         <h1>Hello world this is the cafe page</h1>
       </div>
-
-      {/* <Footer />
-      <MobileFooter /> */}
     </React.Fragment>
   );
 };

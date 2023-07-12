@@ -11,8 +11,6 @@ import strings from "config/strings";
 
 import { SelectOptions } from "component/common/Filter/FilterType/RadioFilter";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
-import Footer from "component/common/NavbarAndFooter/WebFooter";
-import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 
 import SearchBar from "component/common/SearchBar/searchBar";
 import CafeCard from "component/common/CafeCard/cafeCard";
@@ -228,8 +226,6 @@ const Explore = () => {
           </div>
         </div>
       </div>
-      <Footer />
-      <MobileFooter />
     </React.Fragment>
   );
 };

@@ -3,8 +3,6 @@ import { useNavigate } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import classNames from "classnames";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
-import Footer from "component/common/NavbarAndFooter/WebFooter";
-import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 
 import styles from "./addCafe.module.scss";
 import strings from "config/strings";
@@ -28,8 +26,6 @@ const AddCafe = () => {
         <div className={classNames(styles.addCafe)}>
           <p>{strings.addCafe.title}</p>
         </div>
-        <Footer />
-        <MobileFooter />
       </div>
     </React.Fragment>
   );

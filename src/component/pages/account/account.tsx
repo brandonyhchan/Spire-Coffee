@@ -10,8 +10,6 @@ import {
 import { useQuery, useMutation } from "@apollo/client";
 import RegexValidator from "component/pages/signUp/regexValidator";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
-import Footer from "component/common/NavbarAndFooter/WebFooter";
-import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import FormItem from "component/common/Form/FormItem";
 import Button from "component/common/Button";
 import Logo from "assets/images/placeholder-logo.jpg";
@@ -407,8 +405,6 @@ const Account = () => {
           </div>
         )}
       </div>
-      <Footer />
-      <MobileFooter />
     </React.Fragment>
   );
 };
