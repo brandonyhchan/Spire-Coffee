@@ -106,17 +106,6 @@ const Login = () => {
     return errorMessage && <span>{errorMessage}</span>;
   }
 
-  function renderButton() {
-    return (
-      <Button
-        type="secondary"
-        buttonType="submit"
-        className={styles.secondary}
-        text={strings.login.button}
-      />
-    );
-  }
-
   return (
     <React.Fragment>
       <Helmet title={strings.login.helmet} />
@@ -134,7 +123,6 @@ const Login = () => {
               className={classNames(styles.loginForm)}
               handleForm={handleLogin}
               handleKeyEvent={handleKeyEvent}
-              buttonGroup={renderButton()}
             >
               <FormItem
                 type={"text"}
@@ -154,6 +142,14 @@ const Login = () => {
                 validateLoginInput={validateLoginInput}
                 errorMessage={renderErrorMessage(errorMessage.password)}
               />
+              <div className={classNames(styles.buttonContainer)}>
+                <Button
+                  type="secondary"
+                  buttonType="submit"
+                  className={styles.secondary}
+                  text={strings.login.button}
+                />
+              </div>
             </Form>
             {loginError && (
               <span className={classNames(styles.errorMessage)}>

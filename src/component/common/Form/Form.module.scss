@@ -1,8 +1,3 @@
-.formContainer {
-  display: flex;
-  flex-direction: column;
-}
-
 .inputWrapper {
   display: flex;
   flex-direction: row;
@@ -26,11 +21,25 @@
 .editInputWrapper:focus-within {
   & input {
     border-color: var(--dark-grey);
+    transition: 0.3s ease;
   }
 }
 
 .buttonContainer {
   padding: 15px 0;
+}
+
+.formContainer {
+  display: flex;
+  flex-direction: column;
+  font-family: 'Figtree-Regular';
+  font-size: var(--large-font);
+  & label {
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    background: #fff;
+  }
 }
 
 .formSectionContainer {
@@ -39,31 +48,39 @@
     width: 100%;
     padding-top: 15px;
   }
-}
-
-.formSectionContainer {
   & span {
     color: var(--warning);
-    font-family: "Figtree-Regular";
-    font-size: var(--large-font);
     margin-left: 5px;
     padding-top: 5px;
     text-align: start;
     width: 100%;
   }
+  & input {
+    width: 100%;
+    background: transparent;
+    border: solid 2px #ccc;
+    padding: 15px;
+    border-radius: 10px;
+    border-width: 2px;
+    height: 55px;
+  }
+  & input:focus::placeholder {
+    color: transparent;
+  }
+}
+
+input:focus + label,
+input:valid + label {
+  display: block;
+  position: absolute;
+  font-weight: bold;
+  top: -8px;
+  left: 10px;
 }
 
 .login {
   position: relative;
   & input {
-    width: auto;
-    background: transparent;
-    border: solid 2px #ccc;
-    transition: all 0.3s ease;
-    padding: 15px;
-    border-radius: 10px;
-    border-width: 2px;
-    height: 55px;
     @media (max-width: 414px) {
       width: 300px;
     }
@@ -77,21 +94,10 @@
   // https://codepen.io/kod101/pen/gdjPaW
   & input:focus {
     border-color: var(--secondary);
+    transition: 0.3s ease;
   }
   & input:focus + label {
     color: var(--secondary);
-  }
-  & input:focus + label,
-  input:valid + label {
-    display: block;
-    position: absolute;
-    font-weight: bold;
-    top: -8px;
-    left: 10px;
-    background: #fff;
-  }
-  & input:focus::placeholder {
-    color: transparent;
   }
 }
 
@@ -101,28 +107,12 @@
   position: relative;
   height: 100%;
   width: 100%;
-  & input {
-    width: 100%;
-    background: transparent;
-    padding: 15px;
-    font-family: "Figtree-Regular";
-    border-width: 2px;
-    font-size: var(--large-font);
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
-    height: 55px;
+  & .inputWrapper input {
+    border: 10px;
   }
   & label {
-    display: block;
-    position: absolute;
-    font-size: var(--large-font);
-    font-weight: bold;
     top: -15px;
     left: 10px;
-    font-family: "Figtree-Regular";
-    background: #fff;
     color: var(--dark-grey);
   }
   & .editInputWrapper label {
@@ -135,42 +125,29 @@
 }
 
 .signup {
-  & input {
-    width: 500px; //media query
-    background: transparent;
-    border: solid 2px #ccc;
-    transition: all 0.3s ease;
-    padding: 15px;
-    border-radius: 10px;
-    font-family: "Figtree-Regular";
-    border-width: 2px;
-    font-size: var(--medium);
-    height: 55px;
+  position: relative;
+  & input, span {
+    @media (max-width: 414px) {
+      width: 300px;
+    }
+    @media (min-width: 415px) and (max-width: 600px) {
+      width: 370px;
+    }
+    @media (min-width: 601px) {
+      width: 500px;
+    }
   }
   & label {
     display: none;
   }
-}
-
-.signup {
   & input:focus {
     border-color: var(--primary);
+    transition: 0.3s ease;
   }
   // https://codepen.io/kod101/pen/gdjPaW
   & input:focus + label,
   input:valid + label {
-    display: block;
-    position: absolute;
-    font-size: var(--medium);
-    font-weight: bold;
-    top: -18px;
-    left: 10px;
-    font-family: "Figtree-Regular";
-    background: #fff;
     color: var(--primary);
-  }
-  & input:focus::placeholder {
-    color: transparent;
   }
   & input:focus + label {
     color: var(--primary);
