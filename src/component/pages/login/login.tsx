@@ -7,6 +7,7 @@ import Logo from "assets/images/placeholder-logo.jpg";
 import Button from "component/common/Button";
 import Form from "component/common/Form/Form";
 import FormItem from "component/common/Form/FormItem";
+import ErrorMessage from "component/common/ErrorMessage/ErrorMessage";
 import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./login.module.scss";
@@ -102,7 +103,20 @@ const Login = () => {
   };
 
   function renderErrorMessage(errorMessage: string) {
-    return errorMessage && <span>{errorMessage}</span>;
+    return errorMessage && <ErrorMessage text={errorMessage} />;
+  }
+
+  function renderButton() {
+    return (
+      <div className={classNames(styles.editButtonGroup)}>
+        <Button
+          type="secondary"
+          buttonType="submit"
+          className={styles.secondary}
+          text={strings.login.button}
+        />
+      </div>
+    );
   }
 
   return (
@@ -121,7 +135,9 @@ const Login = () => {
             <Form
               className={classNames(styles.loginForm)}
               handleForm={handleLogin}
+              buttonGroup={renderButton()}
               handleKeyEvent={handleKeyEvent}
+              formType={"login"}
             >
               <FormItem
                 type={"text"}
@@ -141,19 +157,9 @@ const Login = () => {
                 validateLoginInput={validateLoginInput}
                 errorMessage={renderErrorMessage(errorMessage.password)}
               />
-              <div className={classNames(styles.buttonContainer)}>
-                <Button
-                  type="secondary"
-                  buttonType="submit"
-                  className={styles.secondary}
-                  text={strings.login.button}
-                />
-              </div>
             </Form>
             {loginError && (
-              <span className={classNames(styles.errorMessage)}>
-                {strings.login.errorMessage.invalid}
-              </span>
+              <ErrorMessage text={strings.login.errorMessage.invalid} />
             )}
             <p>
               {strings.login.text}

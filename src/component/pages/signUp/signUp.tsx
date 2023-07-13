@@ -7,6 +7,7 @@ import RegexValidator from "./regexValidator";
 import Button from "component/common/Button";
 import FormItem from "component/common/Form/FormItem";
 import Form from "component/common/Form/Form";
+import ErrorMessage from "component/common/ErrorMessage/ErrorMessage";
 import classNames from "classnames";
 import strings from "config/strings";
 import styles from "./signUp.module.scss";
@@ -110,18 +111,17 @@ const SignUp = () => {
     }
   };
 
-  function renderErrorMessage(
+  const renderErrorMessage = (
     isValid: boolean,
     errorMessage: string,
     secondErrorMessage?: string
-  ) {
+  ) => {
     return isValid ? null : (
       <>
-        <span>{errorMessage}</span>
-        <span>{secondErrorMessage}</span>
+        <ErrorMessage text={errorMessage || secondErrorMessage} />
       </>
     );
-  }
+  };
 
   function renderButton() {
     return (
@@ -251,9 +251,7 @@ const SignUp = () => {
               />
             </Form>
             {signUpErrorMessage && (
-              <span className={classNames(styles.errorMessage)}>
-                {strings.global.errorMessage.message}
-              </span>
+              <ErrorMessage text={strings.global.errorMessage.message} />
             )}
           </div>
         </div>

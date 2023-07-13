@@ -37,20 +37,6 @@ $_desktop_padding: 60px;
   flex-direction: column;
 }
 
-.errorMessage {
-  text-align: center;
-  font-size: var(--medium);
-  color: var(--warning);
-  font-family: 'Figtree-Regular';
-}
-
-.editButtonGroup {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  padding: 15px 0;
-}
-
 /* Mobile view */ 
 @media only screen and (max-width: 767px) {
   .signUp {

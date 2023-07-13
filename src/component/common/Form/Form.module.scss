@@ -25,10 +25,6 @@
   }
 }
 
-.buttonContainer {
-  padding: 15px 0;
-}
-
 .formContainer {
   display: flex;
   flex-direction: column;
@@ -46,10 +42,9 @@
   padding-top: 15px;
   & .editInputWrapper {
     width: 100%;
-    padding-top: 15px;
+    // padding-top: 15px;
   }
   & span {
-    color: var(--warning);
     margin-left: 5px;
     padding-top: 5px;
     text-align: start;
@@ -116,7 +111,7 @@ input:valid + label {
     color: var(--dark-grey);
   }
   & .editInputWrapper label {
-    top: 5px;
+    top: -8px;
   }
   & .editInputWrapper span {
     width: 100%;
@@ -152,4 +147,8 @@ input:valid + label {
   & input:focus + label {
     color: var(--primary);
   }  
+}
+
+.buttonContainer {
+  padding: 15px 0;
 }

@@ -17,7 +17,7 @@ import ModeEditOutlineOutlinedIcon from "@mui/icons-material/ModeEditOutlineOutl
 import AddPhotoAlternateRoundedIcon from "@mui/icons-material/AddPhotoAlternateRounded";
 import LoadingSpinner from "component/common/LoadingSpinner";
 import Form from "../../common/Form/Form";
-
+import ErrorMessage from "component/common/ErrorMessage/ErrorMessage";
 import classNames from "classnames";
 import styles from "./account.module.scss";
 import strings from "config/strings";
@@ -156,8 +156,7 @@ const Account = () => {
   ) => {
     return isValid ? null : (
       <>
-        <span>{errorMessage}</span>
-        <span>{secondErrorMessage}</span>
+        <ErrorMessage text={errorMessage || secondErrorMessage} />
       </>
     );
   };
@@ -321,9 +320,7 @@ const Account = () => {
                   </Form>
                 </div>
                 {editInfoError && (
-                  <span className={classNames(styles.errorMessage)}>
-                    {strings.global.errorMessage.message}
-                  </span>
+                  <ErrorMessage text={strings.global.errorMessage.message} />
                 )}
               </div>
               <div className={classNames(styles.passwordContainer)}>
@@ -396,9 +393,7 @@ const Account = () => {
                   </Form>
                 </div>
                 {editPasswordError && (
-                  <span className={classNames(styles.errorMessage)}>
-                    {strings.global.errorMessage.message}
-                  </span>
+                  <ErrorMessage text={strings.global.errorMessage.message} />
                 )}
               </div>
             </div>

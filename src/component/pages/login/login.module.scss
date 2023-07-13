@@ -101,7 +101,7 @@
     & a {
       text-decoration: none;
       color: var(--blue);
-      font-weight: 600;
+      font-weight: 600; 
     }
     & a:focus,
     a:hover {
@@ -112,5 +112,7 @@
 
 .errorMessage {
   text-align: center;
+  font-size: var(--medium);
   color: var(--warning);
+  font-family: 'Figtree-Regular';
 }
