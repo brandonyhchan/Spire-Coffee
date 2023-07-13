@@ -46,11 +46,13 @@ export async function login(parent, args, context, info) {
 
 export async function returnAllCafes(parent, args, context, info) {
   const PER_PAGE = 12;
+  let output;
 
   const query = await context.prisma.cafe.findMany({
-    // adjust take to change the number initally returned
-    take: PER_PAGE,
-    skip: (args.currentPage - 1) * PER_PAGE,
+    // adjust take to change the number initially returned
+    take: args.distanceFilter !== null ? PER_PAGE : null,
+    skip:
+      args.distanceFilter !== null ? (args.currentPage - 1) * PER_PAGE : null,
 
     select: {
       id: true,
@@ -80,13 +82,14 @@ export async function returnAllCafes(parent, args, context, info) {
     query.forEach(function (cafe) {
       cafeDistances.push(calculateDistance(cafe, args.userLocation));
     });
-    const output = cafeDistances.filter(
+    output = cafeDistances.filter(
       (cafe) => cafe.distance < args.distanceFilter
     );
-    return output;
   } else {
-    return query;
+    output = query;
   }
+
+  return output;
 }
 
 function calculateDistance(cafe: Cafe, args: Location): distance<Cafe> {
@@ -112,10 +115,6 @@ function calculateDistance(cafe: Cafe, args: Location): distance<Cafe> {
 
 function degToRad(deg: number): number {
   return deg * (Math.PI / 180);
-}
-
-export async function getCafeCount(parent, args, context, info) {
-  return context.prisma.cafe.count();
 }
 
 export async function getCafeInfo(parent, args, context, info) {

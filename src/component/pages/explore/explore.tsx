@@ -218,11 +218,13 @@ const Explore = () => {
             )}
             {loading ? undefined : (
               <div className={classNames(styles.paginationWrapper)}>
-                <PaginationComponent
-                  currentPage={pageNumber}
-                  setCurrentPage={setPageNumber}
-                  itemCount={totalCafeCount}
-                />
+                {distance === 25 && (
+                  <PaginationComponent
+                    currentPage={pageNumber}
+                    setCurrentPage={setPageNumber}
+                    itemCount={totalCafeCount}
+                  />
+                )}
               </div>
             )}
           </div>
