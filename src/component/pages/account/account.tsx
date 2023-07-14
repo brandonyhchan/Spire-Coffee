@@ -156,7 +156,8 @@ const Account = () => {
   ) => {
     return isValid ? null : (
       <>
-        <ErrorMessage text={errorMessage || secondErrorMessage} />
+        <ErrorMessage text={errorMessage} />
+        <ErrorMessage text={secondErrorMessage} />
       </>
     );
   };
