@@ -20,7 +20,6 @@ import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
 import LoadingSpinner from "component/common/LoadingSpinner";
 import Logo from "assets/images/placeholder-logo.jpg";
-import PaginationComponent from "component/common/paginationComponent";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -46,10 +45,6 @@ const Explore = () => {
   const [locationStatus, setLocationStatus] = useState("");
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
-  const [pageNumber, setPageNumber] = useState<number>(
-    Number(searchParams.get("page")) || 1
-  );
-  const [totalCafeCount, setTotalCafeCount] = useState(1);
 
   // refetch could be added in case needed
   const { loading, error, refetch } = useQuery(returnAllCafeQuery, {
@@ -58,7 +53,6 @@ const Explore = () => {
     },
     onCompleted: (data) => {
       setCafes(data?.returnAllCafes);
-      setTotalCafeCount(data?.getCafeCount);
       setShowExplorePage(true);
     },
     variables: {
@@ -68,7 +62,6 @@ const Explore = () => {
       priceFilter: priceOptions,
       distanceFilter: distance,
       userLocation: userLocation,
-      currentPage: pageNumber,
     },
   });
 
@@ -108,8 +101,6 @@ const Explore = () => {
       return undefined;
     }
   }
-
-  console.log(totalCafeCount);
 
   const getLocation = () => {
     if (!navigator.geolocation) {
@@ -221,17 +212,6 @@ const Explore = () => {
               </div>
             )}
           </div>
-          {loading || cafes.length === 0 ? undefined : (
-            <div className={classNames(styles.paginationWrapper)}>
-              <PaginationComponent
-                currentPage={pageNumber}
-                setCurrentPage={setPageNumber}
-                itemCount={totalCafeCount}
-                searchParams={searchParams}
-                setSearchParams={setSearchParams}
-              />
-            </div>
-          )}
         </div>
       </div>
       <Footer />

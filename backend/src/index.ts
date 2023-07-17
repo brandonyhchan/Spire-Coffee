@@ -5,7 +5,6 @@ import {
   login,
   returnAllCafes,
   getCafeInfo,
-  getCafeCount,
 } from "./resolvers/Query.js";
 import { loadFile } from "graphql-import-files";
 
@@ -15,7 +14,6 @@ const resolvers = {
     login,
     returnAllCafes,
     getCafeInfo,
-    getCafeCount,
   },
 };
 
