@@ -20,7 +20,6 @@ import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
 import LoadingSpinner from "component/common/LoadingSpinner";
 import Logo from "assets/images/placeholder-logo.jpg";
-import PaginationComponent from "component/common/paginationComponent";
 
 const Explore = () => {
   const navigate = useNavigate();
@@ -46,8 +45,6 @@ const Explore = () => {
   const [locationStatus, setLocationStatus] = useState("");
 
   const [cafes, setCafes] = useState<Cafe[]>([]);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [totalCafeCount, setTotalCafeCount] = useState(1);
 
   // refetch could be added in case needed
   const { loading, error, refetch } = useQuery(returnAllCafeQuery, {
@@ -56,7 +53,6 @@ const Explore = () => {
     },
     onCompleted: (data) => {
       setCafes(data?.returnAllCafes);
-      setTotalCafeCount(data?.getCafeCount);
       setShowExplorePage(true);
     },
     variables: {
@@ -66,7 +62,6 @@ const Explore = () => {
       priceFilter: priceOptions,
       distanceFilter: distance,
       userLocation: userLocation,
-      currentPage: pageNumber,
     },
   });
 
@@ -214,17 +209,6 @@ const Explore = () => {
                     </div>
                   )}
                 </div>
-              </div>
-            )}
-            {loading ? undefined : (
-              <div className={classNames(styles.paginationWrapper)}>
-                {distance === 25 && (
-                  <PaginationComponent
-                    currentPage={pageNumber}
-                    setCurrentPage={setPageNumber}
-                    itemCount={totalCafeCount}
-                  />
-                )}
               </div>
             )}
           </div>

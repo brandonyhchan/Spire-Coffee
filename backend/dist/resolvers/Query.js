@@ -34,12 +34,8 @@ export async function login(parent, args, context, info) {
     };
 }
 export async function returnAllCafes(parent, args, context, info) {
-    const PER_PAGE = 12;
     let output;
     const query = await context.prisma.cafe.findMany({
-        // adjust take to change the number initially returned
-        take: args.distanceFilter !== null ? PER_PAGE : null,
-        skip: args.distanceFilter !== null ? (args.currentPage - 1) * PER_PAGE : null,
         select: {
             id: true,
             stringId: true,
