@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useSearchParams } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { returnAllCafeQuery } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
@@ -18,7 +18,6 @@ import SearchBar from "component/common/SearchBar/searchBar";
 import CafeCard from "component/common/CafeCard/cafeCard";
 import FilterSideBar from "./FilterSideBar";
 import TuneIcon from "@mui/icons-material/Tune";
-import Button from "component/common/Button";
 import LoadingSpinner from "component/common/LoadingSpinner";
 import Logo from "assets/images/placeholder-logo.jpg";
 
@@ -28,15 +27,20 @@ const Explore = () => {
 
   const [showCloseButton, setShowCloseButton] = useState(false);
   const [showExplorePage, setShowExplorePage] = useState(false);
-
   const [mobileFilters, setMobileFilters] = useState<boolean>(false);
-  const [searchCafeName, setSearchCafeName] = useState("");
-  const [busynessLevel, setBusynessLevel] = useState<SelectOptions>();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchCafeName, setSearchCafeName] = useState(
+    searchParams.get("search") || ""
+  );
+  const [busynessLevel, setBusynessLevel] = useState<SelectOptions | undefined>(
+    stringToEnum(searchParams.get("busyness"))
+  );
   const [noiseLevel, setNoiseLevel] = useState<SelectOptions>();
-
   const [priceOptions, setPriceOptions] = useState<SelectOptions[]>([]);
-  const [distance, setDistance] = useState(30);
-
+  const [distance, setDistance] = useState(
+    Number(searchParams.get("distance")) || 25
+  );
   const [userLocation, setUserLocation] = useState<Location>();
   const [locationStatus, setLocationStatus] = useState("");
 
@@ -75,23 +79,28 @@ const Explore = () => {
     setMobileFilters(!mobileFilters);
     console.log("clicked on mobile filter");
   }
-
   const handleClick = (event: React.MouseEvent<Element, MouseEvent>) => {
     event.preventDefault();
     setSearchCafeName("");
+    setSearchParams({});
     setShowCloseButton(false);
   };
 
   const handleSearchQuery = (event: React.ChangeEvent<HTMLInputElement>) => {
     setSearchCafeName(event.target.value);
+    setSearchParams({ search: event.target.value });
     setShowCloseButton(true);
   };
 
-  const handleMoreResults = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    // * TO DO: refetch
-    console.log("More results clicked");
-  };
+  function stringToEnum(param: string | null): SelectOptions | undefined {
+    let intermediate = "";
+    if (param !== null) {
+      intermediate = param;
+      return Object.values(SelectOptions).find((item) => item === intermediate);
+    } else {
+      return undefined;
+    }
+  }
 
   const getLocation = () => {
     if (!navigator.geolocation) {
@@ -123,12 +132,13 @@ const Explore = () => {
         }
       >
         {showExplorePage && (
-          <div className={classNames(styles.filterContainer)}>
-            <div>
-              <h2 className={classNames(styles.filterTitle)}>
-                {strings.explore.filter.filterTitle}
-              </h2>
-            </div>
+          <div
+            className={
+              !mobileFilters
+                ? classNames(styles.filterContainer)
+                : classNames(styles.filterMobileContainer)
+            }
+          >
             <FilterSideBar
               busynessState={busynessLevel}
               setBusynessState={setBusynessLevel}
@@ -139,8 +149,11 @@ const Explore = () => {
               distanceFilter={distance}
               setDistanceFilter={setDistance}
               handleClick={() => refetch}
-              showMobileFilters={null}
-              mobileFiltersOpen={false}
+              showMobileFilters={showMobileFilters}
+              mobileFiltersOpen={mobileFilters}
+              distanceFilterError={locationStatus}
+              searchParams={searchParams}
+              setSearchParams={setSearchParams}
             />
           </div>
         )}
@@ -159,35 +172,19 @@ const Explore = () => {
                   onClick={showMobileFilters}
                 />
               </div>
-              {!mobileFilters ? null : (
-                <FilterSideBar
-                  busynessState={busynessLevel}
-                  setBusynessState={setBusynessLevel}
-                  noiseState={noiseLevel}
-                  setNoiseState={setNoiseLevel}
-                  // sortState={sortOption}
-                  // setSortState={() => setSortOption}
-                  priceFilter={priceOptions}
-                  setPriceFilter={setPriceOptions}
-                  distanceFilter={distance}
-                  setDistanceFilter={setDistance}
-                  handleClick={() => refetch}
-                  showMobileFilters={showMobileFilters}
-                  mobileFiltersOpen={true}
-                />
-              )}
             </div>
           )}
           <div className={classNames(styles.searchResultContainer)}>
-            {loading && <LoadingSpinner className={styles.LoadingSpinner} />}
-            {error && (
-              <div>
-                <h2>{strings.explore.errorMessage}</h2>
-              </div>
-            )}
-            {showExplorePage && (
+            {loading ? (
+              <LoadingSpinner />
+            ) : (
               <div className={classNames(styles.searchWrapper)}>
                 <div className={classNames(styles.cafeCardWrapper)}>
+                  {error && (
+                    <span className={classNames(styles.cafeErrorMessage)}>
+                      {strings.explore.errorMessage}
+                    </span>
+                  )}
                   {cafes.length === 0 ? (
                     <span className={classNames(styles.noResultsMessage)}>
                       {strings.explore.noResultsMessage}
@@ -212,16 +209,6 @@ const Explore = () => {
                     </div>
                   )}
                 </div>
-                {cafes.length === 0 ? null : (
-                  <div className={classNames(styles.seeMoreButtonWrapper)}>
-                    <Button
-                      buttonType="submit"
-                      type="primary"
-                      text={strings.explore.seeMoreResults}
-                      onClick={handleMoreResults}
-                    />
-                  </div>
-                )}
               </div>
             )}
           </div>

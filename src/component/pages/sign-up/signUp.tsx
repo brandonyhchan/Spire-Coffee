@@ -227,7 +227,7 @@ const SignUp = () => {
               )}
               <Button
                 buttonType="submit"
-                className="signUpButton"
+                className={classNames(styles.signUpButton)}
                 text={strings.signUp.buttonText}
                 onClick={checkForm}
               />

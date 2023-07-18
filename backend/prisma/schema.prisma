@@ -1,6 +1,5 @@
 generator client {
-  provider        = "prisma-client-js"
-  previewFeatures = ["clientExtensions"]
+  provider = "prisma-client-js"
 }
 
 datasource db {
@@ -33,7 +32,7 @@ model Cafe {
   busyness        filterOptions?
   noisiness       filterOptions?
   price           filterOptions?
-  Location        Location?
+  location        Location?
 }
 
 model Location {

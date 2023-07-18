@@ -102,6 +102,8 @@ h4 {
 .errorMessage {
   text-align: center;
   font-size: $_medium_font_size;
+  color: var(--warning);
+  font-family: 'Figtree-Regular';
 }
 
 // https://codepen.io/kod101/pen/gdjPaW

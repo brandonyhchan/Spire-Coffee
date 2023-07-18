@@ -1,5 +1,11 @@
+$_padding: 40px;
+$_padding_mobile: 30px;
+
 .searchBarContainer {
-  padding-top: 25px;
+  padding-top: $_padding;
+  @media (max-width: 600px) {
+    padding-top: $_padding_mobile;
+  }
 }
 
 .searchBar, 

@@ -10,13 +10,12 @@ type DistanceFilterSliderPropsType = {
   filterSelection: number;
   handleFilter(data: number): void;
   mobileFiltersOpen: boolean;
+  errorMessage: string;
+  searchParams: URLSearchParams;
+  setSearchParams(data: URLSearchParams): void;
 };
 
 const distanceValue = [
-  {
-    value: 0,
-    label: "0",
-  },
   {
     value: 5,
     label: "5",
@@ -31,7 +30,11 @@ const distanceValue = [
   },
   {
     value: 20,
-    label: "20+",
+    label: "20",
+  },
+  {
+    value: 25,
+    label: "25+",
   },
 ];
 
@@ -39,6 +42,9 @@ const FilterByDistanceSlider = ({
   filterSelection,
   handleFilter,
   mobileFiltersOpen,
+  errorMessage,
+  searchParams,
+  setSearchParams,
 }: DistanceFilterSliderPropsType) => {
   function valueText(distanceValue: number) {
     return `${distanceValue}km`;
@@ -54,6 +60,8 @@ const FilterByDistanceSlider = ({
 
   //Gets the distance value to send to db
   const getDistance = (e: any, value: any) => {
+    searchParams.set("distance", value);
+    setSearchParams(searchParams);
     handleFilter(value);
   };
 
@@ -70,8 +78,8 @@ const FilterByDistanceSlider = ({
             valueLabelFormat={valueLabelFormat}
             getAriaValueText={valueText}
             marks={distanceValue}
-            min={0}
-            max={20}
+            min={5}
+            max={25}
             value={filterSelection}
             onChangeCommitted={getDistance}
             className={classNames(styles.slider)}
@@ -79,6 +87,9 @@ const FilterByDistanceSlider = ({
               fontFamily: "Figtree-Regular",
             }}
           />
+          <span className={classNames(styles.distanceErrorMessage)}>
+            {errorMessage}
+          </span>
         </Box>
       </Filter>
     </div>

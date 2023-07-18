@@ -1,7 +1,6 @@
 import * as bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { Cafe, Location, distance } from "../types/cafe";
-import { prisma } from "../context";
 
 export async function signUp(parent, args, context, info) {
   try {
@@ -46,32 +45,56 @@ export async function login(parent, args, context, info) {
 }
 
 export async function returnAllCafes(parent, args, context, info) {
-  return context.prisma.cafe.findMany({
+  let output;
+
+  const query = await context.prisma.cafe.findMany({
+    select: {
+      id: true,
+      stringId: true,
+      name: true,
+      street: true,
+      city: true,
+      province: true,
+      profilePhotoURL: true,
+      location: true,
+      busyness: true,
+      noisiness: true,
+      price: true,
+    },
     where: {
       name: { contains: args.filterByName, mode: "insensitive" },
       busyness: args.busyFilter,
       noisiness: args.noiseFilter,
       price: { in: args.priceFilter.length ? args.priceFilter : undefined },
-      // distance: { lte: args.distanceFilter },
     },
     orderBy: {
       id: "asc",
     },
   });
+  if (args.distanceFilter < 25) {
+    const cafeDistances: Cafe[] = [];
+    query.forEach(function (cafe) {
+      cafeDistances.push(calculateDistance(cafe, args.userLocation));
+    });
+    output = cafeDistances.filter(
+      (cafe) => cafe.distance < args.distanceFilter
+    );
+  } else {
+    output = query;
+  }
+
+  return output;
 }
 
-function calculateDistance<Cafe extends Location>(
-  cafe: Cafe,
-  args: Location
-): distance<Cafe> {
+function calculateDistance(cafe: Cafe, args: Location): distance<Cafe> {
   // lat2 = args.location.latitude, lat1 = cafe.latitude
   // lon2 = args.location.longitude, lon1 = cafe.longitude
   const R = 6371; // Radius of Earth in km
-  const dLat = degToRad(args.latitude - cafe.latitude);
-  const dLong = degToRad(args.longitude - cafe.longitude);
+  const dLat = degToRad(args.latitude - cafe.location.latitude);
+  const dLong = degToRad(args.longitude - cafe.location.longitude);
   const a =
     Math.sin(dLat / 2) * Math.sin(dLat / 2) +
-    Math.cos(degToRad(cafe.latitude)) *
+    Math.cos(degToRad(cafe.location.latitude)) *
       Math.cos(degToRad(args.latitude)) *
       Math.sin(dLong / 2) *
       Math.sin(dLong / 2);

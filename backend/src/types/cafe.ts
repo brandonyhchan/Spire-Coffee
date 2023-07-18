@@ -10,12 +10,13 @@ export type Cafe = {
   noisiness: string;
   price: string;
   location: Location;
+  distance: number;
 };
 
-export interface Location {
+export type Location = {
   latitude: number;
   longitude: number;
-}
+};
 
 export type distance<T> = T & {
   distance: number;

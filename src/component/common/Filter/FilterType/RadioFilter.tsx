@@ -11,14 +11,15 @@ export enum SelectOptions {
 }
 
 type RadioFilterPropsType = {
-  options: string[];
+  options: SelectOptions[];
   type: string;
   text: string;
-  filterSelection: SelectOptions | undefined; // add type for sort filter here
+  filterSelection: SelectOptions | undefined;
   checked: string;
   handleFilter: (event: ChangeEvent<HTMLInputElement>) => void;
   renderIcon: (option: string) => JSX.Element | undefined;
   mobileFiltersOpen: boolean;
+  label: string[];
 };
 
 const RadioFilter = ({
@@ -29,19 +30,25 @@ const RadioFilter = ({
   handleFilter,
   renderIcon,
   mobileFiltersOpen,
+  label,
 }: RadioFilterPropsType) => {
+  const list = [
+    { label: label[0], option: options[0] },
+    { label: label[1], option: options[1] },
+    { label: label[2], option: options[2] },
+  ];
   return (
     <FilterComponent text={text} mobileFiltersOpen={mobileFiltersOpen}>
-      {options.map((option, index) => (
+      {list.map((item, index) => (
         <FilterOption
           key={index}
           className={classNames(styles.listWrapper)}
-          text={option}
+          text={item.label}
           type={type}
-          value={option}
-          checked={checked === option}
+          value={item.option}
+          checked={checked === item.option}
           onChange={handleFilter}
-          icon={renderIcon(option)}
+          icon={renderIcon(item.option)}
         />
       ))}
     </FilterComponent>

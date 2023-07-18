@@ -78,6 +78,8 @@ $_desktop_padding: 60px;
 .errorMessage {
   text-align: center;
   font-size: $_large_font_size;
+  color: var(--warning);
+  font-family: 'Figtree-Regular';
 }
 
 // https://codepen.io/kod101/pen/gdjPaW

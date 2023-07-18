@@ -20,6 +20,7 @@ type Query {
     distanceFilter: Int
     userLocation: locationInput
   ): [Cafe]
+  getCafeCount: Int
   getCafeInfo(stringId: String!): Cafe
 }
 

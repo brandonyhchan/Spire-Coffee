@@ -63,6 +63,7 @@ export const navbar = () => {
                   style={({ isActive }) => (isActive ? active : {})}
                   to="/explore"
                   color="inherit"
+                  reloadDocument={true}
                 >
                   {strings.explore.title}
                 </NavLink>
@@ -72,6 +73,7 @@ export const navbar = () => {
                   style={({ isActive }) => (isActive ? active : {})}
                   to="/favourites"
                   color="inherit"
+                  reloadDocument={true}
                 >
                   {strings.favourites.helmet}
                 </NavLink>
@@ -81,6 +83,7 @@ export const navbar = () => {
                   style={({ isActive }) => (isActive ? active : {})}
                   to="/addCafe"
                   color="inherit"
+                  reloadDocument={true}
                 >
                   {strings.addCafe.helmet}
                 </NavLink>
@@ -90,6 +93,7 @@ export const navbar = () => {
                   style={({ isActive }) => (isActive ? active : {})}
                   to="/account"
                   color="inherit"
+                  reloadDocument={true}
                 >
                   {strings.account.helmet}
                 </NavLink>

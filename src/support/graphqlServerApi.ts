@@ -65,6 +65,7 @@ export const returnAllCafeQuery = gql`
       price
       distance
     }
+    getCafeCount
   }
 `;
 

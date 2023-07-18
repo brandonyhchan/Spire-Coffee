@@ -1,3 +1,24 @@
+.filterButtonWrapper {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0px;
+}
+
+.closeButtonContainer {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.filterTitle {
+  padding: 30px 40px 5px;
+  width: 100%;
+  color: var(--dark-grey);
+  height: auto;
+  border-radius: 0px;
+  font-size: 25px;
+  text-align: left;
+  font-family:'Figtree-Bold';
+}
 .filterBarContainer {
   @media (max-width: 600px) {
     height: 100vh;
