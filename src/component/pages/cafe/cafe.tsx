@@ -185,16 +185,6 @@ const CafePage = () => {
                     </div>
                   </div>
                 </div>
-                <div
-                  onClick={handleFavouriteButton}
-                  className={classNames(styles.favouriteButton)}
-                >
-                  {!favourite ? (
-                    <FavoriteBorderRoundedIcon />
-                  ) : (
-                    <FavoriteRoundedIcon />
-                  )}
-                </div>
               </div>
             </div>
             <div className={classNames(styles.reportContainer)}>
