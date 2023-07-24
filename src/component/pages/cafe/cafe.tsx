@@ -19,7 +19,6 @@ import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import LoadingSpinner from "component/common/LoadingSpinner";
 import Dropdown from "component/common/Dropdown/Dropdown";
 import ImageCarousel from "./Carousel/ImageCarousel";
-import Map from "./Map/map";
 import Report from "./Report/Report";
 import { businessHours } from "./cafeBusinessHours";
 
@@ -67,11 +66,16 @@ const CafePage = () => {
     setFavourite(!favourite); // on refresh favourite is false, this bug needs to be fixed
   };
 
+  function mapsAddress(address: string | undefined, city: string | undefined) {
+    return `${address?.replaceAll(" ", "+")},${city}`;
+  }
+
   function renderWebsite() {
     if (cafe?.website) {
       return (
+        //TODO: replace with tag from react-router
         <a
-          href={strings.global.http + cafe?.website}
+          href={`https://${cafe?.website}`}
           target="_blank"
           rel="noreferrer"
           className={classNames(styles.websiteLink)}
@@ -84,13 +88,6 @@ const CafePage = () => {
       );
     }
     return <label>{strings.cafe.noWebsite}</label>;
-  }
-
-  function renderPhoneNumber() {
-    if (cafe?.phoneNumber) {
-      return cafe?.phoneNumber;
-    }
-    return strings.cafe.noPhoneNumber;
   }
 
   return (
@@ -118,12 +115,8 @@ const CafePage = () => {
                     <div className={classNames(styles.cafeAddress)}>
                       <p>{cafe?.street}</p>
                       <p>
-                        {cafe?.city}
-                        {strings.global.comma}
-                        {strings.global.space}
-                        {cafe?.province}
-                        {strings.global.space}
-                        {cafe?.postalCode}
+                        {`${cafe?.city}, ${cafe?.province}`}
+                        {` ${cafe?.postalCode}`}
                       </p>
                     </div>
                     <div className={classNames(styles.labelContainer)}>
@@ -148,7 +141,11 @@ const CafePage = () => {
                     </div>
                     <div className={classNames(styles.labelContainer)}>
                       <LocalPhoneRoundedIcon />
-                      <label>{renderPhoneNumber()}</label>
+                      <label>
+                        {cafe?.phoneNumber !== null
+                          ? cafe?.phoneNumber
+                          : strings.cafe.noPhoneNumber}
+                      </label>
                     </div>
                     <div className={classNames(styles.labelContainer)}>
                       <LanguageRoundedIcon />
@@ -159,28 +156,25 @@ const CafePage = () => {
                     <div className={classNames(styles.labelContainer)}>
                       {renderBusyIcon(cafe?.busyness)}
                       <label>
-                        {strings.cafe.busynessLabel}
-                        {strings.global.semiColon}
-                        {strings.global.space}
-                        {renderBusyText(cafe?.busyness)}
+                        {`${strings.cafe.busynessLabel}: ${renderBusyText(
+                          cafe?.busyness
+                        )}`}
                       </label>
                     </div>
                     <div className={classNames(styles.labelContainer)}>
                       {renderNoiseIcon(cafe?.noisiness)}
                       <label>
-                        {strings.cafe.noisinessLabel}
-                        {strings.global.semiColon}
-                        {strings.global.space}
-                        {renderNoiseText(cafe?.noisiness)}
+                        {`${strings.cafe.noisinessLabel}: ${renderNoiseText(
+                          cafe?.noisiness
+                        )}`}
                       </label>
                     </div>
                     <div className={classNames(styles.labelContainer)}>
                       {renderPrice()}
                       <label>
-                        {strings.cafe.priceLabel}
-                        {strings.global.semiColon}
-                        {strings.global.space}
-                        {renderPriceText(cafe?.price)}
+                        {`${strings.cafe.priceLabel}: ${renderPriceText(
+                          cafe?.price
+                        )}`}
                       </label>
                     </div>
                   </div>
@@ -200,9 +194,23 @@ const CafePage = () => {
             <div className={classNames(styles.reportContainer)}>
               <Report cafe={cafe} />
             </div>
-            {/* <div className={classNames(styles.mapContainer)}>
-              <Map />
-            </div> */}
+            <div className={classNames(styles.mapContainer)}>
+              {
+                <iframe
+                  width="750" // not sure how to get these numbers dynamic
+                  height="500"
+                  frameBorder="0"
+                  style={{ border: 0 }}
+                  referrerPolicy="no-referrer-when-downgrade"
+                  // eslint-disable-next-line max-len
+                  src={`https://www.google.com/maps/embed/v1/place?key=${"AIzaSyB08r9Cbzm8V3slwoEp_zlvpx-oapg6sKo"}&q=${mapsAddress(
+                    cafe?.street,
+                    cafe?.city
+                  )}`}
+                  allowFullScreen={true}
+                />
+              }
+            </div>
           </React.Fragment>
         ) : null}
       </div>

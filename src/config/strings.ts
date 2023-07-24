@@ -4,9 +4,6 @@ const strings = new LocalizedStrings({
   en: {
     global: {
       title: "SpireCoffee",
-      space: " ",
-      comma: ",",
-      semiColon: ":",
       http: "https://",
     },
     login: {
