@@ -119,10 +119,13 @@ const CafePage = () => {
                         {` ${cafe?.postalCode}`}
                       </p>
                     </div>
-                    <div className={classNames(styles.labelContainer)}>
-                      <AccessTimeRoundedIcon />
+                    <div className={classNames(styles.businessLabelContainer)}>
+                      <div className={classNames(styles.labelContainer)}>
+                        <AccessTimeRoundedIcon />
+                        <label>{strings.cafe.businessHours}</label>
+                      </div>
                       <label>
-                        <Dropdown text={strings.cafe.businessHours}>
+                        <div>
                           {businessHours.map((hours, index) => (
                             <div
                               key={index}
@@ -136,7 +139,7 @@ const CafePage = () => {
                               </div>
                             </div>
                           ))}
-                        </Dropdown>
+                        </div>
                       </label>
                     </div>
                     <div className={classNames(styles.labelContainer)}>
@@ -178,16 +181,6 @@ const CafePage = () => {
                       </label>
                     </div>
                   </div>
-                </div>
-                <div
-                  onClick={handleFavouriteButton}
-                  className={classNames(styles.favouriteButton)}
-                >
-                  {!favourite ? (
-                    <FavoriteBorderRoundedIcon />
-                  ) : (
-                    <FavoriteRoundedIcon />
-                  )}
                 </div>
               </div>
             </div>

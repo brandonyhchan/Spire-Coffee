@@ -6,6 +6,9 @@
   @media (max-width: 414px) {
     height: 220px;
   }
+  @media (min-width: 1281px) {
+    height: 600px;
+  }
   & img {
     object-fit: cover;
     width: 100%;

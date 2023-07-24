@@ -6,9 +6,11 @@
   font-family: 'Figtree-Regular';
   font-size: 18px;
   width: 100%;
+
   & Button {
     margin-top: 20px;
   }
+
   @media (min-width: 1280px) {
     font-size: 20px;
   }
@@ -17,26 +19,25 @@
 .showUserReportButtons {
   display: flex;
   flex-direction: row;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
-  width: 90%;
-
-  @media (min-width: 601px) and (max-width: 799px) {
-    width: 70%;
-  }
-
-  @media (min-width: 800px) and (max-width: 1280px) {
-    width: 50%;
-  }
+  width: 350px;
+  gap: 25px;
 }
 
-.userReportContainer{
+.userReportContainer {
   height: 200px;
   width: 100%;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
   align-items: center;
+  @media (min-width: 601px) {
+    padding: 50px;
+    flex-direction: row;
+    gap: 100px;
+    justify-content: center;
+  }
 }
 
 .reportSubmitMessage {
