@@ -266,3 +266,12 @@ $_text_size_desktop: 22px;
     padding-left: 40px;
   }
 }
+
+.mapContainer {
+  @media (min-width: 1281px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 700px;
+  }
+  height: 500px;
+}

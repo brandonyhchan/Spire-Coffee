@@ -17,13 +17,10 @@ import Navbar from "component/common/NavbarAndFooter/NavBar";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
 import MobileFooter from "component/common/NavbarAndFooter/MobileFooter";
 import LoadingSpinner from "component/common/LoadingSpinner";
-import Dropdown from "component/common/Dropdown/Dropdown";
 import ImageCarousel from "./Carousel/ImageCarousel";
 import Report from "./Report/Report";
 import { businessHours } from "./cafeBusinessHours";
 
-import FavoriteBorderRoundedIcon from "@mui/icons-material/FavoriteBorderRounded";
-import FavoriteRoundedIcon from "@mui/icons-material/FavoriteRounded";
 import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
 import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
@@ -40,7 +37,6 @@ const CafePage = () => {
 
   const [cafe, setCafe] = useState<Cafe>();
   const [showCafeInfo, setShowCafeInfo] = useState<boolean>(false);
-  const [favourite, setFavourite] = useState<boolean>(false);
 
   useEffect(() => {
     if (!token) {
@@ -60,11 +56,6 @@ const CafePage = () => {
       stringId: cafeId,
     },
   });
-
-  const handleFavouriteButton = (event: React.MouseEvent<HTMLDivElement>) => {
-    event.preventDefault();
-    setFavourite(!favourite); // on refresh favourite is false, this bug needs to be fixed
-  };
 
   function mapsAddress(address: string | undefined, city: string | undefined) {
     return `${address?.replaceAll(" ", "+")},${city}`;
@@ -190,8 +181,8 @@ const CafePage = () => {
             <div className={classNames(styles.mapContainer)}>
               {
                 <iframe
-                  width="750" // not sure how to get these numbers dynamic
-                  height="500"
+                  width="100%" // not sure how to get these numbers dynamic
+                  height="90%"
                   frameBorder="0"
                   style={{ border: 0 }}
                   referrerPolicy="no-referrer-when-downgrade"
