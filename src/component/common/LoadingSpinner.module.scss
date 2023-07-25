@@ -1,7 +1,9 @@
 .loadingSpinnerContainer {
-  top: 25%;
+  display: flex;
+  top: 40%;
   position: fixed;
-  width: 100%;
   align-items: center;
   justify-content: center;
+  z-index: 1;
+  width: 100%;
 }
