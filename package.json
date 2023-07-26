@@ -2,6 +2,10 @@
   "name": "spirecoffee",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": ">=18.17.0",
+    "npm": ">=9.2.0"
+  },
   "dependencies": {
     "@apollo/client": "^3.7.9",
     "@emotion/react": "^11.10.6",
@@ -43,7 +47,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "installspirecoffee": "concurrently \"npm install\" \"cd backend && npm install\"",
-    "startspirecoffee": "concurrently \"npm run start\" \"cd backend && npm run compile && node ./dist/index.js\""
+    "startspirecoffee": "concurrently \"npm run start\" \"cd backend && npm run compile && node ./dist/index.js\"",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -51,6 +56,10 @@
       "react-app/jest"
     ]
   },
+  "lint-staged": {
+        "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+        "src/**/*.{js,jsx,ts,tsx,css,scss,md}": "prettier --write --ignore-unknown"
+    },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -74,8 +83,10 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-prettier": "^4.2.1",
     "eslint-plugin-react": "^7.32.2",
+    "husky": "^8.0.0",
     "jest": "^27.5.1",
+    "lint-staged": "^13.2.3",
     "nodemon": "^2.0.20",
-    "prettier": "^2.8.4"
+    "prettier": "^2.8.8"
   }
 }

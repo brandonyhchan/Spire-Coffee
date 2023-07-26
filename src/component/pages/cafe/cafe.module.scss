@@ -22,6 +22,12 @@ $_text_size_desktop: 22px;
   justify-content: center;
 }
 
+//TODO: style map container
+.mapContainer {
+  width: 1000px;
+  height: 1000px;
+}
+
 .container {
   display: grid;
   width: 100%;
@@ -179,7 +185,8 @@ $_text_size_desktop: 22px;
       flex-direction: row;
     }
 
-    & .labelContainer, .businessLabelContainer {
+    & .labelContainer,
+    .businessLabelContainer {
       & label {
         padding-left: 10px;
 
