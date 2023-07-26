@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
-import { useParams, useNavigate, Link } from "react-router-dom";
+import { useParams, useNavigate } from "react-router-dom";
 import { getCafeInfo } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
@@ -58,6 +58,15 @@ const CafePage = () => {
       stringId: cafeId,
     },
   });
+
+  // const handleFavouriteButton = (event: React.MouseEvent<HTMLDivElement>) => {
+  //   event.preventDefault();
+  //   setFavourite(!favourite); // on refresh favourite is false, this bug needs to be fixed
+  // };
+
+  function nameFormat(name: string | undefined) {
+    return name?.replaceAll(" ", "+");
+  }
 
   function mapsAddress(address: string | undefined, city: string | undefined) {
     return `${address?.replaceAll(" ", "+")},${city}`;
@@ -167,13 +176,14 @@ const CafePage = () => {
             <div className={classNames(styles.mapContainer)}>
               {
                 <iframe
-                  width="100%" // not sure how to get these numbers dynamic
-                  height="90%"
-                  frameBorder="0"
+                  width="100%"
+                  height="100%"
                   style={{ border: 0 }}
                   referrerPolicy="no-referrer-when-downgrade"
                   // eslint-disable-next-line max-len
-                  src={`https://www.google.com/maps/embed/v1/place?key=${"AIzaSyB08r9Cbzm8V3slwoEp_zlvpx-oapg6sKo"}&q=${mapsAddress(
+                  src={`https://www.google.com/maps/embed/v1/place?key=${
+                    process.env.REACT_APP_GOOGLE_API_KEY
+                  }&q=${nameFormat(cafe?.name)}+${mapsAddress(
                     cafe?.street,
                     cafe?.city
                   )}`}

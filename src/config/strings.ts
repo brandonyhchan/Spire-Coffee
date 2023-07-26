@@ -4,7 +4,6 @@ const strings = new LocalizedStrings({
   en: {
     global: {
       title: "SpireCoffee",
-      http: "https://",
     },
     login: {
       button: "Login",
