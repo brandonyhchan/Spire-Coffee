@@ -78,7 +78,7 @@ const CafePage = () => {
         </div>
       );
     }
-    return <label>{strings.cafe.noWebsite}</label>;
+    return <Label text={strings.cafe.noWebsite} />;
   }
 
   return (
@@ -100,59 +100,55 @@ const CafePage = () => {
               <ImageCarousel />
             </div>
             <div className={classNames(styles.infoContainer)}>
-              <div className={classNames(styles.cafeInfo)}>
-                <div className={classNames(styles.cafeDetails)}>
-                  <div className={classNames(styles.leftSection)}>
-                    <Label text={cafe?.street} />
+              <div className={classNames(styles.cafeDetails)}>
+                <div className={classNames(styles.leftSection)}>
+                  <Label text={cafe?.street} />
+                  <Label
+                    text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
+                  />
+                  <div className={classNames(styles.businessLabelContainer)}>
                     <Label
-                      text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
+                      icon={Icons.clock}
+                      text={strings.cafe.businessHours}
                     />
-                    <div className={classNames(styles.businessLabelContainer)}>
-                      <Label
-                        icon={Icons.clock}
-                        text={strings.cafe.businessHours}
-                      />
-                      <div>
-                        {businessHours.map((hours, index) => (
-                          <div
-                            key={index}
-                            className={classNames(
-                              styles.businessHoursContainer
-                            )}
-                          >
-                            <Label text={hours.weekday} />
-                            <Label text={hours.hours} />
-                          </div>
-                        ))}
-                      </div>
+                    <div>
+                      {businessHours.map((hours, index) => (
+                        <div
+                          key={index}
+                          className={classNames(styles.businessHoursContainer)}
+                        >
+                          <Label text={hours.weekday} />
+                          <Label text={hours.hours} />
+                        </div>
+                      ))}
                     </div>
-                    <Label
-                      icon={Icons.phone}
-                      text={cafe?.phoneNumber}
-                      secondaryText={strings.cafe.noPhoneNumber}
-                    />
-                    {renderWebsite()}
                   </div>
-                  <div className={classNames(styles.rightSection)}>
-                    <Label
-                      icon={renderBusyIcon(cafe?.busyness)}
-                      text={`${strings.cafe.busynessLabel}: ${renderBusyText(
-                        cafe?.busyness
-                      )}`}
-                    />
-                    <Label
-                      icon={renderNoiseIcon(cafe?.noisiness)}
-                      text={`${strings.cafe.noisinessLabel}: ${renderNoiseText(
-                        cafe?.noisiness
-                      )}`}
-                    />
-                    <Label
-                      icon={renderPrice()}
-                      text={`${strings.cafe.priceLabel}: ${renderPriceText(
-                        cafe?.price
-                      )}`}
-                    />
-                  </div>
+                  <Label
+                    icon={Icons.phone}
+                    text={cafe?.phoneNumber}
+                    secondaryText={strings.cafe.noPhoneNumber}
+                  />
+                  {renderWebsite()}
+                </div>
+                <div className={classNames(styles.rightSection)}>
+                  <Label
+                    icon={renderBusyIcon(cafe?.busyness)}
+                    text={`${strings.cafe.busynessLabel}: ${renderBusyText(
+                      cafe?.busyness
+                    )}`}
+                  />
+                  <Label
+                    icon={renderNoiseIcon(cafe?.noisiness)}
+                    text={`${strings.cafe.noisinessLabel}: ${renderNoiseText(
+                      cafe?.noisiness
+                    )}`}
+                  />
+                  <Label
+                    icon={renderPrice()}
+                    text={`${strings.cafe.priceLabel}: ${renderPriceText(
+                      cafe?.price
+                    )}`}
+                  />
                 </div>
               </div>
             </div>
