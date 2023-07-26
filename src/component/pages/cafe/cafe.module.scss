@@ -34,7 +34,6 @@ $_text_size_desktop: 22px;
   }
 }
 
-
 .container {
   display: grid;
   width: 100%;
@@ -117,7 +116,7 @@ $_text_size_desktop: 22px;
   }
 
   @media (max-width: 1280px) {
-    padding-bottom: 10px;
+    padding-bottom: 20px;
   }
 
   @media (min-width: 1281px) {
@@ -236,10 +235,16 @@ $_text_size_desktop: 22px;
   text-decoration: none;
   color: var(--dark-grey);
   font-family: "Figtree-Regular";
+  & label {
+    margin-right: 8px;
+  }
+}
 
-  & .redirectIcon {
-    padding-left: 5px;
-    margin-top: -1px;
+.labelContainer {
+  & a {
+    & svg {
+      margin-left: 5px;
+    }
   }
 }
 
@@ -254,6 +259,5 @@ $_text_size_desktop: 22px;
     grid-column-start: 1;
     grid-column-end: 3;
     grid-row-start: 4;
-    padding-left: 40px;
   }
 }

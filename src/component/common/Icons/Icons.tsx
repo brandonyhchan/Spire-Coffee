@@ -7,6 +7,10 @@ import VolumeMuteRoundedIcon from "@mui/icons-material/VolumeMuteRounded";
 import VolumeDownRoundedIcon from "@mui/icons-material/VolumeDownRounded";
 import VolumeUpRoundedIcon from "@mui/icons-material/VolumeUpRounded";
 import AttachMoneyRoundedIcon from "@mui/icons-material/AttachMoneyRounded";
+import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
+import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
+import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
+import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
 
 import classNames from "classnames";
 import strings from "config/strings";
@@ -113,5 +117,27 @@ export function renderPriceText(option?: string) {
     return strings.list.priceText3;
   } else {
     return undefined;
+  }
+}
+
+export enum Icons {
+  clock = "clock",
+  phone = "phone",
+  globe = "globe",
+  redirect = "redirect",
+}
+
+export function renderCafeIcon(icon?: string) {
+  switch (icon) {
+    case Icons.clock:
+      return <AccessTimeRoundedIcon />;
+    case Icons.phone:
+      return <LocalPhoneRoundedIcon />;
+    case Icons.globe:
+      return <LanguageRoundedIcon />;
+    case Icons.redirect:
+      return <LaunchRoundedIcon />;
+    default:
+      break;
   }
 }

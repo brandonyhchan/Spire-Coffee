@@ -4,6 +4,7 @@ import { useParams, useNavigate } from "react-router-dom";
 import { getCafeInfo } from "support/graphqlServerApi";
 import { useQuery } from "@apollo/client";
 import { Cafe } from "types/api/cafe";
+import { Icons } from "component/common/Icons/Icons";
 import {
   renderBusyIcon,
   renderNoiseIcon,
@@ -20,11 +21,6 @@ import LoadingSpinner from "component/common/LoadingSpinner";
 import ImageCarousel from "./Carousel/ImageCarousel";
 import Report from "./Report/Report";
 import { businessHours } from "./cafeBusinessHours";
-
-import LanguageRoundedIcon from "@mui/icons-material/LanguageRounded";
-import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
-import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
-import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
 
 import Label from "component/common/Label";
 
@@ -71,17 +67,15 @@ const CafePage = () => {
     if (cafe?.website) {
       return (
         //TODO: replace with tag from react-router
-        <a
-          href={`https://${cafe?.website}`}
-          target="_blank"
-          rel="noreferrer"
-          className={classNames(styles.websiteLink)}
-        >
-          {cafe?.website}
-          <div className={classNames(styles.redirectIcon)}>
-            <LaunchRoundedIcon />
-          </div>
-        </a>
+        <div className={classNames(styles.websiteLink)}>
+          <Label
+            icon={Icons.globe}
+            otherIcon={Icons.redirect}
+            text={cafe?.website}
+            anchorTag={true}
+            link={`https://${cafe?.website}`}
+          />
+        </div>
       );
     }
     return <label>{strings.cafe.noWebsite}</label>;
@@ -115,7 +109,7 @@ const CafePage = () => {
                     />
                     <div className={classNames(styles.businessLabelContainer)}>
                       <Label
-                        icon={<AccessTimeRoundedIcon />}
+                        icon={Icons.clock}
                         text={strings.cafe.businessHours}
                       />
                       <div>
@@ -133,14 +127,11 @@ const CafePage = () => {
                       </div>
                     </div>
                     <Label
-                      icon={<LocalPhoneRoundedIcon />}
+                      icon={Icons.phone}
                       text={cafe?.phoneNumber}
                       secondaryText={strings.cafe.noPhoneNumber}
                     />
-                    <Label
-                      icon={<LanguageRoundedIcon />}
-                      text={renderWebsite()}
-                    />
+                    {renderWebsite()}
                   </div>
                   <div className={classNames(styles.rightSection)}>
                     <Label
