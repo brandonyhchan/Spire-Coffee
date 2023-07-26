@@ -10,6 +10,7 @@ $_text_size_desktop: 22px;
   flex-direction: column;
 }
 
+.wrapper,
 .dropdown,
 .cafeHours,
 .leftSection,
@@ -196,8 +197,6 @@ $_text_size_desktop: 22px;
       }
 
       & a {
-        padding-left: 10px;
-
         @media (min-width: 1280px) {
           font-size: $_text_size_desktop;
         }
@@ -271,4 +270,13 @@ $_text_size_desktop: 22px;
     grid-row-start: 4;
     padding-left: 40px;
   }
+}
+
+.mapContainer {
+  @media (min-width: 1281px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 700px;
+  }
+  height: 500px;
 }
