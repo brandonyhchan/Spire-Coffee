@@ -180,7 +180,8 @@ $_text_size_desktop: 22px;
       flex-direction: row;
     }
 
-    & .labelContainer, .businessLabelContainer {
+    & .labelContainer,
+    .businessLabelContainer {
       & label {
         padding-left: 10px;
 
@@ -190,8 +191,6 @@ $_text_size_desktop: 22px;
       }
 
       & a {
-        padding-left: 10px;
-
         @media (min-width: 1280px) {
           font-size: $_text_size_desktop;
         }

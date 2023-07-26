@@ -26,6 +26,8 @@ import LocalPhoneRoundedIcon from "@mui/icons-material/LocalPhoneRounded";
 import AccessTimeRoundedIcon from "@mui/icons-material/AccessTimeRounded";
 import LaunchRoundedIcon from "@mui/icons-material/LaunchRounded";
 
+import Label from "component/common/Label";
+
 import classNames from "classnames";
 import styles from "./cafe.module.scss";
 import strings from "config/strings";
@@ -104,17 +106,16 @@ const CafePage = () => {
                 <div className={classNames(styles.cafeDetails)}>
                   <div className={classNames(styles.leftSection)}>
                     <div className={classNames(styles.cafeAddress)}>
-                      <p>{cafe?.street}</p>
-                      <p>
-                        {`${cafe?.city}, ${cafe?.province}`}
-                        {` ${cafe?.postalCode}`}
-                      </p>
+                      <Label text={cafe?.street} />
+                      <Label
+                        text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
+                      />
                     </div>
                     <div className={classNames(styles.businessLabelContainer)}>
-                      <div className={classNames(styles.labelContainer)}>
-                        <AccessTimeRoundedIcon />
-                        <label>{strings.cafe.businessHours}</label>
-                      </div>
+                      <Label
+                        icon={<AccessTimeRoundedIcon />}
+                        text={strings.cafe.businessHours}
+                      />
                       <label>
                         <div>
                           {businessHours.map((hours, index) => (
@@ -133,44 +134,35 @@ const CafePage = () => {
                         </div>
                       </label>
                     </div>
-                    <div className={classNames(styles.labelContainer)}>
-                      <LocalPhoneRoundedIcon />
-                      <label>
-                        {cafe?.phoneNumber !== null
-                          ? cafe?.phoneNumber
-                          : strings.cafe.noPhoneNumber}
-                      </label>
-                    </div>
-                    <div className={classNames(styles.labelContainer)}>
-                      <LanguageRoundedIcon />
-                      {renderWebsite()}
-                    </div>
+                    <Label
+                      icon={<LocalPhoneRoundedIcon />}
+                      text={cafe?.phoneNumber}
+                      secondaryText={strings.cafe.noPhoneNumber}
+                    />
+                    <Label
+                      icon={<LanguageRoundedIcon />}
+                      text={renderWebsite()}
+                    />
                   </div>
                   <div className={classNames(styles.rightSection)}>
-                    <div className={classNames(styles.labelContainer)}>
-                      {renderBusyIcon(cafe?.busyness)}
-                      <label>
-                        {`${strings.cafe.busynessLabel}: ${renderBusyText(
-                          cafe?.busyness
-                        )}`}
-                      </label>
-                    </div>
-                    <div className={classNames(styles.labelContainer)}>
-                      {renderNoiseIcon(cafe?.noisiness)}
-                      <label>
-                        {`${strings.cafe.noisinessLabel}: ${renderNoiseText(
-                          cafe?.noisiness
-                        )}`}
-                      </label>
-                    </div>
-                    <div className={classNames(styles.labelContainer)}>
-                      {renderPrice()}
-                      <label>
-                        {`${strings.cafe.priceLabel}: ${renderPriceText(
-                          cafe?.price
-                        )}`}
-                      </label>
-                    </div>
+                    <Label
+                      icon={renderBusyIcon(cafe?.busyness)}
+                      text={`${strings.cafe.busynessLabel}: ${renderBusyText(
+                        cafe?.busyness
+                      )}`}
+                    />
+                    <Label
+                      icon={renderNoiseIcon(cafe?.noisiness)}
+                      text={`${strings.cafe.noisinessLabel}: ${renderNoiseText(
+                        cafe?.noisiness
+                      )}`}
+                    />
+                    <Label
+                      icon={renderPrice()}
+                      text={`${strings.cafe.priceLabel}: ${renderPriceText(
+                        cafe?.price
+                      )}`}
+                    />
                   </div>
                 </div>
               </div>
