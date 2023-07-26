@@ -25,9 +25,15 @@ $_text_size_desktop: 22px;
 
 //TODO: style map container
 .mapContainer {
-  width: 1000px;
-  height: 1000px;
+  padding-bottom: 20px;
+  height: 500px;
+  @media (min-width: 1281px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 700px;
+  }
 }
+
 
 .container {
   display: grid;
@@ -39,7 +45,6 @@ $_text_size_desktop: 22px;
   color: var(--dark-grey);
   padding: 10px 20px;
   overflow-x: hidden;
-
   @media (max-width: 600px) {
     padding-bottom: 56px;
   }
@@ -148,7 +153,6 @@ $_text_size_desktop: 22px;
 .infoContainer {
   display: grid;
   height: 100%;
-  padding-bottom: 40px;
 
   @media (min-width: 1281px) {
     padding-left: 40px;
@@ -252,13 +256,4 @@ $_text_size_desktop: 22px;
     grid-row-start: 4;
     padding-left: 40px;
   }
-}
-
-.mapContainer {
-  @media (min-width: 1281px) {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    height: 700px;
-  }
-  height: 500px;
 }
