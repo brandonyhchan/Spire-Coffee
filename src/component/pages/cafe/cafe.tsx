@@ -105,34 +105,28 @@ const CafePage = () => {
               <div className={classNames(styles.cafeInfo)}>
                 <div className={classNames(styles.cafeDetails)}>
                   <div className={classNames(styles.leftSection)}>
-                    <div className={classNames(styles.cafeAddress)}>
-                      <Label text={cafe?.street} />
-                      <Label
-                        text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
-                      />
-                    </div>
+                    <Label text={cafe?.street} />
+                    <Label
+                      text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
+                    />
                     <div className={classNames(styles.businessLabelContainer)}>
                       <Label
                         icon={<AccessTimeRoundedIcon />}
                         text={strings.cafe.businessHours}
                       />
-                      <label>
-                        <div>
-                          {businessHours.map((hours, index) => (
-                            <div
-                              key={index}
-                              className={classNames(styles.dropdownItem)}
-                            >
-                              <div className={classNames(styles.cafeDays)}>
-                                <p>{hours.weekday}</p>
-                              </div>
-                              <div className={classNames(styles.cafeHours)}>
-                                <p>{hours.hours}</p>
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                      </label>
+                      <div>
+                        {businessHours.map((hours, index) => (
+                          <div
+                            key={index}
+                            className={classNames(
+                              styles.businessHoursContainer
+                            )}
+                          >
+                            <Label text={hours.weekday} />
+                            <Label text={hours.hours} />
+                          </div>
+                        ))}
+                      </div>
                     </div>
                     <Label
                       icon={<LocalPhoneRoundedIcon />}

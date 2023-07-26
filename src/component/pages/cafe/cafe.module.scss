@@ -165,6 +165,7 @@ $_text_size_desktop: 22px;
 
     @media (min-width: 768px) and (max-width: 1280px) {
       flex-direction: row;
+      gap: 100px;
     }
 
     & p {
@@ -180,11 +181,8 @@ $_text_size_desktop: 22px;
       flex-direction: row;
     }
 
-    & .labelContainer,
-    .businessLabelContainer {
+    & .labelContainer {
       & label {
-        padding-left: 10px;
-
         @media (min-width: 1280px) {
           font-size: $_text_size_desktop;
         }
@@ -196,7 +194,11 @@ $_text_size_desktop: 22px;
         }
       }
       & svg {
-        margin-top: 5px;
+        margin-top: 0px;
+        margin-right: 10px;
+        @media (min-width: 1280px) {
+          margin-top: 5px;
+        }
       }
     }
 
@@ -209,32 +211,12 @@ $_text_size_desktop: 22px;
       display: flex;
       flex-direction: column;
     }
-
-    & .cafeAddress {
-      display: flex;
-      flex-direction: column;
-      justify-content: flex-start;
-      align-items: flex-start;
-    }
   }
 
-  & .dropdownItem {
+  & .businessHoursContainer {
     display: flex;
     flex-direction: row;
-    gap: 50px;
-
-    @media (max-width: 600px) {
-      gap: 30px;
-    }
-
-    & .cafeDays {
-      align-items: flex-start;
-      padding-left: 15px;
-    }
-
-    & .cafeHours {
-      align-items: flex-end;
-    }
+    justify-content: space-between;
   }
 }
 
