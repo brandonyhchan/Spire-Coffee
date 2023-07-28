@@ -94,7 +94,7 @@ const CafePage = () => {
         {showCafeInfo ? (
           <React.Fragment>
             <div className={classNames(styles.cafeTitle)}>
-              <h1 className={classNames(styles.cafeName)}>{cafe?.name}</h1>
+              <h1>{cafe?.name}</h1>
             </div>
             <div className={classNames(styles.carouselContainer)}>
               <ImageCarousel />

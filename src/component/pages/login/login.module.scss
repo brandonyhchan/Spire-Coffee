@@ -1,8 +1,8 @@
 $_medium_font_size: 18px;
 
 *,
-*:focus{
-  outline: none
+*:focus {
+  outline: none;
 }
 
 .container {
@@ -44,16 +44,9 @@ $_medium_font_size: 18px;
   min-width: 300px;
   background-color: white;
   gap: 10px;
-}
-
-h1 {
-  margin: 0 !important;
-  padding-bottom: 10px;
-  font-family: 'Figtree-Bold';
-}
-
-h4 {
-  color: var(--secondary);
+  & h4 {
+    color: var(--secondary);
+  }
 }
 
 .loginForm {
@@ -62,7 +55,8 @@ h4 {
   width: 100%;
 }
 
-.login, .formItem span {
+.login,
+.formItem span {
   width: 100%;
 }
 
@@ -74,10 +68,10 @@ h4 {
   width: auto;
   background: transparent;
   border: solid 2px #ccc;
-  transition: all .3s ease;
+  transition: all 0.3s ease;
   padding: 10px;
   border-radius: 10px;
-  font-family: 'Figtree-Regular';
+  font-family: "Figtree-Regular";
   border-width: 2px;
   font-size: $_medium_font_size;
 }
@@ -92,7 +86,7 @@ h4 {
 
 .formItem span {
   color: var(--red);
-  font-family: 'Figtree-Regular';
+  font-family: "Figtree-Regular";
   font-size: $_medium_font_size;
   margin-left: 5px;
   padding-top: 5px;
@@ -103,7 +97,7 @@ h4 {
   text-align: center;
   font-size: $_medium_font_size;
   color: var(--warning);
-  font-family: 'Figtree-Regular';
+  font-family: "Figtree-Regular";
 }
 
 // https://codepen.io/kod101/pen/gdjPaW
@@ -114,7 +108,7 @@ h4 {
   font-weight: bold;
   top: -18px;
   left: 10px;
-  font-family: 'Figtree-Regular';
+  font-family: "Figtree-Regular";
   background: #fff;
 }
 
@@ -188,7 +182,7 @@ a:hover {
   h1 {
     padding-bottom: 15px;
   }
-  
+
   .logo {
     padding-bottom: 15px;
   }
@@ -202,7 +196,7 @@ a:hover {
     padding: 0px;
     gap: 15px;
   }
- 
+
   .formItem input {
     width: 370px;
   }

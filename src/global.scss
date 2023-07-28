@@ -1,14 +1,24 @@
 :root {
   --primary: #a1887f;
-  --primary-light:  #a1887fa4;
-  --primary-dark:  #8b7972;
+  --primary-light: #a1887fa4;
+  --primary-dark: #8b7972;
   --secondary: #3f51b5;
   --secondary-light: #bec8ff;
   --secondary-dark: #344397;
   --warning: rgb(255, 32, 32);
-  --red:  rgb(221, 71, 71);
+  --red: rgb(221, 71, 71);
   --blue: #4c698b;
   --grey: #b7b1c7;
   --dark-grey: #4e576e;
   --light-grey: #f5f5f7;
+  --large-font: 22px;
+  --title-large: 35px;
+  --title-medium: 30px;
+  --title-small: 25px;
+}
+
+h1 {
+  margin: 0 !important;
+  padding-bottom: 10px;
+  font-family: "Figtree-Semibold";
 }
