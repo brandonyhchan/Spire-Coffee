@@ -23,8 +23,8 @@ $border: solid 3px var(--light-grey);
   color: var(--dark-grey);
   overflow-x: hidden;
   row-gap: $padding;
-  padding-bottom: $mobile_bottom;
   padding: $padding;
+  padding-bottom: $mobile_bottom;
 
   @media (min-width: 1281px) {
     grid-template-columns: 50% 50%;
