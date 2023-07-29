@@ -42,12 +42,73 @@ const AddCafe = () => {
             className={classNames(styles.addCafeForm)}
             handleForm={handleAddCafe}
           >
-            <FormItem type={"text"} handleChange={handleChange} name="name" />
             <FormItem
               type={"text"}
               handleChange={handleChange}
-              name="address"
+              name={"name"}
+              text={"Name"}
             />
+            <FormItem
+              type={"text"}
+              handleChange={handleChange}
+              name={"street"}
+              text={"Street"}
+            />
+            <FormItem
+              type={"text"}
+              handleChange={handleChange}
+              name={"city"}
+              text={"City"}
+            />
+            <FormItem
+              type={"text"}
+              handleChange={handleChange}
+              name={"province"}
+              text={"Province"}
+            />
+            <FormItem
+              type={"text"}
+              handleChange={handleChange}
+              name={"postalCode"}
+              text={"Postal Code"}
+            />
+            <FormItem
+              type={"radio"}
+              handleChange={handleChange}
+              name={"numberOfTables"}
+              text={"0 - 5"}
+            />
+            <FormItem
+              type={"radio"}
+              handleChange={handleChange}
+              name={"numberOfTables"}
+              text={"6 - 10"}
+            />
+            <FormItem
+              type={"radio"}
+              handleChange={handleChange}
+              name={"numberOfTables"}
+              text={"10+"}
+            />
+            <FormItem
+              type={"radio"}
+              handleChange={handleChange}
+              name={"price"}
+              text={"Not expensive"}
+            />
+            <FormItem
+              type={"radio"}
+              handleChange={handleChange}
+              name={"price"}
+              text={"Somewhat expensive"}
+            />
+            <FormItem
+              type={"radio"}
+              handleChange={handleChange}
+              name={"price"}
+              text={"Expensive"}
+            />
+            {/* need to put number of tables options and price? */}
           </Form>
         </div>
       </div>
