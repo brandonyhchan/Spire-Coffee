@@ -15,6 +15,7 @@ type FormItemPropsType = {
   secondErrorMessage?: ReactNode;
   maxLength?: number;
   disabled?: boolean;
+  radio?: boolean;
 };
 
 const FormItem = ({
@@ -29,8 +30,9 @@ const FormItem = ({
   secondErrorMessage,
   maxLength,
   disabled,
+  radio,
 }: FormItemPropsType) => {
-  return (
+  return !radio ? (
     <div className={classNames(styles.formContainer)}>
       <Input
         type={type}
@@ -46,6 +48,20 @@ const FormItem = ({
       {errorMessage}
       {secondErrorMessage}
     </div>
+  ) : (
+    <React.Fragment>
+      <Input
+        type={type}
+        placeholder={placeholder}
+        name={name}
+        value={value}
+        onChange={handleChange}
+        onBlur={validateLoginInput}
+        maxLength={maxLength}
+        disabled={disabled}
+      />
+      <label>{text}</label>
+    </React.Fragment>
   );
 };
 

@@ -1,6 +1,4 @@
 .inputWrapper {
-  display: flex;
-  flex-direction: row;
   border-radius: 10px;
   width: 100%;
 }
@@ -42,7 +40,9 @@
   padding-top: 15px;
   & .editInputWrapper {
     width: 100%;
-    // padding-top: 15px;
+  }
+  & .inputWrapper {
+    width: 100%;
   }
   & span {
     margin-left: 5px;
@@ -86,7 +86,6 @@ input:valid + label {
   & label {
     display: none;
   }
-  // https://codepen.io/kod101/pen/gdjPaW
   & input:focus {
     border-color: var(--secondary);
     transition: 0.3s ease;
@@ -126,16 +125,7 @@ input:valid + label {
   height: 100%;
   width: 100%;
   & label {
-    top: -15px;
-    left: 10px;
-    color: var(--dark-grey);
-  }
-  & .editInputWrapper label {
-    top: -8px;
-  }
-  & .editInputWrapper span {
-    width: 100%;
-    text-align: start;
+    display: none;
   }
   & input:focus {
     border-color: var(--primary);
@@ -148,7 +138,6 @@ input:valid + label {
   & input:focus + label {
     color: var(--primary);
   }  
-
 }
 
 .signup {
@@ -171,7 +160,6 @@ input:valid + label {
     border-color: var(--primary);
     transition: 0.3s ease;
   }
-  // https://codepen.io/kod101/pen/gdjPaW
   & input:focus + label,
   input:valid + label {
     color: var(--primary);

@@ -87,6 +87,11 @@ const strings = new LocalizedStrings({
     addCafe: {
       title: "Add Cafe Page",
       helmet: "Add a Cafe",
+      name: "Cafe Name",
+      street: "Street Address",
+      city: "City",
+      province: "Province",
+      postalCode: "Postal Code",
     },
     faq: {
       title: "FAQ Page",

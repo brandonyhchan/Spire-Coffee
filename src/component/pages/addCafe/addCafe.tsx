@@ -68,83 +68,95 @@ const AddCafe = () => {
   return (
     <React.Fragment>
       <Helmet title={strings.addCafe.helmet} />
+      <NavBar />
       <div className={classNames(styles.container)}>
-        <NavBar />
-        <div className={classNames(styles.addCafe)}>
-          <Form
-            className={classNames(styles.addCafeForm)}
-            handleForm={handleAddCafe}
-            formType={"addCafe"}
-          >
-            <FormItem
-              type={"text"}
-              handleChange={handleChange}
-              name={"name"}
-              text={"Name"}
-            />
-            <FormItem
-              type={"text"}
-              handleChange={handleChange}
-              name={"street"}
-              text={"Street"}
-            />
-            <FormItem
-              type={"text"}
-              handleChange={handleChange}
-              name={"city"}
-              text={"City"}
-            />
-            <FormItem
-              type={"text"}
-              handleChange={handleChange}
-              name={"province"}
-              text={"Province"}
-            />
-            <FormItem
-              type={"text"}
-              handleChange={handleChange}
-              name={"postalCode"}
-              text={"Postal Code"}
-            />
-            <FormItem
-              type={"radio"}
-              handleChange={() => setTableOption(SelectOptions.LOW)}
-              name={"numberOfTables"}
-              text={"0 - 5"}
-            />
+        <Form
+          className={classNames(styles.addCafeForm)}
+          handleForm={handleAddCafe}
+          formType={"addCafe"}
+        >
+          <FormItem
+            type={"text"}
+            handleChange={handleChange}
+            name={"name"}
+            text={strings.addCafe.name}
+            placeholder={strings.addCafe.name}
+          />
+          <FormItem
+            type={"text"}
+            handleChange={handleChange}
+            name={"street"}
+            text={strings.addCafe.street}
+            placeholder={strings.addCafe.street}
+          />
+          <FormItem
+            type={"text"}
+            handleChange={handleChange}
+            name={"city"}
+            text={strings.addCafe.city}
+            placeholder={strings.addCafe.city}
+          />
+          <FormItem // I think this could be changed to a drop down?
+            type={"text"}
+            handleChange={handleChange}
+            name={"province"}
+            text={strings.addCafe.province}
+            placeholder={strings.addCafe.province}
+          />
+          <FormItem
+            type={"text"}
+            handleChange={handleChange}
+            name={"postalCode"}
+            text={strings.addCafe.postalCode}
+            placeholder={strings.addCafe.postalCode}
+          />
+          <div className={classNames(styles.radioButtons)}>
             <FormItem
               type={"radio"}
               handleChange={() => setTableOption(SelectOptions.MEDIUM)}
               name={"numberOfTables"}
-              text={"6 - 10"}
+              text={"Has 0 - 5 tables"}
+              radio={true}
             />
-            <FormItem
-              type={"radio"}
-              handleChange={() => setTableOption(SelectOptions.HIGH)}
-              name={"numberOfTables"}
-              text={"10+"}
-            />
-            <FormItem
-              type={"radio"}
-              handleChange={() => setPriceOption(SelectOptions.LOW)}
-              name={"price"}
-              text={"Not expensive"}
-            />
-            <FormItem
-              type={"radio"}
-              handleChange={() => setPriceOption(SelectOptions.MEDIUM)}
-              name={"price"}
-              text={"Somewhat expensive"}
-            />
-            <FormItem
-              type={"radio"}
-              handleChange={() => setPriceOption(SelectOptions.HIGH)}
-              name={"price"}
-              text={"Expensive"}
-            />
-            {/* need to put number of tables options and price? */}
-          </Form>
-        </div>
+          </div>
+          {/* <FormItem
+            type={"radio"}
+            handleChange={() => setTableOption(SelectOptions.LOW)}
+            name={"numberOfTables"}
+            text={"0 - 5"}
+          />
+          <FormItem
+            type={"radio"}
+            handleChange={() => setTableOption(SelectOptions.MEDIUM)}
+            name={"numberOfTables"}
+            text={"6 - 10"}
+          />
+          <FormItem
+            type={"radio"}
+            handleChange={() => setTableOption(SelectOptions.HIGH)}
+            name={"numberOfTables"}
+            text={"10+"}
+          />
+          <FormItem
+            type={"radio"}
+            handleChange={() => setPriceOption(SelectOptions.LOW)}
+            name={"price"}
+            text={"Not expensive"}
+          />
+          <FormItem
+            type={"radio"}
+            handleChange={() => setPriceOption(SelectOptions.MEDIUM)}
+            name={"price"}
+            text={"Somewhat expensive"}
+          />
+          <FormItem
+            type={"radio"}
+            handleChange={() => setPriceOption(SelectOptions.HIGH)}
+            name={"price"}
+            text={"Expensive"}
+          /> */}
+          {/* need to put number of tables options and price? */}
+        </Form>
       </div>
     </React.Fragment>
   );
