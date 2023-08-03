@@ -112,7 +112,6 @@ $border: solid 3px var(--light-grey);
     border: none;
     padding: $padding * 2;
     margin-left: $padding;
-    height: auto;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
   }
@@ -130,14 +129,6 @@ $border: solid 3px var(--light-grey);
       gap: 100px;
     }
 
-    & p {
-      font-size: var(--large-font);
-
-      @media (min-width: 1280px) {
-        font-size: var(--large-font);
-      }
-    }
-
     & .cafePriceLabel {
       display: flex;
       flex-direction: row;
@@ -146,12 +137,18 @@ $border: solid 3px var(--light-grey);
     & .labelContainer {
       & label {
         @media (min-width: 1280px) {
+          font-size: var(--medium-font);
+        }
+        @media (min-width: 2000px) {
           font-size: var(--large-font);
         }
       }
 
       & a {
         @media (min-width: 1280px) {
+          font-size: var(--medium-font);
+        }
+        @media (min-width: 2000px) {
           font-size: var(--large-font);
         }
       }
