@@ -7,7 +7,7 @@
     height: 220px;
   }
   @media (min-width: 1281px) {
-    height: 550px;
+    height: var(--cafe-page-laptop);
   }
   & img {
     object-fit: cover;
