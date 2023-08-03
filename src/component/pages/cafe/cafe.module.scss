@@ -20,7 +20,7 @@ $border: solid 3px var(--light-grey);
   grid-template-columns: 100%;
   grid-template-rows: var(--title-medium) repeat(4, max-content);
   font-family: "Figtree-Regular";
-  font-size: var(--medium-font);
+  font-size: var(--small-font);
   color: var(--dark-grey);
   overflow-x: hidden;
   row-gap: $padding;
@@ -30,6 +30,7 @@ $border: solid 3px var(--light-grey);
   @media (min-width: 1281px) {
     grid-template-columns: 50% 50%;
     grid-template-rows: var(--title-large) max-content max-content;
+    font-size: var(--large-font);
   }
 
   @media (min-width: 540px) and (max-width: 819px) {
@@ -131,9 +132,9 @@ $border: solid 3px var(--light-grey);
     }
 
     & p {
-      font-size: var(--large-font);
+      font-size: var(--small-font);
 
-      @media (min-width: 1280px) {
+      @media (min-width: 1281px) {
         font-size: var(--large-font);
       }
     }
@@ -145,13 +146,13 @@ $border: solid 3px var(--light-grey);
 
     & .labelContainer {
       & label {
-        @media (min-width: 1280px) {
+        @media (min-width: 1281px) {
           font-size: var(--large-font);
         }
       }
 
       & a {
-        @media (min-width: 1280px) {
+        @media (min-width: 1281px) {
           font-size: var(--large-font);
         }
       }

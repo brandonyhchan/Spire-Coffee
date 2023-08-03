@@ -30,7 +30,7 @@ const SearchBar: React.FC<SearchBarProps> = ({
           onFocus={handleQuery}
           value={query}
         />
-        {!showCloseButton ? null : (
+        {!showCloseButton || query.length <= 0 ? null : (
           <div className={classNames(styles.clearButtonContainer)}>
             <CloseRoundedIcon
               className={classNames(styles.clearButton)}
