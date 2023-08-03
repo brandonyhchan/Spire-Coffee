@@ -9,6 +9,9 @@
   @media (min-width: 1281px) {
     height: var(--cafe-page-laptop);
   }
+  @media (min-width: 2000px) {
+    height: auto;
+  }
   & img {
     object-fit: cover;
     width: 100%;
