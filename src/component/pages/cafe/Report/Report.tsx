@@ -69,7 +69,7 @@ const Report = ({ cafe }: ReportPropsType) => {
 
   return (
     <div className={classNames(styles.reportWrapper)}>
-      <span>{strings.cafe.reportText}</span>
+      <label>{strings.cafe.reportText}</label>
       {showUserReport && (
         <div className={classNames(styles.reportWrapper)}>
           <div className={classNames(styles.userReportContainer)}>

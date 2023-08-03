@@ -1,17 +1,6 @@
 $padding: 20px;
 $border: solid 3px var(--light-grey);
 
-// //TODO: style map container
-.mapContainer {
-  height: 500px;
-
-  @media (min-width: 1281px) {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    height: 700px;
-  }
-}
-
 .container {
   $mobile_bottom: $padding + 65px;
   display: grid;
@@ -232,4 +221,16 @@ $border: solid 3px var(--light-grey);
 .leftSection,
 .rightSection {
   height: 100%;
+}
+
+.mapContainer {
+  height: 500px;
+  @media (min-width: 1281px) {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    height: 600px;
+  }
+  @media (min-width: 2000px) {
+    height: 700px;
+  }
 }
