@@ -9,7 +9,7 @@ type FormPropsType = {
   children: JSX.Element[];
   className?: string;
   buttonGroup?: JSX.Element;
-  formType?: "login" | "signup" | "account";
+  formType?: "login" | "signup" | "account" | "addCafe";
 };
 
 const Form = ({

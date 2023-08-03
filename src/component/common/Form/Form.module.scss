@@ -119,6 +119,38 @@ input:valid + label {
   }
 }
 
+.addCafe {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  height: 100%;
+  width: 100%;
+  & label {
+    top: -15px;
+    left: 10px;
+    color: var(--dark-grey);
+  }
+  & .editInputWrapper label {
+    top: -8px;
+  }
+  & .editInputWrapper span {
+    width: 100%;
+    text-align: start;
+  }
+  & input:focus {
+    border-color: var(--primary);
+    transition: 0.3s ease;
+  }
+  & input:focus + label,
+  input:valid + label {
+    color: var(--primary);
+  }
+  & input:focus + label {
+    color: var(--primary);
+  }  
+
+}
+
 .signup {
   position: relative;
   & input, span {

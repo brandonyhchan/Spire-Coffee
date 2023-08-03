@@ -7,3 +7,10 @@
 .addCafe {
     flex: 1;
 }
+
+.addCafeForm {
+    display: flex;
+    flex-direction: column;
+    border: solid;
+    margin: 50px;
+}

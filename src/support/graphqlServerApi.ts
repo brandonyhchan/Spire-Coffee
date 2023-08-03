@@ -89,6 +89,17 @@ export const getCafeInfo = gql`
   }
 `;
 
+export const cafeMutation = gql`
+  query addCafe($name: String!) {
+    addCafe(name: $name) {
+      cafe {
+        id
+        name
+      }
+    }
+  }
+`;
+
 export const getUserInfo = gql`
   query getUserInfo($userName: String!) {
     getUserInfo(userName: $userName) {
