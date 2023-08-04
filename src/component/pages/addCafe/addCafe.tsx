@@ -110,51 +110,48 @@ const AddCafe = () => {
             text={strings.addCafe.postalCode}
             placeholder={strings.addCafe.postalCode}
           />
-          <div className={classNames(styles.radioButtons)}>
-            <FormItem
-              type={"radio"}
-              handleChange={() => setTableOption(SelectOptions.MEDIUM)}
-              name={"numberOfTables"}
-              text={"Has 0 - 5 tables"}
-              radio={true}
-            />
-          </div>
-          {/* <FormItem
+          <FormItem
             type={"radio"}
             handleChange={() => setTableOption(SelectOptions.LOW)}
             name={"numberOfTables"}
-            text={"0 - 5"}
+            text={strings.list.amenities1}
+            radio={true}
           />
           <FormItem
             type={"radio"}
             handleChange={() => setTableOption(SelectOptions.MEDIUM)}
             name={"numberOfTables"}
-            text={"6 - 10"}
+            text={strings.list.amenities2}
+            radio={true}
           />
           <FormItem
             type={"radio"}
             handleChange={() => setTableOption(SelectOptions.HIGH)}
             name={"numberOfTables"}
-            text={"10+"}
+            text={strings.list.amenities3}
+            radio={true}
           />
           <FormItem
             type={"radio"}
             handleChange={() => setPriceOption(SelectOptions.LOW)}
             name={"price"}
-            text={"Not expensive"}
+            text={strings.list.price1}
+            radio={true}
           />
           <FormItem
             type={"radio"}
             handleChange={() => setPriceOption(SelectOptions.MEDIUM)}
             name={"price"}
-            text={"Somewhat expensive"}
+            text={strings.list.price2}
+            radio={true}
           />
           <FormItem
             type={"radio"}
             handleChange={() => setPriceOption(SelectOptions.HIGH)}
             name={"price"}
-            text={"Expensive"}
-          /> */}
+            text={strings.list.price3}
+            radio={true}
+          />
           {/* need to put number of tables options and price? */}
         </Form>
       </div>

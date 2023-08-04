@@ -3,6 +3,14 @@
   width: 100%;
 }
 
+input:focus + label {
+  display: block;
+  position: absolute;
+  font-weight: bold;
+  top: -8px;
+  left: 10px;
+}
+
 .editInputWrapper {
   display: flex;
   flex-direction: column;
@@ -26,7 +34,7 @@
 .formContainer {
   display: flex;
   flex-direction: column;
-  font-family: 'Figtree-Regular';
+  font-family: "Figtree-Regular";
   font-size: var(--large-font);
   & label {
     display: block;
@@ -62,15 +70,6 @@
   & input:focus::placeholder {
     color: transparent;
   }
-}
-
-input:focus + label,
-input:valid + label {
-  display: block;
-  position: absolute;
-  font-weight: bold;
-  top: -8px;
-  left: 10px;
 }
 
 .login {
@@ -137,12 +136,13 @@ input:valid + label {
   }
   & input:focus + label {
     color: var(--primary);
-  }  
+  }
 }
 
 .signup {
   position: relative;
-  & input, span {
+  & input,
+  span {
     @media (max-width: 414px) {
       width: 300px;
     }
@@ -166,9 +166,33 @@ input:valid + label {
   }
   & input:focus + label {
     color: var(--primary);
-  }  
+  }
 }
 
 .buttonContainer {
   padding: 15px 0;
+}
+
+.radioButton {
+  display: flex;
+  flex-direction: row;
+  & input {
+    width: 20px;
+  }
+  & label {
+    display: block;
+    font-family: "Figtree-Regular" !important;
+    color: var(--primary) !important;
+    font-size: var(--large-font);
+    margin-left: 10px !important;
+    margin-top: 12px !important;
+  }
+  input:checked + label,
+  input:focus + label {
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    left: 20px !important;
+    top: 15px !important;
+  }
 }

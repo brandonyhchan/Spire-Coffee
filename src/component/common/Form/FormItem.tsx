@@ -49,7 +49,7 @@ const FormItem = ({
       {secondErrorMessage}
     </div>
   ) : (
-    <React.Fragment>
+    <div className={classNames(styles.radioButton)}>
       <Input
         type={type}
         placeholder={placeholder}
@@ -61,7 +61,7 @@ const FormItem = ({
         disabled={disabled}
       />
       <label>{text}</label>
-    </React.Fragment>
+    </div>
   );
 };
 
