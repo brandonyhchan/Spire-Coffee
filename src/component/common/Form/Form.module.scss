@@ -42,6 +42,13 @@ input:focus + label {
     font-weight: bold;
     background: #fff;
   }
+  & input:valid + label {
+    display: block;
+    position: absolute;
+    font-weight: bold;
+    top: -8px;
+    left: 10px;
+  }
 }
 
 .formSectionContainer {
