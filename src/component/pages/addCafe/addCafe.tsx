@@ -39,6 +39,8 @@ const AddCafe = () => {
     city: "",
     province: "",
     postalCode: "",
+    phoneNumber: "",
+    website: "",
   });
 
   const handleAddCafe = (event: React.FormEvent<HTMLFormElement>) => {
@@ -50,6 +52,8 @@ const AddCafe = () => {
         city: cafeInfo.city,
         province: cafeInfo.province,
         postalCode: cafeInfo.postalCode,
+        phoneNumber: cafeInfo.phoneNumber,
+        website: cafeInfo.website,
         numTables: tableOption,
         price: priceOption,
       },
@@ -75,6 +79,8 @@ const AddCafe = () => {
           handleForm={handleAddCafe}
           formType={"addCafe"}
         >
+          {/* change to Label component after merge from branch 17*/}
+          <span>Please fill out basic information about the cafe:</span>
           <FormItem
             type={"text"}
             handleChange={handleChange}
@@ -111,6 +117,22 @@ const AddCafe = () => {
             placeholder={strings.addCafe.postalCode}
           />
           <FormItem
+            type={"text"}
+            handleChange={handleChange}
+            name={"phoneNumber"}
+            text={strings.addCafe.phoneNumber}
+            placeholder={strings.addCafe.phoneNumber}
+          />
+          <FormItem
+            type={"text"}
+            handleChange={handleChange}
+            name={"website"}
+            text={strings.addCafe.website}
+            placeholder={strings.addCafe.website}
+          />
+          {/* change to Label component after merge from branch 17*/}
+          <span>Does the cafe have tables?</span>
+          <FormItem
             type={"radio"}
             handleChange={() => setTableOption(SelectOptions.LOW)}
             name={"numberOfTables"}
@@ -131,25 +153,27 @@ const AddCafe = () => {
             text={strings.list.amenities3}
             radio={true}
           />
+          {/* change to Label component after merge from branch 17*/}
+          <span>How expensive is the cafe?</span>
           <FormItem
             type={"radio"}
             handleChange={() => setPriceOption(SelectOptions.LOW)}
             name={"price"}
-            text={strings.list.price1}
+            text={strings.list.price4}
             radio={true}
           />
           <FormItem
             type={"radio"}
             handleChange={() => setPriceOption(SelectOptions.MEDIUM)}
             name={"price"}
-            text={strings.list.price2}
+            text={strings.list.price5}
             radio={true}
           />
           <FormItem
             type={"radio"}
             handleChange={() => setPriceOption(SelectOptions.HIGH)}
             name={"price"}
-            text={strings.list.price3}
+            text={strings.list.price6}
             radio={true}
           />
           {/* need to put number of tables options and price? */}

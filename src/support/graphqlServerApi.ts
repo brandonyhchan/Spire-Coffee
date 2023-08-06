@@ -90,11 +90,38 @@ export const getCafeInfo = gql`
 `;
 
 export const cafeMutation = gql`
-  query addCafe($name: String!) {
-    addCafe(name: $name) {
+  query addCafe(
+    $stringId: String!
+    $name: String!
+    $street: String!
+    $city: String!
+    $province: String!
+    $phoneNumber: String!
+    $website: String!
+    $numTables: String!
+    $price: String!
+  ) {
+    addCafe(
+      stringId: $stringId
+      name: $name
+      street: $street
+      city: $city
+      province: $province
+      phoneNumber: $phoneNumber
+      website: $website
+      numTables: $numTables
+      price: $price
+    ) {
       cafe {
         id
         name
+        street
+        city
+        province
+        phoneNumber
+        website
+        numTables
+        price
       }
     }
   }

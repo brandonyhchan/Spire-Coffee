@@ -92,6 +92,8 @@ const strings = new LocalizedStrings({
       city: "City",
       province: "Province",
       postalCode: "Postal Code",
+      phoneNumber: "Phone Number",
+      website: "Website",
     },
     faq: {
       title: "FAQ Page",
@@ -119,6 +121,9 @@ const strings = new LocalizedStrings({
       price1: "$",
       price2: "$$",
       price3: "$$$",
+      price4: "Not too expensive",
+      price5: "A little expensive",
+      price6: "Very expensive",
       amenities1: "Has 0 - 5 tables",
       amenities2: "Has 6 - 10 tables",
       amenities3: "Has 11+ tables",
