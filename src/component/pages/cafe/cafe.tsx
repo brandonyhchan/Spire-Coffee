@@ -35,7 +35,7 @@ const CafePage = () => {
 
   const [cafe, setCafe] = useState<Cafe>();
 
-  const apiEndpoint = `https://www.google.com/maps/embed/v1/place?key=${
+  const mapURL = `https://www.google.com/maps/embed/v1/place?key=${
     process.env.REACT_APP_GOOGLE_API_KEY
   }&q=${nameFormat(cafe?.name)}+${mapsAddress(cafe?.street, cafe?.city)}`;
 
@@ -58,13 +58,12 @@ const CafePage = () => {
   });
 
   function nameFormat(name: string | undefined) {
-    return name?.replaceAll(" ", "+").replaceAll("'", "");
+    return name?.replaceAll(" ", "+").replaceAll("&", "and");
   }
 
   function mapsAddress(address: string | undefined, city: string | undefined) {
     return `${address?.replaceAll(" ", "+")},${city}`;
   }
-  console.log(cafe);
 
   function renderWebsite() {
     if (cafe?.website) {
@@ -75,12 +74,12 @@ const CafePage = () => {
             otherIcon={Icons.redirect}
             text={cafe?.website}
             anchorTag={true}
-            link={`https://${cafe?.website}`}
+            link={`https://${cafe.website}`}
           />
         </div>
       );
     }
-    return <Label text={strings.cafe.noWebsite} />;
+    return <Label icon={Icons.globe} text={strings.cafe.noWebsite} />;
   }
 
   return (
@@ -168,7 +167,7 @@ const CafePage = () => {
                     height="100%"
                     style={{ border: 0 }}
                     referrerPolicy="no-referrer-when-downgrade"
-                    src={apiEndpoint}
+                    src={mapURL}
                     allowFullScreen={true}
                   />
                 }
