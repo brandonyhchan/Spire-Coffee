@@ -64,12 +64,12 @@ const Login = () => {
       switch (name) {
         case "username":
           if (!value) {
-            stateObj[name] = strings.login.errorMessage.username;
+            stateObj[name] = strings.login.error.username;
           }
           break;
         case "password":
           if (!value) {
-            stateObj[name] = strings.login.errorMessage.password;
+            stateObj[name] = strings.login.error.password;
           } else {
             stateObj["password"] = loginInfo.password
               ? ""
@@ -124,7 +124,7 @@ const Login = () => {
             </form>
             {loginError && (
               <span className={classNames(styles.errorMessage)}>
-                {strings.login.errorMessage.invalid}
+                {strings.login.error.invalid}
               </span>
             )}
             <Button

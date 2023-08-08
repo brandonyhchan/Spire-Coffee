@@ -182,7 +182,7 @@ const Explore = () => {
                 <div className={classNames(styles.cafeCardWrapper)}>
                   {error && (
                     <span className={classNames(styles.cafeErrorMessage)}>
-                      {strings.explore.errorMessage}
+                      {strings.explore.error}
                     </span>
                   )}
                   {cafes.length === 0 ? (
