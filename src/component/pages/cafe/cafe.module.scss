@@ -45,6 +45,14 @@ $border: solid 3px var(--light-grey);
   @media (min-width: 2241px) {
     padding: $padding 400px;
   }
+
+  @media (min-width: 2341px) {
+    padding: $padding 500px;
+  }
+
+  @media (min-width: 2441px) {
+    padding: $padding 600px;
+  }
 }
 
 .cafeTitle {
@@ -95,15 +103,21 @@ $border: solid 3px var(--light-grey);
   border-color: grey;
   border-top: $border;
   border-bottom: $border;
+  width: 500px;
 
   @media (min-width: 1281px) {
     grid-row-start: 2;
     grid-row-end: 4;
     border: none;
     padding: $padding * 2;
-    margin-left: $padding;
+    margin-left: $padding * 2;
     border-radius: 10px;
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px; //https://getcssscan.com/css-box-shadow-examples
+  }
+
+  @media (min-width: 1800px) {
+    margin-left: $padding * 4;
+    width: 600px;
   }
 
   & .cafeDetails {
@@ -117,6 +131,10 @@ $border: solid 3px var(--light-grey);
     @media (min-width: 768px) and (max-width: 1280px) {
       flex-direction: row;
       gap: 100px;
+    }
+
+    @media (min-width: 1800px) {
+      margin-left: 50px;
     }
 
     & p {
@@ -154,8 +172,10 @@ $border: solid 3px var(--light-grey);
       & svg {
         margin-top: 0px;
         margin-right: 10px;
-        @media (min-width: 1281px) {
+        @media (min-width: 2000px) {
           margin-top: 5px;
+          transform: scale(1.3);
+          margin-right: 20px;
         }
       }
     }
@@ -170,7 +190,16 @@ $border: solid 3px var(--light-grey);
       flex-direction: column;
       text-align: start;
       & label {
-        width: 150px;
+        width: 125px;
+        @media (min-width: 870px) {
+          width: 150px;
+        }
+        @media (min-width: 1281px) {
+          width: 190px;
+        }
+        @media (min-width: 1600px) {
+          width: 220px;
+        }
       }
     }
   }
@@ -178,17 +207,13 @@ $border: solid 3px var(--light-grey);
   & .businessHoursContainer {
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width: 300px;
-
     @media (min-width: 1281px) {
-      width: 350px;
-    }
-
-    & label {
-      margin-left: 50px;
+      width: 500px;
     }
   }
+}
+.businessLabelWrapper {
+  margin-left: 50px;
 }
 
 .websiteLink {
@@ -196,10 +221,7 @@ $border: solid 3px var(--light-grey);
   flex-direction: row;
   text-decoration: none;
   color: var(--dark-grey);
-
-  & label {
-    margin-right: 8px;
-  }
+  gap: 5px;
 }
 
 .labelContainer {
@@ -225,7 +247,6 @@ $border: solid 3px var(--light-grey);
 .leftSection,
 .rightSection {
   height: 100%;
-  width: 100%;
 }
 
 .mapContainer {

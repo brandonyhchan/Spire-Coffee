@@ -111,7 +111,7 @@ const CafePage = () => {
                       icon={Icons.clock}
                       text={strings.cafe.businessHours}
                     />
-                    <div>
+                    <div className={classNames(styles.businessLabelWrapper)}>
                       {businessHours.map((hours, index) => (
                         <div
                           key={index}
