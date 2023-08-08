@@ -168,6 +168,10 @@ $border: solid 3px var(--light-grey);
     & .businessLabelContainer {
       display: flex;
       flex-direction: column;
+      text-align: start;
+      & label {
+        width: 150px;
+      }
     }
   }
 
@@ -221,6 +225,7 @@ $border: solid 3px var(--light-grey);
 .leftSection,
 .rightSection {
   height: 100%;
+  width: 100%;
 }
 
 .mapContainer {

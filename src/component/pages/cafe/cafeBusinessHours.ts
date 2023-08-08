@@ -1,27 +1,27 @@
 export const businessHours = [
   {
     weekday: "Monday: ",
-    hours: "8AM - 5PM",
+    hours: "10AM - 11PM",
   },
   {
     weekday: "Tuesday: ",
-    hours: "8AM - 5PM",
+    hours: "10AM - 11PM",
   },
   {
     weekday: "Wednesday: ",
-    hours: "8AM - 5PM",
+    hours: "10AM - 11PM",
   },
   {
     weekday: "Thursday: ",
-    hours: "8AM - 5PM",
+    hours: "10AM - 11PM",
   },
   {
     weekday: "Friday: ",
-    hours: "8AM - 5PM",
+    hours: "10AM - 11PM",
   },
   {
     weekday: "Saturday: ",
-    hours: "8AM - 5PM",
+    hours: "10AM - 11PM",
   },
   {
     weekday: "Sunday: ",
