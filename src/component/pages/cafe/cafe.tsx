@@ -34,7 +34,10 @@ const CafePage = () => {
   const token = localStorage.getItem("authToken");
 
   const [cafe, setCafe] = useState<Cafe>();
-  const [showCafeInfo, setShowCafeInfo] = useState<boolean>(false);
+
+  const apiEndpoint = `https://www.google.com/maps/embed/v1/place?key=${
+    process.env.REACT_APP_GOOGLE_API_KEY
+  }&q=${nameFormat(cafe?.name)}+${mapsAddress(cafe?.street, cafe?.city)}`;
 
   useEffect(() => {
     if (!token) {
@@ -47,8 +50,7 @@ const CafePage = () => {
       throw error;
     },
     onCompleted: (data) => {
-      setCafe(data?.getCafeInfo);
-      setShowCafeInfo(true);
+      setCafe(data.getCafeInfo);
     },
     variables: {
       stringId: cafeId,
@@ -56,17 +58,17 @@ const CafePage = () => {
   });
 
   function nameFormat(name: string | undefined) {
-    return name?.replaceAll(" ", "+");
+    return name?.replaceAll(" ", "+").replaceAll("'", "");
   }
 
   function mapsAddress(address: string | undefined, city: string | undefined) {
     return `${address?.replaceAll(" ", "+")},${city}`;
   }
+  console.log(cafe);
 
   function renderWebsite() {
     if (cafe?.website) {
       return (
-        //TODO: replace with tag from react-router
         <div className={classNames(styles.websiteLink)}>
           <Label
             icon={Icons.globe}
@@ -85,97 +87,96 @@ const CafePage = () => {
     <React.Fragment>
       <Helmet title={cafe?.name} />
       <Navbar />
-      {loading && (
+      {loading ? (
         <div className={classNames(styles.wrapper)}>
           <LoadingSpinner />
         </div>
-      )}
-      <div className={classNames(styles.container)}>
-        {showCafeInfo ? (
-          <React.Fragment>
-            <div className={classNames(styles.cafeTitle)}>
-              <h1>{cafe?.name}</h1>
-            </div>
-            <div className={classNames(styles.carouselContainer)}>
-              <ImageCarousel />
-            </div>
-            <div className={classNames(styles.infoContainer)}>
-              <div className={classNames(styles.cafeDetails)}>
-                <div className={classNames(styles.leftSection)}>
-                  <Label text={cafe?.street} />
-                  <Label
-                    text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
-                  />
-                  <div className={classNames(styles.businessLabelContainer)}>
+      ) : (
+        <div className={classNames(styles.container)}>
+          {cafe === null ? (
+            <span>{strings.cafe.error}</span>
+          ) : (
+            <React.Fragment>
+              <div className={classNames(styles.cafeTitle)}>
+                <h1>{cafe?.name}</h1>
+              </div>
+              <div className={classNames(styles.carouselContainer)}>
+                <ImageCarousel />
+              </div>
+              <div className={classNames(styles.infoContainer)}>
+                <div className={classNames(styles.cafeDetails)}>
+                  <div className={classNames(styles.leftSection)}>
+                    <Label text={cafe?.street} />
                     <Label
-                      icon={Icons.clock}
-                      text={strings.cafe.businessHours}
+                      text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
                     />
-                    <div>
-                      {businessHours.map((hours, index) => (
-                        <div
-                          key={index}
-                          className={classNames(styles.businessHoursContainer)}
-                        >
-                          <Label text={hours.weekday} />
-                          <Label text={hours.hours} />
-                        </div>
-                      ))}
+                    <div className={classNames(styles.businessLabelContainer)}>
+                      <Label
+                        icon={Icons.clock}
+                        text={strings.cafe.businessHours}
+                      />
+                      <div>
+                        {businessHours.map((hours, index) => (
+                          <div
+                            key={index}
+                            className={classNames(
+                              styles.businessHoursContainer
+                            )}
+                          >
+                            <Label text={hours.weekday} />
+                            <Label text={hours.hours} />
+                          </div>
+                        ))}
+                      </div>
                     </div>
+                    <Label
+                      icon={Icons.phone}
+                      text={cafe?.phoneNumber}
+                      secondaryText={strings.cafe.noPhoneNumber}
+                    />
+                    {renderWebsite()}
                   </div>
-                  <Label
-                    icon={Icons.phone}
-                    text={cafe?.phoneNumber}
-                    secondaryText={strings.cafe.noPhoneNumber}
-                  />
-                  {renderWebsite()}
-                </div>
-                <div className={classNames(styles.rightSection)}>
-                  <Label
-                    icon={renderBusyIcon(cafe?.busyness)}
-                    text={`${strings.cafe.busynessLabel}: ${renderBusyText(
-                      cafe?.busyness
-                    )}`}
-                  />
-                  <Label
-                    icon={renderNoiseIcon(cafe?.noisiness)}
-                    text={`${strings.cafe.noisinessLabel}: ${renderNoiseText(
-                      cafe?.noisiness
-                    )}`}
-                  />
-                  <Label
-                    icon={renderPrice()}
-                    text={`${strings.cafe.priceLabel}: ${renderPriceText(
-                      cafe?.price
-                    )}`}
-                  />
+                  <div className={classNames(styles.rightSection)}>
+                    <Label
+                      icon={renderBusyIcon(cafe?.busyness)}
+                      text={`${strings.cafe.busynessLabel}: ${renderBusyText(
+                        cafe?.busyness
+                      )}`}
+                    />
+                    <Label
+                      icon={renderNoiseIcon(cafe?.noisiness)}
+                      text={`${strings.cafe.noisinessLabel}: ${renderNoiseText(
+                        cafe?.noisiness
+                      )}`}
+                    />
+                    <Label
+                      icon={renderPrice()}
+                      text={`${strings.cafe.priceLabel}: ${renderPriceText(
+                        cafe?.price
+                      )}`}
+                    />
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className={classNames(styles.reportContainer)}>
-              <Report cafe={cafe} />
-            </div>
-            <div className={classNames(styles.mapContainer)}>
-              {
-                <iframe
-                  width="100%"
-                  height="100%"
-                  style={{ border: 0 }}
-                  referrerPolicy="no-referrer-when-downgrade"
-                  // eslint-disable-next-line max-len
-                  src={`https://www.google.com/maps/embed/v1/place?key=${
-                    process.env.REACT_APP_GOOGLE_API_KEY
-                  }&q=${nameFormat(cafe?.name)}+${mapsAddress(
-                    cafe?.street,
-                    cafe?.city
-                  )}`}
-                  allowFullScreen={true}
-                />
-              }
-            </div>
-          </React.Fragment>
-        ) : null}
-      </div>
+              <div className={classNames(styles.reportContainer)}>
+                <Report cafe={cafe} />
+              </div>
+              <div className={classNames(styles.mapContainer)}>
+                {
+                  <iframe
+                    width="100%"
+                    height="100%"
+                    style={{ border: 0 }}
+                    referrerPolicy="no-referrer-when-downgrade"
+                    src={apiEndpoint}
+                    allowFullScreen={true}
+                  />
+                }
+              </div>
+            </React.Fragment>
+          )}
+        </div>
+      )}
       <Footer />
       <MobileFooter />
     </React.Fragment>

@@ -37,7 +37,7 @@ const Report = ({ cafe }: ReportPropsType) => {
   const [updateCafe] = useMutation(cafeMutation, {
     onError: (error) => {
       alert(error);
-      console.log("Error updating cafe info."); // change this to require config/strings.ts later
+      console.log("Error updating cafe info.");
     },
   });
 

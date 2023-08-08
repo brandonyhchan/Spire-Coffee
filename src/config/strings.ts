@@ -14,7 +14,7 @@ const strings = new LocalizedStrings({
       helmet: "Login",
       usernameLabel: "Username",
       passwordLabel: "Password",
-      errorMessage: {
+      error: {
         invalid: "Username or password is incorrect",
         username: "Username is required",
         password: "Password is required",
@@ -30,7 +30,7 @@ const strings = new LocalizedStrings({
       emailLabel: "Email Address",
       passwordLabel: "Password",
       verifyPasswordLabel: "Confirm Password",
-      errorMessage: {
+      error: {
         username: "Length must be 5-15 characters, letters and '_' allowed",
         firstName: "First name is required",
         lastName: "Last name is required",
@@ -60,7 +60,7 @@ const strings = new LocalizedStrings({
         "No results found! Can't find the cafe you're looking for? ",
       seeMoreResults: "More Results",
       addCafe: "Add a cafe.",
-      errorMessage: "Oops! There was a loading error, please try again later.",
+      error: "Oops! There was a loading error, please try again later.",
       searchBarText: "Search...",
     },
     aboutUs: {
@@ -93,16 +93,16 @@ const strings = new LocalizedStrings({
     },
     list: {
       busyness1: "Not too busy",
-      busyness2: "A little busy",
+      busyness2: "Moderately busy",
       busyness3: "Very Busy",
       noisiness1: "Not too noisy",
-      noisiness2: "A little noisy",
+      noisiness2: "Moderately noisy",
       noisiness3: "Very noisy",
       price1: "$",
       price2: "$$",
       price3: "$$$",
       priceText1: "Not too expensive",
-      priceText2: "A little expensive",
+      priceText2: "Moderately expensive",
       priceText3: "Very expensive",
       amenities1: "Has outlets",
       amenities2: "Has tables",
@@ -114,7 +114,7 @@ const strings = new LocalizedStrings({
       priceLabel: "Price",
       cafeInformation: "Cafe Information",
       reportText:
-        "Is this cafe currently busy and noisy? Help us report it live!",
+        "What is the current status of the cafe? Help us report it live!",
       reportButton: "Report Status",
       submitReportButton: "Submit",
       cancelReportButton: "Cancel",
@@ -125,6 +125,7 @@ const strings = new LocalizedStrings({
       reportBusynessTitle: "Busyness",
       reportNoisinessTitle: "Noisiness",
       reportSubmitMessage: "Thank you! Your report has been submitted",
+      error: "Oops! Could not find this cafe",
     },
   },
 });

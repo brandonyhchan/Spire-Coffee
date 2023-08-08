@@ -123,7 +123,7 @@ const SignUp = () => {
                 />
                 <label>{strings.signUp.usernameLabel}</label>
                 {!usernameIsValid ? null : (
-                  <span>{strings.signUp.errorMessage.username}</span>
+                  <span>{strings.signUp.error.username}</span>
                 )}
               </div>
               <div className={classNames(styles.formItem)}>
@@ -142,7 +142,7 @@ const SignUp = () => {
                 />
                 <label>{strings.signUp.firstNameLabel}</label>
                 {!firstNameIsValid ? null : (
-                  <span>{strings.signUp.errorMessage.firstName}</span>
+                  <span>{strings.signUp.error.firstName}</span>
                 )}
               </div>
               <div className={classNames(styles.formItem)}>
@@ -161,7 +161,7 @@ const SignUp = () => {
                 />
                 <label>{strings.signUp.lastNameLabel}</label>
                 {!lastNameIsValid ? null : (
-                  <span>{strings.signUp.errorMessage.lastName}</span>
+                  <span>{strings.signUp.error.lastName}</span>
                 )}
               </div>
               <div className={classNames(styles.formItem)}>
@@ -179,7 +179,7 @@ const SignUp = () => {
                 />
                 <label>{strings.signUp.emailLabel}</label>
                 {!emailIsValid ? null : (
-                  <span>{strings.signUp.errorMessage.email}</span>
+                  <span>{strings.signUp.error.email}</span>
                 )}
               </div>
               <div className={classNames(styles.formItem)}>
@@ -198,8 +198,8 @@ const SignUp = () => {
                 <label>{strings.signUp.passwordLabel}</label>
                 {!passwordIsValid ? null : (
                   <>
-                    <span>{strings.signUp.errorMessage.password}</span>
-                    <span>{strings.signUp.errorMessage.passwordChar}</span>
+                    <span>{strings.signUp.error.password}</span>
+                    <span>{strings.signUp.error.passwordChar}</span>
                   </>
                 )}
               </div>
@@ -214,15 +214,15 @@ const SignUp = () => {
                 />
                 <label>{strings.signUp.verifyPasswordLabel}</label>
                 {!passwordRequired ? null : (
-                  <span>{strings.signUp.errorMessage.confPassword}</span>
+                  <span>{strings.signUp.error.confPassword}</span>
                 )}
                 {!passwordMatch ? null : (
-                  <span>{strings.signUp.errorMessage.passwordMatch}</span>
+                  <span>{strings.signUp.error.passwordMatch}</span>
                 )}
               </div>
               {signUpErrorMessage && (
                 <span className={classNames(styles.errorMessage)}>
-                  {strings.signUp.errorMessage.message}
+                  {strings.signUp.error.message}
                 </span>
               )}
               <Button
