@@ -86,96 +86,101 @@ const CafePage = () => {
     <React.Fragment>
       <Helmet title={cafe?.name} />
       <Navbar />
-      {loading ? (
-        <div className={classNames(styles.wrapper)}>
-          <LoadingSpinner />
-        </div>
-      ) : (
-        <div className={classNames(styles.container)}>
-          {cafe === null ? (
-            <span>{strings.cafe.error}</span>
-          ) : (
-            <React.Fragment>
-              <div className={classNames(styles.cafeTitle)}>
-                <h1>{cafe?.name}</h1>
-              </div>
-              <div className={classNames(styles.carouselContainer)}>
-                <ImageCarousel />
-              </div>
-              <div className={classNames(styles.infoContainer)}>
-                <div className={classNames(styles.cafeDetails)}>
-                  <div className={classNames(styles.leftSection)}>
-                    <Label text={cafe?.street} />
-                    <Label
-                      text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
-                    />
-                    <div className={classNames(styles.businessLabelContainer)}>
+
+      <div className={classNames(styles.container)}>
+        {loading ? (
+          <div className={classNames(styles.wrapper)}>
+            <LoadingSpinner />
+          </div>
+        ) : (
+          <React.Fragment>
+            {cafe === null ? (
+              <span>{strings.cafe.error}</span>
+            ) : (
+              <React.Fragment>
+                <div className={classNames(styles.cafeTitle)}>
+                  <h1>{cafe?.name}</h1>
+                </div>
+                <div className={classNames(styles.carouselContainer)}>
+                  <ImageCarousel />
+                </div>
+                <div className={classNames(styles.infoContainer)}>
+                  <div className={classNames(styles.cafeDetails)}>
+                    <div className={classNames(styles.leftSection)}>
+                      <Label text={cafe?.street} />
                       <Label
-                        icon={Icons.clock}
-                        text={strings.cafe.businessHours}
+                        text={`${cafe?.city}, ${cafe?.province} ${cafe?.postalCode}`}
                       />
-                      <div>
-                        {businessHours.map((hours, index) => (
-                          <div
-                            key={index}
-                            className={classNames(
-                              styles.businessHoursContainer
-                            )}
-                          >
-                            <Label text={hours.weekday} />
-                            <Label text={hours.hours} />
-                          </div>
-                        ))}
+                      <div
+                        className={classNames(styles.businessLabelContainer)}
+                      >
+                        <Label
+                          icon={Icons.clock}
+                          text={strings.cafe.businessHours}
+                        />
+                        <div>
+                          {businessHours.map((hours, index) => (
+                            <div
+                              key={index}
+                              className={classNames(
+                                styles.businessHoursContainer
+                              )}
+                            >
+                              <Label text={hours.weekday} />
+                              <Label text={hours.hours} />
+                            </div>
+                          ))}
+                        </div>
                       </div>
+                      <Label
+                        icon={Icons.phone}
+                        text={cafe?.phoneNumber}
+                        secondaryText={strings.cafe.noPhoneNumber}
+                      />
+                      {renderWebsite()}
                     </div>
-                    <Label
-                      icon={Icons.phone}
-                      text={cafe?.phoneNumber}
-                      secondaryText={strings.cafe.noPhoneNumber}
-                    />
-                    {renderWebsite()}
-                  </div>
-                  <div className={classNames(styles.rightSection)}>
-                    <Label
-                      icon={renderBusyIcon(cafe?.busyness)}
-                      text={`${strings.cafe.busynessLabel}: ${renderBusyText(
-                        cafe?.busyness
-                      )}`}
-                    />
-                    <Label
-                      icon={renderNoiseIcon(cafe?.noisiness)}
-                      text={`${strings.cafe.noisinessLabel}: ${renderNoiseText(
-                        cafe?.noisiness
-                      )}`}
-                    />
-                    <Label
-                      icon={renderPrice()}
-                      text={`${strings.cafe.priceLabel}: ${renderPriceText(
-                        cafe?.price
-                      )}`}
-                    />
+                    <div className={classNames(styles.rightSection)}>
+                      <Label
+                        icon={renderBusyIcon(cafe?.busyness)}
+                        text={`${strings.cafe.busynessLabel}: ${renderBusyText(
+                          cafe?.busyness
+                        )}`}
+                      />
+                      <Label
+                        icon={renderNoiseIcon(cafe?.noisiness)}
+                        text={`${
+                          strings.cafe.noisinessLabel
+                        }: ${renderNoiseText(cafe?.noisiness)}`}
+                      />
+                      <Label
+                        icon={renderPrice()}
+                        text={`${strings.cafe.priceLabel}: ${renderPriceText(
+                          cafe?.price
+                        )}`}
+                      />
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className={classNames(styles.reportContainer)}>
-                <Report cafe={cafe} />
-              </div>
-              <div className={classNames(styles.mapContainer)}>
-                {
-                  <iframe
-                    width="100%"
-                    height="100%"
-                    style={{ border: 0 }}
-                    referrerPolicy="no-referrer-when-downgrade"
-                    src={mapURL}
-                    allowFullScreen={true}
-                  />
-                }
-              </div>
-            </React.Fragment>
-          )}
-        </div>
-      )}
+                <div className={classNames(styles.reportContainer)}>
+                  <Report cafe={cafe} />
+                </div>
+                <div className={classNames(styles.mapContainer)}>
+                  {
+                    <iframe
+                      width="100%"
+                      height="100%"
+                      style={{ border: 0 }}
+                      referrerPolicy="no-referrer-when-downgrade"
+                      src={mapURL}
+                      allowFullScreen={true}
+                    />
+                  }
+                </div>
+              </React.Fragment>
+            )}
+          </React.Fragment>
+        )}
+      </div>
       <Footer />
       <MobileFooter />
     </React.Fragment>
