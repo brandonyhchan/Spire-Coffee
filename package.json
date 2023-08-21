@@ -22,6 +22,7 @@
     "bootstrap": "^5.2.3",
     "bootstrap-icons": "^1.10.3",
     "classnames": "^2.3.2",
+    "email-validator": "^2.0.4",
     "express": "^4.18.2",
     "fs": "^0.0.1-security",
     "graphql": "^16.6.0",
@@ -57,9 +58,9 @@
     ]
   },
   "lint-staged": {
-        "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
-        "src/**/*.{js,jsx,ts,tsx,css,scss,md}": "prettier --write --ignore-unknown"
-    },
+    "src/**/*.{js,jsx,ts,tsx}": "eslint --cache --fix",
+    "src/**/*.{js,jsx,ts,tsx,css,scss,md}": "prettier --write --ignore-unknown"
+  },
   "browserslist": {
     "production": [
       ">0.2%",

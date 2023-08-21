@@ -3,6 +3,7 @@ import { Helmet } from "react-helmet-async";
 import { useLazyQuery } from "@apollo/client";
 import { useNavigate } from "react-router-dom";
 import { signUpMutation } from "support/graphqlServerApi";
+import * as EmailValidator from "email-validator";
 import RegexValidator from "./regexValidator";
 import Button from "component/common/Button";
 import Footer from "component/common/NavbarAndFooter/WebFooter";
@@ -172,9 +173,7 @@ const SignUp = () => {
                   required
                   onChange={handleChange}
                   onBlur={() =>
-                    setEmailIsValid(
-                      !regexValidator.validEmail.test(userInfo.email)
-                    )
+                    setEmailIsValid(!EmailValidator.validate(userInfo.email))
                   }
                 />
                 <label>{strings.signUp.emailLabel}</label>
