@@ -5,6 +5,7 @@ import { useLazyQuery } from "@apollo/client";
 import { cafeMutation } from "support/graphqlServerApi";
 import classNames from "classnames";
 import NavBar from "component/common/NavbarAndFooter/NavBar";
+import Button from "component/common/Button";
 import Form from "component/common/Form/Form";
 import FormItem from "component/common/Form/FormItem";
 import styles from "./addCafe.module.scss";
@@ -22,6 +23,7 @@ const AddCafe = () => {
     }
   }, [navigate, token]);
 
+  //cafeMutation needs to be updated and addCafe needs to be added
   const [addCafe] = useLazyQuery(cafeMutation, {
     onError: (error) => {
       alert(error);
@@ -69,6 +71,14 @@ const AddCafe = () => {
     });
   };
 
+  function renderButton() {
+    return (
+      <div className={classNames(styles.editButtonGroup)}>
+        <Button buttonType="submit" text={"Add Cafe"} />
+      </div>
+    );
+  }
+
   return (
     <React.Fragment>
       <Helmet title={strings.addCafe.helmet} />
@@ -76,6 +86,7 @@ const AddCafe = () => {
       <div className={classNames(styles.container)}>
         <Form
           className={classNames(styles.addCafeForm)}
+          buttonGroup={renderButton()}
           handleForm={handleAddCafe}
           formType={"addCafe"}
         >
